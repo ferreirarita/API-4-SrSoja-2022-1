@@ -63,11 +63,11 @@ Foram acordadas entre as partes envolvidas as seguintes datas para a entrega das
    SPRINT 1 </a> - 25/03 a 14/04/2022 </h5>
 
    <h5 >
-   <a href=''>
+   
    SPRINT 2 </a> - 25/04 a 15/05/2022 </h5>
 
    <h5 >
-   <a href=''>
+  
   SPRINT 3 </a> - 16/05 a 05/06/2022  </h5>
 
    <h5 >
