@@ -30,7 +30,7 @@
 
 ### Engenharia de Software / Sistema de Informação.
 
-Projeto desenvolvidos por alunos do sexto semestre do curso de Analise e desenvolvimento
+Projeto desenvolvidos por alunos do quarto semestre do curso de Analise e desenvolvimento
 
 de Sistemas da Fatec - SJC, durante o primeiro semestre do ano de 2022.
 
