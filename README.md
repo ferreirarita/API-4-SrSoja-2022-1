@@ -39,15 +39,13 @@ de Sistemas da Fatec - SJC, durante o primeiro semestre do ano de 2022.
 
 # Integrantes da Equipe 👩‍💻👨‍💻 <a name = "IntegrantesdaEquipe"></a>
 
-|                                                                       | Nome           | GitHub                                          | Linkedln                                                          | Função        |
-| ----------------------------------------------------------------------- | -------------- | ----------------------------------------------- | ----------------------------------------------------------------- | ------------- |
-| <img width="25px" height="25px" src="https://i.imgur.com/itk4Qgy.jpg">  | Leonardo G Ribeiro  | [acesso](https://github.com/Leo0256)       | [acesso](https://www.linkedin.com/in/leonardo-gustavo-ribeiro-ba23831b6/)     | Product Owner  |
-| <img width="25px" height="25px" src="https://i.imgur.com/IVGZ0fB.png">  | Jonathan Assis | [acesso](https://github.com/Jonathan-Assis)     | [acesso](https://www.linkedin.com/in/jonathan-gabriel-/)          | Scrum Master     |
-| <img width="25px" height="25px" src="https://i.imgur.com/7fhn4ax.png"> | Sarah Santana    | [acesso](https://github.com/Sarah781)          | [acesso](https://www.linkedin.com/in/sarah-santana-843394200/)  | Dev Team |
-| <img width="25px" height="25px" src="https://i.imgur.com/k4qPgmr.png">  | Sarah Ribeiro  | [acesso](https://github.com/Sarah6197)       | [acesso](https://www.linkedin.com/in/sarah-fernandes-494000196)     | Dev Team |
-| <img width="25px" height="25px" src="https://i.imgur.com/mzAuRZS.png">  | Matheus Emboaba  | [acesso](https://github.com/MatheusEmboabaTeteu)       | [acesso]()     | Dev Team  |
-| <img width="25px" height="25px" src="https://i.imgur.com/sWAKtzF.jpg">  | Andre Silva  | [acesso](https://github.com/AndreSilva358)       | [acesso](https://www.linkedin.com/in/andr%C3%A9-silva-63a4621ba)     | Dev Team  |
-| <img width="25px" height="25px" src="https://i.imgur.com/kEh4Dqy.png">  | Rita Ferreira  | [acesso](https://github.com/ferreirarita)       | [acesso](https://www.linkedin.com/in/rita-ferreira-894ba1200)     | Dev Team  |
+[<img src="https://i.imgur.com/itk4Qgy.jpg" width=115 > <br> <sub> Leonardo G Ribeito <br>Product Owner  <br> </sub>](https://github.com/Leo0256)  | [<img src="https://i.imgur.com/IVGZ0fB.png" width=115 > <br> <sub> Jonathan Gabriel <br>Scrum Master<br> </sub>](https://github.com/Jonathan-Assis) |[<img src="https://i.imgur.com/7fhn4ax.png" width=115 > <br> <sub> Sarah Santana <br>Dev Team<br></sub>](https://github.com/Sarah781)| [<img src="https://i.imgur.com/kEh4Dqy.png" width=115 > <br> <sub> Rita Ferreira <br>Dev Team <br>  </sub>](https://github.com/ferreirarita) |
+| :---: | :---: | :---:| :---:| 
+[<img src="https://i.imgur.com/k4qPgmr.png" width=115 > <br> <sub> Sarah Ribeiro <br>Dev Team <br> </sub>](https://github.com/Sarah6197) | [<img src="https://i.imgur.com/mzAuRZS.png" width=115 > <br> <sub> Matheus Emboaba <br>Dev Team <br> </sub>](https://github.com/MatheusEmboabaTeteu) | [<img src="https://i.imgur.com/sWAKtzF.jpg" width=115 > <br> <sub> André Silva <br>Dev Team <br>  </sub>](https://github.com/AndreSilva358) |
+
+
+
+
 
 
 
