@@ -24,7 +24,7 @@ DEMOSTRAÇÃO DAS FUNCIONALIDADES
    <br/>
    <br/>
 
-## GRAFICO BURNDOWN EQUIPE EVOLUÇÃO 📉.
+## GRAFICO BURNDOWN  📉.
 
 Estimativas de esforços feitos para as atividade do SprintBacklog.
 
