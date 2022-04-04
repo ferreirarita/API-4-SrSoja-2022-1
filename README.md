@@ -41,7 +41,7 @@ de Sistemas da Fatec - SJC, durante o primeiro semestre do ano de 2022.
 
 |                                                                       | Nome           | GitHub                                          | Linkedln                                                          | Função        |
 | ----------------------------------------------------------------------- | -------------- | ----------------------------------------------- | ----------------------------------------------------------------- | ------------- |
-| <img width="25px" height="25px" src="https://i.imgur.com/itk4Qgy.jpg">  | Leonardo G Ribeiro  | [acesso](https://github.com/Leo0256)       | [acesso](https://www.linkedin.com/in/rita-ferreira-894ba1200)     | Product Owner  |
+| <img width="25px" height="25px" src="https://i.imgur.com/itk4Qgy.jpg">  | Leonardo G Ribeiro  | [acesso](https://github.com/Leo0256)       | [acesso](https://www.linkedin.com/in/leonardo-gustavo-ribeiro-ba23831b6/)     | Product Owner  |
 | <img width="25px" height="25px" src="https://i.imgur.com/IVGZ0fB.png">  | Jonathan Assis | [acesso](https://github.com/Jonathan-Assis)     | [acesso](https://www.linkedin.com/in/jonathan-gabriel-/)          | Scrum Master     |
 | <img width="25px" height="25px" src="https://i.imgur.com/7fhn4ax.png"> | Sarah Santana    | [acesso](https://github.com/Sarah781)          | [acesso](https://www.linkedin.com/in/sarah-santana-843394200/)  | Dev Team |
 | <img width="25px" height="25px" src="https://i.imgur.com/k4qPgmr.png">  | Sarah Ribeiro  | [acesso](https://github.com/Sarah6197)       | [acesso](https://www.linkedin.com/in/sarah-fernandes-494000196)     | Dev Team |
