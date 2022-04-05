@@ -15,6 +15,10 @@
 
 # Introdução <a name = "Introdução"></a>
 
+## Disciplinas Integradas 🎓
+
+### Engenharia de Software / Banco de Dados / Programação de Script .
+
 Projeto desenvolvidos por alunos do quarto semestre do curso de Analise e desenvolvimento
 
 de Sistemas da Fatec - SJC, durante o primeiro semestre do ano de 2022.
@@ -56,16 +60,6 @@ para ter relação com a produtividade, em contrapartida a ideia seria empregar 
 * Como está o preço do adubo, custo de dprodução da soja. 
 
 <br/>
-
-<br/>
-
-<br/>
-
-## Disciplinas Integradas 🎓
-
-### Engenharia de Software .
-
-
 
 [Voltar](#topo)
 <br/>
@@ -144,11 +138,15 @@ FEIRA DE SOLUÇÕES</a> - 15/06/2022 às 19h </h5>
 
 # Tecnologias 💻 <a name = "Tecnologias"></a>
 
+## React Native:
+
+HTML - CSS -JAVA SCRIPT
+POST GRESQL
 
 
 
+<br/>
 
-   <br/>
 
 
 [Voltar](#topo)
