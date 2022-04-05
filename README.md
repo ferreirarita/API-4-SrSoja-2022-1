@@ -15,39 +15,63 @@
 
 # Introdução <a name = "Introdução"></a>
 
+Projeto desenvolvidos por alunos do quarto semestre do curso de Analise e desenvolvimento
+
+de Sistemas da Fatec - SJC, durante o primeiro semestre do ano de 2022.
+
+
+
+ ⌛ DESAFIO   
+
+ Criação de um Aplicativo colaborativo para produtores rurais.
+
+Produtor - Estas informações consistem em dados alfa numéricos e imagens georreferenciadas pelo GPS do celular.
+
+contrapartida - Através dos dados de diversos usuários, o APP fornecerá ao usuário informações estatísticas sobre
+
+sua produção, comparando -a com dados históricos acessadas de APIs públicas e informaçõe atuais de outros usuários.
+
  <br/>
+
+ # Integrantes da Equipe 👩‍💻👨‍💻 <a name = "IntegrantesdaEquipe"></a>
+
+[<img src="https://i.imgur.com/itk4Qgy.jpg" width=115 > <br> <sub> <a href="https://github.com/Leo0256">Leonardo G Ribeito </a><br><a href="https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fm%2Fin%2Fleonardo-gustavo-ribeiro-ba23831b6">Product Owner </a><br></sub>](https://github.com/Leo0256)  | [<img src="https://i.imgur.com/IVGZ0fB.png" width=115 ><br><sub> Jonathan Gabriel</a><br><a href="https://www.linkedin.com/in/jonathan-gabriel-"> Scrum Master</a><br> </sub>](https://github.com/Jonathan-Assis) |[<img src="https://i.imgur.com/7fhn4ax.png" width=115 ><br><sub> Sarah Santana </a><br><a href="https://www.linkedin.com/in/sarah-santana-843394200">Dev Team</a><br></sub>](https://github.com/Sarah781)| [<img src="https://i.imgur.com/kEh4Dqy.png" width=115 ><br><sub> Rita Ferreira </a><br><a href="https://www.linkedin.com/in/rita-ferreira-894ba1200">Dev Team </a></sub>](https://github.com/ferreirarita) |
+| :---: | :---: | :---:| :---:| 
+[<img src="https://i.imgur.com/k4qPgmr.png" width=115 > <br> <sub> Sarah Ribeiro</a><br><a href="https://www.linkedin.com/in/sarah-ribeiro-494000196/"> Dev Team</a> <br> </sub>](https://github.com/Sarah6197) | [<img src="https://i.imgur.com/mzAuRZS.png" width=115 > <br> <sub> Matheus Emboaba </a><br><a href="https://www.linkedin.com/in/matheus-emboaba-a21970236">Dev Team</a> <br> </sub>](https://github.com/MatheusEmboabaTeteu) | [<img src="https://i.imgur.com/sWAKtzF.jpg" width=115 > <br> <sub> André Silva </a><br><a href="https://www.linkedin.com/in/andr%C3%A9-silva-63a4621ba/">Dev Team </a>  </sub>](https://github.com/AndreSilva358) |
+
+
+[Voltar](#topo)
+
 
 ## Visão Geral 🔎
 
+É o agricultor ter na palma da mão, o aplicativo onde ele possa analisar a sua propriedade, seu talhão agrícola, levantar dados de 
+produtividade e alimentar um banco de dados. 
+Este banco de dados será utilizado  para alimentar outros processos internos.
+Criação de um aplicativo colaborativo para produtores rurais, então o agricultor entrará na sua área da soja, vai levantar dados agrícolas 
+para ter relação com a produtividade, em contrapartida a ideia seria empregar informativos para os agricultores em formas de Dashboards,por exemplo:
+
+* Como está o preço da saca da soja para a sua localidade.
+* Como está o comportamento da chuva no período de 7 dias.
+* Como está o preço do adubo, custo de dprodução da soja. 
 
 <br/>
 
 <br/>
-
 
 <br/>
 
 ## Disciplinas Integradas 🎓
 
-### Engenharia de Software / Sistema de Informação.
+### Engenharia de Software .
 
-Projeto desenvolvidos por alunos do quarto semestre do curso de Analise e desenvolvimento
 
-de Sistemas da Fatec - SJC, durante o primeiro semestre do ano de 2022.
 
 [Voltar](#topo)
 <br/>
 
 
 
-# Integrantes da Equipe 👩‍💻👨‍💻 <a name = "IntegrantesdaEquipe"></a>
-
-[<img src="https://i.imgur.com/itk4Qgy.jpg" width=115 > <br> <sub> <a href="https://github.com/Leo0256">Leonardo G Ribeito </a><br><a href="https://www.linkedin.com/uas/login?session_redirect=https%3A%2F%2Fwww.linkedin.com%2Fm%2Fin%2Fleonardo-gustavo-ribeiro-ba23831b6">Product Owner </a><br></sub>](https://github.com/Leo0256)  | [<img src="https://i.imgur.com/IVGZ0fB.png" width=115 ><br><sub> Jonathan Gabriel</a><br><a href="https://www.linkedin.com/in/jonathan-gabriel-"> Scrum Master</a><br> </sub>](https://github.com/Jonathan-Assis) |[<img src="https://i.imgur.com/7fhn4ax.png" width=115 ><br><sub> Sarah Santana </a><br><a href="https://www.linkedin.com/in/sarah-santana-843394200">Dev Team</a><br></sub>](https://github.com/Sarah781)| [<img src="https://i.imgur.com/kEh4Dqy.png" width=115 ><br><sub> Rita Ferreira </a><br><a href="https://www.linkedin.com/in/rita-ferreira-894ba1200">Dev Team </a></sub>](https://github.com/ferreirarita) |
-| :---: | :---: | :---:| :---:| 
-[<img src="https://i.imgur.com/k4qPgmr.png" width=115 > <br> <sub> Sarah Ribeiro</a><br><a href="https://www.linkedin.com/in/sarah-ribeiro-494000196/"> Dev Team</a> <br> </sub>](https://github.com/Sarah6197) | [<img src="https://i.imgur.com/mzAuRZS.png" width=115 > <br> <sub> Matheus Emboaba </a><br><a href="">Dev Team</a> <br> </sub>](https://github.com/MatheusEmboabaTeteu) | [<img src="https://i.imgur.com/sWAKtzF.jpg" width=115 > <br> <sub> André Silva </a><br><a href="https://www.linkedin.com/in/andr%C3%A9-silva-63a4621ba/">Dev Team </a>  </sub>](https://github.com/AndreSilva358) |
-
-
-[Voltar](#topo)
 
 # Cronograma do API 📆 <a name = "CronogramadoAPI"></a>
 
