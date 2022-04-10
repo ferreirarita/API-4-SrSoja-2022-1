@@ -1,5 +1,5 @@
-import { Text, View } from 'react-native';
-import styles from '../Styles/AppStyles';
+import { Text } from 'react-native';
+import styles from '../styles/AppStyles';
 
 export default function HelloWorld() {
     return(

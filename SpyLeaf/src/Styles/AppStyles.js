@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import stylesVar from "../Components/StyleSheetVars";
+import stylesVar from "../components/StyleSheetVars";
 
 const styles = StyleSheet.create({
     container: {
@@ -15,4 +15,4 @@ const styles = StyleSheet.create({
     }
 });
 
-module.exports = styles
+export default styles
