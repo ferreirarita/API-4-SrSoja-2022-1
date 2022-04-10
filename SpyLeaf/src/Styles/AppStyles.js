@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import stylesVar from "../components/StyleSheetVars";
+import stylesVar from "../Components/StyleSheetVars";
 
 const styles = StyleSheet.create({
     container: {
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     titulo:{
         fontFamily: stylesVar.fontTitulo,
         fontSize: stylesVar.fontMedium,
-        color: stylesVar.color.textPrimary
+        color: stylesVar.color.white
     }
 });
 

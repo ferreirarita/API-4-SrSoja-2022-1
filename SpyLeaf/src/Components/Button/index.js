@@ -1,10 +1,22 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, TouchableOpacity, Image } from 'react-native';
+import style from './styles'
+import Check from '../../assets/check.js';
 
-// import { Container } from './styles';
-
-const Button = () => {
-  return <View />;
+function CheckButton(props) {
+  return (
+    <TouchableOpacity
+      
+      onPress={props.onPress}>
+      <View>
+        <Check 
+          fill={props.fill} 
+          color={props.color} 
+          size={props.size} 
+        />
+      </View>
+    </TouchableOpacity>
+  )
 }
 
-export default Button;
+export default CheckButton;
