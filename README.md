@@ -109,15 +109,9 @@ FEIRA DE SOLUÇÕES</a> - 15/06/2022 às 19h </h5>
 
    <h5 >
    <a href=''>
-   <li> ATA DE REUNIÃO</li></a> </h5>
+   <li> DER</li></a> </h5>
 
-   <h5 >
-   <a href=''>
-   <li>DOCUMENTO DE VISÃO</li></a> </h5>
-
-   <h5 >
-   <a href=''>
-   <li>MODELO DE CASO DE USO</li> </a> </h5>
+   
 
 
 
