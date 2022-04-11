@@ -72,7 +72,7 @@ para ter relação com a produtividade, em contrapartida a ideia seria empregar 
 Foram acordadas entre as partes envolvidas as seguintes datas para a entrega das sprints.
 
 <h5 >
-   <a href='https://github.com/ferreirarita/API-4-SpyLeaf-2022-1/tree/main/Refer%C3%AAncias'>
+   <a href='https://github.com/ferreirarita/API-4-SpyLeaf-2022-1/tree/main/Refer%C3%AAncias/KickOff'>
    KICK OFF DO PROJETO </a> - 14/03/2022 a 18/03/2022 ✔</h5>
 
    <h5 >
