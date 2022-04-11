@@ -140,10 +140,22 @@ FEIRA DE SOLUÇÕES</a> - 15/06/2022 às 19h </h5>
 
 ## React Native:
 
-JAVASCRIPT
-POSTGRESQL
-SQLLITE.
+Fornece aos desenvolvedores front-end a capacidade aplicativos móveis poderosos.
+Anteriormente, eles só podiam usar tecnologias baseada na web.
 
+## JavaScript:
+
+Permite inserir vários efeitos, fazendo com que o site fique mais dinâmico.
+
+
+## PostGreSql:
+
+Permite que os usuários definam seus próprios tipos de dados.
+
+
+## SqlLite.
+
+Baseada em arquivos e fácil de configurar e usar. 
 
 
 <br/>
