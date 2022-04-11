@@ -21,9 +21,9 @@ const stylesVar = {
     textPrimaryColor: color.black,
     textSecondaryColor: color.gray1,
 
-    fontHigh: 40,
-    fontMedium: 20,
-    fontLow: 10,
+    fontHigh: 60,
+    fontMedium: 40,
+    fontLow: 18,
 
     iconGreat: 160,
     icon: 70,

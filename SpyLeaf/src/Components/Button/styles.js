@@ -13,6 +13,17 @@ const style = StyleSheet.create({
     great: {
         width: 150,
         height: 150
+    },
+    textTiny: {
+        fontFamily: stylesVar.fontFamily,
+        fontWeight: 'bold',
+        fontSize: stylesVar.fontLow,
+        flexWrap: 'nowrap',
+        height: 'auto',
+        alignContent: 'center',
+        maxWidth: 70,
+        textAlign: 'center',
+        marginTop: 2
     }
 })
 

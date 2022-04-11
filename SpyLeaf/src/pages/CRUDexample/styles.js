@@ -16,6 +16,13 @@ const style = StyleSheet.create({
         fontFamily: stylesVar.fontFamily,
         color: stylesVar.color.textSecondary,
         fontSize: stylesVar.fontMedium
+    },
+    row: {
+        alignContent: 'center',
+        flexDirection: 'row'
+    },
+    button: {
+        marginHorizontal: 10
     }
 })
 

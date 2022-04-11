@@ -6,5 +6,5 @@ import CRUD from './CRUDexample'
 // import { Container } from './styles';
 
 export default function pages () {
-  return <Hello />;
+  return <CRUD />;
 }
