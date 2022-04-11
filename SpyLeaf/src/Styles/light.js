@@ -1,27 +1,27 @@
-const light = {
-    backgroundColor: '#F6F5F5',
+import { StyleSheet } from "react-native";
+
+const light = StyleSheet.create({
+    backgroundColor: '#F1F1F1',
     toolbarColor: '#EE8600',
    
-    fontFamily: 'Arial',
-    primaryTextColor: '#000000',
-    secondaryTextColor: rgba(0, 0, 0, 0.8),
-    fontHigh: 40,
-    fontMedium: 20,
-    fontLow: 10,
-
     card: {
-        Color: '#CBCBCB',
+        ColorPrimary: '#DCDCDC',
+        ColorSecondary: '#CBCBCB',
     },
 
-    icon:{
+    icon: {
         Color: '#343434',
     },
+
     font: {
-        fTitlePrimary: 20,
-        fTitleSecondary: 11,
-        fInputs: 10,
+        Family: 'Arial',
+        TitlePrimary: 17,
+        TitleSecondary: 11,
+        Inputs: 10,
+        ColorPrimary: '#000000',
+        ColorSecondary: '#444444',
     }
 
-};
+});
 
 export default light

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     cardHeader: {
         width: 330,
         height: 70,
-        backgroundColor: light.card.Color,
+        backgroundColor: light.card.primaryColor,
         top: 30,
     },
 
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
 
     secondaryTitle:{
         fontFamily: light.fontFamily,
-        fontSize: light.font.fTitleSecundary,
+        fontSize: light.font.fTitleSecondary,
         color: light.secondaryTextColor,
     },
 
