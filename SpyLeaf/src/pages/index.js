@@ -1,9 +1,6 @@
 import React from 'react';
-
-import Hello from './Helloworldexample/index';
-
-// import { Container } from './styles';
+import Cotacao from './Cotacao_soja';
 
 export default function pages () {
-  return <Hello />;
+  return <Cotacao />;
 }
