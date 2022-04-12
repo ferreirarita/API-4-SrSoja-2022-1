@@ -1,0 +1,28 @@
+{
+  "name": "servidor-api4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferreirarita/API-4-SpyLeaf-2022-1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ferreirarita/API-4-SpyLeaf-2022-1/issues"
+  },
+  "homepage": "https://github.com/ferreirarita/API-4-SpyLeaf-2022-1#readme",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.19.0"
+  }
+}
