@@ -1,35 +1,21 @@
 import { StyleSheet } from "react-native";
-import light from "../../styles/light"
+import light from "../../styles/light";
 
 const styles = StyleSheet.create({
     Header: {
-        backgroundColor: '#f1f1f1',
-        alignItems: 'center',
+        backgroundColor: '#F1F1F1',
     },
-    titleHeader:{
-        fontFamily: light.fontFamily,
-        color: light.primaryTextColor,
-        fontSize: light.font.fTitlePrimary,
+    titleHeader: light.TitlePrimary,
+    cardHeader: light.CardHeader,
+    primaryTitle: light.TitlePrimary,
+    secondaryTitle: light.TitleSecondary,
+    Body: {
+        widht: '95%',
+        height: '90%',
+        backgroundColor: '#F1F1F1',
     },
-
-    cardHeader: {
-        width: 330,
-        height: 70,
-        backgroundColor: light.card.primaryColor,
-        top: 30,
-    },
-
-    primaryTitle:{
-        fontFamily: light.fontFamily,
-        fontSize: light.font.fTitlePrimary,
-        color: light.primaryTextColor,
-    },
-
-    secondaryTitle:{
-        fontFamily: light.fontFamily,
-        fontSize: light.font.fTitleSecondary,
-        color: light.secondaryTextColor,
-    },
+    CardPrimary: light.TablePrimary,
+    CardSecondary: light.TableSecondary,
 
 });
 

@@ -1,28 +1,31 @@
 import React from 'react';
 import {SafeAreaView, View, Text } from 'react-native';
-//import Toolbar from '../../components/Toolbar/index'
+import Header from '../../components/Header'
 import styles from './styles';
-//const styles = require('./styles')
 
 export default function Cotacao_soja () {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor:'#ff1000'}}>
-      <View style={styles.Header}>
-        <Text style={styles.titleHeader}>Cotação da Soja</Text>
-        <View style={styles.cardHeader}>
-         <Text style={styles.secondaryTitle}>Estado</Text>
-         <Text style={styles.secondaryTitle}>Município</Text>
+    <>    
+      <SafeAreaView style={{ flex: 1, backgroundColor:'#ff1000'}}>
+        <Header />
+        <View style={styles.Header}>
+          <Text style={styles.titleHeader}>Cotação da Soja</Text>
+          <View style={styles.cardHeader}>
+            <Text style={styles.secondaryTitle}>Município</Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.Body}>
-        <View style={styles.cardTablePrimary}>
-          <View style={styles.cardTableSecondary} />
+        <View style={styles.Body}>
+          <Text style={styles.titleHeader}>Cotação da Soja</Text>
+          <View style={styles.CardPrimary}>
+          <View style={styles.CardSecondary} />
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
-  )
-  };
-  /*
+      </SafeAreaView>
+    </>
+  );
+};
+
+ /*
 export default function Cotacao_soja() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor:'#ff1000'}}>
@@ -41,8 +44,8 @@ export default function Cotacao_soja() {
     </SafeAreaView>
   )
   };
-  */
-/*
+
+
 const styles = StyleSheet.create({
     Header: {
       backgroundColor: '#F1F1F1',
