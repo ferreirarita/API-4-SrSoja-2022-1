@@ -7,10 +7,6 @@ const light = StyleSheet.create({
         backgroundColor: "#EE8600",
     },
 
-    underline: {
-        backgroundColor: "#EE8600",
-    },
-
     CardHeader: {
         width: 330,
         height: 70,
@@ -42,6 +38,9 @@ const light = StyleSheet.create({
         fontSize: 20,
         color: "#000000",
         textAlign: "center",
+        marginTop: 9,
+        textDecorationLine: "underline",
+        textDecorationColor: "#EE8600",
     },
 
     TitleSecondary: {
@@ -56,7 +55,7 @@ const light = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 10,
         color: "#444444",
-    },
+        },
 });
 
 export default light

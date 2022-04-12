@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import light from "../../styles/light";
 
 const Header = styled.View`
   background-color: #EE8600;

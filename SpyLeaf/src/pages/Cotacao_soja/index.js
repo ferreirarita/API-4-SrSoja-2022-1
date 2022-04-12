@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, View, Text } from 'react-native';
 import Header from '../../components/Header'
 import styles from './styles';
+import light from '../../styles/light';
 
 export default function Cotacao_soja () {
   return (
@@ -9,15 +10,15 @@ export default function Cotacao_soja () {
       <SafeAreaView style={{ flex: 1, backgroundColor:'#ff1000'}}>
         <Header />
         <View style={styles.Header}>
-          <Text style={styles.titleHeader}>Cotação da Soja</Text>
-          <View style={styles.cardHeader}>
-            <Text style={styles.secondaryTitle}>Município</Text>
+          <Text style={light.TitlePrimary}>Cotação da Soja</Text>
+            <View style={styles.cardHeader}>
+            <Text style={light.TitleSecondary}>Estado</Text>
+            <Text style={light.TitleSecondary}>Município</Text>
           </View>
         </View>
         <View style={styles.Body}>
-          <Text style={styles.titleHeader}>Cotação da Soja</Text>
-          <View style={styles.CardPrimary}>
-          <View style={styles.CardSecondary} />
+          <View style={light.TablePrimary}>
+          <View style={light.TableSecondary} />
           </View>
         </View>
       </SafeAreaView>
