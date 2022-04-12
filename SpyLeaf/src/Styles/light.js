@@ -7,26 +7,6 @@ const light = StyleSheet.create({
         backgroundColor: "#EE8600",
     },
 
-    CardHeader: {
-        width: 330,
-        height: 70,
-        backgroundColor: "#DCDCDC",
-        top: 30,
-    },
-
-    TablePrimary: {
-        alignItems: "center",
-        width: "90%",
-        height: 440,
-        backgroundColor: "#DCDCDC",
-    },
-
-    TableSecondary: {
-        width: "88%",
-        height: "90%",
-        backgroundColor: "#C0C0C0",
-    },
-
     icon: {
         color: "#343434",
         fontSize: 30,
