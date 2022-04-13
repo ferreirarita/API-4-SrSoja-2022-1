@@ -1,11 +1,21 @@
 import styled from 'styled-components/native';
 
 const CardEstadoMunicipio = styled.View`
-    width: 330px,
-    height: 70px,
-    backgroundColor: #DCDCDC,
-    margin-top: 30,
-
+    marginTop: 9;
+    width: 92%;
+    height: 75px;
+    backgroundColor: #DCDCDC;
+    padding: 10px;
+    flex-direction: row;
 `;
 
-export { CardEstadoMunicipio };
+
+
+const firstRow = styled.Text`
+padding: 5
+`;
+
+
+
+
+export {CardEstadoMunicipio, firstRow};

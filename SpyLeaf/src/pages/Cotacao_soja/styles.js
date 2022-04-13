@@ -1,12 +1,9 @@
 import { StyleSheet } from "react-native";
-//import light from "../../styles/light"
 
 const styles = StyleSheet.create({
     Header: {
-        width: 330,
-        height: 70,
+    alignItems: 'center',
         backgroundColor: '#DCDCDC',
-        marginTop: 0,
     
     },
 
@@ -16,6 +13,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#F1F1F1',
         alignItems: 'center',
     },
+    align: {
+        alignItems: 'center'
+    }
 });
 
 export default styles

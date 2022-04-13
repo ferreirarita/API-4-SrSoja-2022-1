@@ -37,3 +37,4 @@ const SelectStateAndCity = () => {
     </>
     )
 }
+export default SelectStateAndCity;

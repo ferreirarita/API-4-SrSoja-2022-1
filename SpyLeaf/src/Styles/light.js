@@ -28,14 +28,15 @@ const light = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 10,
         color: "#000000",
+
     },
 
     Inputs: {
         fontFamily: "Arial",
         fontWeight: "bold",
         fontSize: 10,
-        color: "#444444",
+        color: "#555555",
         },
 });
 
-export default light
+export default light 
