@@ -109,6 +109,7 @@ FEIRA DE SOLUÇÕES</a> - 15/06/2022 às 19h </h5>
 
    <h5 >
    <a href='https://github.com/ferreirarita/API-4-SpyLeaf-2022-1/tree/main/Refer%C3%AAncias/Der'>
+   
    <li> DER</li></a> </h5>
 
    
@@ -134,22 +135,20 @@ FEIRA DE SOLUÇÕES</a> - 15/06/2022 às 19h </h5>
 
 ## React Native:
 
-Fornece aos desenvolvedores front-end a capacidade aplicativos móveis poderosos.
-Anteriormente, eles só podiam usar tecnologias baseada na web.
+Devido ao crescimento da biblioteca, e conjunto da linguagem JavaScript, e a praticidade no desenvolvimento híbrido de aplicativos mobile.
 
 ## JavaScript:
 
-Permite inserir vários efeitos, fazendo com que o site fique mais dinâmico.
-
+Permite liberdade e amplitude para o desenvolviemento, além de virtualmente funcionar em aplicações IOS e Android.
 
 ## PostGreSql:
 
-Permite que os usuários definam seus próprios tipos de dados.
+Por famuliaridade em projetos anteriores e pelo suporte nativo ao JSON,facilitando o desenvolvimento.
 
 
 ## SqlLite.
 
-Baseada em arquivos e fácil de configurar e usar. 
+Pela possibilidade de criar um banco de dados imbutido, possibilitando o funcionamento offline de um aplicativo mobile.
 
 
 <br/>
