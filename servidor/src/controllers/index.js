@@ -24,23 +24,22 @@ class Produtor {
 
     // Retornar um ou mais Produtores
     async getProdutor(req, _) {
-        let { prd_id } = req
-        prd_id = (prd_id).toString()
+        let { prd_id } = req.params
 
-        if(prd_id == ('0' || '')) {
-            return await models.Produtor.findAll({
-                attributes: [
-                    'prd_id', 'prd_nome', 'prd_email', 'prd_senha'
-                ],
-                order: [['prd_nome', 'DESC']]
-            })
-        }
-        else {
+        if(typeof prd_id !== 'undefined' && prd_id) {
             return await models.Produtor.findOne({
                 where: { prd_id },
                 attributes: [
                     'prd_id', 'prd_nome', 'prd_email', 'prd_senha'
                 ]
+            })
+        }
+        else {
+            return await models.Produtor.findAll({
+                attributes: [
+                    'prd_id', 'prd_nome', 'prd_email', 'prd_senha'
+                ],
+                order: [['prd_nome', 'DESC']]
             })
         }
     }

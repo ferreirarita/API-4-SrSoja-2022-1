@@ -5,7 +5,6 @@ const { addProdutor, getProdutor, delProdutor } = new Produtor()
 router.post('/insert', addProdutor)
 router.put('/update', addProdutor)
 router.get('/get', getProdutor)
-router.get('/getOne', getProdutor)
 router.delete('/delete', delProdutor)
 
 router.use((_, res) => {
