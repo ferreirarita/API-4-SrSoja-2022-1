@@ -28,6 +28,8 @@ DEMOSTRAÇÃO DAS FUNCIONALIDADES
 
 Estimativas de esforços feitos para as atividade do SprintBacklog.
 
+![](https://i.imgur.com/TauliUP.png)
+
   <br/>
 
 
