@@ -18,7 +18,7 @@ BACKLOG SPRINT 1
 
   <a target="_blank" href=''>Visualizar apresentação no Figma</a>
 <br />
-<a target="_blank" href='https://figma.com/file/BhRWFNZ6F9ecpPeyetIxIa/SPY-LEAFs?node-id=0%3A1'>Visualizar vídeo</a>
+<a target="_blank" href=''>Visualizar vídeo</a>
 
 <br />
 
