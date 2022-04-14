@@ -1,3 +1,4 @@
+import { PaperSelect } from 'react-native-paper'
 const SelectStateAndCity = () => {
     const estados = ['SP']
      
@@ -34,6 +35,11 @@ const SelectStateAndCity = () => {
             multiEnable={false}
             selectedArrayList={[]}
         />;
+            dialogTitleStyle = {{color: 'red'}}
+            checkboxColor="yellow"
+            checkboxLabelStyle = {{color: 'red', fontWeight: '700'}}
+            textInputBackgroundColor="yellow"
+            textinputColor="red"
     </>
     )
 }

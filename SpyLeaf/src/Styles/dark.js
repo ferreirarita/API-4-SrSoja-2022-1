@@ -41,7 +41,6 @@ const dark = StyleSheet.create({
     
     text: {
         TitlePrimary:{
-            fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 20,
             color: '#C5C5C5',
@@ -49,14 +48,12 @@ const dark = StyleSheet.create({
         },
     
         TitleSecondary:{
-            fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 10,
             color: '#C5C5C5',
         },
     
         Inputs:{
-            fontFamily: 'Arial',
             fontWeight: 'bold',
             fontSize: 10,
             color: '#BEBEBE',

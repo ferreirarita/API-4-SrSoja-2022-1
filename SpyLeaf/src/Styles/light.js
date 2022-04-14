@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 const light = StyleSheet.create({
-    backgroundColor: "#F1F1F1",
+    back: { backgroundColor: "#F1F1F1"},
 
     toolbar: {
         backgroundColor: "#EE8600",
@@ -11,32 +11,36 @@ const light = StyleSheet.create({
         color: "#343434",
         fontSize: 30,
     },
+    iconTable:{
+        color:"#343434",
+        position: "absolute",
+        fontSize:25,
+    },
 
     TitlePrimary: {
-        fontFamily: "Arial",
+        margin: 9,
         fontWeight: "bold",
-        fontSize: 20,
+        fontSize: 23,
         color: "#000000",
         textAlign: "center",
-        marginTop: 9,
         textDecorationLine: "underline",
         textDecorationColor: "#EE8600",
+
     },
 
     TitleSecondary: {
-        fontFamily: "Arial",
-        fontWeight: "bold",
-        fontSize: 10,
+        fontWeight: 'bold',
+        fontSize: 14,
         color: "#000000",
 
     },
 
     Inputs: {
-        fontFamily: "Arial",
-        fontWeight: "bold",
-        fontSize: 10,
-        color: "#555555",
-        },
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: "#666666",
+
+    },
 });
 
 export default light 

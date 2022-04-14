@@ -5,6 +5,6 @@ import Paginas from './pages';
 export default function App () {
   return (<>
     <Paginas />
-    <StatusBar barStyle="light-content" backgroundColor="#FFFFFF"/>
+    <StatusBar barStyle="light-content" backgroundColor="#000000"/>
   </>
   )};

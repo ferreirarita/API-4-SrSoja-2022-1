@@ -8,9 +8,9 @@ const styles = StyleSheet.create({
     },
 
     Body: {
-        widht: '95%',
+        width: '95%',
         height: '90%',
-        backgroundColor: '#F1F1F1',
+        backgroundColor: '#F0F0F1',
         alignItems: 'center',
     },
     align: {

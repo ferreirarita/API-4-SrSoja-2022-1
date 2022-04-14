@@ -4,7 +4,7 @@ import styles from './styles';
 //components
 import Header from '../../components/Header'
 import CardHeader from '../../components/CardEstadoMunicipio';
-import TablePrimary from '../../components/TableCard'
+import Table from '../../components/TableCard'
 import light from '../../styles/light';
 
 export default function Cotacao_soja () {
@@ -15,7 +15,7 @@ export default function Cotacao_soja () {
         <Header />
         <Text style={light.TitlePrimary}>Cotações da Soja</Text>
         <CardHeader />
-        <TablePrimary />
+        <Table />
       </View>
       </SafeAreaView>
     </>
