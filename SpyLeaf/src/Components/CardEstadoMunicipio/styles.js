@@ -15,4 +15,4 @@ const Date =styled.View`
 `;
 */
 
-export { CardEstadoMunicipio, Date };
+export { CardEstadoMunicipio };

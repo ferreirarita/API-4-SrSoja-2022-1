@@ -11,6 +11,11 @@ const light = StyleSheet.create({
         color: "#343434",
         fontSize: 30,
     },
+    iconOpen: {
+        color: "#EE8600",
+        fontSize: 30,
+    },
+
     iconTable:{
         color:"#343434",
         position: "absolute",
