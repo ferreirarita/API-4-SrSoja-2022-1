@@ -77,6 +77,34 @@ models.Fazenda.belongsTo(models.Produtor, {
     targetKey: 'prd_id'
 })
 
+// foreign key fazenda -> talhao
+models.Fazenda.hasMany(models.Talhao, {
+    foreignKey: {
+        name: 'fzd_id',
+        allowNull: false
+    },
+    sourceKey: 'fzd_id',
+    onDelete: 'cascade',
+    onUpdate: 'cascade',
+    hooks: true
+})
+models.Talhao.belongsTo(models.Fazenda, {
+    foreignKey: 'fzd_id',
+    targetKey: 'fzd_id'
+})
+
+// foreign key area_talhao -> talhao
+models.Talhao.hasOne(models.Area_Talhao, {
+    foreignKey: {
+        name: 'tlh_id',
+        allowNull: false
+    },
+    sourceKey: 'tlh_id',
+    onDelete: 'cascade',
+    onUpdate: 'cascade',
+    hooks: true
+})
+
 // foreign key talhao_saude -> talhao
 models.Talhao_Saude.hasMany(models.Talhao, {
     foreignKey: {
@@ -84,25 +112,13 @@ models.Talhao_Saude.hasMany(models.Talhao, {
         allowNull: true
     },
     sourceKey: 'tsd_id',
-    onDelete: 'cascade',
+    onDelete: 'set null',
     onUpdate: 'cascade',
     hooks: true
 })
 models.Talhao.belongsTo(models.Talhao_Saude, {
     foreignKey: 'tlh_saude',
     targetKey: 'tsd_id'
-})
-
-// foreign key area_talhao -> talhao
-models.Area_Talhao.hasOne(models.Talhao, {
-    foreignKey: {
-        name: 'area_id',
-        allowNull: false
-    },
-    sourceKey: 'area_id',
-    onDelete: 'cascade',
-    onUpdate: 'cascade',
-    hooks: true
 })
 
 module.exports = { Sequelize, sequelize, models }

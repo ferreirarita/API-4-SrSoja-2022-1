@@ -1,18 +1,11 @@
-module.exports = {
-    ProdutorController: require('./ProdutorController'),
-    FazendaController: require('./FazendaController'),
-    TalhaoController: require('./TalhaoController')
-}
+const Produtor = require('../models').models.Produtor
 
-/*
-const { models } = require('../models')
-
-class Produtor {
-    // adiciona/atualiza um Produtor
+class ProdutorController {
+    // Adiciona/atualiza um Produtor
     async addProdutor(req, res) {
         let { prd_id, prd_nome, prd_email, prd_senha } = req.body
         if(typeof prd_id === 'undefined' || prd_id == 0){
-            return await models.Produtor.create({
+            return await Produtor.create({
                 prd_nome, prd_email, prd_senha
             }).then(async (produtor) => {
                 const { prd_nome } = produtor.get()
@@ -22,7 +15,7 @@ class Produtor {
             })
         }
         else {
-            return await models.Produtor.findOne({
+            return await Produtor.findOne({
                 where: { prd_id }
             }).then(async (produtor) => {
                 if(produtor) {
@@ -42,7 +35,7 @@ class Produtor {
         let prd_id = req.query.prd_id
 
         if(typeof prd_id !== 'undefined' && prd_id != 0) {
-            return await models.Produtor.findOne({
+            return await Produtor.findOne({
                 where: { prd_id },
                 attributes: [
                     'prd_id', 'prd_nome', 'prd_email', 'prd_senha'
@@ -55,7 +48,7 @@ class Produtor {
             })
         }
         else {
-            return await models.Produtor.findAll({
+            return await Produtor.findAll({
                 attributes: [
                     'prd_id', 'prd_nome', 'prd_email', 'prd_senha'
                 ],
@@ -72,7 +65,7 @@ class Produtor {
     async delProdutor(req, res) {
         let { prd_id } = req.body
 
-        return await models.Produtor.findOne({
+        return await Produtor.findOne({
             where: { prd_id }
         }).then(async (produtor) => {
             if(produtor !== null) {
@@ -81,14 +74,12 @@ class Produtor {
                     res.status(200).json({ message: `Produtor ${prd_nome} deletado.` })
                 })
             }
-            else{
-                return res.status(400).json({ error: 'Produtor não encontrado.' })
-            }
+            return res.status(400).json({ error: 'Produtor não encontrado.' })
+            
         }).catch((err) => {
             return res.status(400).json({ error: err.message })
         })
     }
 
 }
-module.exports = { Produtor }
-*/
+module.exports = ProdutorController

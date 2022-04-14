@@ -1,6 +1,6 @@
 const router = require('express').Router()
-const { Produtor } = require('../controllers')
-const { addProdutor, getProdutor, delProdutor } = new Produtor()
+const { ProdutorController } = require('../controllers')
+const { addProdutor, getProdutor, delProdutor } = new ProdutorController()
 
 router.post('/insert', addProdutor)
 router.put('/update', addProdutor)

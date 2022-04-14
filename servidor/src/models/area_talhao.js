@@ -7,10 +7,10 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true
     },
-    area_latitude: {
+    latitude: {
         type: DataTypes.STRING
     },
-    area_longitude: {
+    longitude: {
         type: DataTypes.STRING
     }
 }
