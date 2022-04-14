@@ -12,11 +12,9 @@ BACKLOG SPRINT 1
    <br/>
 
 
-##DEMOSTRAÇÃO PROTÓTIPO FIGMA
+# DEMOSTRAÇÃO PROTÓTIPO FIGMA
 
-
-
-   <img src="https://user-images.githubusercontent.com/73767256/163484153-9a30f0f0-9d3e-4d1d-bfaf-89bbed161889.gif"   alt="drawing" width =200>
+  <img src="https://user-images.githubusercontent.com/73767256/163484153-9a30f0f0-9d3e-4d1d-bfaf-89bbed161889.gif"   alt="drawing" width =300>
 
 DEMOSTRAÇÃO DAS FUNCIONALIDADES
 
