@@ -8,7 +8,7 @@ function CheckButton(props) {
     <TouchableOpacity
       onPress={props.onPress}
       style={props.buttonStyle}
-      disabled>
+      >
       <View style={{alignItems: 'center'}}>
         <Check 
           fill={props.fill} 

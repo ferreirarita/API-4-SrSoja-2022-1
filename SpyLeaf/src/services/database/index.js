@@ -1,61 +1,19 @@
-const { Postgres, SQLite } = require('./models')
+import axios from 'axios'
+const baseUrl = 'https://srsoja-server-db.herokuapp.com'
+const source = axios.CancelToken.source()
 
-class DataBase {
-
-    // adiciona/atualiza um Produtor
-    async addProdutor(req, _) {
-        let { prd_id, prd_nome, prd_email, prd_senha } = req
-        if(prd_id == 0){
-            return await SQLite.Produtor.create({
-                prd_nome, prd_email, prd_senha
-            })
-        }
-        else {
-            prd_id = (prd_id).toString()
-            return await SQLite.Produtor.findOne({
-                where: { prd_id }
-            }).then(async (produtor) => 
-                await produtor.update({
-                    prd_nome, prd_email, prd_senha
-                })
-            )
-        }
+export default class Database {
+    
+    async getProdutor(prd_id){
+        const url = `${baseUrl}/produtor/get?prd_id=${prd_id}`
+        await axios.get(url, { cancelToken: source.token }).then((response) => {
+            if(response.status === 200) {
+                console.log(JSON.stringify(response.data))
+                return JSON.stringify(response.data)
+            }
+            else {
+                console.log(response.error)
+            }
+        })
     }
-
-    // Retornar um ou mais Produtores
-    async getProdutor(req, _) {
-        let { prd_id } = req
-        prd_id = (prd_id).toString()
-
-        if(prd_id == '0') {
-            return await SQLite.Produtor.findAll({
-                attributes: [
-                    'prd_id', 'prd_nome', 'prd_email', 'prd_senha'
-                ],
-                order: [['prd_nome', 'DESC']]
-            })
-        }
-        else {
-            return await SQLite.Produtor.findOne({
-                where: { prd_id },
-                attributes: [
-                    'prd_id', 'prd_nome', 'prd_email', 'prd_senha'
-                ]
-            })
-        }
-    }
-
-    // Remove um Produtor
-    async delProdutor(req, _) {
-        let { prd_id } = req
-        prd_id = (prd_id)
-
-        return await SQLite.Produtor.findOne({
-            where: { prd_id }
-        }).then(async (produtor) => 
-            await produtor.destroy()
-        )
-    }
-
 }
-module.exports = DataBase
