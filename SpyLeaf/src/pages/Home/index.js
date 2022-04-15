@@ -1,37 +1,62 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import styles from './styles';
-//import { createAppContainer } from 'react-navigation';
-//import { createDrawerNavigator } from 'react-navigation-drawer';
+import { Text, View, TouchableOpacity, Image } from 'react-native';
+import estilos from './styles';
+import { Button } from "react-native-paper";
+import light from '../../styles/light';
 
-import Cadastro from '../../pages/Cadastro_faz_talhao';
-import Cotacao from '../../pages/Cotacao_soja';
-import Relatorio from '../../pages/Relatorio_produtividade';
-import Custo from '../../pages/Custo_producao';
+const Tela_Inicial = (navigation) => {
+    return (
+        <View style={estilos.corpo}>
 
-export default props => {
-    <View style={styles.container}>
-        <Text style={styles.text}>Tela Home</Text>
-    </View>
+            <View style={estilos.bloco}>
+                <Text style={estilos.titulo}>Utilidades</Text>
+                <Text style={{left:60, fontSize:20, fontWeight:'bold', color: "#EE8600"}}>Cadastro do Talhão</Text>
+
+                <TouchableOpacity
+                    style={estilos.button3}>
+                    <Text style={estilos.titulo_ico}>Cadastro</Text>
+                </TouchableOpacity>
+                <Text style={{left:60, fontSize:20, fontWeight:'bold', color: "#EE8600"}}>Cotações da Soja</Text>
+
+                <TouchableOpacity
+                    style={estilos.button3}>
+
+        <Text style={{left:60, fontSize:20, fontWeight:'bold', color: "#EE8600"}}>Relatorio</Text>
+
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={estilos.button3}>
+
+                    <Text style={estilos.titulo_ico}>Relatório</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={estilos.button3}>
+
+                    <Text style={estilos.titulo_ico}>Custo de Produção</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={estilos.button3}>
+
+                    <Text style={estilos.titulo_ico}>Preço da Saca</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={estilos.button3}>
+
+                    <Text style={estilos.titulo_ico}>Tempo</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={estilos.button3}>
+
+                    <Text style={estilos.titulo_ico}>Histórico de Vendas</Text>
+                </TouchableOpacity>
+
+            </View>
+        </View>
+    );
 }
-
-
-
-
-
-
-
-
-/*const Routes = createAppContainer(
-    createDrawerNavigator({
-        
-        Cadastro,
-        Cotacao,
-        Relatorio,
-        Custo,
-    }, {
-        initialRouteName: "Relatorio"
-    })
-);
-
-export default Routes;*/
+export default Tela_Inicial

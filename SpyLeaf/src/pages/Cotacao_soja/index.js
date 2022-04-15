@@ -1,6 +1,5 @@
 import React from 'react';
 import { SafeAreaView, View, Text } from 'react-native';
-import styles from './styles';
 //components
 import Header from '../../components/Header'
 import CardHeader from '../../components/CardEstadoMunicipio';

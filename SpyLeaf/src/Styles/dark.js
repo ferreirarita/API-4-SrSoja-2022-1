@@ -1,65 +1,49 @@
 import { StyleSheet } from "react-native";
 
 const dark = StyleSheet.create({
-    backgroundColor: '#343434',
+    back: { backgroundColor: "#343434"},
 
-    toolbar:{
-        backgroundColor: '#343434'
+    toolbar: {
+        backgroundColor: "#343434",
     },
-    
-    underline:{
-        backgroundColor: '#9A9A9A'
-    },
-    
-    card: {
-        CardHeader:{
-            width: 330,
-            height: 70,
-            backgroundColor: '#535353',
-            top: 30,
-        }
-    },
-    
-    table:{
-        TablePrimary: {
-            alignItems: 'center',
-            width: '90%',
-            height: 440,
-            backgroundColor: '#535353',
-          },
-      
-        TableSecondary: {
-           width: '88%',
-           height: '90%',
-           backgroundColor: "#474747",
-          },
-    },
-    
+
     icon: {
-        Color: '#C5C5C5',
+        color: "#C5C5C5",
+        fontSize: 30,
     },
-    
-    text: {
-        TitlePrimary:{
-            fontWeight: 'bold',
-            fontSize: 20,
-            color: '#C5C5C5',
-            textAlign: 'center'
-        },
-    
-        TitleSecondary:{
-            fontWeight: 'bold',
-            fontSize: 10,
-            color: '#C5C5C5',
-        },
-    
-        Inputs:{
-            fontWeight: 'bold',
-            fontSize: 10,
-            color: '#BEBEBE',
-        }
-    }
-    
+    iconOpen: {
+        color: "#C5C5C5",
+        fontSize: 30,
+    },
+
+    iconTable:{
+        color:"#343434",
+        position: "absolute",
+        fontSize:25,
+    },
+
+    TitlePrimary: {
+        margin: 9,
+        fontWeight: "bold",
+        fontSize: 23,
+        color: "#C5C5C5",
+        textAlign: "center",
+        textDecorationLine: "underline",
+    },
+
+    TitleSecondary: {
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: "#C5C5C5",
+
+    },
+
+    Inputs: {
+        fontWeight: 'bold',
+        fontSize: 14,
+        color: "#BEBEBE",
+
+    },
 });
 
-export default dark
+export default dark 

@@ -1,5 +1,17 @@
-import styled from 'styled-components/native';
+import { StyleSheet } from "react-native";
 
-export const Container = styled.View`
-  
-`;
+const cardHeader = StyleSheet.create({
+    bloco: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        backgroundColor:'#DCDCDC',
+        padding: '30%',
+        paddingTop: Constants.statusBarHeight,
+        top: '25px',
+        width: '90%',
+      },
+
+});
+
+export default cardHeader

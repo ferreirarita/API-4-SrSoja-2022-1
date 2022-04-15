@@ -1,12 +1,12 @@
 import { Header as HeaderComponent } from "./styles";
 import { Button } from "react-native-paper";
-import light from "../../styles/light";
+import styles from '../../styles/light'
 
 const Header = () => {
   return (
     <HeaderComponent>
-      <Button labelStyle={light.icon} icon="bell" />
-      <Button labelStyle={light.icon} icon="menu" />
+      <Button labelStyle={styles.icon} icon="bell" />
+      <Button labelStyle={styles.icon} icon="menu" />
     </HeaderComponent>
   );
 };
