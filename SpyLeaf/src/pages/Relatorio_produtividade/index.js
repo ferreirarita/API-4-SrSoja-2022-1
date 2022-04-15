@@ -1,9 +1,9 @@
 import React from "react";
-import Header from "../../Components/Header";
-import RoundButton from "../../Components/RoundButton";
+import Header from "../../components/Header";
+import RoundButton from "../../components/Button";
 import { Title, Row } from "./styles";
 import light from "../../styles/light";
-import SelectFarmAndPlot from "../../Components/SelectFazendaTalhao";
+import SelectFarmAndPlot from "../../components/Button";
 import { View } from "react-native";
 
 const Relatorio = () => {
