@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { View, Image, Text, TextInput } from 'react-native'
 import style from './styles'
 
-import CheckButton from '../../Components/Button'
-import stylesVar from '../../Components/StyleSheetVars'
+import CheckButton from '../../components/Button'
+import stylesVar from '../../components/StyleSheetVars'
 
+import { Produtor } from '../../services/database/controllers'
+
+/*
 import axios from 'axios'
 const baseUrl = 'https://srsoja-server-db.herokuapp.com'
 const source = axios.CancelToken.source()
@@ -23,45 +26,30 @@ async function getProdutor(prd_id){
         }
     })
 }
-
+*/
 
 
 export default function CRUDexample() {
-    const [teste, setTeste] = useState('')
-    const url = `${baseUrl}/produtor/get?prd_id=${1}`
-    let x = ''
-    /*
-    useEffect(() => {
-        const url = `${baseUrl}/produtor/get?prd_id=${1}`
-        const Teste = async () => {
-            const response = await axios.get(url, { cancelToken: source.token })
-            if(response.status === 200) {
-                //console.log(response.data)
-                teste = response.data
-            }
-            else {
-                console.log(response.error)
-                teste = response.error
-            }
-            //console.log(teste)
-        }
-
-        Teste()
-        console.log(teste)
-        return () => source.cancel("Foi")
-    })
-    */
-   
-   console.log(teste)
-
-
+    const [teste, setTeste] = useState('z')
     const [ text , setText ] = useState('oi')
+
+    useEffect(() => {
+        Produtor.addProdutor({ 
+            prd_id: undefined,
+            prd_nome: 'Robson',
+            prd_email: 'robson@email.com',
+            prd_senha: '123456' 
+        })
+    }, [])
+
+    setTeste(Produtor.getProdutor(1))
+
     return (
         <View>
-            <Text>{text}</Text>
+            <Text>{teste}</Text>
             <View style={style.row}>
                 <CheckButton
-                    onPress={() => setTeste(getProdutor(1))}
+                    onPress={() => setTeste('C')}
                     fill={stylesVar.color.black}
                     color={stylesVar.color.green}
                     size={stylesVar.iconTiny}

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import stylesVar from "../../Components/StyleSheetVars"
+import stylesVar from "../../components/StyleSheetVars"
 
 const style = StyleSheet.create({
     container: {

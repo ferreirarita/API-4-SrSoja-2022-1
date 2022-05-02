@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import styles from '../../Styles/AppStyles';
+import styles from '../../styles/AppStyles';
 
 //import { Container } from './styles';
 
