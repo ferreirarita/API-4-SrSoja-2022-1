@@ -1,55 +1,51 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { View, Image, Text, TextInput } from 'react-native'
 import style from './styles'
 
 import CheckButton from '../../components/Button'
 import stylesVar from '../../components/StyleSheetVars'
 
-import { Produtor } from '../../services/database/controllers'
-
-/*
-import axios from 'axios'
-const baseUrl = 'https://srsoja-server-db.herokuapp.com'
-const source = axios.CancelToken.source()
-
-
-async function getProdutor(prd_id){
-    const url = `${baseUrl}/produtor/get?prd_id=${prd_id}`
-    return await axios.get(url, { cancelToken: source.token }).then(async (response) => {
-        if(response.status === 200) {
-            console.log(response.data)
-            return response.data
-        }
-        else {
-            console.log(response.error)
-            return response.error
-        }
-    })
-}
-*/
-
+import config from '../../services/database/config'
+import { createConnection } from 'typeorm'
 
 export default function CRUDexample() {
     const [teste, setTeste] = useState('z')
     const [ text , setText ] = useState('oi')
 
-    useEffect(() => {
-        Produtor.addProdutor({ 
-            prd_id: undefined,
-            prd_nome: 'Robson',
-            prd_email: 'robson@email.com',
-            prd_senha: '123456' 
-        })
-    }, [])
+    console.log(text + ' | ' + teste)
+    
+    const connect = useCallback(async () => {
+        console.log('começando')
+        try {
+            
+            const connection = await createConnection(config)
+            
+            await connection.getRepository('Produtor').save({
+                prd_nome: 'Robson',
+                prd_email: 'robson@email.com',
+                prd_senha: '123456'
+            })
+            
+        }
+        catch (error) {
+            console.log('chegou um erro: ' + error)
+        }
+        finally {
+            console.log('finished')
+        }
+    })
 
-    setTeste(Produtor.getProdutor(1))
+    useEffect(() => {
+        connect()
+    },[])
 
     return (
         <View>
             <Text>{teste}</Text>
+            <Text>{text}</Text>
             <View style={style.row}>
                 <CheckButton
-                    onPress={() => setTeste('C')}
+                    onPress={() => setText('C')}
                     fill={stylesVar.color.black}
                     color={stylesVar.color.green}
                     size={stylesVar.iconTiny}
@@ -84,7 +80,6 @@ export default function CRUDexample() {
                     legend={'D'}
                 />
             </View>
-            {x = getProdutor(1)}
         </View>
     )
 }

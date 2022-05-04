@@ -1,10 +1,3 @@
-const tables = [
-    `CREATE TABLE IF NOT EXISTS Produtor(
-        prd_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        prd_nome TEXT NOT NULL,
-        prd_email TEXT NOT NULL,
-        prd_senha TEXT NOT NULL,
-    );`
-]
+import Produtor from "./produtor"
 
-export default { tables }
+export default { Produtor }

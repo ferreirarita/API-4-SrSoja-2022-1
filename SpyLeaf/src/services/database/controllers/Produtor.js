@@ -1,6 +1,9 @@
+import getConnection from "../config"
+
 export default class ProdutorController {
-    constructor(db) {
-        this.db = db
+
+    constructor() {
+        this.db = getConnection()
     }
 
     async addProdutor(args) {
