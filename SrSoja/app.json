@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "SrSoja",
+    "slug": "SrSoja",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
