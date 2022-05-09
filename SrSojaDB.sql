@@ -65,13 +65,13 @@ create table if not exists Producao(
 	foreign key (tlh_id) references Talhao (tlh_id)
 );
 
+/*
 --drop table Produto cascade;
 create table if not exists Produto(
 	pr_id serial primary key,
 	pr_nome varchar
 );
 
---drop table Preco_Produto cascade;
 create table if not exists Preco_Produto(
 	ppr_data timestamp primary key,
 	pr_id integer,
@@ -80,7 +80,17 @@ create table if not exists Preco_Produto(
 	ppr_custo_grao numeric(5,2),
 	foreign key (pr_id) references Produto (pr_id)
 );
+*/
 
+--drop table Preco_Produto cascade;
+create table if not exists Preco_Produto(
+	ppr_data timestamp primary key,
+	ppr_local varchar not null,
+	ppr_valor_saca numeric(5,2),
+	ppr_custo_grao numeric(5,2)
+);
+
+/*
 --drop table Producao_Talhao cascade;
 create table if not exists Produto_Talhao(
 	pr_id integer,
@@ -105,6 +115,7 @@ create table if not exists Produto_Armazem(
 	foreign key (pr_id) references Produto (pr_id),
 	foreign key (arm_id) references Armazem (arm_id)
 );
+*/
 
 --drop table Hist_Gastos cascade;
 create table if not exists Hist_Gastos(
@@ -150,6 +161,7 @@ create table if not exists Hist_Venda(
 	foreign key (prd_id) references Produtor (prd_id)
 );
 
+/*
 --drop table Venda_Produto cascade;
 create table if not exists Venda_Produto(
 	hv_data timestamp,
@@ -158,6 +170,7 @@ create table if not exists Venda_Produto(
 	foreign key (hv_data) references Hist_Venda (hv_data),
 	foreign key (pr_id) references Produto (pr_id)
 );
+*/
 
 /*Tables*/
 
