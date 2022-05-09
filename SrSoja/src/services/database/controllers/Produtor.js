@@ -3,7 +3,14 @@ import React from "react"
 import openDatabase from "../config"
 
 export default class ProdutorController extends React.Component {
-    
+    /**
+     * Problemas em usar o this.state
+     * 
+     * Erro: 
+     * undefined is not an object (evaluating '_this.state = {
+     *     data: []
+     * }')
+     */
     constructor() {
         this.state = {
             data: []
