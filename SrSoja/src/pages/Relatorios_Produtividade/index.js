@@ -3,6 +3,7 @@ import { View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import xButton from '../../components/Button'
 import { Title, Row } from './styles'
+import light from "../../styles/light";
 import SelectFarmAndPlot from "../../components/SelectFazendaTalhao";
 
 /* const Relatorios_Produtividade = () => {

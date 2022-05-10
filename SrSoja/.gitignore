@@ -54,3 +54,4 @@ buck-out/
 .expo/
 web-build/
 dist/
+settings.json

@@ -1,7 +1,7 @@
-/* import { View, Text } from "react-native";
+import { View, Text } from "react-native";
 import { CardEstadoMunicipio as CardHeader } from "./styles";
 //import Select from "../SelectEstadoMunicipio";
-//import light from "../../styles/light";
+import light from "../../styles/light";
 import Select from '../SelectLocalizacao';
 
 const CardEstadoMunicipio = () => {
@@ -29,4 +29,4 @@ const CardEstadoMunicipio = () => {
   );
 };
 
-export default CardEstadoMunicipio; */
+export default CardEstadoMunicipio;
