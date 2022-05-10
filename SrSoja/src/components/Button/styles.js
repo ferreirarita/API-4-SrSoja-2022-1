@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native"
-import stylesVar from "../StyleSheetVars"
 
 const style = StyleSheet.create({
     tiny: {
@@ -16,7 +15,6 @@ const style = StyleSheet.create({
     },
     textTiny: {
         fontWeight: 'bold',
-        fontSize: stylesVar.fontLow,
         flexWrap: 'nowrap',
         height: 'auto',
         alignContent: 'center',
