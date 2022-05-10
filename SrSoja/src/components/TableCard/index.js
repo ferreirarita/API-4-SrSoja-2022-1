@@ -1,7 +1,6 @@
-import { View, Text } from 'react-native';
+/* import { View, Text } from 'react-native';
 import { TablePrimary, TableSecondary, TableHeader } from './styles';
 import { Button } from "react-native-paper";
-import light from '../../styles/light';
 
 const TableCard = () => {
   return(
@@ -197,4 +196,4 @@ const TableCard = () => {
     );
 };
 
-export default TableCard;
+export default TableCard; */
