@@ -1,141 +1,180 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { View, Image, Text, TextInput, TouchableOpacity } from 'react-native'
 import style from './styles'
 
 import { CheckButton } from '../../components/Button'
 import Check from '../../assets/check'
 
-//import * as SQLite from 'expo-sqlite'
-import Database from '../../services/database'
-
-
-function connect() {
-    /*
-    const database = SQLite.openDatabase('SrSoja.db')
-
-    database.exec([{ sql: 'PRAGMA foreign_keys = ON;', args: [] }], false, () =>
-        console.log('Temos estrangeiros')
-    )
-
-    database.transaction(tx => {
-        tx.executeSql(`
-            CREATE TABLE IF NOT EXISTS produtor (
-                prd_id INTEGER PRIMARY KEY AUTOINCREMENT,
-                prd_nome TEXT NOT NULL,
-                prd_email TEXT NOT NULL,
-                prd_senha TEXT NOT NULL
-            )
-        `)
-    })
-
-    return database
-    */
-}
+/**Para acessar o banco, tem de importar o Context e as funções desejadas*/
+import Context from '../../components/Context'
+import { addProdutor, getProdutor, delProdutor } from '../../services/database/controllers/Produtor'
 
 
 export default function Teste_Banco() {
-    const [teste, setTeste] = useState('vazio')
-    const [ text , setText ] = useState('oi')
-
-    //ProdutorController.getProdutor(1).then(e => setTeste(e))
-
+    const [ prd_id, setId ] = useState()
+    const [ prd_nome, setNome ] = useState()
+    const [ prd_email, setEmail ] = useState()
+    const [ prd_senha, setSenha ] = useState()
     
-    
+    const [ text , setText ] = useState('*retorno do banco*')
 
-    /*
-    const x = () => {
-        const database = connect()
+    const { database, dataResult, setResult } = useContext(Context)
 
-        /
-        database.transaction(tx => {
-            tx.executeSql(
-                `INSERT INTO produtor (prd_nome,prd_email,prd_senha) VALUES (?,?,?)`,
-                ['Robson','robson@email.com','123456'],
-                (_,resultSet) => {
-                    console.log(`Robson nº${resultSet.insertId} adicionado`)
-                },
-                error => console.log(`Erro ao criar o Robson: ${error}`)
-            )
-        })
-        
-
-        database.transaction(tx => {
-            tx.executeSql(
-                `SELECT * FROM produtor WHERE prd_nome = ?`,
-                ['Robson'],
-                (_,{ rows: { _array } }) => {
-                    console.log(`--select: ${JSON.stringify(_array)}`)
-                    setTeste(JSON.stringify(_array))
-                }
-            )
-        })
-        *
-
-    }
-    */
 
     useEffect(() => {
-        //x()
         try {
-            const produtor = new Database.produtor
-            /*
-            const result = produtor.getProdutor(1)
-            setTeste(JSON.stringify(result))
-            */
-           //produtor.getProdutor(1).then(e => setTeste(e))
-           
-           produtor.getProdutor(1).then(e => console.log(e))
-           //console.log(produtor.getProdutor(1))
+            getProdutor(
+                database,
+                {
+                    prd_id: 0
+                },
+                setResult
+            )
         }
         catch (error) {
             console.log(error)
         }
     },[])
 
-    //console.log(teste)
-
+    /**Necessário caso houver alguma edição com os dados obtidos do banco */
+    useEffect(() => {
+        if(dataResult !== null) {
+            if(dataResult.map == [].map)
+                setText(JSON.stringify(dataResult[dataResult.length - 1]))
+            else
+                setText(dataResult)
+            
+        }
+    },[dataResult])
+    
     return (
         <View>
-            <Text style={style.textT}>{teste}</Text>
-            <Text style={style.textT}>{typeof teste}</Text>
-            <Text style={style.textS}>{text}</Text>
-            <View style={style.row}>
-                <CheckButton
-                    onPress={() => setText('C')}
-                    fill='#000'
-                    color='#0f0'
-                    size='64'
-                    buttonStyle={style.button}
-                    legend={'C'}
+            <Text style={style.textT}>{text}</Text>
+
+            <View style={style.colunm}>
+                <TextInput 
+                    style={style.textInput}
+                    onChangeText={setId}
+                    placeholder="id"
+                    keyboardType="numeric"
+                />
+                
+                <TextInput 
+                    style={style.textInput}
+                    onChangeText={setNome}
+                    placeholder="nome"
+                    keyboardType="default"
+                />
+                
+                <TextInput 
+                    style={style.textInput}
+                    onChangeText={setEmail}
+                    placeholder="e-mail"
+                    keyboardType="email-address"
+                />
+                
+                <TextInput 
+                    style={style.textInput}
+                    onChangeText={setSenha}
+                    placeholder="senha"
+                    keyboardType="default"
+                    secureTextEntry={true}
                 />
 
-                <CheckButton
-                    onPress={() => setText('R')}
-                    fill='#000'
-                    color='#ffa500'
-                    size='64'
-                    buttonStyle={style.button}
-                    legend={'R'}
-                />
 
-                <CheckButton
-                    onPress={() => setText('U')}
-                    fill='#000'
-                    color='#fff'
-                    size='64'
-                    buttonStyle={style.button}
-                    legend={'U'}
-                />
+                <View style={style.row}>
+                    <CheckButton
+                        onPress={() => {
+                            try {
+                                addProdutor(
+                                    database,
+                                    {
+                                        prd_nome,
+                                        prd_email,
+                                        prd_senha
+                                    },
+                                    setResult
+                                )
+                            } catch (error) {
+                                console.log(error)
+                            }
+                        }}
+                        fill='#000'
+                        color='#0f0'
+                        size='64'
+                        buttonStyle={style.button}
+                        legend={'C'}
+                    />
 
-                <CheckButton
-                    onPress={() => setText('D')}
-                    fill='#000'
-                    color='#f00'
-                    size='64'
-                    buttonStyle={style.button}
-                    legend={'D'}
-                />
+                    <CheckButton
+                        onPress={() => {
+                            try {
+                                getProdutor(
+                                    database,
+                                    {
+                                        prd_id: 0
+                                    },
+                                    setResult
+                                )
+                            } catch (error) {
+                                console.log(error)
+                            }
+                        }}
+                        fill='#000'
+                        color='#ffa500'
+                        size='64'
+                        buttonStyle={style.button}
+                        legend={'R'}
+                    />
+
+                    <CheckButton
+                        onPress={() => {
+                            try {
+                                addProdutor(
+                                    database,
+                                    {
+                                        prd_id,
+                                        prd_nome,
+                                        prd_email,
+                                        prd_senha
+                                    },
+                                    setResult
+                                )
+                            } catch (error) {
+                                console.log(error)
+                            }
+                        }}
+                        fill='#000'
+                        color='#fff'
+                        size='64'
+                        buttonStyle={style.button}
+                        legend={'U'}
+                    />
+
+                    <CheckButton
+                        onPress={() => {
+                            try {
+                                delProdutor(
+                                    database,
+                                    {
+                                        prd_id
+                                    },
+                                    setResult
+                                )
+                            } catch (error) {
+                                console.log(error)
+                            }
+                        }}
+                        fill='#000'
+                        color='#f00'
+                        size='64'
+                        buttonStyle={style.button}
+                        legend={'D'}
+                    />
+                </View>
             </View>
+
+            
         </View>
     )
 }

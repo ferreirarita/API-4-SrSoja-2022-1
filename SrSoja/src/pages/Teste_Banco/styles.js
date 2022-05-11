@@ -8,10 +8,21 @@ const style = StyleSheet.create({
         padding: 5
     },
     textT: stylesVar.titlePrimary,
-    textS: stylesVar.titleSecondary,
     row: {
         alignContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+    },
+    colunm: {
+        padding: 20,
+    },
+    textInput: {
+        height: 40,
+        margin: 12,
+        borderWidth: 1,
+        padding: 10,
+        borderRadius: 5,
+        color: '#000',
+        backgroundColor: '#ddd'
     },
     button: {
         marginHorizontal: 10

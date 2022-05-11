@@ -1,4 +1,5 @@
 import * as SQLite from 'expo-sqlite'
+import models from '../models'
 
 /**@override */
 export default async function openDatabase() {
@@ -11,6 +12,23 @@ export default async function openDatabase() {
         FileSystem.documentDirectory + 'SQLite/myDatabaseName.db'
     );
     */
-    return SQLite.openDatabase('SrSoja.db')
+    try {
+        const database = SQLite.openDatabase('SrSoja.db')
+
+        database.exec([{ sql: 'PRAGMA foreign_keys = ON;', args: [] }], false, () => {
+            //console.log('Temos estrangeiros')
+        })
+
+        /**Cria as tabelas, se não existirem */
+        database.transaction(tx => {
+            tx.executeSql(models)
+        })
+
+        return database
+    }
+    catch (error) {
+        console.log(`Erro: ${error}`)
+        return null
+    }
 }
 
