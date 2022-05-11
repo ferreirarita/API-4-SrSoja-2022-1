@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import { View, Text, SafeAreaView,TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 
@@ -18,14 +18,15 @@ const Fazenda = () => {
   );
 }
 
-const Talhao = () => {
-  const navigation = useNavigation();
+const Talhao = (props) => {
+    const [coord,setCoord] = useState ({longitude: -45, latitude: -23});
+    const navigation = useNavigation();
   return (
       <SafeAreaView style={{flex:1}}>
           <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
-              <Text>Tela de Fertilizantes</Text>
-              <TouchableOpacity style={{marginTop:20}} onPress={() => navigation.navigate('HomeDrawer')}>
-                  <Text>Visualizar</Text>
+              <Text>Selecionar área</Text>
+              <TouchableOpacity style={{marginTop:20}} onPress={() => props.navigation.navigate('Mapa', {setCoord})}>
+                  <Text>Mapa</Text>
               </TouchableOpacity>
           </View>
       </SafeAreaView>
