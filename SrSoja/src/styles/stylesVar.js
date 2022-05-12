@@ -1,6 +1,6 @@
 const stylesVar = {
     background: { 
-        backgroundColor: "#E9E9E9"
+        backgroundColor: "#F5F5F5"
     },
 
     toolbar: {
@@ -32,7 +32,7 @@ const stylesVar = {
 
     titleSecondary: {
         fontWeight: 'bold',
-        fontSize: 14,
+        fontSize: 15,
         color: "#000000",
     },
     
