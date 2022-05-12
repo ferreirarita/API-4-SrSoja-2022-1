@@ -1,17 +1,12 @@
-import React, {useState,useEffect,useRef} from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import React, {useState,useEffect} from 'react';
 import MapView,{ Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-import { NavigationContainer} from '@react-navigation/native';
-import { useNavigation } from '@react-navigation/native';
 
 //(<Mapa longitude= 0 latitude= 0/>)
 export default function Mapa(props) {
 const [alfinete,setAlfinete] = useState ({longitude: -45, latitude: -23});
 const [origin,setOrigin]=useState(null);
-const [destination,setDestination]=useState(null);
 
 
 useEffect(()=>{
