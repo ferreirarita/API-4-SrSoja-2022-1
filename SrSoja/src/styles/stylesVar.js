@@ -1,69 +1,82 @@
 const stylesVar = {
-    background: { 
-        backgroundColor: "#F5F5F5"
+//backgroundColor
+  background: {
+    backgroundColor: "#F5F5F5",
+  },
+
+  backgroundYellow:{
+    backgroundColor:'#F7BB26'
     },
 
-    toolbar: {
-        backgroundColor: "#F7BB26",
-    },
-    weather: {
-        backgroundColor: "#343434"
-    },
+  toolbar: {
+    backgroundColor: "#F7BB26",
+  },
 
-    icon: {
-       backgroundColor: "#343434",
-    },
-    
-    backgroundOpen: {
-        backgroundColor: "#F7BB26"
-    },
+  weather: {
+    backgroundColor: "#343434",
+  },
 
-    iconTable:{
-        color:"#343434",
-    },
+//Icons
+  icon: {
+    color: "#343434",
+  },
 
-    titlePrimary: {
-        fontWeight: 'bold',
-        fontSize: 23,
-        color: "#000000",
-        textAlign: "center",
-        letterSpacing: 1,
-    },
+  iconCheck: {
+    color: "#00B72A",
+  },
 
-    titleSecondary: {
-        fontWeight: 'bold',
-        fontSize: 15,
-        color: "#000000",
-    },
-    
-    inputBody: {
-        borderWidth: 1,
-        borderColor: "#343434",
-        borderRadius: 2,
-        backgroundColor: "#F3F3F3",
-    },
+  iconCancel: {
+    color: "#E73737",
+  },
 
-    inputText: {
-        fontWeight: 'bold',
-        fontSize: 14,
-        color: "#666666",
-    },
+  iconAdd: {
+    color: "#F7BB26",
+  },
 
-    boxPrimary:{
-        backgroundColor: "#E0E0E0"
-    },
+  iconNext: {
+    color: "#F7BB26",
+  },
 
-    boxSecondary:{
-        backgroundColor: "#D0D0D0"
-    },
+  iconTable: {
+    color: "#343434",
+  },
 
-    borderline:{
-        borderBottomWidth: 1,
-        borderBottomColor: "#CCCCC"
-    }
-    
+//Text
+  titlePrimary: {
+    fontWeight: "bold",
+    fontSize: 23,
+    color: "#000000",
+    textAlign: "center",
+    letterSpacing: 1,
+  },
 
+  titleSecondary: {
+    fontWeight: "bold",
+    fontSize: 15,
+    color: "#000000",
+  },
+
+  inputText: {
+    fontWeight: "bold",
+    fontSize: 15,
+    color: "#5F5F5F",
+  },
+
+//Box
+  inputBox: {
+    padding: 5,
+    borderRadius: 1,
+    borderBottomWidth: 1.3,
+    borderColor: "#343434",
+  },
+
+  boxPrimary: {
+    backgroundColor: "#E0E0E0",
+  },
+
+  boxSecondary: {
+    backgroundColor: "#D0D0D0",
+  },
 };
 
-
-export default stylesVar
+export default stylesVar;

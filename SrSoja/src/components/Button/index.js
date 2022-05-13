@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, TouchableOpacity, Image, Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import style from './styles'
 
-import Check from '../../assets/check'
-import X from '../../assets/x'
-import Plus from '../../assets/plus'
+import CheckIcon from '../../assets/Icons/check-circle'
+import CancelIcon from '../../assets/Icons/x-circle'
+import AddIcon from '../../assets/Icons/plus-circle'
+import NextIcon from '../../assets/Icons/arrow-right-circle'
 
 function CheckButton(props) {
   return (
@@ -13,9 +14,7 @@ function CheckButton(props) {
       style={props.buttonStyle}
       disabled='true'>
       <View style={{alignItems: 'center'}}>
-        <Check 
-          fill={props.fill} 
-          color={props.color} 
+        <CheckIcon 
           size={props.size} 
         />
       </View>
@@ -28,16 +27,14 @@ function CheckButton(props) {
   )
 }
 
-function XButton(props) {
+function CancelButton(props) {
   return (
     <TouchableOpacity
       onPress={props.onPress}
       style={props.buttonStyle}
       disabled>
       <View style={{alignItems: 'center'}}>
-        <X 
-          fill={props.fill} 
-          color={props.color} 
+        <CancelIcon 
           size={props.size} 
         />
       </View>
@@ -57,9 +54,7 @@ function AddButton(props) {
       style={props.buttonStyle}
       disabled>
       <View style={{alignItems: 'center'}}>
-        <Plus 
-          fill={props.fill} 
-          color={props.color} 
+        <AddIcon 
           size={props.size} 
         />
       </View>
@@ -72,5 +67,25 @@ function AddButton(props) {
   )
 }
 
+function NextButton(props) {
+  return(
+    <TouchableOpacity
+    onPress={props.onPress}
+    style={props.buttonStyle}
+    disabled>
+    <View style={{alignItems: 'center'}}>
+      <NextIcon 
+        size={props.size} 
+      />
+    </View>
+    { props.legend !== '' &&
+    <Text style={style.textTiny}>
+      {props.legend}
+    </Text>
+    }
+  </TouchableOpacity>
+  )
+}
 
-export { CheckButton, XButton, AddButton }
+
+export { CheckButton, CancelButton, AddButton, NextButton }

@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    ...stylesVar.backgroundOpen,
+    ...stylesVar.backgroundYellow,
   },
 
   body: {
