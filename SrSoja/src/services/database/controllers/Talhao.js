@@ -135,20 +135,20 @@ async function getTalhao(database, args, setResult) {
 }
 
 /**
- * Deleta o produtor informado.
+ * Deleta o talhão informado.
  * @param {WebSQLDatabase} database 
- * @param {{prd_id: integer}} args 
+ * @param {{tlh_id: integer}} args 
  * @param {useState} setResult 
  */
-async function delProdutor(database, args, setResult) {
-    let { prd_id } = args
+async function delTalhao(database, args, setResult) {
+    let { tlh_id } = args
     database.transaction(
         tx => {
             tx.executeSql(
-                `DELETE FROM produtor WHERE prd_id = ?`,
-                [prd_id],
+                `DELETE FROM talhao WHERE tlh_id = ?`,
+                [tlh_id],
                 (_,resultSet) => {
-                    setResult(`Produtor deletado`)
+                    setResult(`Talhão deletado`)
                 },
                 error => console.log(`Erro ao deletar: ${error}`)
             )
@@ -316,5 +316,13 @@ async function delSaude(database, args, setResult) {
 }
 
 export {
+    addTalhao,
+    addAreaTalhao,
+    addSaude,
 
+    getTalhao,
+    getSaude,
+
+    delTalhao,
+    delSaude
 }
