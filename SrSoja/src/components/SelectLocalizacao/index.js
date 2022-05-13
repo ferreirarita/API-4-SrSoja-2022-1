@@ -1,6 +1,6 @@
 import { PaperSelect } from "react-native-paper-select";
 import React, { useState } from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 import { Box, Row } from "./styles";
 
 const SelectEstadoMunicipio = () => {
@@ -8,15 +8,20 @@ const SelectEstadoMunicipio = () => {
     const [estado, setEstado] = useState([
         { _id: "1", value: "SP" },
         { _id: "2", value: "MG" },
-      ]);
+    ]);
     const [municipio, setMunicipio] = useState([
         { _id: "1", value: "São José dos Campos" },
         { _id: "2", value: "Pedralva" },
-      ]);
+    ]);
 
+    /**
+     * Erro
+     */
+    return <View><Text>--select--</Text></View>
+    /*
     return (
-        <Row>
-            <Box>
+        <View style={Row}>
+            <View style={Box}>
             <Text>Estado: </Text>
             <PaperSelect
                 textInputHeight={20}
@@ -32,9 +37,9 @@ const SelectEstadoMunicipio = () => {
                 selectedArrayList={[]}
                 multiEnable={false}
             />;
-            </Box>
+            </View>
 
-            <Box>
+            <View style={Box}>
             <Text>Municipio: </Text>
             <PaperSelect
                 textInputHeight={20}
@@ -50,9 +55,9 @@ const SelectEstadoMunicipio = () => {
                 selectedArrayList={[]}
                 multiEnable={false}
             />; 
-            </Box>
-        </Row>
+            </View>
+        </View>
 
-    )
+    )*/
 }
 export default SelectEstadoMunicipio;

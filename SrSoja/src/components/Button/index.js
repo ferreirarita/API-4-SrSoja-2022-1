@@ -11,8 +11,7 @@ function CheckButton(props) {
   return (
     <TouchableOpacity
       onPress={props.onPress}
-      style={props.buttonStyle}
-      disabled='true'>
+      style={props.buttonStyle}>
       <View style={{alignItems: 'center'}}>
         <CheckIcon 
           size={props.size} 
@@ -31,8 +30,7 @@ function CancelButton(props) {
   return (
     <TouchableOpacity
       onPress={props.onPress}
-      style={props.buttonStyle}
-      disabled>
+      style={props.buttonStyle}>
       <View style={{alignItems: 'center'}}>
         <CancelIcon 
           size={props.size} 
@@ -51,8 +49,7 @@ function AddButton(props) {
   return (
     <TouchableOpacity
       onPress={props.onPress}
-      style={props.buttonStyle}
-      disabled>
+      style={props.buttonStyle}>
       <View style={{alignItems: 'center'}}>
         <AddIcon 
           size={props.size} 
