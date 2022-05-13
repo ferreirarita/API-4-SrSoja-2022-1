@@ -1297,7 +1297,7 @@
     "lodash.template" "^4.5.0"
 
 "@expo/websql@^1.0.1":
-  "integrity" "sha1-//DPnBuqH3D54dZYt8OaQg2bEKk="
+  "integrity" "sha1-//DPnBuqH3D54dZYt8OaQg2bEKk= sha512-H9/t1V7XXyKC343FJz/LwaVBfDhs6IqhDtSYWpt8LNSQDVjf5NvVJLc5wp+KCpRidZx8+0+YeHJN45HOXmqjFA=="
   "resolved" "https://registry.npmjs.org/@expo/websql/-/websql-1.0.1.tgz"
   "version" "1.0.1"
   dependencies:

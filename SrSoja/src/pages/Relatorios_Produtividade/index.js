@@ -1,10 +1,9 @@
 import React from 'react'
 import { View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import xButton from '../../components/Button'
-import { Title, Row } from './styles'
+import { stylesArea } from './styles'
 import SelectFarmAndPlot from "../../components/SelectFazendaTalhao";
-
+import SelectIcon from "../../assets/Icons/chevron-down"
 /* const Relatorios_Produtividade = () => {
   return (
     <>
@@ -34,12 +33,28 @@ export default Relatorios_Produtividade;*/
 const Area = () => {
   const navigation = useNavigation();
   return (
-      <SafeAreaView style={{flex:1}}>
-          <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
-              <Text>Tela da Área</Text>
-              <TouchableOpacity style={{marginTop:20}} onPress={() => navigation.navigate('Home')}>
-                  <Text>Visualizar</Text>
-              </TouchableOpacity>
+      <SafeAreaView style={stylesArea.container}>
+          <View style={stylesArea.body}>
+            <View style={stylesArea.bodyRow}>
+              <View style={stylesArea.bodyColumn}>
+                <Text style={stylesArea.bodyTitle}>Fazenda</Text>
+                <View style={stylesArea.bodyRowSelect}>
+                  <Text style={stylesArea.bodyTitleSelect}>Selecione</Text>
+                  <SelectIcon size={25} fill="#343434" />
+                </View>
+              </View>
+              <View style={stylesArea.bodyColumn}>
+                <Text style={stylesArea.bodyTitle}>Talhão</Text>
+                  <View style={stylesArea.bodyRowSelect}>
+                    <Text style={stylesArea.bodyTitleSelect}>Selecione</Text>
+                    <SelectIcon size={25} fill="#343434" />
+                  </View>
+              </View>            
+            </View> 
+            <View style={stylesArea.bodyLine} /> 
+            <View style={stylesArea.bodyRowMap}>              
+              <View style={stylesArea.bodyMap} /> 
+            </View>     
           </View>
       </SafeAreaView>
   );
