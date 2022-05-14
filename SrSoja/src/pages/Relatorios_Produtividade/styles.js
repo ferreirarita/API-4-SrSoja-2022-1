@@ -21,7 +21,7 @@ const stylesArea = StyleSheet.create({
   },
   bodyRowSelect: {
     flex: 1,
-    marginTop:4,
+    marginTop: 4,
     flexDirection: "row",
     alignItems: "center",
   },
@@ -51,6 +51,7 @@ const stylesArea = StyleSheet.create({
     marginTop: 15,
     textAlign: "center",
     ...stylesVar.titleSecondary,
+    fontSize: 18
   },
   bodyResults: {
     flex: 1,
@@ -72,79 +73,82 @@ const stylesArea = StyleSheet.create({
     alignItems: "center",
     alignItems: "flex-end",
     justifyContent: "space-around",
-    margin: 12,
+    margin: 5,
     marginTop: 13,
     borderBottomWidth: 1,
   },
   bodyResultsColumn: {
-    alignItems: "center",
     flex: 0.4,
+    alignItems: "center",
   },
-
-})
+});
 
 const stylesPrevisao = StyleSheet.create({
   container: {
     flex: 1,
     ...stylesVar.background,
   },
+  headerTitle:{
+    ...stylesVar.titleSecondary,
+    fontSize:18,
+    textAlign: "center",
+    margin:3
+  },
   body: {
     flex: 1,
-    margin: 10,
-    marginTop: 15,
+    marginRight: 10,
+    marginLeft: 10,
   },
   bodyTitlePrimary: {
-    flex:1,
-    textAlign: 'center',
+    flex: 1,
+    textAlign: "center",
     ...stylesVar.titleSecondary,
     fontSize: 18,
     borderWidth: 1,
     borderRadius: 3,
-    ...stylesVar.background
+    ...stylesVar.background,
   },
   bodyTitleSecondary: {
-    flex:1,
+    flex: 1,
     marginTop: 10,
     ...stylesVar.titleSecondary,
   },
   bodyBox: {
     flex: 1,
-    margin: 10,
+    margin: 5,
     ...stylesVar.boxPrimary,
   },
   bodyRow: {
     flex: 0.3,
     margin: 12,
   },
-  bodyInput:{
-    flex:1,
-    padding:5,
+  bodyInput: {
+    flex: 1,
+    padding: 5,
     ...stylesVar.inputText,
     borderBottomWidth: 1,
   },
-  footer:{
-    flex: 1,
+  footer: {
     margin: 10,
-  ...stylesVar.boxPrimary,
+    ...stylesVar.boxPrimary,
+    borderWidth: 1,
   },
   footerTitle: {
-    marginTop: 10,
     textAlign: "center",
     ...stylesVar.titleSecondary,
+    fontSize: 18,
   },
-  footerRow:{
-    flex: 0.1,
+  footerRow: {
     flexDirection: "row",
     alignItems: "center",
     alignItems: "flex-end",
     justifyContent: "space-around",
-    margin: 12,
-    marginTop: 13,
+    margin: 10,
+    marginTop: 3,
     borderBottomWidth: 1,
   },
-  footerColumn:{
-      alignItems: "center",
-      flex: 0.4,
+  footerColumn: {
+    alignItems: "center",
   },
   footerTextPrimary: {
     ...stylesVar.titleSecondary,
@@ -153,11 +157,94 @@ const stylesPrevisao = StyleSheet.create({
   },
   footerTextSecondary: {
     ...stylesVar.inputText,
+    fontSize: 14,
   },
-
-})
+});
 
 const stylesCalculo = StyleSheet.create({
-})
+  container: {
+    flex: 1,
+    ...stylesVar.background,
+  },
+  headerTitle:{
+    ...stylesVar.titleSecondary,
+    fontSize:18,
+    textAlign: "center",
+    margin:3
+  },
+  body: {
+    flex: 1,
+    marginRight: 10,
+    marginLeft: 10,
+  },
+  bodyTitlePrimary: {
+    flex: 1,
+    textAlign: "center",
+    ...stylesVar.titleSecondary,
+    fontSize: 18,
+    borderWidth: 1,
+    borderRadius: 3,
+    ...stylesVar.background,
+  },
+  bodyTitleSecondary: {
+    flex: 1,
+    margin: 10,
+    ...stylesVar.titleSecondary,
+    textAlign: "center",
 
-export { stylesArea, stylesPrevisao, stylesCalculo }
+  },
+  
+  bodyBox: {
+    flex: 1,
+    margin: 5,
+    ...stylesVar.boxPrimary,
+  },
+  bodyRow: {
+    flex: 1,
+    flexDirection: "row",
+    margin: 10,
+    borderBottomWidth:1,
+  },
+  bodyInput: {
+    flex: 1,
+    ...stylesVar.inputText,
+    textAlign: "center",
+    borderWidth: 1,
+  },
+
+
+  footer: {
+    margin: 10,
+    ...stylesVar.boxPrimary,
+    borderWidth: 1,
+  },
+  footerTitle: {
+    textAlign: "center",
+    ...stylesVar.titleSecondary,
+    fontSize: 18,
+  },
+  footerRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    alignItems: "flex-end",
+    justifyContent: "space-around",
+    margin: 10,
+    marginTop: 3,
+    borderBottomWidth: 1,
+  },
+  footerColumn: {
+    alignItems: "center",
+  },
+  footerTextPrimary: {
+    ...stylesVar.titleSecondary,
+    textAlign: "center",
+    fontSize: 13,
+  },
+  footerTextSecondary: {
+    ...stylesVar.inputText,
+    fontSize: 14,
+  },
+
+});
+
+export { stylesArea, stylesPrevisao, stylesCalculo };
