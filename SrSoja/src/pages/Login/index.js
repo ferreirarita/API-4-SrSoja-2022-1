@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+/*import React, {useState, useEffect, useContext} from 'react';
 import { Text, Image, TextInput, View, TouchableOpacity, SafeAreaView, ScrollView, Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import Contexto from '../../components/Context';
@@ -96,4 +96,4 @@ export default function Login(props){
       </ScrollView>
     </SafeAreaView>
   );
-}
+}*/

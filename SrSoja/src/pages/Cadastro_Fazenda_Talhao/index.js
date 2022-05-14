@@ -1,11 +1,5 @@
 
-<<<<<<< HEAD
-import React, {useState} from 'react';
-import { View, Text, SafeAreaView,TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-
-=======
-import React from 'react'
+import React,{useState} from 'react'
 import { View, Text, TextInput , SafeAreaView, TouchableOpacity, ScrollView} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { stylesFazenda, stylesTalhao, stylesListagem } from './styles'
@@ -13,7 +7,6 @@ import { stylesFazenda, stylesTalhao, stylesListagem } from './styles'
 import MapIcon from '../../assets/Icons/map-fill'
 import TrashIcon from '../../assets/Icons/trash3-fill'
 import EditIcon from '../../assets/Icons/pencil-square'
->>>>>>> sistema
 
 const Fazenda = () => {
   const navigation = useNavigation();
@@ -52,14 +45,6 @@ const Talhao = (props) => {
     const [coord,setCoord] = useState ({longitude: -45, latitude: -23});
     const navigation = useNavigation();
   return (
-<<<<<<< HEAD
-      <SafeAreaView style={{flex:1}}>
-          <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
-              <Text>Selecionar área</Text>
-              <TouchableOpacity style={{marginTop:20}} onPress={() => props.navigation.navigate('Mapa', {setCoord})}>
-                  <Text>Mapa</Text>
-              </TouchableOpacity>
-=======
       <SafeAreaView style={stylesTalhao.container}>
         <ScrollView>
           <View style={stylesTalhao.body}>
@@ -73,17 +58,15 @@ const Talhao = (props) => {
             </View>
             <View style={stylesTalhao.bodyRow}>
               <Text style={stylesTalhao.bodyTitle}>Selecionar área</Text>
-                <TouchableOpacity style={stylesTalhao.bodyRowMap}onPress={
-                  () => props.navigation.navigate('Mapa', {setCoord})}>
+                <TouchableOpacity style={stylesTalhao.bodyRowMap}
+                 onPress={() => props.navigation.navigate('Mapa', {setCoord})}>
                   <View style={stylesTalhao.bodyMap}>
                     <MapIcon size={50} fill='#343434' />
                     <Text style={stylesTalhao.bodyTextMap}>Abrir Mapa</Text>
-                     
                   </View>
                 </TouchableOpacity>
               <View style={stylesTalhao.bodyLine} />
             </View>
->>>>>>> sistema
           </View>
         </ScrollView>
       </SafeAreaView>
