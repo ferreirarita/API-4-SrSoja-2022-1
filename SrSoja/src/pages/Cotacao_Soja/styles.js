@@ -25,8 +25,12 @@ const styles = StyleSheet.create({
   },
   bodyRowSelect: {
     flex: 1,
+    marginTop:4,
     flexDirection: "row",
     alignItems: "center",
+  },
+  bodyTitleSelect: {
+    ...stylesVar.inputText,
   },
   bodyColumn: {
     flex: 0.4,

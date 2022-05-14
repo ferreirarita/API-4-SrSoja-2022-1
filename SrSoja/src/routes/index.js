@@ -59,7 +59,7 @@ function Drawer_Navigation () {
         <RelatoriosIcon size={24} fill='#343434' /> 
         ) 
       }} />
-      <Drawer.Screen name="Cotacao_Soja" component={Cotacao_Soja} options={{title:'Cotação da Soja', drawerIcon: ({color}) => ( 
+      <Drawer.Screen name="Cotacao_Soja" component={Cotacao_Soja} options={{title:'Cotação', drawerIcon: ({color}) => ( 
         <CotacaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
