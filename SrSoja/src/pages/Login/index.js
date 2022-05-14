@@ -1,9 +1,8 @@
-/*
 import React, {useState, useEffect, useContext} from 'react';
 import { Text, Image, TextInput, View, TouchableOpacity, SafeAreaView, ScrollView, Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import Contexto from '../../components/Context';
-//import config from '../../services/database/config';
+import config from '../../services/database/config';
 import FlechaIcon   from '../../assets/Icons/arrow-right'
 
 export default function Login(props){
@@ -97,4 +96,4 @@ export default function Login(props){
       </ScrollView>
     </SafeAreaView>
   );
-}*/
+}
