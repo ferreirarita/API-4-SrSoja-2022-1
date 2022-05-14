@@ -47,7 +47,6 @@ const stylesVar = {
     fontSize: 23,
     color: "#000000",
     textAlign: "center",
-    letterSpacing: 1,
   },
 
   titleSecondary: {

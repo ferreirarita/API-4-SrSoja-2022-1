@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   bodyTitle: {
+    letterSpacing: 1,
     ...stylesVar.titlePrimary,
   },
   bodyButton: {
