@@ -87,7 +87,7 @@ const Previsao = () => {
 
           <ScrollView>
             <View style={stylesPrevisao.body}>
-              <Text style={stylesPrevisao.headerTitle}>Insira as informações do Talhão</Text>
+              <Text style={stylesPrevisao.bodyTitle}>Insira as informações do Talhão</Text>
               <View style={stylesPrevisao.bodyBox}>
                 <View style={stylesPrevisao.bodyRow}>
                   <Text style={stylesPrevisao.bodyTitlePrimary}>Linhas</Text>
@@ -151,7 +151,7 @@ const Calculo = () => {
         
       <ScrollView>
         <View style={stylesCalculo.body}>
-          <Text style={stylesCalculo.headerTitle}>Insira as Coletas realizadas</Text>
+          <Text style={stylesCalculo.bodyTitle}>Insira as Coletas realizadas</Text>
           <View style={stylesCalculo.bodyBox}>
             <View style={stylesCalculo.bodyRow}>
               <Text style={stylesCalculo.bodyTitleSecondary}>1º Coleta:</Text>

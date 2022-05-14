@@ -19,14 +19,14 @@ const stylesArea = StyleSheet.create({
     marginTop: 13,
     borderBottomWidth: 1,
   },
+  bodyColumn: {
+    flex: 0.4,
+  },
   bodyRowSelect: {
     flex: 1,
     marginTop: 4,
     flexDirection: "row",
     alignItems: "center",
-  },
-  bodyColumn: {
-    flex: 0.4,
   },
   bodyTitle: {
     ...stylesVar.titleSecondary,
@@ -51,21 +51,13 @@ const stylesArea = StyleSheet.create({
     marginTop: 15,
     textAlign: "center",
     ...stylesVar.titleSecondary,
-    fontSize: 18
+    fontSize: 18,
   },
   bodyResults: {
     flex: 1,
     padding: 8,
     margin: 5,
     borderWidth: 1,
-  },
-  bodyResultsTextPrimary: {
-    ...stylesVar.titleSecondary,
-    textAlign: "center",
-    fontSize: 13,
-  },
-  bodyResultsTextSecondary: {
-    ...stylesVar.inputText,
   },
   bodyResultsRow: {
     flex: 0.1,
@@ -81,6 +73,14 @@ const stylesArea = StyleSheet.create({
     flex: 0.4,
     alignItems: "center",
   },
+  bodyResultsTextPrimary: {
+    ...stylesVar.titleSecondary,
+    textAlign: "center",
+    fontSize: 13,
+  },
+  bodyResultsTextSecondary: {
+    ...stylesVar.inputText,
+  },
 });
 
 const stylesPrevisao = StyleSheet.create({
@@ -88,16 +88,16 @@ const stylesPrevisao = StyleSheet.create({
     flex: 1,
     ...stylesVar.background,
   },
-  headerTitle:{
-    ...stylesVar.titleSecondary,
-    fontSize:18,
-    textAlign: "center",
-    margin:3
-  },
   body: {
     flex: 1,
     marginRight: 10,
     marginLeft: 10,
+  },
+  bodyTitle: {
+    ...stylesVar.titleSecondary,
+    fontSize: 18,
+    textAlign: "center",
+    margin: 3,
   },
   bodyTitlePrimary: {
     flex: 1,
@@ -166,34 +166,23 @@ const stylesCalculo = StyleSheet.create({
     flex: 1,
     ...stylesVar.background,
   },
-  headerTitle:{
+  bodyTitle: {
     ...stylesVar.titleSecondary,
-    fontSize:18,
+    fontSize: 18,
     textAlign: "center",
-    margin:3
+    margin: 3,
   },
   body: {
     flex: 1,
     marginRight: 10,
     marginLeft: 10,
   },
-  bodyTitlePrimary: {
-    flex: 1,
-    textAlign: "center",
-    ...stylesVar.titleSecondary,
-    fontSize: 18,
-    borderWidth: 1,
-    borderRadius: 3,
-    ...stylesVar.background,
-  },
   bodyTitleSecondary: {
     flex: 1,
     margin: 10,
     ...stylesVar.titleSecondary,
     textAlign: "center",
-
   },
-  
   bodyBox: {
     flex: 1,
     margin: 5,
@@ -203,7 +192,7 @@ const stylesCalculo = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     margin: 10,
-    borderBottomWidth:1,
+    borderBottomWidth: 1,
   },
   bodyInput: {
     flex: 1,
@@ -211,8 +200,6 @@ const stylesCalculo = StyleSheet.create({
     textAlign: "center",
     borderWidth: 1,
   },
-
-
   footer: {
     margin: 10,
     ...stylesVar.boxPrimary,
@@ -244,7 +231,6 @@ const stylesCalculo = StyleSheet.create({
     ...stylesVar.inputText,
     fontSize: 14,
   },
-
 });
 
 export { stylesArea, stylesPrevisao, stylesCalculo };
