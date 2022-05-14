@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
+import { View, Text, TextInput, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import { stylesArea, stylesPrevisao, stylesCalculo } from './styles'
 //icon
@@ -41,7 +41,7 @@ const Area = () => {
                 <View style={stylesArea.bodyResultsColumn}>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Total Coletado Kg/Ha:</Text>
                   <View style={stylesArea.bodyRowSelect}>
-                  <Text style={stylesArea.bodyResultsTextSecondary}>240</Text>
+                    <Text style={stylesArea.bodyResultsTextSecondary}>240</Text>
                   </View>
                 </View>
                 <View style={stylesArea.bodyResultsColumn}>
@@ -60,11 +60,11 @@ const Area = () => {
                 </View>
                 <View style={stylesArea.bodyResultsColumn}>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Média por Coleta Kg/Ha:</Text>
-                    <Text style={stylesArea.bodyResultsTextSecondary}>200</Text>
+                  <Text style={stylesArea.bodyResultsTextSecondary}>200</Text>
                 </View>
                 <View style={stylesArea.bodyResultsColumn}>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Nº de Coletas</Text>
-                    <Text style={stylesArea.bodyResultsTextSecondary}>4</Text>
+                  <Text style={stylesArea.bodyResultsTextSecondary}>4</Text>
                 </View>
               </View>
 
@@ -79,24 +79,59 @@ const Previsao = () => {
   const navigation = useNavigation();
   return (
       <SafeAreaView style={stylesPrevisao.container}>
-        <View style={stylesPrevisao.body}>
-          <View style={stylesPrevisao.bodyRow}>
-            <Text style={stylesPrevisao.bodyTitlePrimary}>Linhas</Text>
-            <Text style={stylesPrevisao.bodyTitleSecondary}>Quantidade:</Text>
-            <Text style={stylesPrevisao.bodyTitleSecondary}>Distância entre Linhas (m):</Text>
+        <ScrollView>
+          <View style={stylesPrevisao.body}>
+
+            <View style={stylesPrevisao.bodyBox}>
+              <View style={stylesPrevisao.bodyRow}>
+                <Text style={stylesPrevisao.bodyTitlePrimary}>Linhas</Text>
+                <Text style={stylesPrevisao.bodyTitleSecondary}>Quantidade:</Text>
+                <TextInput style={stylesPrevisao.bodyInput} placeholder="000" />
+                <Text style={stylesPrevisao.bodyTitleSecondary}>Distância entre Linhas (m):</Text>
+                <TextInput style={stylesPrevisao.bodyInput} placeholder="0.00" />
+              </View>
+            </View>
+
+            <View style={stylesPrevisao.bodyBox}>
+              <View style={stylesPrevisao.bodyRow}>
+                <Text style={stylesPrevisao.bodyTitlePrimary}>Intervalos na Linha</Text>
+                <Text style={stylesPrevisao.bodyTitleSecondary}>Quantidade:</Text>
+                <TextInput style={stylesPrevisao.bodyInput} placeholder="000" />
+                <Text style={stylesPrevisao.bodyTitleSecondary}>Distância entre intervalos (m):</Text>
+                <TextInput style={stylesPrevisao.bodyInput} placeholder="0.00" />
+                <Text style={stylesPrevisao.bodyTitleSecondary}>Plantas por Intervalo:</Text>
+                <TextInput style={stylesPrevisao.bodyInput} placeholder="000" />
+              </View>
+            </View>
+
+            <View style={stylesPrevisao.bodyBox}>
+              <View style={stylesPrevisao.bodyRow}>
+                <Text style={stylesPrevisao.bodyTitlePrimary}>Plantas</Text>
+                <Text style={stylesPrevisao.bodyTitleSecondary}>Quantidade de Grãos por Planta:</Text>
+                <TextInput style={stylesPrevisao.bodyInput} placeholder="000" />
+                <Text style={stylesPrevisao.bodyTitleSecondary}>Distância entre Plantas (cm):</Text>
+                <TextInput style={stylesPrevisao.bodyInput} placeholder="0.00" />
+              </View>
+            </View>
+
           </View>
-          <View style={stylesPrevisao.bodyRow}>
-            <Text style={stylesPrevisao.bodyTitlePrimary}>Intervalos na Linha</Text>
-            <Text style={stylesPrevisao.bodyTitleSecondary}>Quantidade:</Text>
-            <Text style={stylesPrevisao.bodyTitleSecondary}>Distância entre intervalos (m):</Text>
-            <Text style={stylesPrevisao.bodyTitleSecondary}>Plantas por Intervalo:</Text>
-          </View>
-          <View style={stylesPrevisao.bodyRow}>
-            <Text style={stylesPrevisao.bodyTitlePrimary}>Plantas</Text>
-            <Text style={stylesPrevisao.bodyTitleSecondary}>Quantidade de Grãos por Planta:</Text>
-            <Text style={stylesPrevisao.bodyTitleSecondary}>Distância entre Plantas (cm):</Text>
+
+        <View style={stylesPrevisao.footer}>
+        <Text style={stylesPrevisao.footerTitle}>Resultado</Text>
+          <View style={stylesPrevisao.footerRow}>
+            <View style={stylesPrevisao.footerColumn}>
+              <Text style={stylesArea.bodyResultsTextPrimary}>Total Coletado Kg/Ha:</Text>
+              <Text style={stylesArea.bodyResultsTextSecondary}>255</Text>
+            </View>
+            <View style={stylesPrevisao.footerColumn}>
+              <Text style={stylesArea.bodyResultsTextPrimary}>Total Coletado Kg/Ha:</Text>
+              <Text style={stylesArea.bodyResultsTextSecondary}>255</Text>
+            </View>
           </View>
         </View>
+
+        </ScrollView>
+
       </SafeAreaView>
   );
 }

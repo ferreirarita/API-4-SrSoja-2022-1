@@ -92,22 +92,67 @@ const stylesPrevisao = StyleSheet.create({
     flex: 1,
     margin: 10,
     marginTop: 15,
-    ...stylesVar.boxPrimary,
   },
   bodyTitlePrimary: {
     flex:1,
+    textAlign: 'center',
     ...stylesVar.titleSecondary,
-    fontSize: 17
+    fontSize: 18,
+    borderWidth: 1,
+    borderRadius: 3,
+    ...stylesVar.background
   },
   bodyTitleSecondary: {
     flex:1,
+    marginTop: 10,
     ...stylesVar.titleSecondary,
   },
+  bodyBox: {
+    flex: 1,
+    margin: 10,
+    ...stylesVar.boxPrimary,
+  },
   bodyRow: {
-    flex: 0.2,
+    flex: 0.3,
+    margin: 12,
+  },
+  bodyInput:{
+    flex:1,
+    padding:5,
+    ...stylesVar.inputText,
+    borderBottomWidth: 1,
+  },
+  footer:{
+    flex: 1,
+    margin: 10,
+  ...stylesVar.boxPrimary,
+  },
+  footerTitle: {
+    marginTop: 10,
+    textAlign: "center",
+    ...stylesVar.titleSecondary,
+  },
+  footerRow:{
+    flex: 0.1,
+    flexDirection: "row",
+    alignItems: "center",
+    alignItems: "flex-end",
+    justifyContent: "space-around",
     margin: 12,
     marginTop: 13,
     borderBottomWidth: 1,
+  },
+  footerColumn:{
+      alignItems: "center",
+      flex: 0.4,
+  },
+  footerTextPrimary: {
+    ...stylesVar.titleSecondary,
+    textAlign: "center",
+    fontSize: 13,
+  },
+  footerTextSecondary: {
+    ...stylesVar.inputText,
   },
 
 })

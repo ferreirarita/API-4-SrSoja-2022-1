@@ -65,7 +65,7 @@ const stylesVar = {
   inputBox: {
     padding: 5,
     borderRadius: 1,
-    borderBottomWidth: 1.3,
+    borderBottomWidth: 1,
     borderColor: "#343434",
   },
 
