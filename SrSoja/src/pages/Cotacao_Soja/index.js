@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
-export default function Previsao_Tempo () { 
+export default function Cotacao_Soja () { 
         return (
             <SafeAreaView style={{flex:1}}>
                 <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>

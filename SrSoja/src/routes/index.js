@@ -16,6 +16,10 @@ import Home                     from '../pages/Home';
 import Cotacao_Soja             from '../pages/Cotacao_Soja';
 import Previsao_Tempo           from '../pages/Previsao_Tempo';
 
+/** Testes */
+import Teste_Banco from '../pages/Teste_Banco'
+/** */
+
 import { Fazenda, Talhao, Listagem } from '../pages/Cadastro_Fazenda_Talhao'
 import { Area, Previsao, Calculo } from '../pages/Relatorios_Produtividade'
 import { Sementes, Fertilizantes, Agrotoxicos} from '../pages/Custos_Producao'
@@ -67,6 +71,8 @@ function Drawer_Navigation () {
         <PrevisaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
+
+      <Drawer.Screen name='Teste do Banco' component={Teste_Banco} options={{title: 'Teste do Banco', drawerIcon: () => <PainelIcon size={24} fill='#f00' />}} />
     </Drawer.Navigator>
   );
 }

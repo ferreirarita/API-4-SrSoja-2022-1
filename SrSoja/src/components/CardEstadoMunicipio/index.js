@@ -9,18 +9,18 @@ const CardEstadoMunicipio = () => {
       <CardHeader>
         <View style={{flex: 1,flexDirection: "row"}}> 
           <View style={{flex: 1, flexDirection: "row"}}> 
-            <Text style={light.TitleSecondary}>Estado </Text>
+            <Text style={stylesVar.titleSecondary}>Estado </Text>
             <Select />
           </View>
           <View style={{flex: 1, flexDirection: "row"}}> 
-            <Text style={light.TitleSecondary}>Município </Text>
-            <Text style={light.Inputs}>Selecione</Text>
+            <Text style={stylesVar.titleSecondary}>Município </Text>
+            <Text style={stylesVar.inputText}>Selecione</Text>
           </View>
         </View>
     
         <View style={{flex: 1, flexDirection: "row",marginTop:10}}> 
           <View style={{flex: 1, flexDirection: "row"}}> 
-            <Text style={light.TitleSecondary}>Data</Text>
+            <Text style={stylesVar.titleSecondary}>Data</Text>
           </View>
         </View>
       </CardHeader>

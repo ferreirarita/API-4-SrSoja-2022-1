@@ -30,4 +30,9 @@ export default async function openDatabase() {
         console.log(`Erro: ${error}`)
         return null
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+>>>>>>> sistema

@@ -5,18 +5,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    ...stylesVar.backgroundOpen,
+    ...stylesVar.backgroundYellow,
   },
 
   body: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
+    padding:10
   },
 
   logotype: {
     height: "46%",
-    width: "91%",
+    width: "100%",
   },
 
   footer: {

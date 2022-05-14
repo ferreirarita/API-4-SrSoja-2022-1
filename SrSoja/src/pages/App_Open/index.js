@@ -5,9 +5,9 @@ import styles from './styles';
 
 const App_Open = () => {
   const navigation = useNavigation();
-   setTimeout(() =>{
+    setTimeout(() =>{
     navigation.navigate('HomeDrawer')
-  }, 2000)
+  }, 500) 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.body}>
