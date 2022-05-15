@@ -11,6 +11,7 @@ import stylesVar from '../styles/stylesVar';
 //Screens
 import App_Open                 from '../pages/App_Open';
 import Cadastro_Usuario         from '../pages/Cadastro_Usuario';
+import Mapa                     from '../pages/Mapa';
 import Login                    from '../pages/Login';
 import Home                     from '../pages/Home';
 import Cotacao_Soja             from '../pages/Cotacao_Soja';
@@ -71,7 +72,7 @@ function Drawer_Navigation () {
         <PrevisaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
-
+      <Drawer.Screen name='Mapa' component={Mapa} options={{headerShown: false}} />
       <Drawer.Screen name='Teste do Banco' component={Teste_Banco} options={{title: 'Teste do Banco', drawerIcon: () => <PainelIcon size={24} fill='#f00' />}} />
     </Drawer.Navigator>
   );

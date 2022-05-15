@@ -1,5 +1,5 @@
 
-import React from 'react'
+import React,{useState} from 'react'
 import { View, Text, TextInput , SafeAreaView, TouchableOpacity, ScrollView} from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { stylesFazenda, stylesTalhao, stylesListagem } from './styles'
@@ -41,8 +41,9 @@ const Fazenda = () => {
   );
 }
 
-const Talhao = () => {
-  const navigation = useNavigation();
+const Talhao = (props) => {
+    const [coord,setCoord] = useState ({longitude: -45, latitude: -23});
+    const navigation = useNavigation();
   return (
       <SafeAreaView style={stylesTalhao.container}>
         <ScrollView>
@@ -57,7 +58,8 @@ const Talhao = () => {
             </View>
             <View style={stylesTalhao.bodyRow}>
               <Text style={stylesTalhao.bodyTitle}>Selecionar área</Text>
-                <TouchableOpacity style={stylesTalhao.bodyRowMap}>
+                <TouchableOpacity style={stylesTalhao.bodyRowMap}
+                 onPress={() => props.navigation.navigate('Mapa', {setCoord})}>
                   <View style={stylesTalhao.bodyMap}>
                     <MapIcon size={50} fill='#343434' />
                     <Text style={stylesTalhao.bodyTextMap}>Abrir Mapa</Text>
