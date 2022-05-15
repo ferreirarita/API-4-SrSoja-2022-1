@@ -53,7 +53,7 @@ const Tela_Inicial = () => {
                 <View style={styles.bodyRow}>
                     <TouchableOpacity style={styles.bodyButton} onPress={() => navigation.navigate('Cotacao_Soja')}>
                         <CotacaoIcon size="40" fill='#343434'/>
-                        <Text style={styles.bodyText}>Cotações da Soja</Text>
+                        <Text style={styles.bodyText}>Cotação da Soja</Text>
                     </TouchableOpacity>
             
                     <TouchableOpacity style={styles.bodyButton} onPress={() => navigation.navigate('Custos_Producao')}>

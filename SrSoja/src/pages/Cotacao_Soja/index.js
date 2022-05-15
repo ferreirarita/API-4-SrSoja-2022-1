@@ -1,11 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker'
 import styles from './styles';
 //icon
 import SelectIcon from "../../assets/Icons/chevron-down"
 import GraphicIcon from "../../assets/Icons/bar-chart-line-fill"
 
 export default function Cotacao_Soja () { 
+    const [state, setState] = useState({ date: new Date(), mode: 'date', show: false })
+    const [text, setText] = useState('Selecione')
+    
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || state.date
+        setState({...state, date: currentDate, show: false})
+        //console.log(selectedDate)
+        let tempDate = selectedDate
+        let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear()
+        setText(fDate)
+    }
+    const firstDate = (currentMode) => {
+        setState({...state, show: true})
+      }
+
+    const [secondState, setSecondState] = useState({ date: new Date(), mode: 'date', show: false })
+    const [secondText, setSecondText] = useState('Selecione')
+      
+    const onChangeSecond = (event, selectedDate) => {
+        const currentDate = selectedDate || secondState.date
+        setSecondState({...secondState, date: currentDate, show: false})
+        //console.log(selectedDate)
+        let tempDate = selectedDate
+        let fDate = tempDate.getDate() + '/' + (tempDate.getMonth() + 1) + '/' + tempDate.getFullYear()
+        setSecondText(fDate)
+    }
+      const secondDate = (currentMode) => {
+        setSecondState({...secondState, show: true})
+      }
         return (
             <SafeAreaView style={styles.container}>
                 <ScrollView>
@@ -32,16 +62,41 @@ export default function Cotacao_Soja () {
                             <View style={styles.bodyColumnDate}>
                                 <Text style={styles.bodyTitle}>Data</Text>
                             </View>
-                            <View style={styles.bodyColumnDate}>
-                                <Text style={styles.bodyDatePicker}>10/05/2022</Text>
-                            </View>
+                            <TouchableOpacity style={styles.bodyColumnDate} onPress={firstDate} title="Data de Início" >
+                                { state.show && (
+                                    <DateTimePicker
+                                        testID="dateTimePicker"
+                                        timeZoneOffsetInMinutes={0}
+                                        value={state.date}
+                                        mode={state.mode}
+                                        is24Hour={true}
+                                        display="default"
+                                        onChange={onChange}
+                                        />)
+                                }
+                                <Text style={styles.bodyTitleSelect}>{text}</Text>
+                            </TouchableOpacity>
+
                             <View style={styles.bodyColumnDate}>
                                 <Text style={styles.bodyTitle}>Até</Text>
                             </View>
-                            <View style={styles.bodyColumnDate}>
-                                <Text style={styles.bodyDatePicker}>14/05/2022</Text>
-                            </View>
+
+                            <TouchableOpacity style={styles.bodyColumnDate} onPress={secondDate} title="Data Final" >  
+                                { secondState.show && (
+                                    <DateTimePicker
+                                        testID="dateTimePicker"
+                                        timeZoneOffsetInMinutes={0}
+                                        value={secondState.date}
+                                        mode={secondState.mode}
+                                        is24Hour={true}
+                                        display="default"
+                                        onChange={onChangeSecond}
+                                        />)
+                                }
+                                <Text style={styles.bodyTitleSelect}>{secondText}</Text>
+                            </TouchableOpacity>
                         </View>
+
 
                         <View style={styles.bodyTable}>
                             <View style={styles.bodyTableHeader}>

@@ -1,4 +1,7 @@
-import { StyleSheet } from "react-native";
+import React, {useState} from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import DateTimePicker from '@react-native-community/datetimepicker'
+import moment from 'moment'
 import stylesVar from "../../styles/stylesVar";
 
 const styles = StyleSheet.create({
@@ -83,6 +86,6 @@ const styles = StyleSheet.create({
     ...stylesVar.inputText,
   },
 
-});
+})
 
-export default styles;
+export default styles 
