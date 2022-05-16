@@ -80,8 +80,9 @@ Foram acordadas entre as partes envolvidas as seguintes datas para a entrega das
    SPRINT 1 </a> - 25/03 a 14/04/2022 </h5>
 
    <h5 >
+   <a href='https://github.com/ferreirarita/API-4-SrSoja-2022-1/tree/main/Refer%C3%AAncias/Sprint2'>
+   SPRINT 2 </a> -  25/04 a 15/05/2022 </h5>
    
-   SPRINT 2 </a> - 25/04 a 15/05/2022 </h5>
 
    <h5 >
   
