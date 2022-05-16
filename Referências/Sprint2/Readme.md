@@ -5,7 +5,7 @@ BACKLOG SPRINT 2
   Desmembramos as "historias" do Product Backlog em tarefas que representa uma unidade de trabalho a ser realizada.
   Segue abaixo a lista de atividades desenvolvidas na Sprint 2.
 
-  ![](https://i.imgur.com/gQuFvVG.jpeg)
+  ![](https://i.imgur.com/8a6lG5J.jpeg)
 
 
 DEMOSTRAÇÃO PROTÓTIPO FIGMA
