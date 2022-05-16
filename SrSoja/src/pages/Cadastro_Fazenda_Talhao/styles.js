@@ -199,17 +199,25 @@ const stylesListagem = StyleSheet.create({
 
   footer:{
     margin:5,
-    justifyContent:'center',
-    alignItems:'center'
-
+    justifyContent:'center'
   },
-  footerButtons:{
-    margin:30,
-   flexDirection: "row",
-   justifyContent: "center",
+  footerButtonCancel:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
   },
+  footerButtonCheck:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonAdd:{
+    marginRight:30,
+    flexDirection: "row",
+    justifyContent: "center",
+   },
   footerRow: {
-   flexDirection: "row",
+    flexDirection: "row",
    alignItems: "center",
    justifyContent: "space-between",
  },

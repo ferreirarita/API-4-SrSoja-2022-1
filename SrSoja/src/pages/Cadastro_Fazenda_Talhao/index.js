@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native'
 import { stylesFazenda, stylesTalhao, stylesListagem } from './styles'
 import Context from '../../components/Context'
 import { addFazenda } from '../../services/database/controllers/Fazenda'
+import { addTalhao } from '../../services/database/controllers/Talhao'
+
 //Icon
 import MapIcon from '../../assets/Icons/map-fill'
 import TrashIcon from '../../assets/Icons/trash3-fill'
@@ -13,7 +15,10 @@ import SearchIcon from '../../assets/Icons/search'
 //buttons
 import { CheckButton, CancelButton, AddButton, NextButton } from '../../components/Button'
 
-const Fazenda = () => {
+const Fazenda = (props) => {
+  console.log(props)
+  const navigation = useNavigation();
+
   const { database, dataResult, setResult } = useContext(Context)
   const [fazenda, setFazenda] = useState('')
   const [cep, setCep] = useState('')
@@ -34,10 +39,10 @@ const Fazenda = () => {
 
     }
 
-    useEffect(()=>{
+/*     useEffect(()=>{
       if(dataResult !== null)console.log(dataResult)
     },[dataResult]
-    )
+    ) */
 
   return (
       <SafeAreaView style={stylesFazenda.container}>
@@ -115,7 +120,9 @@ const Fazenda = () => {
 
             </View>
             <View style={stylesFazenda.footerButtonNext}>
-              <NextButton size={48}/>
+              <NextButton size={48}
+              onPress={()=>{navigation.navigate('Talhão')
+              }}/>
             </View>
           </View>
         </View>
@@ -123,12 +130,24 @@ const Fazenda = () => {
   );
 }
 
-const Talhao = () => {
-  const [coord,setCoord] = useState ();
+const Talhao = ({talhao_name}) => {
+  const navigation = useNavigation()
 
-  const [apelido, setApelido] = useState('')
+  const[saudeTalhao] = useState(['Doente', 'Saudável'])
+  const[saudeSelecionada,setSaudeSelecionada] = useState([])
+
+  const [coord,setCoord] = useState ();
+  const { database, dataResult, setResult } = useContext(Context)
+
+  const [apelido, setApelido] = useState(talhao_name)
   const [saude, setSaude] = useState('')
-  const navigation = useNavigation();
+
+
+/*   useEffect(()=>{
+    if(dataResult !== null)console.log(dataResult)
+  },[dataResult]
+  ) */
+  
   return (
       <SafeAreaView style={stylesTalhao.container}>
         <ScrollView>
@@ -139,8 +158,9 @@ const Talhao = () => {
               onChangeText={nome => setApelido(nome)} value={apelido}></TextInput>
             </View>
             <View style={stylesTalhao.bodyRow}>
-                <Text style={stylesTalhao.bodyTitle}>Saúde do Talhão</Text>
-                <TextInput style={stylesTalhao.bodyInputBox} placeholder="Saúdavel.."
+                <Text style={stylesTalhao.bodyTitle}>Saúde do Talhão </Text>
+                <Text style={stylesTalhao.bodyTitle}> Doente |  Saudável</Text>
+                <TextInput style={stylesTalhao.bodyInputBox} placeholder="Selecione" keyboardType='numeric'
                 onChangeText={nome => setSaude(nome)} value={saude}></TextInput>
             </View>
             <View style={stylesTalhao.bodyRow}>
@@ -164,10 +184,29 @@ const Talhao = () => {
             <View style={stylesTalhao.footerRow}>
 
               <View style={stylesTalhao.footerButtonCancel}>
-                <CancelButton size={48}/>
+                <CancelButton size={48}
+                    onPress={() => {
+                      setCoord('')
+                      setApelido('')
+                      setSaude('')
+                     }}
+                />
               </View>
               <View style={stylesTalhao.footerButtonCheck}>
-                <CheckButton size={48}/>
+                <CheckButton size={48}
+                    onPress={()=>{
+                      try{
+                        addTalhao(database,{
+                          fzd_id:1,
+                          tlh_apelido:apelido,
+                          tlh_saude:saude,
+                          tlh_media_producao:0,
+                          latitude:coord?.latitude,
+                          longitude:coord?.longitude
+                        },setResult)
+                      }catch(e){console.log(e)}
+                  }}
+                  />
               </View>
            </View>
 
@@ -188,7 +227,7 @@ const Listagem = () => {
             <View style={stylesListagem.bodyList}>
               <View style={stylesListagem.bodyRow}>
                 <Text style={stylesListagem.bodyTitle}>Talhão: </Text>
-                <Text style={stylesListagem.bodyTitle}>Leste 01</Text>
+                <Text style={stylesListagem.bodyTitle}>Leste</Text>
               </View>
               <View style={stylesListagem.bodyButtons}>
                 <Text style={stylesListagem.bodyTitle}>Saudável</Text>
@@ -207,14 +246,22 @@ const Listagem = () => {
 
         <View style={stylesListagem.footer}>
           <View style={stylesListagem.footerRow}>
-            <View style={stylesListagem.footerButtons}>
-              <CancelButton size={48}/>
-            </View>
-            <View style={stylesListagem.footerButtons}>
-              <CheckButton size={48}/>
-            </View>
+            <View style={stylesListagem.footerRow}>
+              <View style={stylesListagem.footerButtonCancel}>
+                <CancelButton size={48}
 
+                />
+              </View>
+              <View style={stylesListagem.footerButtonCheck}>
+                <CheckButton size={48}
 
+                  />
+              </View>
+           </View>
+
+            <View style={stylesListagem.footerButtonAdd}>
+              <AddButton size={48}/>
+            </View>
           </View>
         </View>
       </SafeAreaView>

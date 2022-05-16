@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StatusBar } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -81,10 +81,12 @@ function Drawer_Navigation () {
 const TabCadastro = createMaterialTopTabNavigator();
 
 function TabCadastro_Fazenda_Talhao() {
+  const[name,setName]=useState('Teste')
+
   return(
       <TabCadastro.Navigator>
-        <TabCadastro.Screen name="Fazenda" component={Fazenda} />
-        <TabCadastro.Screen name="Talhão" component={Talhao} />
+        <TabCadastro.Screen name="Fazenda" component={Fazenda} talhao_name='teste'/>
+        <TabCadastro.Screen talhao_name={name} name="Talhão" component={Talhao} />
         <TabCadastro.Screen name="Listagem" component={Listagem} />
       </TabCadastro.Navigator>
   )
