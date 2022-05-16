@@ -27,4 +27,4 @@ Estimativas de esforços feitos para as atividade do SprintBacklog.
 
   <br/>
 
-![]()
+![](https://i.imgur.com/o3V0wTG.png)
