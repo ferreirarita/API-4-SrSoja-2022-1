@@ -29,7 +29,7 @@ async function addTalhao(database, args, setResult) {
                     [fzd_id, tlh_apelido, tlh_media_producao, tlh_saude],
                     (_, resultSet) => {
                         // Em testes
-                        tlh_id = resultSet.rows._array[0].tlh_id
+                        tlh_id = resultSet.insertId
 
                         addAreaTalhao(database, { tlh_id, latitude, longitude }).then(
                             () => setResult(`Novo Talhão '${tlh_apelido}'`)
