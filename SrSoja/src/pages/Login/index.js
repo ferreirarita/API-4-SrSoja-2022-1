@@ -1,14 +1,15 @@
-import React, {useState, useEffect, useContext} from 'react';
+/*import React, {useState, useEffect, useContext} from 'react';
 import { Text, Image, TextInput, View, TouchableOpacity, SafeAreaView, ScrollView, Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import Contexto from '../../components/Context';
 import config from '../../services/database/config';
 import FlechaIcon   from '../../assets/Icons/arrow-right'
+
 export default function Login(props){
   const [mail, setMail] = useState('');
   const [senha, setSenha] = useState('');
-  const [confirmacao, setConfirmacao] = useState('');
   const {token, setToken} = useContext(Contexto);
+
   useEffect( () => {
     if( token === null ){
       SecureStore.getItemAsync(config.STORE_KEY)
@@ -91,4 +92,4 @@ export default function Login(props){
       </ScrollView>
     </SafeAreaView>
   );
-}
+}*/

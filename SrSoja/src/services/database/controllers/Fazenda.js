@@ -45,10 +45,10 @@ async function addFazenda(database, args, setResult) {
                     (_, resultSet) => {
                         setResult(`Fazenda atualizada`)
                     },
-                    error => console.log(`Erro ao atualizar: ${error}`)
+                    (_,error) => console.error(`Erro ao atualizar: ${error}`)
                 )
             },
-            error => console.log(`Erro: ${error}`)
+            error => console.error(`Erro: ${error}`)
         )
     }
 }
@@ -72,10 +72,10 @@ async function getFazenda(database, args, setResult) {
                     (_,{ rows: { _array } }) => {
                         setResult(JSON.stringify(_array))
                     },
-                    error => console.log(`Erro ao obter: ${error}`)
+                    (_,error) => console.error(`Erro ao obter: ${error}`)
                 )
             },
-            error => console.log(error)
+            error => console.error(error)
         )
 
     } else if (typeof fzd_id !== 'undefined' && fzd_id != 0) {
@@ -88,14 +88,14 @@ async function getFazenda(database, args, setResult) {
                     (_,{ rows: { _array } }) => {
                         setResult(JSON.stringify(_array[0]))
                     },
-                    error => console.log(`Erro ao obter: ${error}`)
+                    (_,error) => console.error(`Erro ao obter: ${error}`)
                 )
             },
-            error => console.log(error)
+            error => console.error(error)
         )
 
     } else {
-        console.log('Nenhuma fazenda informada')
+        console.error('Nenhuma fazenda informada')
     }
 }
 
@@ -115,7 +115,7 @@ async function delFazenda(database, args, setResult) {
                 (_,resultSet) => {
                     setResult(`Fazenda deletada`)
                 },
-                error => console.log(`Erro ao deletar: ${error}`)
+                (_,error) => console.error(`Erro ao deletar: ${error}`)
             )
         }
     )
