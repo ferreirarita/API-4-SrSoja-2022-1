@@ -84,5 +84,4 @@ function NextButton(props) {
   )
 }
 
-
 export { CheckButton, CancelButton, AddButton, NextButton }

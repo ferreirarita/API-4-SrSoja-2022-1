@@ -25,7 +25,7 @@ async function addProdutor(database, args, setResult) {
                     error => console.error(`Erro ao adicionar: ${error}`)
                 )
             },
-            error => console.log(`Erro: ${error}`)
+            (_, error) => console.log(error)
         );
     } else {
         database.transaction(

@@ -37,6 +37,10 @@ const stylesVar = {
     color: "#F7BB26",
   },
 
+  iconSearch: {
+    color: "#F7BB26",
+  },
+
   iconTable: {
     color: "#343434",
   },

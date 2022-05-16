@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { View, Text, TextInput, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import { stylesArea, stylesPrevisao, stylesCalculo } from './styles'
+import Context from '../../components/Context'
 //icon
 import SelectIcon from "../../assets/Icons/chevron-down"
+//button
+import { CheckButton, CancelButton, AddButton, NextButton } from '../../components/Button'
 
 
 const Area = () => {
+  const { database, dataResult, setResult } = useContext(Context)
   const navigation = useNavigation();
   return (
       <SafeAreaView style={stylesArea.container}>
@@ -82,6 +86,18 @@ const Area = () => {
 
 const Previsao = () => {
   const navigation = useNavigation();
+  const { database, dataResult, setResult } = useContext(Context)
+
+  const [quantidadeLinha, setQuantidadeLinha] = useState('')
+  const [distanciaLinha, setDistanciaLinha] = useState('')
+
+  const [quantidadeIntervalos, setQuantidadeIntervalos] = useState('')
+  const [distanciaIntervalos, setDistanciaIntervalos] = useState('')
+  const [plantasIntervalos, setPlantasIntervalos] = useState('')
+
+  const [quantidadeGraos, setQuantidadeGraos] = useState('')
+  const [distanciaPlantas, setDistanciaPlantas] = useState('')
+
   return (
       <SafeAreaView style={stylesPrevisao.container}>
 
@@ -92,9 +108,11 @@ const Previsao = () => {
                 <View style={stylesPrevisao.bodyRow}>
                   <Text style={stylesPrevisao.bodyTitlePrimary}>Linhas</Text>
                   <Text style={stylesPrevisao.bodyTitleSecondary}>Quantidade:</Text>
-                  <TextInput style={stylesPrevisao.bodyInput} placeholder="000" />
+                  <TextInput style={stylesPrevisao.bodyInput} placeholder="000" keyboardType="numeric"
+                  onChangeText={value =>setQuantidadeLinha(value)} value={quantidadeLinha} />
                   <Text style={stylesPrevisao.bodyTitleSecondary}>Distância entre Linhas (m):</Text>
-                  <TextInput style={stylesPrevisao.bodyInput} placeholder="0.00" />
+                  <TextInput style={stylesPrevisao.bodyInput} placeholder="0.00" keyboardType="numeric"
+                  onChangeText={value =>setDistanciaLinha(value)} value={distanciaLinha} />
                 </View>
               </View>
 
@@ -102,11 +120,14 @@ const Previsao = () => {
                 <View style={stylesPrevisao.bodyRow}>
                   <Text style={stylesPrevisao.bodyTitlePrimary}>Intervalos na Linha</Text>
                   <Text style={stylesPrevisao.bodyTitleSecondary}>Quantidade:</Text>
-                  <TextInput style={stylesPrevisao.bodyInput} placeholder="000" />
+                  <TextInput style={stylesPrevisao.bodyInput} placeholder="000" keyboardType="numeric"
+                  onChangeText={value =>setQuantidadeIntervalos(value)} value={quantidadeIntervalos} />
                   <Text style={stylesPrevisao.bodyTitleSecondary}>Distância entre intervalos (m):</Text>
-                  <TextInput style={stylesPrevisao.bodyInput} placeholder="0.00" />
+                  <TextInput style={stylesPrevisao.bodyInput} placeholder="0.00" keyboardType="numeric"
+                  onChangeText={value =>setDistanciaIntervalos(value)} value={distanciaIntervalos} />
                   <Text style={stylesPrevisao.bodyTitleSecondary}>Plantas por Intervalo:</Text>
-                  <TextInput style={stylesPrevisao.bodyInput} placeholder="000" />
+                  <TextInput style={stylesPrevisao.bodyInput} placeholder="000" keyboardType="numeric"
+                  onChangeText={value =>setPlantasIntervalos(value)} value={plantasIntervalos} />
                 </View>
               </View>
 
@@ -114,9 +135,11 @@ const Previsao = () => {
                 <View style={stylesPrevisao.bodyRow}>
                   <Text style={stylesPrevisao.bodyTitlePrimary}>Plantas</Text>
                   <Text style={stylesPrevisao.bodyTitleSecondary}>Quantidade de Grãos por Planta:</Text>
-                  <TextInput style={stylesPrevisao.bodyInput} placeholder="000" />
+                  <TextInput style={stylesPrevisao.bodyInput} placeholder="000" keyboardType="numeric"
+                  onChangeText={value =>setQuantidadeGraos(value)} value={quantidadeGraos} />
                   <Text style={stylesPrevisao.bodyTitleSecondary}>Distância entre Plantas (cm):</Text>
-                  <TextInput style={stylesPrevisao.bodyInput} placeholder="0.00" />
+                  <TextInput style={stylesPrevisao.bodyInput} placeholder="0.00" keyboardType="numeric"
+                  onChangeText={value =>setDistanciaPlantas(value)} value={distanciaPlantas} />
                 </View>
               </View>
 
@@ -138,6 +161,21 @@ const Previsao = () => {
               </View>
             </View>
           </View>
+          <View style={stylesPrevisao.footerRowButtons}>
+            <View style={stylesPrevisao.footerRowButtons}>
+
+              <View style={stylesPrevisao.footerButtonCancel}>
+                <CancelButton size={48}/>
+              </View>
+              <View style={stylesPrevisao.footerButtonCheck}>
+                <CheckButton size={48}/>
+              </View>
+           </View>
+
+            <View style={stylesPrevisao.footerButtonNext}>
+              <NextButton size={48}/>
+            </View>
+        </View>
 
         </SafeAreaView>
   );
@@ -146,6 +184,10 @@ const Previsao = () => {
 
 const Calculo = () => {
   const navigation = useNavigation();
+  const { database, dataResult, setResult } = useContext(Context)
+
+  const [coleta, setColeta] = useState('')
+
   return (
     <SafeAreaView style={stylesCalculo.container}>
         
@@ -155,17 +197,20 @@ const Calculo = () => {
           <View style={stylesCalculo.bodyBox}>
             <View style={stylesCalculo.bodyRow}>
               <Text style={stylesCalculo.bodyTitleSecondary}>1º Coleta:</Text>
-              <TextInput style={stylesCalculo.bodyInput} placeholder="000" />
+              <TextInput style={stylesCalculo.bodyInput} placeholder="000" keyboardType="numeric" 
+              onChangeText={value =>setColeta(value)} value={coleta} />
               <Text style={stylesCalculo.bodyTitleSecondary}>Kg/Ha</Text>
             </View>
             <View style={stylesCalculo.bodyRow}>
               <Text style={stylesCalculo.bodyTitleSecondary}>2º Coleta:</Text>
-              <TextInput style={stylesCalculo.bodyInput} placeholder="000" />
+              <TextInput style={stylesCalculo.bodyInput} placeholder="000" keyboardType="numeric"
+              onChangeText={value =>setColeta(value)} value={coleta} />
               <Text style={stylesCalculo.bodyTitleSecondary}>Kg/Ha</Text>
             </View>
             <View style={stylesCalculo.bodyRow}>
               <Text style={stylesCalculo.bodyTitleSecondary}>3º Coleta:</Text>
-              <TextInput style={stylesCalculo.bodyInput} placeholder="000" />
+              <TextInput style={stylesCalculo.bodyInput} placeholder="000" keyboardType="numeric"
+              onChangeText={value =>setColeta(value)} value={coleta} />
               <Text style={stylesCalculo.bodyTitleSecondary}>Kg/Ha</Text>
             </View>
           </View>
@@ -192,6 +237,23 @@ const Calculo = () => {
           </View>
         </View>
       </View>
+      <View style={stylesCalculo.footerButtons}>
+          <View style={stylesCalculo.footerRowButtons}>
+            <View style={stylesCalculo.footerRowButtons}>
+
+              <View style={stylesCalculo.footerButtonCancel}>
+                <CancelButton size={48}/>
+              </View>
+              <View style={stylesCalculo.footerButtonCheck}>
+                <CheckButton size={48}/>
+              </View>
+           </View>
+
+            <View style={stylesCalculo.footerButtonNext}>
+              <NextButton size={48}/>
+            </View>
+          </View>
+        </View>
 
   </SafeAreaView>
   );

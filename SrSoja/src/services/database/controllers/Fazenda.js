@@ -25,10 +25,10 @@ async function addFazenda(database, args, setResult) {
                     (_, resultSet) => {
                         setResult(`Nova Fazenda '${fzd_nome}'`)
                     },
-                    error => console.error(`Erro ao adicionar: ${error}`)
+                    (_, error) => console.error(error)
                 )
             },
-            error => console.log(`Erro: ${error}`)
+            (_, error) => console.log(error)
         );
     } else {
         database.transaction(

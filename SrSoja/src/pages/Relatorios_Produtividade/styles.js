@@ -149,6 +149,7 @@ const stylesPrevisao = StyleSheet.create({
   },
   footerColumn: {
     alignItems: "center",
+    margin:5
   },
   footerTextPrimary: {
     ...stylesVar.titleSecondary,
@@ -159,6 +160,30 @@ const stylesPrevisao = StyleSheet.create({
     ...stylesVar.inputText,
     fontSize: 14,
   },
+  footerButtons:{
+    margin:5,
+    justifyContent:'center'
+  },
+  footerButtonCancel:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonCheck:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonNext:{
+   marginRight:30,
+   flexDirection: "row",
+   justifyContent: "center",
+  },
+  footerRowButtons: {
+   flexDirection: "row",
+   alignItems: "center",
+   justifyContent: "space-between",
+ },
 });
 
 const stylesCalculo = StyleSheet.create({
@@ -215,12 +240,10 @@ const stylesCalculo = StyleSheet.create({
     alignItems: "center",
     alignItems: "flex-end",
     justifyContent: "space-around",
-    margin: 10,
-    marginTop: 3,
-    borderBottomWidth: 1,
   },
   footerColumn: {
     alignItems: "center",
+    margin:5
   },
   footerTextPrimary: {
     ...stylesVar.titleSecondary,
@@ -231,6 +254,30 @@ const stylesCalculo = StyleSheet.create({
     ...stylesVar.inputText,
     fontSize: 14,
   },
+  footerButtons:{
+    margin:5,
+    justifyContent:'center'
+  },
+  footerButtonCancel:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonCheck:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonNext:{
+   marginRight:30,
+   flexDirection: "row",
+   justifyContent: "center",
+  },
+  footerRowButtons: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+}
 });
 
 export { stylesArea, stylesPrevisao, stylesCalculo };

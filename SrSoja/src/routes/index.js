@@ -9,12 +9,13 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import CustomDrawer from './Drawer_Navigation/styles';
 import stylesVar from '../styles/stylesVar';
 //Screens
-import App_Open                 from '../pages/App_Open';
-import Cadastro_Usuario         from '../pages/Cadastro_Usuario';
-import Login                    from '../pages/Login';
-import Home                     from '../pages/Home';
-import Cotacao_Soja             from '../pages/Cotacao_Soja';
-import Previsao_Tempo           from '../pages/Previsao_Tempo';
+import App_Open         from '../pages/App_Open';
+import Cadastro_Usuario from '../pages/Cadastro_Usuario';
+import Login            from '../pages/Login';
+import Home             from '../pages/Home';
+import Cotacao_Soja     from '../pages/Cotacao_Soja';
+import Previsao_Tempo   from '../pages/Previsao_Tempo';
+import Mapa             from '../pages/Mapa';
 
 /** Testes */
 import Teste_Banco from '../pages/Teste_Banco'
@@ -71,7 +72,6 @@ function Drawer_Navigation () {
         <PrevisaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
-
       <Drawer.Screen name='Teste do Banco' component={Teste_Banco} options={{title: 'Teste do Banco', drawerIcon: () => <PainelIcon size={24} fill='#f00' />}} />
     </Drawer.Navigator>
   );
@@ -134,6 +134,7 @@ const Routes = () => {
           headerShown: false, headerStyle:{...stylesVar.toolbar}, headerTitleAlign: 'center', headerTitleStyle:{fontWeight: 'bold'}
           }}>
         <Stack.Screen name="App_Open"                 component={App_Open} />
+        <Stack.Screen name="Mapa"                     component={Mapa} options={{title:'Marcar Talhão', headerShown:true}}/>
         <Stack.Screen name="Login"                    component={Drawer_Navigation} options={{}}/>
         <Stack.Screen name="Cadastro_Usuario"         component={Drawer_Navigation} options={{title:'Cadastrar-se'}}/>
         <Stack.Screen name="HomeDrawer"               component={Drawer_Navigation} options={{title:'Painel Inicial'}}/>
