@@ -6,4 +6,4 @@
   Segue abaixo lista contendo todas as funcionalidades desejada para o    desenvolvimento do produto. 
   <br/>
  
-   <h3 align = "center">  <img src="https://user-images.githubusercontent.com/73767256/163510271-83adfe84-1bca-471a-acbb-0f2eaec139ee.png"   alt="drawing" width =700 </h3>
+   <h3 align = "center">  <img src="https://i.imgur.com/THi4HXk.jpeg"   alt="drawing" width =700 </h3>
