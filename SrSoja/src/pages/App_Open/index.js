@@ -16,21 +16,22 @@ const App_Open = () => {
   useEffect(()=>{
     try{
      //addSaude(database,{tsd_nome:'Saudável',tsd_descr:'quebra-galho'}, setResult)
-     getSaude(database,{tsd_id:1}, setResult)
+     //getSaude(database,{tsd_id:1}, setResult)
     }catch(e){console.log(e)}
-   }, []
-   )  
+  }, [])  
 
-   useEffect(()=>{
-    if(dataResult !== null)console.log(dataResult)
+  /*
+  useEffect(()=>{
+  if(dataResult !== null)console.log(dataResult)
   },[dataResult]
-  )
-    useEffect(()=>{
-   try{
-    addProdutor(database,{prd_nome:'Guguinha', prd_email:'guguinha@email.com',prd_senha:'guguinha'}, setResult)
+  )*/
+    
+  useEffect(()=>{
+    try{
+      //addProdutor(database,{prd_nome:'Guguinha', prd_email:'guguinha@email.com',prd_senha:'guguinha'}, setResult)
     }catch(e){console.log(e)}
-  }, []
-  )   
+  }, [])   
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.body}>

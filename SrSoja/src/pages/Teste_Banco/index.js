@@ -55,7 +55,7 @@ export default function Teste_Banco() {
                     style={style.textInput}
                     onChangeText={setId}
                     placeholder="id"
-                    keyboardType="numeric"
+                    keyboardType="default"
                 />
                 
                 <TextInput 

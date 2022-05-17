@@ -4,7 +4,7 @@
  * atualiza um existente (prd != 1).
  * @param {WebSQLDatabase} database 
  * @param {{ 
- *      prd_id: integer, 
+ *      prd_id: string, 
  *      prd_nome: string, 
  *      prd_email: string, 
  *      prd_senha: string
@@ -13,14 +13,14 @@
  */
 async function addProdutor(database, args, setResult) {
     let { prd_id, prd_nome, prd_email, prd_senha } = args;
-    if (typeof prd_id === 'undefined' || prd_id == 0) {
+    if (typeof prd_id === 'undefined' || prd_id == '') {
         database.transaction(
             tx => {
                 tx.executeSql(
-                    `INSERT INTO produtor (prd_nome,prd_email,prd_senha) VALUES (?,?,?)`,
-                    [prd_nome, prd_email, prd_senha],
+                    `INSERT INTO produtor (prd_id, prd_nome,prd_email,prd_senha) VALUES (?,?,?,?)`,
+                    [prd_nome + prd_email, prd_nome, prd_email, prd_senha],
                     (_, resultSet) => {
-                        setResult(`Novo Produtor '${prd_nome}'`)
+                        setResult(resultSet.insertId)
                     },
                     (_,error) => console.error(`Erro ao adicionar: ${error}`)
                 )
@@ -112,8 +112,33 @@ async function delProdutor(database, args, setResult) {
     )
 }
 
+/**
+ * Realiza o login do produtor.
+ * @param {WebSQLDatabase} database 
+ * @param {{email: string, password: string}} args 
+ * @param {useState} setResult 
+ */
+async function login(database, args, setResult) {
+    let { email, password } = args
+    database.transaction(
+        tx => {
+            tx.executeSql(
+                `SELECT COUNT(*) FROM produtor
+                WHERE prd_email = ? AND prd_senha = ?`,
+                [ email, password ],
+                ( _ , { rows: { _array } } ) => {
+                    setResult(_array[0]?.prd_id)
+                },
+                ( _ , error ) => console.error(`Erro no login: ${error}`)
+            )
+        }
+    )
+}
+
 export {
     addProdutor,
     getProdutor,
-    delProdutor
+    delProdutor,
+
+    login
 }
