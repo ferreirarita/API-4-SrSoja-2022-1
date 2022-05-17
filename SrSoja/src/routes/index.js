@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StatusBar } from 'react-native'
+import { SafeAreaView, StatusBar } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -130,24 +130,25 @@ const Stack = createNativeStackNavigator();
 
 const Routes = () => {
   return (
-    <NavigationContainer>
-        <StatusBar barStyle="light-content" backgroundColor="#F7BB26"/>
-        <Stack.Navigator initialRouteName="App_Open" screenOptions={{
-          headerShown: false, headerStyle:{...stylesVar.toolbar}, headerTitleAlign: 'center', headerTitleStyle:{fontWeight: 'bold'}
-          }}>
-        <Stack.Screen name="App_Open"                 component={App_Open} />
-        <Stack.Screen name="Mapa"                     component={Mapa} options={{title:'Marcar Talhão', headerShown:true}}/>
-        <Stack.Screen name="Login"                    component={Drawer_Navigation} options={{}}/>
-        <Stack.Screen name="Cadastro_Usuario"         component={Drawer_Navigation} options={{title:'Cadastrar-se'}}/>
-        <Stack.Screen name="HomeDrawer"               component={Drawer_Navigation} options={{title:'Painel Inicial'}}/>
-        <Stack.Screen name="Cadastro_Fazenda_Talhao"  component={Drawer_Navigation} options={{title:'Cadastros'}}/>
-        <Stack.Screen name="Cotacao_Soja"             component={Drawer_Navigation} options={{title:'Cotações da Soja'}}/>
-        <Stack.Screen name="Custos_Producao"          component={Drawer_Navigation} options={{title:'Custos de Produção'}}/>
-        <Stack.Screen name="Relatorios_Produtividade" component={Drawer_Navigation} options={{title:'Relatórios'}}/>
-        <Stack.Screen name="Previsao_Tempo"           component={Drawer_Navigation} options={{title:'Previsão do Tempo'}}/>
-        <Stack.Screen name="Historico_Compra_venda"   component={TabHistorico_Compra_Venda} options={{title:'Históricos'}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+      <NavigationContainer>
+          <StatusBar barStyle="light-content" backgroundColor="#F7BB26"/>
+          <Stack.Navigator initialRouteName="App_Open" screenOptions={{
+            headerShown: false, headerStyle:{...stylesVar.toolbar}, headerTitleAlign: 'center', headerTitleStyle:{fontWeight: 'bold'}
+            }}>
+          <Stack.Screen name="App_Open"                 component={App_Open} />
+          <Stack.Screen name="Login"                    component={Drawer_Navigation} options={{}}/>
+          <Stack.Screen name="Cadastro_Usuario"         component={Drawer_Navigation} options={{title:'Cadastrar-se'}}/>
+          
+          <Stack.Screen name="Mapa"                     component={Mapa} options={{title:'Marcar Talhão', headerShown:true}}/>
+          <Stack.Screen name="HomeDrawer"               component={Drawer_Navigation} options={{title:'Painel Inicial'}}/>
+          <Stack.Screen name="Cadastro_Fazenda_Talhao"  component={Drawer_Navigation} options={{title:'Cadastros'}}/>
+          <Stack.Screen name="Cotacao_Soja"             component={Drawer_Navigation} options={{title:'Cotações da Soja'}}/>
+          <Stack.Screen name="Custos_Producao"          component={Drawer_Navigation} options={{title:'Custos de Produção'}}/>
+          <Stack.Screen name="Relatorios_Produtividade" component={Drawer_Navigation} options={{title:'Relatórios'}}/>
+          <Stack.Screen name="Previsao_Tempo"           component={Drawer_Navigation} options={{title:'Previsão do Tempo'}}/>
+          <Stack.Screen name="Historico_Compra_venda"   component={TabHistorico_Compra_Venda} options={{title:'Históricos'}}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
 }
 export default Routes

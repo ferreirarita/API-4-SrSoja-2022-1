@@ -142,6 +142,10 @@ const Talhao = ({talhao_name}) => {
   const [apelido, setApelido] = useState(talhao_name)
   const [saude, setSaude] = useState('')
 
+  function teste(obj){
+    console.log("teste", obj)
+  }
+
 
 /*   useEffect(()=>{
     if(dataResult !== null)console.log(dataResult)
@@ -167,7 +171,7 @@ const Talhao = ({talhao_name}) => {
               <Text style={stylesTalhao.bodyTitle}>Selecionar área</Text>
                 <TouchableOpacity style={stylesTalhao.bodyRowMap}
                  onPress={() => {navigation.setOptions()
-                   navigation.navigate('Mapa', {setCoord})}}>
+                   navigation.navigate('Mapa', {teste})}}>
 
                   <View style={stylesTalhao.bodyMap}>
                     <MapIcon size={50} fill='#343434' />

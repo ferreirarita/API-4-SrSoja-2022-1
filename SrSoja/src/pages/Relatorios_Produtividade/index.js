@@ -46,14 +46,14 @@ const Area = () => {
                   <Text style={stylesArea.bodyResultsTextPrimary}>Total Coletado</Text>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Kg/Ha:</Text>
                   <View style={stylesArea.bodyRowSelect}>
-                    <Text style={stylesArea.bodyResultsTextSecondary}>240</Text>
+                    <Text style={stylesArea.bodyResultsTextSecondary}>0</Text>
                   </View>
                 </View>
                 <View style={stylesArea.bodyResultsColumn}>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Média de Grãos</Text>
                   <Text style={stylesArea.bodyResultsTextPrimary}>por Intervalo:</Text>
                   <View style={stylesArea.bodyRowSelect}>
-                    <Text style={stylesArea.bodyResultsTextSecondary}>200</Text>
+                    <Text style={stylesArea.bodyResultsTextSecondary}>0</Text>
                   </View>
                 </View>
               </View>
@@ -63,17 +63,17 @@ const Area = () => {
                 <View style={stylesArea.bodyResultsColumn}>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Total Coletado</Text>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Kg/Ha:</Text>
-                  <Text style={stylesArea.bodyResultsTextSecondary}>255</Text>
+                  <Text style={stylesArea.bodyResultsTextSecondary}>0</Text>
                 </View>
                 <View style={stylesArea.bodyResultsColumn}>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Média por Coleta</Text>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Kg/Ha:</Text>
-                  <Text style={stylesArea.bodyResultsTextSecondary}>200</Text>
+                  <Text style={stylesArea.bodyResultsTextSecondary}>0</Text>
                 </View>
                 <View style={stylesArea.bodyResultsColumn}>
                   <Text style={stylesArea.bodyResultsTextPrimary}>Nº de Coletas</Text>
                   <Text style={stylesArea.bodyResultsTextPrimary}>realizadas</Text>
-                  <Text style={stylesArea.bodyResultsTextSecondary}>4</Text>
+                  <Text style={stylesArea.bodyResultsTextSecondary}>0</Text>
                 </View>
               </View>
 
@@ -152,12 +152,12 @@ const Previsao = () => {
               <View style={stylesPrevisao.footerColumn}>
                 <Text style={stylesPrevisao.footerTextPrimary}>Total Coletado</Text>
                 <Text style={stylesPrevisao.footerTextPrimary}>Kg/Ha:</Text>
-                <Text style={stylesPrevisao.footerTextSecondary}>255</Text>
+                <Text style={stylesPrevisao.footerTextSecondary}>0</Text>
               </View>
               <View style={stylesPrevisao.footerColumn}>
                 <Text style={stylesPrevisao.footerTextPrimary}>Média de Grãos</Text>
                 <Text style={stylesPrevisao.footerTextPrimary}>por intervalo:</Text>
-                <Text style={stylesPrevisao.footerTextSecondary}>200</Text>
+                <Text style={stylesPrevisao.footerTextSecondary}>0</Text>
               </View>
             </View>
           </View>
@@ -223,17 +223,17 @@ const Calculo = () => {
           <View style={stylesCalculo.footerColumn}>
             <Text style={stylesCalculo.footerTextPrimary}>Total Coletado</Text>
             <Text style={stylesCalculo.footerTextPrimary}>Kg/Ha:</Text>
-            <Text style={stylesCalculo.footerTextSecondary}>255</Text>
+            <Text style={stylesCalculo.footerTextSecondary}>0</Text>
           </View>
           <View style={stylesCalculo.footerColumn}>
             <Text style={stylesCalculo.footerTextPrimary}>Média por Coleta</Text>
             <Text style={stylesCalculo.footerTextPrimary}>Kg/Ha:</Text>
-            <Text style={stylesCalculo.footerTextSecondary}>63.75</Text>
+            <Text style={stylesCalculo.footerTextSecondary}>0</Text>
           </View>
           <View style={stylesCalculo.footerColumn}>
             <Text style={stylesCalculo.footerTextPrimary}>Nº de Coletas</Text>
             <Text style={stylesCalculo.footerTextPrimary}>realizadas:</Text>
-            <Text style={stylesCalculo.footerTextSecondary}>4</Text>
+            <Text style={stylesCalculo.footerTextSecondary}>0</Text>
           </View>
         </View>
       </View>

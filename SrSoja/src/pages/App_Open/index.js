@@ -11,7 +11,7 @@ const App_Open = () => {
   const navigation = useNavigation();
     setTimeout(() =>{
     navigation.navigate('HomeDrawer')
-  }, 500)
+  }, 700)
   const { database, dataResult, setResult } = useContext(Context)
   useEffect(()=>{
     try{

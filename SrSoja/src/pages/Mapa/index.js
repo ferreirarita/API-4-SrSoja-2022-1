@@ -36,13 +36,11 @@ return(
         loadingEnabled={true}
         mapType="hybrid"
         onPress={e => {
+          console.log(JSON.stringify(e.nativeEvent.coordinate))
           setAlfinete(e.nativeEvent.coordinate)
-          props.route.params.setCoord(e.nativeEvent.coordinate)
+          props.route.params.teste(e.nativeEvent.coordinate)
         }}
-        onRegionChangeComplete={(region) => {
-          setAlfinete(region);
-          props.route.params.setCoord({latitude:region.latitude, longitude:region.longitude})
-        }}
+        
   >
     <Marker coordinate={alfinete}  />
   </MapView>
