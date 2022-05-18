@@ -10,13 +10,16 @@ BACKLOG SPRINT 2
 
 DEMOSTRAÇÃO PROTÓTIPO FIGMA
 
-   <img src=""   alt="drawing" width =700>
+   
 
    <a target="_blank" href='https://www.figma.com/proto/BhRWFNZ6F9ecpPeyetIxIa/Sr.Soja?node-id=0%3A1&scaling=scale-down&starting-point-node-id=646%3A2991&show-proto-sidebar=1'>Visualizar apresentação no Figma</a>
 
 DEMOSTRAÇÃO DAS FUNCIONALIDADES
 
-   <img src=""   alt="drawing" width =700>
+   <img src="https://user-images.githubusercontent.com/73767256/168936746-33176a30-e4c1-454d-a2df-84937bbe9029.gif"   alt="drawing" width =300>
+  
+
+
 
    <br/>
    <br/>
