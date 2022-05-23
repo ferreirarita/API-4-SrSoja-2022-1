@@ -1,38 +1,36 @@
 import React, { useEffect, useContext } from 'react';
 import { View, Text, Image, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Context from '../../components/Context'
-import { addProdutor } from '../../services/database/controllers/Produtor'
-import { addSaude, getSaude } from '../../services/database/controllers/Talhao'
+import Login from '../Login'
+import getContext from '../../hooks';
 
 import styles from './styles';
 
 const App_Open = () => {
-  const navigation = useNavigation();
-    setTimeout(() =>{
-    navigation.navigate('HomeDrawer')
-  }, 500)
-  const { database, dataResult, setResult } = useContext(Context)
-  useEffect(()=>{
-    try{
-     //addSaude(database,{tsd_nome:'Saudável',tsd_descr:'quebra-galho'}, setResult)
-     //getSaude(database,{tsd_id:1}, setResult)
-    }catch(e){console.log(e)}
-  }, [])  
 
-  /*
-  useEffect(()=>{
-  if(dataResult !== null)console.log(dataResult)
-  },[dataResult]
-  )*/
-    
-  useEffect(()=>{
-    try{
-      //addProdutor(database,{prd_nome:'Guguinha', prd_email:'guguinha@email.com',prd_senha:'guguinha'}, setResult)
-    }catch(e){console.log(e)}
-  }, [])   
+  const { user } = getContext()
+  let token;
   
+  const navigation = useNavigation();
+  
+  
+  useEffect(() => {
+    if(user?.prd_ids !== undefined) {
+      token = user.prd_ids
+      console.log('Eu sou um token:',token)
+      
+      setTimeout(() =>{
+        navigation.navigate('HomeDrawer')
+      }, 500)
+    }
+
+    //console.log('olha o usuário:',user)
+    
+  }, [user])
+
   return (
+    token !== undefined ?
+
     <SafeAreaView style={styles.container}>
       <View style={styles.body}>
         <Image source={require('../../assets/Logotype/SrSoja_Logo.png')} style={styles.logotype} />
@@ -42,6 +40,8 @@ const App_Open = () => {
         <Text style={styles.footerText}>Bem-vindo Sr(a).</Text>
       </View>
     </SafeAreaView>
+    :
+    <Login />
   )};
   
   export default App_Open;

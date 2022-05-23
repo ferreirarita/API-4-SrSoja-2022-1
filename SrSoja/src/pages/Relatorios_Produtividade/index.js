@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { View, Text, TextInput, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import { stylesArea, stylesPrevisao, stylesCalculo } from './styles'
-import Context from '../../components/Context'
+import Context from '../../context'
 //icon
 import SelectIcon from "../../assets/Icons/chevron-down"
 //button

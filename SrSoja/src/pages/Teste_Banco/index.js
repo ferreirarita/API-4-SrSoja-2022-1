@@ -1,26 +1,38 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { View, Image, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Image, Text, TextInput, TouchableOpacity, Alert, ActivityIndicator } from 'react-native'
 import style from './styles'
 
 import { AddButton, NextButton, CheckButton, CancelButton } from '../../components/Button'
+import LoadingScreen from '../../components/LoadingScreen'
 
 /**Para acessar o banco, tem de importar o Context e as funções desejadas*/
-import Context from '../../components/Context'
+//import Context from '../../context'
+import getContext from '../../hooks'
 import { addProdutor, getProdutor, delProdutor } from '../../services/database/controllers/Produtor'
 
 
 export default function Teste_Banco() {
     const [ prd_id, setId ] = useState()
     const [ prd_nome, setNome ] = useState()
-    const [ prd_email, setEmail ] = useState()
-    const [ prd_senha, setSenha ] = useState()
+    const [ prd_email, setEmail ] = useState('')
+    const [ prd_senha, setSenha ] = useState('')
     
     const [ text , setText ] = useState('*retorno do banco*')
 
-    const { database, dataResult, setResult } = useContext(Context)
+    const { database, dataResult, setResult, logIn, user } = getContext()
 
+    const [ loading, setLoading ] = useState(false)
 
-    useEffect(() => {
+    
+
+    /*useEffect( () => {
+        console.log(token, typeof token)
+
+    }, [token])*/
+
+    //useEffect(() => console.log('dataResult atualizou:',dataResult,typeof dataResult),[dataResult])
+
+    /*useEffect(() => {
         try {
             getProdutor(
                 database,
@@ -33,10 +45,12 @@ export default function Teste_Banco() {
         catch (error) {
             console.log(error)
         }
-    },[])
+    },[])*/
 
     /**Necessário caso houver alguma edição com os dados obtidos do banco */
+    /*
     useEffect(() => {
+        /*
         if(dataResult !== null) {
             if(dataResult.map == [].map)
                 setText(JSON.stringify(dataResult[dataResult.length - 1]))
@@ -44,9 +58,17 @@ export default function Teste_Banco() {
                 setText(dataResult)
             
         }
+        /
     },[dataResult])
+    */
+
+    useEffect(() => {
+        if(user?.error)
+            Alert.alert(user.error)
+    }, [user])
     
     return (
+        !loading ?
         <View>
             <Text style={style.textT}>{text}</Text>
 
@@ -84,6 +106,13 @@ export default function Teste_Banco() {
                 <View style={style.row}>
                     <AddButton
                         onPress={() => {
+                            
+                            setLoading(true)
+                            logIn('leo.ribeiro0256@gmail.com', '444')
+                            .finally(() => setLoading(false))
+
+                            //console.log('C')
+                            /*
                             try {
                                 addProdutor(
                                     database,
@@ -97,6 +126,7 @@ export default function Teste_Banco() {
                             } catch (error) {
                                 console.log(error)
                             }
+                            */
                         }}
                         size='64'
                         buttonStyle={style.button}
@@ -105,6 +135,8 @@ export default function Teste_Banco() {
 
                     <NextButton
                         onPress={() => {
+                            console.log('R')
+                            /*
                             try {
                                 getProdutor(
                                     database,
@@ -116,6 +148,7 @@ export default function Teste_Banco() {
                             } catch (error) {
                                 console.log(error)
                             }
+                            */
                         }}
                         size='64'
                         buttonStyle={style.button}
@@ -124,6 +157,8 @@ export default function Teste_Banco() {
 
                     <CheckButton
                         onPress={() => {
+                            console.log('U')
+                            /*
                             try {
                                 addProdutor(
                                     database,
@@ -138,6 +173,7 @@ export default function Teste_Banco() {
                             } catch (error) {
                                 console.log(error)
                             }
+                            */
                         }}
                         size='64'
                         buttonStyle={style.button}
@@ -146,6 +182,8 @@ export default function Teste_Banco() {
 
                     <CancelButton
                         onPress={() => {
+                            console.log('D')
+                            /*
                             try {
                                 delProdutor(
                                     database,
@@ -157,6 +195,7 @@ export default function Teste_Banco() {
                             } catch (error) {
                                 console.log(error)
                             }
+                            */
                         }}
                         size='64'
                         buttonStyle={style.button}
@@ -164,8 +203,10 @@ export default function Teste_Banco() {
                     />
                 </View>
             </View>
-
-            
         </View>
+        :
+        <LoadingScreen />
     )
+
+    
 }

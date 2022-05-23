@@ -4,7 +4,7 @@ import { StatusBar } from 'react-native';
 import Pages from './pages';
 
 import openDatabase from './services/database/config';
-import Context from './components/Context';
+import {Context} from './context';
 
 
 export default function App () {
@@ -18,9 +18,14 @@ export default function App () {
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#F7BB26"/>
+      {/*
       <Context.Provider value={{database, dataResult, setResult}}>
         <Pages />
       </Context.Provider>
+      */}
+      <Context>
+        <Pages />
+      </Context>
     </>
   )
 };

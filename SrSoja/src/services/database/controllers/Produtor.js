@@ -123,11 +123,15 @@ async function login(database, args, setResult) {
     database.transaction(
         tx => {
             tx.executeSql(
-                `SELECT COUNT(*) FROM produtor
+                `SELECT * FROM produtor
                 WHERE prd_email = ? AND prd_senha = ?`,
                 [ email, password ],
                 ( _ , { rows: { _array } } ) => {
-                    setResult(_array[0]?.prd_id)
+                    if(_array[0] === undefined)
+                        setResult({ error: 'E-mail ou senha incorretos.'})
+                    else{
+                        //console.log(_array[0])
+                        setResult(_array[0])}
                 },
                 ( _ , error ) => console.error(`Erro no login: ${error}`)
             )

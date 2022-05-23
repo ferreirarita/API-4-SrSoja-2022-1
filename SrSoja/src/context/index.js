@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect } from "react"
-import openDatabase from '../../services/database/config'
-import { addProdutor, login } from '../../services/database/controllers/Produtor'
+import openDatabase from '../services/database/config'
+import { addProdutor, login } from '../services/database/controllers/Produtor'
 import * as Store from 'expo-secure-store'
+import { Alert } from "react-native"
 
 const ThisContext = createContext()
 
@@ -12,67 +13,94 @@ const Context = ({ children }) => {
     const [ dataResult, setResult ] = useState(null)
 
     // Login data
-    // Obs.: token === Produtor.prd_id
-    const [ token, setToken ] = useState(null)
-    const [ loading, setLoading ] = useState(true)
-
-    useEffect(() => {
-        openDatabase().then(r => setDatabase(r))
-    }, [])
+    const [ user, setUser ] = useState({})
 
     useEffect(() => {
         async function loadStorageData() {
-            const storageToken = await SecureStore.getItemAsync('token')
+            const storageUser = await Store.getItemAsync('user')
+            if(storageUser) {
+                setUser(JSON.parse(storageUser))
+            }
+        }
+
+        loadStorageData()
+        openDatabase().then(r => setDatabase(r))
+        
+    }, [])
+
+    
+
+    /*
+    useEffect(() => {
+        async function loadStorageData() {
+            const storageToken = await Store.getItemAsync('token')
             if(storageToken)
                 setToken(storageToken)
-            setLoading(false)
         }
 
         loadStorageData()
     }, [database])
+    */
 
-    async function defToken() {
-        setToken(dataResult)
-        await SecureStore.setItemAsync('token', token)
-        setLoading(false)
+    /*
+    useEffect(async () => {
+        console.log('Eu sou o token:',token)
+        //await Store.setItemAsync('token', `${token}`)    
+        
+    }, [token])
+    */
+
+    async function defToken(token) {
+        console.log('Olha o token:',token)
+        setToken(token)
+        await Store.setItemAsync('token', `${token}`)
     }
 
-    async function singIn(email, password) {
+    useEffect(async () => {
+        if(user?.error)
+            console.log(user.error)
+        else if(user?.prd_id !== undefined) {
+            console.log('@chegou um usuario:',user?.prd_id,'@')
+            await Store.setItemAsync('user',JSON.stringify(user))
+        }
+            
+        /*
+        setToken(user?.prd_id)
+        await Store.setItemAsync('token', 'teste')
+        */
+    },[user])
+
+    async function logIn(email, password) {
         if(email === '') {
-            Alert.alert('Informe um e-mail')
-            return false
+            //Alert.alert('Informe um e-mail')
+            setUser({ error: 'Informe um e-mail' })
         }
         else if(password === ''){
-            Alert.alert('Informe a senha')
-            return false
+            //Alert.alert('Informe a senha')
+            setUser({ error: 'Informe a senha' })
         }
 
-        try {
+        else try {
             login(
                 database,
                 {
                     email,
                     password
                 },
-                setResult
+                setUser
             )
+
         } catch (e) {
             console.error(`Erro: ${e}`)
         }
-        
-
-        useEffect(() => {
-            if(dataResult !== null) 
-                defToken()
-        }, [dataResult])
-
     }
 
+    /** */
     async function singOut() {
-        setToken(null)
-        await SecureStore.deleteItemAsync('token')
+        setUser({})
+        await Store.deleteItemAsync('token')
     }
-
+    /** */
     async function singUp(name, email, password) {
         if(name === '') {
             Alert.alert('Informe um nome')
@@ -105,11 +133,14 @@ const Context = ({ children }) => {
 
     return (
         <ThisContext.Provider value={
-            { database, dataResult, setResult, token, loading, singIn, singOut, singUp }
+            { database, dataResult, setResult, user, setUser, logIn, singOut, singUp }
         }>
             { children }
         </ThisContext.Provider>
     )
 }
 
-export default createContext()
+export {
+    ThisContext,
+    Context
+}
