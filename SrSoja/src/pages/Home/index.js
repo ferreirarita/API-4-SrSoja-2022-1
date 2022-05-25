@@ -26,7 +26,7 @@ const Tela_Inicial = () => {
                     </View>
                 </View>
                 <View style={styles.headerColumn}>
-                    <TouchableOpacity style={styles.headerButton} onPress={() => navigation.navigate('App_Open')}>
+                    <TouchableOpacity style={styles.headerButton} onPress={() => navigation.navigate('Previsao_Tempo')}>
                         <View style={styles.headerButton}>
                             <PrevisaoIcon size="29" fill='#343434' />
                             <Text style={styles.headerText}>Previsão do Tempo</Text>

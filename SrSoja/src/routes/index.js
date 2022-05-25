@@ -131,9 +131,8 @@ const Stack = createNativeStackNavigator();
 const Routes = () => {
   return (
       <NavigationContainer>
-          <StatusBar barStyle="light-content" backgroundColor="#F7BB26"/>
           <Stack.Navigator initialRouteName="App_Open" screenOptions={{
-            headerShown: false, headerStyle:{...stylesVar.toolbar}, headerTitleAlign: 'center', headerTitleStyle:{fontWeight: 'bold'}
+            headerShown: false, headerStyle:{...stylesVar.toolbar}, headerTitleAlign: 'center'
             }}>
           <Stack.Screen name="App_Open"                 component={App_Open} />
           <Stack.Screen name="Login"                    component={Drawer_Navigation} options={{}}/>

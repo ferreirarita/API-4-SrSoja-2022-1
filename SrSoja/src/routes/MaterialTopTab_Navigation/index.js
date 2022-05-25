@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
-import { SafeAreaView, StatusBar } from 'react-native'
-
-import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-
+import { Cadastro_Fazenda_Talhao } from '../pages'
+//pages
 import { Fazenda, Talhao, Listagem } from '../pages/Cadastro_Fazenda_Talhao'
 import { Area, Previsao, Calculo } from '../pages/Relatorios_Produtividade'
 import { Sementes, Fertilizantes, Agrotoxicos} from '../pages/Custos_Producao'
-import { Compra, Venda } from '../pages/Historico_Compra_Venda'
+/* import { Compra, Venda } from '../pages/Historico_Compra_Venda' */
 
 const TabCadastro = createMaterialTopTabNavigator();
+const { Fazenda, Talhao, Listagem } = Cadastro_Fazenda_Talhao
 
 function TabCadastro_Fazenda_Talhao() {
   const[name,setName]=useState('Teste') 
@@ -22,18 +21,20 @@ function TabCadastro_Fazenda_Talhao() {
       </TabCadastro.Navigator>
   )
 }
-const TabRelatorio = createMaterialTopTabNavigator();
+const TabRelatorio = createMaterialTopTabNavigator()
+const { Area, Previsao, Calculo } = Relatorios_Produtividade
 
 function TabRelatorios_Produtividade() {
   return(
-      <TabRelatorio.Navigator>
+    <TabRelatorio.Navigator>
         <TabRelatorio.Screen name="Area" component={Area} options={{title:'Área'}} />
         <TabRelatorio.Screen name="Previsao" component={Previsao} options={{title:'Previsão'}} />
         <TabRelatorio.Screen name="Calculo" component={Calculo} options={{title:'Cálculo'}} />
       </TabRelatorio.Navigator>
   )
 }
-const TabCustos = createMaterialTopTabNavigator();
+const TabCustos = createMaterialTopTabNavigator()
+const { Sementes, Fertilizantes, Agrotoxicos} = Custos_Producao
 
 function TabCustos_Producao() {
     return (
@@ -45,7 +46,7 @@ function TabCustos_Producao() {
     );
   }
 
-  const TabHistorico = createMaterialTopTabNavigator();
+/*   const TabHistorico = createMaterialTopTabNavigator();
 
   function TabHistorico_Compra_Venda() {
       return (
@@ -54,4 +55,6 @@ function TabCustos_Producao() {
           <TabHistorico.Screen name="Venda" component={Venda} />
         </TabHistorico.Navigator>
       );
-    }
+    } */
+
+export { TabCadastro_Fazenda_Talhao, TabRelatorios_Produtividade, TabCustos_Producao }

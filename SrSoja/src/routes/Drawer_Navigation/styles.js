@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native'
 import { DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer'
 //Icons

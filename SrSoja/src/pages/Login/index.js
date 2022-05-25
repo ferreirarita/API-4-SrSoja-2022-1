@@ -1,15 +1,161 @@
+import React, { useState, useEffect } from 'react'
+import { Text, Image, TextInput, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import styles from './styles'
+import ArrowRight from '../../assets/Icons/arrow-right';
+import LoadingScreen from '../../components/LoadingScreen'
+
+import { useNavigation } from '@react-navigation/native'
+
+import getContext from '../../hooks'
+
+export default function Login() {
+  const [mail, setMail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const { logIn, user } = getContext()
+
+  const [ loading, setLoading ] = useState(false)
+
+  /*
+  <View style={styles.logoView}>
+        <Image 
+          source={require('../../assets/Logotype/SrSoja_Body.png')} 
+          style={styles.logotype}
+        />
+        <Image 
+          source={require('../../assets/Logotype/SrSoja_Name.png')} 
+          style={styles.logoText}
+        />
+      </View>
+  */
+
+  useEffect(() => {
+    if(user?.error)
+      Alert.alert(user.error)
+    else if(user?.prd_id !== undefined) {
+      /*
+      navega para a home
+      */
+    }
+  }, [user])
+
+
+  return (
+    !loading ?
+    <ScrollView style={styles.container}>
+      <View style={styles.scroll}>
+
+      <Text>Login</Text>
+
+      <View style={styles.body}>
+
+          <Text style={styles.bodyTitle}>E-mail</Text>
+
+          <TextInput
+            style={styles.bodyInput}
+            onChangeText={setMail}
+            value={mail}
+            autoCapitalize="none"
+            autoComplete="email"
+            autoCorrect={false}
+            keyboardType="email-address"
+            placeholder="exemplo@hotmail.com"
+          />
+
+          <Text style={style.bodyTitle}>Senha</Text>
+          <TextInput
+            style={styles.bodyInput}
+            onChangeText={setSenha}
+            value={senha}
+            secureTextEntry={true}
+          />
+
+        </View>
+
+        <View style={styles.bodyButton}>
+
+          <TouchableOpacity 
+            style={styles.bodyButton1} 
+            onPress={()=>console.log('Cadastro')/*props.navigation.navigate("Register")*/}
+          >
+            <Text style={styles.bodyText}>Registrar-se</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={styles.bodyButton2} 
+            onPress={() => {
+              setLoading(true)
+              logIn(mail, senha)
+              .finally(() => setLoading(false))
+            }}
+          >
+            <Text style={styles.bodyText}>Login</Text>
+            <ArrowRight size="25" fill='#F7BB26'/>
+          </TouchableOpacity>
+
+        </View>
+
+      
+      
+      </View>
+    </ScrollView>
+    :
+    <LoadingScreen />
+  )
+
+  /*
+  return (
+    <ScrollView>
+      <View style={styles.scroll}>
+        <Image 
+          source={require('../../assets/Logotype/SrSoja_Logo.png')} 
+          style={styles.logotype}
+        />
+        <View style={styles.body}>
+          <Text style={styles.bodyTitle}>E-mail</Text>
+          <TextInput
+            style={styles.bodyInput}
+            onChangeText={setMail}
+            value={mail}
+            autoCapitalize="none"
+            autoComplete="email"
+            autoCorrect={false}
+            keyboardType="email-address"
+            placeholder="exemplo@hotmail.com"
+          />
+          <Text style={styles.bodyTitle}>Senha</Text>
+          <TextInput
+            style={styles.bodyInput}
+            onChangeText={setSenha}
+            value={senha}
+            secureTextEntry={true}
+          />
+        </View>
+        <View style={styles.bodyButton}>
+          <TouchableOpacity style={styles.bodyButton1} onPress={()=>console.log('Cadastro')/*props.navigation.navigate("Register")/}>
+            <Text style={styles.bodyText}>Registrar-se</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.bodyButton2} onPress={() => console.log('Eu enviei algo')}>
+            <Text style={styles.bodyText}>Login</Text>
+            <ArrowRight size="25" fill='#F7BB26'/>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ScrollView>
+  )
+  */
+}
+
 /*import React, {useState, useEffect, useContext} from 'react';
 import { Text, Image, TextInput, View, TouchableOpacity, SafeAreaView, ScrollView, Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 import Contexto from '../../components/Context';
 import config from '../../services/database/config';
 import FlechaIcon   from '../../assets/Icons/arrow-right'
-
 export default function Login(props){
   const [mail, setMail] = useState('');
   const [senha, setSenha] = useState('');
   const {token, setToken} = useContext(Contexto);
-
   useEffect( () => {
     if( token === null ){
       SecureStore.getItemAsync(config.STORE_KEY)

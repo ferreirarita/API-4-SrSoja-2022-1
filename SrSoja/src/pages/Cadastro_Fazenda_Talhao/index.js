@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { View, Text, TextInput , SafeAreaView, TouchableOpacity, ScrollView, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { stylesFazenda, stylesTalhao, stylesListagem } from './styles'
-import Context from '../../components/Context'
+import Context from '../../context'
 import { addFazenda } from '../../services/database/controllers/Fazenda'
 import { addTalhao } from '../../services/database/controllers/Talhao'
 
@@ -16,7 +16,6 @@ import SearchIcon from '../../assets/Icons/search'
 import { CheckButton, CancelButton, AddButton, NextButton } from '../../components/Button'
 
 const Fazenda = (props) => {
-  console.log(props)
   const navigation = useNavigation();
 
   const { database, dataResult, setResult } = useContext(Context)
@@ -30,7 +29,7 @@ const Fazenda = (props) => {
   async function searchCEP(cep) {
      fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res =>res.json())
     .then(res =>{
-      //console.log(res)
+      console.log(res)
       setUf(res.uf)
       setMunicipio(res.localidade)
       setLogradouro(res.logradouro)
