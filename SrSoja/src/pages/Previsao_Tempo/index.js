@@ -1,22 +1,32 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
-import { Feather } from '@expo/vector-icons' 
+import { View, Text, TextInput, TouchableOpacity,fetch } from 'react-native'
 import styles from './styles'
+import { parse } from 'fast-xml-parser';
 
 
 export default function Previsao_Tempo () {
+    return (
 
-    const [currentTemperature,setCurrentTemperature] = useState('25') //currentTemperature = temperatura atual;
+        getXMLResponse = () => {
 
-        return (
-                <View style={styles.container}>
-                <Feather name="sun" style={{marginTop:50}} size={40} color="black" /> 
-                <View>
-                    <Text style={styles.temperature}></Text>
-                    <TextInput style={styles.texto}></TextInput>
-                </View>
-                </View>
+            fetch('https://gist.githubusercontent.com/Pavneet-Sing/d0f3324f2cd3244a6ac8ffc5e8550102/raw/8ebc801b3e4d4987590958978ae58d3f931193a3/XMLResponse.xml')
+
+            .then((response) => response.text())
+
+            .then((textResponse) => {
+
+                let obj = parse(textResponse);
+
+            })  
+
+            .catch((error) => {
+
+                console.log(error);
+
+            });
+
+        }
 
 
-        );
+    );
 }
