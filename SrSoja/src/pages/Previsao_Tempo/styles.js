@@ -5,21 +5,30 @@ const styles = StyleSheet.create({
 })
 
 
+
 container:{
     flex: 1
-    backgroundColor: '#fff'
+    backgroundColor: '#5EC7BA'
     alingnItems: 'center'
 }
 
-temperature:{
-    alingnItems: 'center'
-    flexDiretion:'row'
-    marginTop: 10
+icone:{
+    
 }
 
 texto:{
-    
+    flexDirection: 'row'
+    justifyContent: 'center'
+    alignItems: 'center'
+    backgroundColor: '#' 
+    borderWidth: 0.5
+    borderColor: '#000' 
+    height: 40
+    borderRadius: 5 
+    margin: 10 
 }
+
+
 
 
 
