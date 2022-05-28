@@ -5,16 +5,17 @@ const styles = StyleSheet.create({
 })
 
 
-
+/*
 container:{
     flex: 1
     backgroundColor: '#5EC7BA'
     alingnItems: 'center'
 }
-
-icone:{
-    
+*/
+label:{
+    textAlign:'center'
 }
+
 
 texto:{
     flexDirection: 'row'

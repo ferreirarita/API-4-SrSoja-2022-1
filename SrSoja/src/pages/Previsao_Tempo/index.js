@@ -1,26 +1,30 @@
 import React, { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
-import { Feather } from '@expo/vector-icons' 
+import { View, Text, TextInput, Dimensions } from 'react-native'
 import styles from './styles'
+import moment from 'moment'
 
-export default function Previsao_Tempo () {
+export default function Previsao_Tempo() {
 
-    const [currentTemperature,setCurrentTemperature] = useState('25') //currentTemperature = temperatura atual;
+    const [cityName, setCityName] = useState('')
 
         return (
-                <View style={styles.container}>
-
-                    <View style={styles.texto}>
-                    <TextInput> Pesquise sua Cidade</TextInput>
-                    <Text>27/05/2022</Text>
-                    </View>
-                    
-
-                <View style={styles.icone}>
-                    <Feather name="sun" style={{marginTop:50}} size={40} color="orange" /> 
+            <View style={styles.container}>
+ 
+                <View style={{justifyContent: 'center'}}>
+                    <TextInput 
+                        placeholder='Pesquise sua cidade'
+                        value={cityName}
+                        onChangeText={setCityName}
+                        style={{textAlign: "center"}}
+                    />
                 </View>
+ 
+                <View>
+                    <Text style={{textAlign: "center"}}>
+                        {moment().format("DD/MM/YYYY")}
+                    </Text>
                 </View>
-
-
+ 
+            </View>
         );
 }
