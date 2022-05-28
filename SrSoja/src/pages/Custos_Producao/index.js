@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import Applogo from '../../assets/Logotype/SrSoja_LogoAppSVG'
 import styles from './styles';
 
 
@@ -11,7 +12,7 @@ const Sementes = () => {
             <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
                 <Text>Tela de Sementes</Text>
                 <TouchableOpacity style={{marginTop:20}} onPress={() => navigation.navigate('Home')}>
-                    <Text>Visualizar</Text>
+                    <Applogo size={30} />
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

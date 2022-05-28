@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { View, Text, TextInput , SafeAreaView, TouchableOpacity, ScrollView, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { stylesFazenda, stylesTalhao, stylesListagem } from './styles'
-import Context from '../../context'
+import { ThisContext } from '../../context'
 import { addFazenda } from '../../services/database/controllers/Fazenda'
 import { addTalhao } from '../../services/database/controllers/Talhao'
 
@@ -18,7 +18,7 @@ import { CheckButton, CancelButton, AddButton, NextButton } from '../../componen
 const Fazenda = (props) => {
   const navigation = useNavigation();
 
-  const { database, dataResult, setResult } = useContext(Context)
+  const { database, dataResult, setResult } = useContext(ThisContext)
   const [fazenda, setFazenda] = useState('')
   const [cep, setCep] = useState('')
   const [uf, setUf] = useState('')
@@ -136,7 +136,7 @@ const Talhao = ({talhao_name}) => {
   const[saudeSelecionada,setSaudeSelecionada] = useState([])
 
   const [coord,setCoord] = useState ();
-  const { database, dataResult, setResult } = useContext(Context)
+  const { database, dataResult, setResult } = useContext(ThisContext)
 
   const [apelido, setApelido] = useState(talhao_name)
   const [saude, setSaude] = useState('')

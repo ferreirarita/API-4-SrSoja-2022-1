@@ -1,18 +1,16 @@
-import React, {useState} from 'react';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import React, {useState} from 'react'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+//screens
 import { Cadastro_Fazenda_Talhao } from '../pages'
-//pages
-import { Fazenda, Talhao, Listagem } from '../pages/Cadastro_Fazenda_Talhao'
-import { Area, Previsao, Calculo } from '../pages/Relatorios_Produtividade'
-import { Sementes, Fertilizantes, Agrotoxicos} from '../pages/Custos_Producao'
-/* import { Compra, Venda } from '../pages/Historico_Compra_Venda' */
+//destructuring page to use functions inside the page to bring each screen
+const { Fazenda, Talhao, Listagem } = Cadastro_Fazenda_Talhao
+const { Area, Previsao, Calculo } = Relatorios_Produtividade
+const { Sementes, Fertilizantes, Agrotoxicos} = Custos_Producao
 
 const TabCadastro = createMaterialTopTabNavigator();
-const { Fazenda, Talhao, Listagem } = Cadastro_Fazenda_Talhao
 
 function TabCadastro_Fazenda_Talhao() {
   const[name,setName]=useState('Teste') 
-
   return(
       <TabCadastro.Navigator>
         <TabCadastro.Screen name="Fazenda" component={Fazenda} talhao_name='teste'/>
@@ -21,30 +19,30 @@ function TabCadastro_Fazenda_Talhao() {
       </TabCadastro.Navigator>
   )
 }
+
 const TabRelatorio = createMaterialTopTabNavigator()
-const { Area, Previsao, Calculo } = Relatorios_Produtividade
 
 function TabRelatorios_Produtividade() {
   return(
-    <TabRelatorio.Navigator>
+      <TabRelatorio.Navigator>
         <TabRelatorio.Screen name="Area" component={Area} options={{title:'Área'}} />
         <TabRelatorio.Screen name="Previsao" component={Previsao} options={{title:'Previsão'}} />
         <TabRelatorio.Screen name="Calculo" component={Calculo} options={{title:'Cálculo'}} />
       </TabRelatorio.Navigator>
   )
 }
+
 const TabCustos = createMaterialTopTabNavigator()
-const { Sementes, Fertilizantes, Agrotoxicos} = Custos_Producao
 
 function TabCustos_Producao() {
-    return (
+  return (
       <TabCustos.Navigator>
         <TabCustos.Screen name="Sementes" component={Sementes} />
         <TabCustos.Screen name="Fertilizantes" component={Fertilizantes} />
         <TabCustos.Screen name="Agrotóxicos" component={Agrotoxicos} />
       </TabCustos.Navigator>
-    );
-  }
+  )
+}
 
 /*   const TabHistorico = createMaterialTopTabNavigator();
 

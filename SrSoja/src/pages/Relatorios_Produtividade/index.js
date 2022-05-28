@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { View, Text, TextInput, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import { stylesArea, stylesPrevisao, stylesCalculo } from './styles'
-import Context from '../../context'
+import {ThisContext} from '../../context'
 //icon
 import SelectIcon from "../../assets/Icons/chevron-down"
 //button
@@ -10,7 +10,7 @@ import { CheckButton, CancelButton, AddButton, NextButton } from '../../componen
 
 
 const Area = () => {
-  const { database, dataResult, setResult } = useContext(Context)
+  const { database, dataResult, setResult } = useContext(ThisContext)
   const navigation = useNavigation();
   return (
       <SafeAreaView style={stylesArea.container}>
@@ -86,7 +86,7 @@ const Area = () => {
 
 const Previsao = () => {
   const navigation = useNavigation();
-  const { database, dataResult, setResult } = useContext(Context)
+  const { database, dataResult, setResult } = useContext(ThisContext)
 
   const [quantidadeLinha, setQuantidadeLinha] = useState('')
   const [distanciaLinha, setDistanciaLinha] = useState('')
@@ -184,7 +184,7 @@ const Previsao = () => {
 
 const Calculo = () => {
   const navigation = useNavigation();
-  const { database, dataResult, setResult } = useContext(Context)
+  const { database, dataResult, setResult } = useContext(ThisContext)
 
   const [coleta, setColeta] = useState('')
 

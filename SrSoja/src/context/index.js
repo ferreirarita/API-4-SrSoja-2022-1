@@ -7,7 +7,6 @@ import { Alert } from "react-native"
 const ThisContext = createContext()
 
 const Context = ({ children }) => {
-
     // Database
     const [ database, setDatabase ] = useState(null)
     const [ dataResult, setResult ] = useState(null)
@@ -97,7 +96,7 @@ const Context = ({ children }) => {
     /** */
     async function singOut() {
         setUser({})
-        await Store.deleteItemAsync('token')
+        await Store.deleteItemAsync(user)
     }
     /** */
     async function singUp(name, email, password) {

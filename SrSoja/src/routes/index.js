@@ -135,7 +135,7 @@ const Routes = () => {
             headerShown: false, headerStyle:{...stylesVar.toolbar}, headerTitleAlign: 'center'
             }}>
           <Stack.Screen name="App_Open"                 component={App_Open} />
-          <Stack.Screen name="Login"                    component={Drawer_Navigation} options={{}}/>
+          <Stack.Screen name="Login"                    component={Login} options={{}}/>
           <Stack.Screen name="Cadastro_Usuario"         component={Drawer_Navigation} options={{title:'Cadastrar-se'}}/>
           
           <Stack.Screen name="Mapa"                     component={Mapa} options={{title:'Marcar Talhão', headerShown:true}}/>

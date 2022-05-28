@@ -1,11 +1,15 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native'
 import { DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer'
+import { useNavigation } from '@react-navigation/native'
+import {ThisContext} from '../../context'
 //Icons
 import LogoutIcon   from '../../assets/Icons/box-arrow-right'
 import Settings     from '../../assets/Icons/gear'
 
 const CustomDrawer = (props) => {
+    const navigation = useNavigation();
+    const {signOut}=useContext(ThisContext)
     return(
         <SafeAreaView style={{flex:1,backgroundColor: '#F7BB26'}}>
         <DrawerContentScrollView {...props}>
@@ -19,14 +23,14 @@ const CustomDrawer = (props) => {
         </DrawerContentScrollView>
         
         <View style ={{padding: 10, paddingLeft: 18, borderTopWidth:1, borderTopColor:'#CCCCC'}}>
-            <TouchableOpacity onOress={()=>{}} style={{paddingVertical:15}}>
+            <TouchableOpacity onPress={()=>{}} style={{paddingVertical:15}}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <Settings size={24} fill='#343434' />
                     <Text style={{fontSize:16, fontWeight: 'bold', marginLeft:8}}>Configurações</Text>
                 </View>
             </TouchableOpacity>
             
-            <TouchableOpacity onOress={()=>{}} style={{paddingVertical:15}}>
+            <TouchableOpacity  onPress={()=> navigation.navigate('Login')} style={{paddingVertical:15}}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <LogoutIcon size={24} fill='#343434' />
                     <Text style={{fontSize:16, fontWeight: 'bold', marginLeft:8}}>Sair</Text>
