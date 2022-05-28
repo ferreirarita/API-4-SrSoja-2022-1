@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-//screens
+//bring the screens
 import { Cadastro_Fazenda_Talhao } from '../pages'
 //destructuring page to use functions inside the page to bring each screen
 const { Fazenda, Talhao, Listagem } = Cadastro_Fazenda_Talhao
