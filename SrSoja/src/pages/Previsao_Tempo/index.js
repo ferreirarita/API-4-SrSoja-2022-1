@@ -1,38 +1,75 @@
 import {View} from 'react-native'
+import getXMLResponse from '../../components/XMLResponse';
 
-import { parse } from 'fast-xml-parser';
-import React,{ useEffect, useState } from 'react';
+const Previsao_Tempo = () => {
+return(
+    <>
+    <View style={styles.container}>
+        <View style={styles.body}>
+            <Text style={styles.bodyTitle}>Pegar do XMLResponse </Text>
+
+<Text style={styles.bodyTitle}>XMLResponse </Text>
+
+            <View style={styles.bodyRow}>
+                <View style={styles.bodyButton}>
+                    <Text style={styles.bodyText}>Relatórios</Text>
+                </View>
+            </View>
+
+<Text style={styles.bodyTitle}>XMLResponse </Text>
+
+            <View style={styles.bodyRow}>
+                <View style={styles.bodyButton}>
+                    <Text style={styles.bodyText}>Cotação da Soja</Text>
+                </View>
+            </View>
+
+            <Text style={styles.bodyTitle}>XMLResponse </Text>
+
+                            <View style={styles.bodyRow}>
+                <View style={styles.bodyButton}>
+                    <Text style={styles.bodyText}>Cotação da Soja</Text>
+                </View>
+            </View>
+
+            <Text style={styles.bodyTitle}>XMLResponse </Text>
+
+                            <View style={styles.bodyRow}>
+                <View style={styles.bodyButton}>
+                    <Text style={styles.bodyText}>Cotação da Soja</Text>
+                </View>
+            </View>    
+            
+            <Text style={styles.bodyTitle}>XMLResponse </Text>
+
+                        <View style={styles.bodyRow}>
+                <View style={styles.bodyButton}>
+                    <Text style={styles.bodyText}>Cotação da Soja</Text>
+                </View>
+            </View>
+
+<Text style={styles.bodyTitle}>XMLResponse </Text>
 
 
-const getXMLResponse = () => {
-const [tempo,settempo] = useState({})
+                            <View style={styles.bodyRow}>
+                <TouchableOpacity style={styles.bodyButton}>
+                    <Text style={styles.bodyText}>Cotação da Soja</Text>
+                </TouchableOpacity>
+            </View>
 
-    useEffect (() => {
+            <View style={styles.bodyRowDesabled}>
+                <View style={styles.bodyButtonDesabled}>
+                    <Text style={styles.bodyTextDesabled}>Histórico de Compra e Venda</Text>
+                </View>
 
-        fetch('http://servicos.cptec.inpe.br/XML/cidade/7dias/-22.90/-47.06/previsaoLatLon.xml')
+                <View style={styles.bodyButtonDesabled}>
 
-        .then((response) => response.text())
-
-        .then((textResponse) => {
-
-            let obj = parse(textResponse);
-            let cidade = obj.cidade.nome;
-            let previsao = [...obj.cidade.previsao]
-            settempo({cidade,previsao});
-        })
-
-        .catch((error) => {
-
-            console.log(error);
-
-        });
-    },[]);
-
-    console.log (tempo);
-
-    return (<View>
-        
+                    <Text style={styles.bodyTextDesabled}>Comparação da Região</Text>
+                </View>
+            </View>
         </View>
-        );
+   </View>
+   </>
+);
 }
-export default getXMLResponse;
+export default Previsao_Tempo
