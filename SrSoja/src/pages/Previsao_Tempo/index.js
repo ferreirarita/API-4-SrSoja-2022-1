@@ -1,32 +1,38 @@
-import React, { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity,fetch } from 'react-native'
-import styles from './styles'
+import {View} from 'react-native'
+
 import { parse } from 'fast-xml-parser';
+import React,{ useEffect, useState } from 'react';
 
 
-export default function Previsao_Tempo () {
-    return (
+const getXMLResponse = () => {
+const [tempo,settempo] = useState({})
 
-        getXMLResponse = () => {
+    useEffect (() => {
 
-            fetch('https://gist.githubusercontent.com/Pavneet-Sing/d0f3324f2cd3244a6ac8ffc5e8550102/raw/8ebc801b3e4d4987590958978ae58d3f931193a3/XMLResponse.xml')
+        fetch('http://servicos.cptec.inpe.br/XML/cidade/7dias/-22.90/-47.06/previsaoLatLon.xml')
 
-            .then((response) => response.text())
+        .then((response) => response.text())
 
-            .then((textResponse) => {
+        .then((textResponse) => {
 
-                let obj = parse(textResponse);
+            let obj = parse(textResponse);
+            let cidade = obj.cidade.nome;
+            let previsao = [...obj.cidade.previsao]
+            settempo({cidade,previsao});
+        })
 
-            })  
+        .catch((error) => {
 
-            .catch((error) => {
+            console.log(error);
 
-                console.log(error);
+        });
+    },[]);
 
-            });
+    console.log (tempo);
 
-        }
-
-
-    );
+    return (<View>
+        
+        </View>
+        );
 }
+export default getXMLResponse;
