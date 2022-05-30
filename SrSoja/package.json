@@ -19,6 +19,7 @@
     "@react-navigation/native-stack": "^6.6.1",
     "@react-navigation/stack": "^6.2.1",
     "expo": "^44.0.6",
+    "expo-file-system": "~13.1.4",
     "expo-location": "~14.0.1",
     "expo-secure-store": "~11.1.0",
     "expo-splash-screen": "~0.14.1",

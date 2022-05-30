@@ -1,5 +1,6 @@
 import * as SQLite from 'expo-sqlite'
 import models from '../models'
+import FileSystem from 'expo-file-system'
 
 /**@override */
 export default async function openDatabase() {
@@ -28,14 +29,16 @@ export default async function openDatabase() {
             tx.executeSql(models.talhao_saude)
             tx.executeSql(models.talhao)
             tx.executeSql(models.area_talhao)
+            tx.executeSql(models.hist_gasto)
             //
             
         })
 
         return database
+        
+        
     }
     catch (error) {
-        console.log(`Erro: ${error}`)
-        return null
+        console.error(`Erro: ${error}`)
     }
 }

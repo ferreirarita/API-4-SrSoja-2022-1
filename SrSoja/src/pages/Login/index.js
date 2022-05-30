@@ -9,6 +9,7 @@ import { useNavigation } from '@react-navigation/native'
 import getContext from '../../hooks'
 
 export default function Login() {
+  const navigation = useNavigation()
   const [mail, setMail] = useState('');
   const [senha, setSenha] = useState('');
 
@@ -34,9 +35,7 @@ export default function Login() {
     if(user?.error)
       Alert.alert(user.error)
     else if(user?.prd_id !== undefined) {
-      /*
-      navega para a home
-      */
+      navigation.navigate('HomeDrawer')
     }
   }, [user])
 

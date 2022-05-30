@@ -19,6 +19,7 @@ import Mapa             from '../pages/Mapa';
 
 /** Testes */
 import Teste_Banco from '../pages/Teste_Banco'
+import Registro_Gasto from '../pages/Registro_Gasto'
 /** */
 
 import { Fazenda, Talhao, Listagem } from '../pages/Cadastro_Fazenda_Talhao'
@@ -73,6 +74,7 @@ function Drawer_Navigation () {
         ) 
       }} />
       <Drawer.Screen name='Teste do Banco' component={Teste_Banco} options={{title: 'Teste do Banco', drawerIcon: () => <PainelIcon size={24} fill='#f00' />}} />
+      <Drawer.Screen name='Registro_Gasto' component={Registro_Gasto} options={{title: 'Registro de Gastos', drawerIcon: () => <CustosIcon size={24} fill='#f00' />}} />
     </Drawer.Navigator>
   );
 }
