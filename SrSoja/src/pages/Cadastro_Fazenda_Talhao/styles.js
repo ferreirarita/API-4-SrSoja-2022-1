@@ -49,29 +49,34 @@ const stylesFazenda = StyleSheet.create({
     ...stylesVar.backgroundYellow
   },
   footer:{
-    margin:5,
-    justifyContent:'center'
-  },
-  footerButtonCancel:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonCheck:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonNext:{
-   marginRight:30,
-   flexDirection: "row",
-   justifyContent: "center",
+    flex:1,
+    position:'absolute',
+    alignSelf: "center",
+    bottom:0,
+    right:15,
   },
   footerRow: {
+    flexDirection: "row",
+    alignSelf: "center",
+    position:'relative',
+  },
+  footerButtonCenter: {
+    alignSelf: "center",
    flexDirection: "row",
-   alignItems: "center",
-   justifyContent: "space-between",
  },
+ footerButtonRight: {
+  alignSelf: "center",
+},
+  footerButtonCancel:{
+    flexDirection: "row",
+  },
+  footerButtonCheck:{
+    marginLeft:40,
+    flexDirection: "row",
+  },
+  footerButtonNext:{
+    paddingLeft:50
+  },
 
 });
 
@@ -121,29 +126,34 @@ const stylesTalhao = StyleSheet.create({
   },
 
   footer:{
-    margin:5,
-    justifyContent:'center'
+    flex:1,
+    position:'absolute',
+    alignSelf: "center",
+    bottom:0,
+    right:15,
   },
-  footerButtonCancel:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonCheck:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonNext:{
-    marginRight:30,
-    flexDirection: "row",
-    justifyContent: "center",
-   },
   footerRow: {
     flexDirection: "row",
-   alignItems: "center",
-   justifyContent: "space-between",
+    alignSelf: "center",
+    position:'relative',
+  },
+  footerButtonCenter: {
+    alignSelf: "center",
+   flexDirection: "row",
  },
+ footerButtonRight: {
+  alignSelf: "center",
+},
+  footerButtonCancel:{
+    flexDirection: "row",
+  },
+  footerButtonCheck:{
+    marginLeft:40,
+    flexDirection: "row",
+  },
+  footerButtonNext:{
+    paddingLeft:50
+  },
 
   
 })
@@ -196,31 +206,35 @@ const stylesListagem = StyleSheet.create({
     justifyContent: 'flex-end',
     marginRight:10
   },
-
   footer:{
-    margin:5,
-    justifyContent:'center'
+    flex:1,
+    position:'absolute',
+    alignSelf: "center",
+    bottom:0,
+    right:15,
   },
-  footerButtonCancel:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonCheck:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonAdd:{
-    marginRight:30,
-    flexDirection: "row",
-    justifyContent: "center",
-   },
   footerRow: {
     flexDirection: "row",
-   alignItems: "center",
-   justifyContent: "space-between",
+    alignSelf: "center",
+    position:'relative',
+  },
+  footerButtonCenter: {
+    alignSelf: "center",
+   flexDirection: "row",
  },
+ footerButtonRight: {
+  alignSelf: "center",
+},
+  footerButtonCancel:{
+    flexDirection: "row",
+  },
+  footerButtonCheck:{
+    marginLeft:40,
+    flexDirection: "row",
+  },
+  footerButtonAdd:{
+    paddingLeft:50
+  },
 
 })
 

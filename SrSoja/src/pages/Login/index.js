@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import { Text, Image, TextInput, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import { Text, Image, TextInput, View, TouchableOpacity, ScrollView, Alert } from 'react-native'
 import styles from './styles'
-import ArrowRight from '../../assets/Icons/arrow-right';
+import ArrowRight from '../../assets/Icons/arrow-right'
 import LoadingScreen from '../../components/LoadingScreen'
 
 import { useNavigation } from '@react-navigation/native'
 
 import getContext from '../../hooks'
+import style from '../../components/Button/styles'
 
 export default function Login() {
   const navigation = useNavigation()
@@ -43,13 +44,15 @@ export default function Login() {
     !loading ?
     <ScrollView style={styles.container}>
       <View style={styles.scroll}>
+        <View style={styles.header}>
+          <Image source={require('../../assets/Logotype/SrSoja_Body.png')} style={styles.headerLogoBody} />
+          <Image source={require('../../assets/Logotype/SrSoja_Name.png')} style={styles.headerLogoText} />
+        </View>
+        <Text style={styles.headerTitle}>Fazer Login</Text>
 
-      <Text>Login</Text>
-
-      <View style={styles.body}>
-
+        <View style={styles.body}>
+          
           <Text style={styles.bodyTitle}>E-mail</Text>
-
           <TextInput
             style={styles.bodyInput}
             onChangeText={setMail}
@@ -64,6 +67,7 @@ export default function Login() {
           <Text style={styles.bodyTitle}>Senha</Text>
           <TextInput
             style={styles.bodyInput}
+            placeholder="Informar senha"
             onChangeText={setSenha}
             value={senha}
             secureTextEntry={true}
@@ -71,32 +75,30 @@ export default function Login() {
 
         </View>
 
-        <View style={styles.bodyButton}>
-
+        <View style={styles.bodyButtons}>
           <TouchableOpacity 
-            style={styles.bodyButton1} 
+            style={styles.bodyButtonRegister} 
             onPress={()=>console.log('Cadastro')/*props.navigation.navigate("Register")*/}
           >
-            <Text style={styles.bodyText}>Registrar-se</Text>
+            <Text style={styles.bodyTextButton}>Registrar-se</Text>
           </TouchableOpacity>
 
           <TouchableOpacity 
-            style={styles.bodyButton2} 
+            style={styles.bodyButtonLogin} 
             onPress={() => {
               setLoading(true)
               logIn(mail, senha)
               .finally(() => setLoading(false))
             }}
           >
-            <Text style={styles.bodyText}>Login</Text>
-            <ArrowRight size="25" fill='#F7BB26'/>
+            <Text style={styles.bodyTextButton}>Login</Text>
+            <ArrowRight size="25" fill='#F7BB26' />
           </TouchableOpacity>
-
         </View>
+      </View>
 
       
       
-      </View>
     </ScrollView>
     :
     <LoadingScreen />

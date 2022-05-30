@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import stylesVar from '../../styles/stylesVar'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 //bring the screens
 import { Cadastro_Fazenda_Talhao } from '../pages'
@@ -12,7 +13,14 @@ const TabCadastro = createMaterialTopTabNavigator();
 function TabCadastro_Fazenda_Talhao() {
   const[name,setName]=useState('Teste') 
   return(
-      <TabCadastro.Navigator>
+      <TabCadastro.Navigator
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          height: 2.5,
+          ...stylesVar.toolbar
+        },
+      }}
+      >
         <TabCadastro.Screen name="Fazenda" component={Fazenda} talhao_name='teste'/>
         <TabCadastro.Screen talhao_name={name} name="Talhão" component={Talhao} />
         <TabCadastro.Screen name="Listagem" component={Listagem} />
@@ -24,7 +32,14 @@ const TabRelatorio = createMaterialTopTabNavigator()
 
 function TabRelatorios_Produtividade() {
   return(
-      <TabRelatorio.Navigator>
+      <TabRelatorio.Navigator
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          height: 2.5,
+          ...stylesVar.toolbar
+        },
+      }}
+      >
         <TabRelatorio.Screen name="Area" component={Area} options={{title:'Área'}} />
         <TabRelatorio.Screen name="Previsao" component={Previsao} options={{title:'Previsão'}} />
         <TabRelatorio.Screen name="Calculo" component={Calculo} options={{title:'Cálculo'}} />
@@ -36,7 +51,14 @@ const TabCustos = createMaterialTopTabNavigator()
 
 function TabCustos_Producao() {
   return (
-      <TabCustos.Navigator>
+      <TabCustos.Navigator
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          height: 2.5,
+          ...stylesVar.toolbar
+        },
+      }}
+      >
         <TabCustos.Screen name="Sementes" component={Sementes} />
         <TabCustos.Screen name="Fertilizantes" component={Fertilizantes} />
         <TabCustos.Screen name="Agrotóxicos" component={Agrotoxicos} />
@@ -48,7 +70,14 @@ function TabCustos_Producao() {
 
   function TabHistorico_Compra_Venda() {
       return (
-        <TabHistorico.Navigator>
+        <TabHistorico.Navigator
+              screenOptions={{
+        tabBarIndicatorStyle: {
+          height: 2.5,
+          ...stylesVar.toolbar
+        },
+      }}
+        >
           <TabHistorico.Screen name="Compra" component={Compra} />
           <TabHistorico.Screen name="Venda" component={Venda} />
         </TabHistorico.Navigator>

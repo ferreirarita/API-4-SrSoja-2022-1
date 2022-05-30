@@ -94,44 +94,39 @@ const Context = ({ children }) => {
     }
 
     /** */
-    async function singOut() {
+    async function logOut() {
         setUser({})
-        await Store.deleteItemAsync(user)
+        await Store.deleteItemAsync('user')
     }
     /** */
-    async function singUp(name, email, password) {
+    async function logUp(name, email, password) {
         if(name === '') {
-            Alert.alert('Informe um nome')
-            return false
+            setUser({ error: 'Informe um nome' })
         }
         else if(email === '') {
-            Alert.alert('Informe um e-mail')
-            return false
+            setUser({ error: 'Informe um e-mail' })
         }
         else if(password === ''){
-            Alert.alert('Informe a senha')
-            return false
+            setUser({ error: 'Informe a senha' })
         }
-        
-        addProdutor(
-            database,
-            {
-                prd_nome: name,
-                prd_email: email,
-                prd_senha: password
-            },
-            setResult
-        )
-
-        useEffect(() => {
-            if(dataResult !== null) 
-                defToken()
-        }, [dataResult])
+        else try {
+            addProdutor(
+                database,
+                {
+                    prd_nome: name,
+                    prd_email: email,
+                    prd_senha: password
+                },
+                setResult
+            )
+        } catch (e) {
+            console.error(`Erro: ${e}`)
+        }
     }
 
     return (
         <ThisContext.Provider value={
-            { database, dataResult, setResult, user, setUser, logIn, singOut, singUp }
+            { database, dataResult, setResult, user, setUser, logIn, logOut, logUp }
         }>
             { children }
         </ThisContext.Provider>

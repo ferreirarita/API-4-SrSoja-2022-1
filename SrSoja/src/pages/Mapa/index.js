@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { View } from 'react-native'
 import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location'
 import { useNavigation } from '@react-navigation/native'
+import styles from './styles'
+import { CheckButton, CancelButton, AddButton, NextButton } from '../../components/Button'
 
 //(<Mapa longitude= 0 latitude= 0/>)
 export default function Mapa(props) {
@@ -27,9 +30,10 @@ useEffect(()=>{
     })();
 });
 
-return( 
+return(
+  <>
   <MapView
-        style={{flex:1}}
+        style={styles.container}
         initialRegion={origin}
         showsUserLocation={true}
         zoomEnabled={true}
@@ -44,4 +48,24 @@ return(
   >
     <Marker coordinate={alfinete}  />
   </MapView>
+  <View style={styles.footer}>
+    <View style={styles.footerRow}>
+      <View style={styles.footerColumn}>
+        <CancelButton size={48} 
+        onPress={() => {
+          navigation.goBack()
+        }}
+        />
+      </View>
+
+      <View style={styles.footerColumn}>
+        <CheckButton size={48}
+        onPress={()=>{
+          navigation.goBack()
+        }}
+        />
+      </View>
+    </View>
+  </View>
+</>
 )}

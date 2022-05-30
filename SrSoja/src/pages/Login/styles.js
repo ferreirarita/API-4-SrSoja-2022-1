@@ -12,29 +12,31 @@ const styles = StyleSheet.create({
     paddingTop: '40%'
   },
 
-  logoView: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    padding:10
-  },
-
-  logotype: {
-    height: 200,
-    width: 150
-  },
-
-  logoText: {
-    height: 100,
-    width: 50
-  },
-  
   header: {
-    height: '100%',
-    width: '100%',
-    padding: 10
+    flex:1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin:10
+  },
+
+  headerLogoBody: {
+    height:156,
+    width:110,
+    aspectRatio:0.9,
+
   },
   
+  headerLogoText: {
+    height:105,
+    width:118,
+    aspectRatio:1,
+  },
+  
+  headerTitle:{
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+
   body:{
     marginTop:20
   },
@@ -43,7 +45,7 @@ const styles = StyleSheet.create({
     color: '#333',
     marginBottom: 5,
     width: '100%',
-    fontSize: 12
+    fontSize: 13
   },
 
   bodyInput: {
@@ -60,34 +62,32 @@ const styles = StyleSheet.create({
     color:'#F7BB26',
     textAlign: 'center',
   },
-  bodyButton: {
-    flex:1, 
-    marginTop:'20%', 
+  bodyButtons: {
+    flex:1,
+    marginTop:40,
     justifyContent:'center',
   },
-  bodyButton1: {
+  bodyButtonRegister: {
     backgroundColor: "#343434",
-    paddingVertical: 6,
-    paddingHorizontal: 15,
+    padding: 13,
     borderRadius: 4,
-    marginHorizontal: 10,
+    paddingHorizontal: 30,
 
   },
-  bodyButton2: {
+  bodyButtonLogin: {
     backgroundColor: "#343434",
     marginTop:10,
-    paddingVertical: 6,
-    paddingHorizontal: 15,
+    padding: 11,
     borderRadius: 4,
-    marginHorizontal: 10,
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: 'space-evenly',
     flexDirection: "row"
   },
-  imagem2:{
-    marginLeft: 10,
-    width: 25,
-    height: 28
-  }
+  bodyTextButton:{
+    color:'#F7BB26',
+    justifyContent: 'center', 
+    fontSize:14 
+  },
 });
   
 export default styles

@@ -38,11 +38,6 @@ const Fazenda = (props) => {
 
     }
 
-/*     useEffect(()=>{
-      if(dataResult !== null)console.log(dataResult)
-    },[dataResult]
-    ) */
-
   return (
       <SafeAreaView style={stylesFazenda.container}>
         <ScrollView>
@@ -90,38 +85,42 @@ const Fazenda = (props) => {
 
         <View style={stylesFazenda.footer}>
           <View style={stylesFazenda.footerRow}>
-            <View style={stylesFazenda.footerButtonCancel}>
-              <CancelButton size={48} 
-              onPress={() => {
-                setFazenda('')
-                setCep('')
-                setUf('')
-                setMunicipio('')
-                setLogradouro('')
-                setBairro('')
-              }}
-              />
-              <View style={stylesFazenda.footerButtonCheck}>
-              <CheckButton size={48}
-              onPress={()=>{
-                try{
-                  addFazenda(database,{
-                    prd_id:1,
-                    fzd_nome:fazenda,
-                    fzd_cep:cep,
-                    fzd_estado:uf,
-                    fzd_municipio:municipio
-                  },setResult)
-                }catch(e){console.log(e)}
-            }}
-              />
+            <View style={stylesFazenda.footerButtonCenter}>
+              <View style={stylesFazenda.footerButtonCancel}>
+                <CancelButton size={48} 
+                onPress={() => {
+                  setFazenda('')
+                  setCep('')
+                  setUf('')
+                  setMunicipio('')
+                  setLogradouro('')
+                  setBairro('')
+                }}
+                />
               </View>
-
+              <View style={stylesFazenda.footerButtonCheck}>
+                <CheckButton size={48}
+                onPress={()=>{
+                  try{
+                    addFazenda(database,{
+                      prd_id:1,
+                      fzd_nome:fazenda,
+                      fzd_cep:cep,
+                      fzd_estado:uf,
+                      fzd_municipio:municipio
+                    },setResult)
+                  }catch(e){console.log(e)}
+              }}
+                />
+              </View>
             </View>
-            <View style={stylesFazenda.footerButtonNext}>
-              <NextButton size={48}
-              onPress={()=>{navigation.navigate('Talhão')
-              }}/>
+            <View style={stylesFazenda.footerButtonRight}>
+              <View style={stylesFazenda.footerButtonNext}>
+                <NextButton size={48}
+                onPress={()=>{navigation.navigate('Talhão')
+                }}
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -145,11 +144,6 @@ const Talhao = ({talhao_name}) => {
     console.log("teste", obj)
   }
 
-
-/*   useEffect(()=>{
-    if(dataResult !== null)console.log(dataResult)
-  },[dataResult]
-  ) */
   
   return (
       <SafeAreaView style={stylesTalhao.container}>
@@ -184,7 +178,7 @@ const Talhao = ({talhao_name}) => {
 
         <View style={stylesTalhao.footer}>
           <View style={stylesTalhao.footerRow}>
-            <View style={stylesTalhao.footerRow}>
+            <View style={stylesTalhao.footerButtonCenter}>
 
               <View style={stylesTalhao.footerButtonCancel}>
                 <CancelButton size={48}
@@ -212,9 +206,14 @@ const Talhao = ({talhao_name}) => {
                   />
               </View>
            </View>
+           <View style={stylesTalhao.footerButtonRight}>
 
-            <View style={stylesTalhao.footerButtonNext}>
-              <NextButton size={48}/>
+              <View style={stylesTalhao.footerButtonNext}>
+                <NextButton size={48}
+                  onPress={()=>{navigation.navigate('Listagem')
+                  }}
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -249,7 +248,7 @@ const Listagem = () => {
 
         <View style={stylesListagem.footer}>
           <View style={stylesListagem.footerRow}>
-            <View style={stylesListagem.footerRow}>
+            <View style={stylesListagem.footerButtonCenter}>
               <View style={stylesListagem.footerButtonCancel}>
                 <CancelButton size={48}
 
@@ -260,10 +259,12 @@ const Listagem = () => {
 
                   />
               </View>
-           </View>
+            </View>
+            <View style={stylesListagem.footerButtonRight}>
 
-            <View style={stylesListagem.footerButtonAdd}>
-              <AddButton size={48}/>
+              <View style={stylesListagem.footerButtonAdd}>
+                <AddButton size={48}/>
+              </View>
             </View>
           </View>
         </View>

@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     flex: 0.1,
     flexDirection: 'row',
     alignItems: 'center',
-    ...stylesVar.boxPrimary
+    ...stylesVar.boxPrimary,
   },
 
   headerColumn:{
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 4,
     margin: 4,
+    elevation:3
   },
   bodyText: {
     marginTop:5,

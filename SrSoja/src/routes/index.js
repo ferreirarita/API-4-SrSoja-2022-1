@@ -84,7 +84,14 @@ function TabCadastro_Fazenda_Talhao() {
   const[name,setName]=useState('Teste')
 
   return(
-      <TabCadastro.Navigator>
+      <TabCadastro.Navigator
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          backgroundColor: '#F7BB26',
+          height: 2.5,
+        },
+      }}
+      >
         <TabCadastro.Screen name="Fazenda" component={Fazenda} talhao_name='teste'/>
         <TabCadastro.Screen talhao_name={name} name="Talhão" component={Talhao} />
         <TabCadastro.Screen name="Listagem" component={Listagem} />
@@ -95,7 +102,14 @@ const TabRelatorio = createMaterialTopTabNavigator();
 
 function TabRelatorios_Produtividade() {
   return(
-      <TabRelatorio.Navigator>
+      <TabRelatorio.Navigator
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          backgroundColor: '#F7BB26',
+          height: 2.5,
+        },
+      }}
+      >
         <TabRelatorio.Screen name="Area" component={Area} options={{title:'Área'}} />
         <TabRelatorio.Screen name="Previsao" component={Previsao} options={{title:'Previsão'}} />
         <TabRelatorio.Screen name="Calculo" component={Calculo} options={{title:'Cálculo'}} />
@@ -106,7 +120,14 @@ const TabCustos = createMaterialTopTabNavigator();
 
 function TabCustos_Producao() {
     return (
-      <TabCustos.Navigator>
+      <TabCustos.Navigator
+      screenOptions={{
+        tabBarIndicatorStyle: {
+          backgroundColor: '#F7BB26',
+          height: 2.5,
+        },
+      }}
+      >
         <TabCustos.Screen name="Sementes" component={Sementes} />
         <TabCustos.Screen name="Fertilizantes" component={Fertilizantes} />
         <TabCustos.Screen name="Agrotóxicos" component={Agrotoxicos} />
@@ -118,7 +139,14 @@ function TabCustos_Producao() {
 
   function TabHistorico_Compra_Venda() {
       return (
-        <TabHistorico.Navigator>
+        <TabHistorico.Navigator
+        screenOptions={{
+          tabBarIndicatorStyle: {
+            backgroundColor: '#F7BB26',
+            height: 2.5,
+          },
+        }}
+        >
           <TabHistorico.Screen name="Compra" component={Compra} />
           <TabHistorico.Screen name="Venda" component={Venda} />
         </TabHistorico.Navigator>
