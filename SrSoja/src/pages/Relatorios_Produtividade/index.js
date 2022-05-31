@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { View, Text, TextInput, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import { Picker } from '@react-native-picker/picker'
 import { stylesArea, stylesPrevisao, stylesCalculo } from './styles'
 import {ThisContext} from '../../context'
 //icon
@@ -12,23 +13,48 @@ import { CheckButton, CancelButton, AddButton, NextButton } from '../../componen
 const Area = () => {
   const { database, dataResult, setResult } = useContext(ThisContext)
   const navigation = useNavigation();
+
+  const [fazenda, setFazenda]= useState(['Fazenda 1', 'Fazenda 2', 'Fazenda 3', 'Fazenda 4'])
+  const [selectedFazenda,setSelectedFazenda]= useState([])
+  
+  
+
   return (
       <SafeAreaView style={stylesArea.container}>
         <ScrollView>
           <View style={stylesArea.body}>
             <View style={stylesArea.bodyRow}>
               <View style={stylesArea.bodyColumn}>
-                <Text style={stylesArea.bodyTitle}>Estado</Text>
+                <Text style={stylesArea.bodyTitle}>Fazenda</Text>
                 <TouchableOpacity style={stylesArea.bodyRowSelect}>
-                <Text style={stylesArea.bodyTitleSelect}>Selecione</Text>
+
+
                 <SelectIcon size={20} fill="#343434" />
                 </TouchableOpacity>
               </View>
               <View style={stylesArea.bodyColumn}>
-                <Text style={stylesArea.bodyTitle}>Município</Text>
+                <Text style={stylesArea.bodyTitle}>Talhão</Text>
                 <TouchableOpacity style={stylesArea.bodyRowSelect}>
-                  <Text style={stylesArea.bodyTitleSelect}>Selecione</Text>
-                  <SelectIcon size={20} fill="#343434" />
+                
+                <Picker
+                style={{width:150, height:30}}
+                  selectedValue={selectedFazenda}
+                  onValueChange={(itemValue)=>
+                    setSelectedFazenda(itemValue)
+                }>
+                
+                    {
+                      fazenda.map(fzd => {
+                        return(
+                        <Picker.item style={{flex:1}} label={fzd} value={fzd} />
+                        )
+                      })
+
+                
+                }
+
+                </Picker>
+
                 </TouchableOpacity>
               </View>
             </View>
@@ -250,7 +276,7 @@ const Calculo = () => {
            </View>
 
             <View style={stylesCalculo.footerButtonNext}>
-              <NextButton size={48}/>
+              <AddButton size={48}/>
             </View>
           </View>
         </View>

@@ -29,6 +29,7 @@ const stylesArea = StyleSheet.create({
     alignItems: "center",
   },
   bodyTitle: {
+    flex:1,
     ...stylesVar.titleSecondary,
   },
   bodyTitleSelect: {
