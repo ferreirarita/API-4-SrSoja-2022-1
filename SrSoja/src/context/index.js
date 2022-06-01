@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react"
 import openDatabase from '../services/database/config'
-import { addProdutor, login } from '../services/database/controllers/Produtor'
+import { addProdutor, login, getProdutor } from '../services/database/controllers/Produtor'
 import * as Store from 'expo-secure-store'
 import { Alert } from "react-native"
 
@@ -32,7 +32,7 @@ const Context = ({ children }) => {
         if(user?.error)
             console.log(user.error)
         else if(user?.prd_id !== undefined) {
-            console.log('@chegou um usuario:',user?.prd_id,'@')
+            console.log('@chegou um usuario:',JSON.stringify(user),'@')
             await Store.setItemAsync('user',JSON.stringify(user))
         }
     },[user])
@@ -65,26 +65,34 @@ const Context = ({ children }) => {
         await Store.deleteItemAsync('user')
     }
     
-    async function logUp(name, email, password) {
-        if(name === '') {
+    async function logUp(name, email, pass, passConfirm) {
+        if(name === '') 
             setUser({ error: 'Informe um nome' })
-        }
-        else if(email === '') {
-            setUser({ error: 'Informe um e-mail' })
-        }
-        else if(password === ''){
-            setUser({ error: 'Informe a senha' })
-        }
         
-        addProdutor(
-            database,
-            {
-                prd_nome: name,
-                prd_email: email,
-                prd_senha: password
-            },
-            setUser
-        )
+        else if(email === '') 
+            setUser({ error: 'Informe um e-mail' })
+        
+        else if(pass === '')
+            setUser({ error: 'Informe a senha' })
+        
+        else if(passConfirm === '')
+            setUser({ error: 'Confirme a senha' })
+        
+        else if(pass !== passConfirm)
+            setUser({ error: 'Senhas diferentes' })
+        else try {
+            addProdutor(
+                database,
+                {
+                    prd_nome: name,
+                    prd_email: email,
+                    prd_senha: pass
+                },
+                setUser
+            )
+        } catch (e) {
+            console.error(`Erro: ${e}`)
+        }
     }
 
     return (

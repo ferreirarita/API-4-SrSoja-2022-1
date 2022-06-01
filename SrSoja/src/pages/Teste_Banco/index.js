@@ -62,6 +62,10 @@ export default function Teste_Banco() {
     },[dataResult])
     */
 
+    useEffect(()=>{
+        console.log(dataResult)
+    },[dataResult])
+
     useEffect(() => {
         if(user?.error)
             Alert.alert(user.error)
@@ -107,9 +111,17 @@ export default function Teste_Banco() {
                     <AddButton
                         onPress={() => {
                             
-                            setLoading(true)
-                            logIn('leo.ribeiro0256@gmail.com', '444')
-                            .finally(() => setLoading(false))
+                            try {
+                                getProdutor(
+                                    database,
+                                    {
+                                        prd_id: 0
+                                    },
+                                    setResult
+                                )
+                            } catch (error) {
+                                console.log(error)
+                            }
 
                             //console.log('C')
                             /*
@@ -135,8 +147,8 @@ export default function Teste_Banco() {
 
                     <NextButton
                         onPress={() => {
-                            console.log('R')
-                            /*
+                            // console.log('R')
+                            /**/
                             try {
                                 getProdutor(
                                     database,
@@ -148,7 +160,7 @@ export default function Teste_Banco() {
                             } catch (error) {
                                 console.log(error)
                             }
-                            */
+                            /**/
                         }}
                         size='64'
                         buttonStyle={style.button}
@@ -188,7 +200,7 @@ export default function Teste_Banco() {
                                 delProdutor(
                                     database,
                                     {
-                                        prd_id
+                                        prd_id:"yt"
                                     },
                                     setResult
                                 )
