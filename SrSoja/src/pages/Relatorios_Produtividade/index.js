@@ -4,8 +4,6 @@ import {useNavigation} from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker'
 import { stylesArea, stylesPrevisao, stylesCalculo } from './styles'
 import {ThisContext} from '../../context'
-//icon
-import SelectIcon from "../../assets/Icons/chevron-down"
 //button
 import { CheckButton, CancelButton, AddButton, NextButton } from '../../components/Button'
 
@@ -16,7 +14,10 @@ const Area = () => {
 
   const [fazenda, setFazenda]= useState(['Fazenda 1', 'Fazenda 2', 'Fazenda 3', 'Fazenda 4'])
   const [selectedFazenda,setSelectedFazenda]= useState([])
-  
+
+
+  const [talhao, setTalhao]= useState(['Talhão 1', 'Talhão 2', 'Talhão 3', 'Talhão 4'])
+  const [selectedTalhao,setSelectedTalhao]= useState([])
   
 
   return (
@@ -28,8 +29,21 @@ const Area = () => {
                 <Text style={stylesArea.bodyTitle}>Fazenda</Text>
                 <TouchableOpacity style={stylesArea.bodyRowSelect}>
 
+                <Picker
+                style={{flex:1, flexWrap:'nowrap'}}
+                  selectedValue={selectedFazenda}
+                  onValueChange={(itemValue,index)=>
+                    setSelectedFazenda(itemValue,index)
+                }>
+                {
+                  fazenda.map((fzd,index) => {
+                    return(
+                    <Picker style={{flex:1}} label={fzd} value={fzd} key={index} />
+                    )
+                  }) 
+                }
+                </Picker>
 
-                <SelectIcon size={20} fill="#343434" />
                 </TouchableOpacity>
               </View>
               <View style={stylesArea.bodyColumn}>
@@ -37,22 +51,18 @@ const Area = () => {
                 <TouchableOpacity style={stylesArea.bodyRowSelect}>
                 
                 <Picker
-                style={{width:150, height:30}}
-                  selectedValue={selectedFazenda}
-                  onValueChange={(itemValue)=>
-                    setSelectedFazenda(itemValue)
+                style={{flex:1, flexWrap:'nowrap'}}
+                  selectedValue={selectedTalhao}
+                  onValueChange={(itemValue,index)=>
+                    setSelectedTalhao(itemValue,index)
                 }>
-                
-                    {
-                      fazenda.map(fzd => {
-                        return(
-                        <Picker.item style={{flex:1}} label={fzd} value={fzd} />
-                        )
-                      })
-
-                
+                {
+                  talhao.map((tl,index) => {
+                    return(
+                    <Picker style={{flex:1}} label={tl} value={tl} key={index} />
+                    )
+                  }) 
                 }
-
                 </Picker>
 
                 </TouchableOpacity>

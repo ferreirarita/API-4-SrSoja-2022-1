@@ -3,27 +3,26 @@ import { StyleSheet } from "react-native"
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7BB26'
+    backgroundColor: '#F7BB26',
   },
 
   scroll:{
     flex: 1,
     alignItems:'center',
-    paddingTop: '40%'
+    paddingTop: '40%',
+
   },
 
   header: {
     flex:1,
     flexDirection: 'row',
     alignItems: 'center',
-    margin:10
   },
 
   headerLogoBody: {
     height:156,
     width:110,
     aspectRatio:0.9,
-
   },
   
   headerLogoText: {
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
   
   headerTitle:{
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 16,
   },
 
   body:{

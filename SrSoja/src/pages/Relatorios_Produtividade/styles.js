@@ -20,7 +20,7 @@ const stylesArea = StyleSheet.create({
     borderBottomWidth: 1,
   },
   bodyColumn: {
-    flex: 0.4,
+    flex: 0.5,
   },
   bodyRowSelect: {
     flex: 1,
