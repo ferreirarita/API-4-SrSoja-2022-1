@@ -14,13 +14,14 @@
 async function addProdutor(database, args, setResult) {
     let { prd_id, prd_nome, prd_email, prd_senha } = args;
     if (typeof prd_id === 'undefined' || prd_id == '') {
+        prd_id = prd_nome + prd_email
         database.transaction(
             tx => {
                 tx.executeSql(
                     `INSERT INTO produtor (prd_id, prd_nome,prd_email,prd_senha) VALUES (?,?,?,?)`,
-                    [prd_nome + prd_email, prd_nome, prd_email, prd_senha],
+                    [prd_id, prd_nome, prd_email, prd_senha],
                     (_, resultSet) => {
-                        setResult(resultSet.insertId)
+                        getProdutor(database,{prd_id},setResult)
                     },
                     (_,error) => console.error(`Erro ao adicionar: ${error}`)
                 )
@@ -65,7 +66,7 @@ async function getProdutor(database, args, setResult) {
                     WHERE prd_id = ?`,
                     [prd_id],
                     (_,{ rows: { _array } }) => {
-                        setResult(JSON.stringify(_array[0]))
+                        setResult(_array[0])
                     },
                     (_,error) => console.error(`Erro ao obter: ${error}`)
                 )

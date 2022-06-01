@@ -24,13 +24,14 @@ export default async function openDatabase() {
         /**Cria as tabelas, se não existirem */
         database.transaction(tx => {
             
+            //tx.executeSql('drop table produtor;',[],(_,x)=>console.log(x),(_,e)=>console.log('drop erro',e))
             tx.executeSql(models.produtor)
             tx.executeSql(models.fazenda)
             tx.executeSql(models.talhao_saude)
             tx.executeSql(models.talhao)
             tx.executeSql(models.area_talhao)
             tx.executeSql(models.hist_gasto)
-            //
+            /**/
             
         })
 

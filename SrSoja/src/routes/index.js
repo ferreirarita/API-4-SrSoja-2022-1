@@ -10,7 +10,7 @@ import CustomDrawer from './Drawer_Navigation/styles';
 import stylesVar from '../styles/stylesVar';
 //Screens
 import App_Open         from '../pages/App_Open';
-import Cadastro_Usuario from '../pages/Cadastro_Usuario';
+import Logup            from '../pages/Logup';
 import Login            from '../pages/Login';
 import Home             from '../pages/Home';
 import Cotacao_Soja     from '../pages/Cotacao_Soja';
@@ -19,7 +19,6 @@ import Mapa             from '../pages/Mapa';
 
 /** Testes */
 import Teste_Banco from '../pages/Teste_Banco'
-import Registro_Gasto from '../pages/Registro_Gasto'
 /** */
 
 import { Fazenda, Talhao, Listagem } from '../pages/Cadastro_Fazenda_Talhao'
@@ -34,6 +33,7 @@ import RelatoriosIcon from '../assets/Icons/clipboard-data-fill'
 import CotacaoIcon    from '../assets/Icons/currency-exchange'
 import CustosIcon     from '../assets/Icons/cart4'
 import PrevisaoIcon   from '../assets/Icons/cloud-lightning-rain-fill'
+import ClockHistory from '../assets/Icons/clock-history';
 
 
 const Drawer = createDrawerNavigator();
@@ -74,7 +74,9 @@ function Drawer_Navigation () {
         ) 
       }} />
       <Drawer.Screen name='Teste do Banco' component={Teste_Banco} options={{title: 'Teste do Banco', drawerIcon: () => <PainelIcon size={24} fill='#f00' />}} />
-      <Drawer.Screen name='Registro_Gasto' component={Registro_Gasto} options={{title: 'Registro de Gastos', drawerIcon: () => <CustosIcon size={24} fill='#f00' />}} />
+      <Drawer.Screen name='Historico_Compra_venda' component={TabHistorico_Compra_Venda} options={{title: 'Históricos', drawerIcon: () => (
+        <ClockHistory size={24} fill='#f00' />
+      )}} />
     </Drawer.Navigator>
   );
 }
@@ -139,8 +141,8 @@ const Routes = () => {
           }}>
         <Stack.Screen name="App_Open"                 component={App_Open} />
         <Stack.Screen name="Mapa"                     component={Mapa} options={{title:'Marcar Talhão', headerShown:true}}/>
-        <Stack.Screen name="Login"                    component={Drawer_Navigation} options={{}}/>
-        <Stack.Screen name="Cadastro_Usuario"         component={Drawer_Navigation} options={{title:'Cadastrar-se'}}/>
+        <Stack.Screen name="Login"                    component={Login} options={{}}/>
+        <Stack.Screen name="Logup"                    component={Logup} options={{}}/>
         <Stack.Screen name="HomeDrawer"               component={Drawer_Navigation} options={{title:'Painel Inicial'}}/>
         <Stack.Screen name="Cadastro_Fazenda_Talhao"  component={Drawer_Navigation} options={{title:'Cadastros'}}/>
         <Stack.Screen name="Cotacao_Soja"             component={Drawer_Navigation} options={{title:'Cotações da Soja'}}/>
