@@ -4,7 +4,7 @@ import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location'
 import { useNavigation } from '@react-navigation/native'
 import styles from './styles'
-import { CheckButton, CancelButton, AddButton, NextButton } from '../../components/Button'
+import { CheckButton, CancelButton } from '../../components/Button'
 
 //(<Mapa longitude= 0 latitude= 0/>)
 export default function Mapa(props) {

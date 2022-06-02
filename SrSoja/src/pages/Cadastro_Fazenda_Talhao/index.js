@@ -29,10 +29,36 @@ const Fazenda = ({route}) => {
   const [logradouro, setLogradouro] = useState('')
   const [bairro, setBairro] = useState('')
 
-  const [coord,setCoord] = useState ([])
+  useEffect(() => {
 
 
-  console.log(coord)
+
+  },[])
+
+
+
+
+
+const teste = route.params?.coord[0]
+  const [coord,setCoord] = useState ({})
+console.log('teste',teste)
+useEffect(() => {
+  if(teste!==undefined) 
+  setCoord(teste)
+},[teste])
+console.log('coord',coord)
+
+  // let coordenada = route.params?.coord[0]
+
+/* useEffect(()=>{
+  if (coordenada){
+    setCoord(coordenada)
+    coordenada = undefined
+    console.log('teste coord',coord)
+
+  }
+
+ },[route]) */
  
   async function searchCEP(cep) {
      fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res =>res.json())
@@ -86,12 +112,18 @@ const Fazenda = ({route}) => {
                 </TouchableOpacity>
               </View>
             </View>
-{/*                   {route.params?.coord.map((lat,index)=> <Text value={lat} key={index}>{[lat.latitude, lat.longitude]}</Text>)
+{/*             {setCoord( route.params?.coord[0] ?? {})}
+ */}{/*                   {route.params?.coord.map((lat,index)=> <Text value={lat} key={index}>{[lat.latitude, lat.longitude]}</Text>)
                   }                
-                  
-                  {console.log('teste latitude', route.params?.coord.map((lat,index)=> [lat.latitude]))}
-                  {console.log('teste longitude', route.params?.coord.map((lat,index)=> [lat.longitude]))}
+                   */}
+{/*                   {console.log('teste apenas coord do params',route.params?.coord)}
  */}
+
+
+
+            {/*       {console.log('teste latitude', route.params?.coord.map((lat,index)=> [lat.latitude]))}
+                  {console.log('teste longitude', route.params?.coord.map((lat,index)=> [lat.longitude]))}
+  */}
 
             <View style={stylesFazenda.bodyColumn}>
               <Text style={stylesFazenda.bodyTitle}>Estado</Text>
