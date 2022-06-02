@@ -39,9 +39,14 @@ const stylesFazenda = StyleSheet.create({
     ...stylesVar.inputText,
     ...stylesVar.inputBox
   },
-  bodyButtonCEP: {
+  bodyTitleSearch: {
+    ...stylesVar.titleSecondary,
+    textAlign: 'center',
+  },
+  bodyButton: {
     flex:1,
-    padding:10,
+    padding:0,
+    paddingTop:7,
     alignItems:'center',
     borderRadius:4,
     borderWidth:1,

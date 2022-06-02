@@ -40,10 +40,11 @@ return(
         loadingEnabled={true}
         mapType="hybrid"
         onPress={e => {
-          console.log(JSON.stringify(e.nativeEvent.coordinate))
-          setAlfinete(e.nativeEvent.coordinate)
-          props.route.params.teste(e.nativeEvent.coordinate)
-        }}
+/*           console.log(JSON.stringify(e.nativeEvent.coordinate))
+ */          setAlfinete(e.nativeEvent.coordinate)
+          navigation.navigate('Fazenda', {coord:[e.nativeEvent.coordinate]})
+/*           props.route.params.teste(e.nativeEvent.coordinate)
+ */        }}
         
   >
     <Marker coordinate={alfinete}  />
@@ -61,7 +62,7 @@ return(
       <View style={styles.footerColumn}>
         <CheckButton size={48}
         onPress={()=>{
-          navigation.goBack()
+          navigation.navigate('Fazenda')
         }}
         />
       </View>
