@@ -68,8 +68,7 @@ function NextButton(props) {
   return(
     <TouchableOpacity
     onPress={props.onPress}
-    style={props.buttonStyle}
-    disabled>
+    style={props.buttonStyle}>
     <View style={{alignItems: 'center'}}>
       <NextIcon 
         size={props.size} 
