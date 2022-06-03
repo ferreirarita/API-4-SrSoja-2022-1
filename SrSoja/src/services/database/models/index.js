@@ -96,10 +96,11 @@ export default {
     hist_venda: `
     CREATE TABLE IF NOT EXISTS hist_venda (
         hv_data TIMESTAMP PRIMARY KEY DEFAULT CURRENT_TIMESTAMP,
-        prd_id INTEGER,
-        hv_descr TEXT DEFAULT "Venda de " || STRFTIME('%d-%m-%Y', (CURRENT_TIMESTAMP/1000)),
-        hv_quant INTEGER DEFAULT 0,
+        prd_id TEXT,
+        hv_nome TEXT DEFAULT CURRENT_TIMESTAMP,
         hv_valor NUMERIC DEFAULT 0.00,
+        hv_quant INTEGER DEFAULT 0,
+        hv_descr TEXT DEFAULT "...",
         FOREIGN KEY (prd_id) REFERENCES produtor (prd_id)
     );
 `}

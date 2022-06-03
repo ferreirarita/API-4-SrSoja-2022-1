@@ -1,13 +1,13 @@
 /**
- * 
- * @param {WebSQLDatabase} database 
+ *
+ * @param {WebSQLDatabase} database
  * @param {{
  *      prd_id: string,
  *      hg_nome: string,
  *      hg_valor: number,
  *      hg_descr: string
- * }} args 
- * @param {useState} setResult 
+ * }} args
+ * @param {useState} setResult
  */
 async function addGasto(database, args, setResult) {
     let { prd_id, hg_nome, hg_valor, hg_descr } = args
@@ -20,7 +20,8 @@ async function addGasto(database, args, setResult) {
                     `INSERT INTO hist_gasto VALUES (?,?,?,?,?)`,
                     [ date, prd_id, hg_nome, hg_valor, hg_descr ],
                     (_, resultSet) => {
-                        setResult(`Gasto registrado: ${hg_nome}`)
+                        // setResult({alert: `Compra adicionada: ${hg_nome}`})
+                        // getGasto(database,{prd_id},setResult)
                     },
                     (_, error) => console.error(error)
                 )
@@ -30,16 +31,16 @@ async function addGasto(database, args, setResult) {
 }
 
 /**
- * 
- * @param {WebSQLDatabase} database 
+ *
+ * @param {WebSQLDatabase} database
  * @param {{
  *      hg_data: string,
  *      prd_id: string,
  *      hg_nome: string,
  *      hg_valor: number,
  *      hg_descr: string
- * }} args 
- * @param {useState} setResult 
+ * }} args
+ * @param {useState} setResult
  */
 async function upGasto(database, args, setResult) {
     let { hg_data, prd_id, hg_nome, hg_valor, hg_descr } = args
@@ -55,11 +56,12 @@ async function upGasto(database, args, setResult) {
                         hg_nome = ?,
                         hg_valor = ?,
                         hg_descr = ?
-                        WHERE hg_data = ? AND prd_id = ?
+                        WHERE hg_data LIKE ? AND prd_id = ?
                         `,
-                        [ date, hg_nome, hg_valor, hg_descr, hg_data, prd_id ],
+                        [ date, hg_nome, hg_valor, hg_descr, `${hg_data}%`, prd_id ],
                         (_, resultSet) => {
-                            setResult(`Gasto atualizado: ${hg_nome}`)
+                            // setResult({alert: `Compra atualizado: ${hg_nome}`})
+                            // getGasto(database,{prd_id},setResult)
                         },
                         (_, error) => console.error(error)
                     )
@@ -70,13 +72,13 @@ async function upGasto(database, args, setResult) {
 }
 
 /**
- * 
- * @param {WebSQLDatabase} database 
+ *
+ * @param {WebSQLDatabase} database
  * @param {{
  *      hg_data: string,
  *      prd_id: string
- * }} args 
- * @param {useState} setResult 
+ * }} args
+ * @param {useState} setResult
  */
 async function getGasto(database, args, setResult) {
     let { hg_data, prd_id } = args
@@ -89,13 +91,13 @@ async function getGasto(database, args, setResult) {
                         WHERE prd_id = ?`,
                         [ prd_id ],
                         (_, { rows: { _array } }) => {
-                            setResult(JSON.stringify(_array))
+                            setResult(_array)
                         },
                         (_, error) => console.error(error)
                     )
                 }
             )
-            
+
         } else {
             database.transaction(
                 tx => {
@@ -104,7 +106,7 @@ async function getGasto(database, args, setResult) {
                         WHERE hg_data = ? AND prd_id = ?`,
                         [ hg_data, prd_id ],
                         (_, { rows: { _array } }) => {
-                            setResult(JSON.stringify(_array))
+                            setResult(_array)
                         },
                         (_, error) => console.error(error)
                     )
@@ -115,13 +117,13 @@ async function getGasto(database, args, setResult) {
 }
 
 /**
- * 
- * @param {WebSQLDatabase} database 
+ *
+ * @param {WebSQLDatabase} database
  * @param {{
  *      hg_data: string,
  *      prd_id: string
- * }} args 
- * @param {useState} setResult 
+ * }} args
+ * @param {useState} setResult
  */
 async function delGasto(database, args, setResult) {
     let { hg_data, prd_id } = args
@@ -134,7 +136,7 @@ async function delGasto(database, args, setResult) {
                         WHERE hg_data = ? AND prd_id = ?`,
                         [ hg_data, prd_id ],
                         (_, resultSet) => {
-                            setResult('Gasto deletado')
+                            // setResult({alert: 'Compra deletada'})
                         },
                         (_, error) => console.error(error)
                     )
