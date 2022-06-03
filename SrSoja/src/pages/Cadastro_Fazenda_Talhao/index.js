@@ -29,17 +29,9 @@ const Fazenda = ({route}) => {
   const [logradouro, setLogradouro] = useState('')
   const [bairro, setBairro] = useState('')
 
-  useEffect(() => {
+ 
 
-
-
-  },[])
-
-
-
-
-
-const teste = route.params?.coord[0]
+/* const teste = route.params?.coord[0]
   const [coord,setCoord] = useState ({})
 console.log('teste',teste)
 useEffect(() => {
@@ -47,19 +39,33 @@ useEffect(() => {
   setCoord(teste)
 },[teste])
 console.log('coord',coord)
+ */
 
-  // let coordenada = route.params?.coord[0]
-
-/* useEffect(()=>{
-  if (coordenada){
-    setCoord(coordenada)
-    coordenada = undefined
-    console.log('teste coord',coord)
+/*useEffect(()=>{
+  if (coordenada===undefined){
+    coordenada= {}
+    console.log('teste if',coordenada)
 
   }
+  else{
+    setCoord(coordenada)
+    console.log('teste else',coord)
+  }
 
- },[route]) */
+ },[coordenada])  */
+/*  const { coord } = route.params
+ */ 
+/* const [lat,setLat]=useState()
+ console.log('é a rota',setLat(route.params?.coord.latitude) ) */
+
  
+ const { item } = route.params
+
+
+
+
+
+
   async function searchCEP(cep) {
      fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res =>res.json())
     .then(res =>{
@@ -125,6 +131,7 @@ console.log('coord',coord)
                   {console.log('teste longitude', route.params?.coord.map((lat,index)=> [lat.longitude]))}
   */}
 
+            <Text>{item}</Text>
             <View style={stylesFazenda.bodyColumn}>
               <Text style={stylesFazenda.bodyTitle}>Estado</Text>
               <Text style={stylesFazenda.bodyInputBoxEstado}>{uf}</Text>
