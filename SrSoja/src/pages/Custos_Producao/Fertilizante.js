@@ -29,7 +29,7 @@ class Fertilizante extends React.Component {
 
         const getData = async () => {
             let estados = await getEstados();
-            let response = await fetch('http://192.168.1.74:5000');
+            let response = await fetch('https://sr-soja-flask-mock.herokuapp.com');
             let parsed = await response.json();
             let nacional = parsed[0].data.map(elemento => {
                 return elemento +  (Math.random() * (20 - 10) + 10);
