@@ -21,10 +21,10 @@ async function addPreco(database, args, setResult) {
                 (_, resultSet) => {
                     setResult(`Preços atualizados '${ppr_data}'`)
                 },
-                error => console.error(`Erro ao adicionar: ${error}`)
+                (_,error) => console.error(`Erro ao adicionar: ${error}`)
             )
         },
-        error => console.log(`Erro: ${error}`)
+        error => console.error(`Erro: ${error}`)
     )
     
 }
@@ -50,10 +50,10 @@ async function getPreco(database, args, setResult) {
                     (_,{ rows: { _array } }) => {
                         setResult(JSON.stringify(_array))
                     },
-                    error => console.log(`Erro ao obter: ${error}`)
+                    (_,error) => console.error(`Erro ao obter: ${error}`)
                 )
             },
-            error => console.log(error)
+            error => console.error(`Erro: ${error}`)
         )
     } else if(typeof ppr_local !== 'undefined' && ppr_local != null) {
         database.transaction(
@@ -66,10 +66,10 @@ async function getPreco(database, args, setResult) {
                     (_,{ rows: { _array } }) => {
                         setResult(JSON.stringify(_array))
                     },
-                    error => console.log(`Erro ao obter: ${error}`)
+                    (_,error) => console.error(`Erro ao obter: ${error}`)
                 )
             },
-            error => console.log(error)
+            error => console.log(`Erro: ${error}`)
         )
     } else {
         database.transaction(
@@ -81,10 +81,10 @@ async function getPreco(database, args, setResult) {
                     (_,{ rows: { _array } }) => {
                         setResult(JSON.stringify(_array))
                     },
-                    error => console.log(`Erro ao obter: ${error}`)
+                    (_,error) => console.error(`Erro ao obter: ${error}`)
                 )
             },
-            error => console.log(error)
+            error => console.log(`Erro: ${error}`)
         )
     }
     
@@ -107,7 +107,7 @@ async function delPreco(database, args, setResult) {
                 (_,resultSet) => {
                     setResult(`Registro deletado`)
                 },
-                error => console.log(`Erro ao deletar: ${error}`)
+                (_,error) => console.error(`Erro ao deletar: ${error}`)
             )
         }
     )

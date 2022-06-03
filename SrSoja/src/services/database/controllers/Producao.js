@@ -20,10 +20,10 @@ async function addProducao(database, args, setResult) {
                 (_, resultSet) => {
                     setResult(`Produção registrada '${pro_data}'`)
                 },
-                error => console.error(`Erro ao adicionar: ${error}`)
+                (_,error) => console.error(`Erro ao adicionar: ${error}`)
             )
         },
-        error => console.log(`Erro: ${error}`)
+        error => console.error(`Erro: ${error}`)
     )
     
 }
@@ -46,13 +46,13 @@ async function getProducao(database, args, setResult) {
                     (_,{ rows: { _array } }) => {
                         setResult(JSON.stringify(_array))
                     },
-                    error => console.log(`Erro ao obter: ${error}`)
+                    (_,error) => console.error(`Erro ao obter: ${error}`)
                 )
             },
-            error => console.log(error)
+            error => console.error(`Erro: ${error}`)
         )
     } else {
-        console.log(`Erro: ${error}`)
+        console.error(`Nenhuma Talhão informado`)
     }
     
 }
@@ -74,7 +74,7 @@ async function delProducao(database, args, setResult) {
                 (_,resultSet) => {
                     setResult(`Produção deletada`)
                 },
-                error => console.log(`Erro ao deletar: ${error}`)
+                (_,error) => console.error(`Erro ao deletar: ${error}`)
             )
         }
     )

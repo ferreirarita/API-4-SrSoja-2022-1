@@ -14,6 +14,16 @@ const stylesFazenda = StyleSheet.create({
   },
   bodyRow: {
     flex:0.3,
+    flexDirection:'row',
+    margin: 15,
+    marginTop: 12,
+  },
+  bodyRowCEP: {
+    flex:0.3,
+    flexDirection:'row',
+  },
+  bodyColumn: {
+    flex: 1,
     margin: 15,
     marginTop: 12,
   },
@@ -28,7 +38,41 @@ const stylesFazenda = StyleSheet.create({
   bodyInputBoxEstado:{
     ...stylesVar.inputText,
     ...stylesVar.inputBox
-  }
+  },
+  bodyButtonCEP: {
+    flex:1,
+    padding:10,
+    alignItems:'center',
+    borderRadius:4,
+    borderWidth:1,
+    marginTop:3,
+    ...stylesVar.backgroundYellow
+  },
+  footer:{
+    margin:5,
+    justifyContent:'center'
+  },
+  footerButtonCancel:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonCheck:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonNext:{
+   marginRight:30,
+   flexDirection: "row",
+   justifyContent: "center",
+  },
+  footerRow: {
+   flexDirection: "row",
+   alignItems: "center",
+   justifyContent: "space-between",
+ },
+
 });
 
 const stylesTalhao = StyleSheet.create({
@@ -74,7 +118,34 @@ const stylesTalhao = StyleSheet.create({
   },
   bodyLine:{
     borderBottomWidth:1,
-  }
+  },
+
+  footer:{
+    margin:5,
+    justifyContent:'center'
+  },
+  footerButtonCancel:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonCheck:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonNext:{
+    marginRight:30,
+    flexDirection: "row",
+    justifyContent: "center",
+   },
+  footerRow: {
+    flexDirection: "row",
+   alignItems: "center",
+   justifyContent: "space-between",
+ },
+
+  
 })
 
 const stylesListagem = StyleSheet.create({
@@ -85,8 +156,10 @@ const stylesListagem = StyleSheet.create({
   body: {
     flex: 0.7,
     margin: 10,
-    marginTop: 30,
+    marginTop: 5,
     ...stylesVar.boxPrimary,
+    borderWidth:1,
+    padding:5
   },
   bodyTitle: {
     ...stylesVar.titleSecondary,
@@ -94,19 +167,24 @@ const stylesListagem = StyleSheet.create({
   bodyList:{
     flex:1,
     margin: 15,
-    marginTop: 12,
+    padding:5,
   },
   bodyRow: {
     flex:0.3,
     flexDirection: 'row',
     alignItems: 'center',
   },
-  bodySubRow: {
-    flex:0.3,
+  bodyButtons: {
+    flex:1,
     flexDirection: 'row',
     alignItems: 'center',
   },
-
+  bodySubRow: {
+    flex:1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent:'flex-end'
+  },
   bodyRowBox:{
     flex:1,
     ...stylesVar.inputText,
@@ -116,7 +194,33 @@ const stylesListagem = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-  }
+    marginRight:10
+  },
+
+  footer:{
+    margin:5,
+    justifyContent:'center'
+  },
+  footerButtonCancel:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonCheck:{
+    marginLeft:30,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonAdd:{
+    marginRight:30,
+    flexDirection: "row",
+    justifyContent: "center",
+   },
+  footerRow: {
+    flexDirection: "row",
+   alignItems: "center",
+   justifyContent: "space-between",
+ },
 
 })
 

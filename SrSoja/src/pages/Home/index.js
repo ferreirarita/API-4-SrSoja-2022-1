@@ -46,7 +46,7 @@ const Tela_Inicial = () => {
 
                     <TouchableOpacity style={styles.bodyButton} onPress={() => navigation.navigate('Relatorios_Produtividade')}>
                         <RelatoriosIcon size="40" fill='#343434'/>
-                        <Text style={styles.bodyText}>Relatórios</Text>
+                        <Text style={styles.bodyText}>Relatórios de Produtividade</Text>
                     </TouchableOpacity>
                 </View>
 

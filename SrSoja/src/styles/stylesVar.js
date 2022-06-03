@@ -37,6 +37,10 @@ const stylesVar = {
     color: "#F7BB26",
   },
 
+  iconSearch: {
+    color: "#F7BB26",
+  },
+
   iconTable: {
     color: "#343434",
   },
@@ -47,7 +51,6 @@ const stylesVar = {
     fontSize: 23,
     color: "#000000",
     textAlign: "center",
-    letterSpacing: 1,
   },
 
   titleSecondary: {
@@ -66,7 +69,7 @@ const stylesVar = {
   inputBox: {
     padding: 5,
     borderRadius: 1,
-    borderBottomWidth: 1.3,
+    borderBottomWidth: 1,
     borderColor: "#343434",
   },
 
