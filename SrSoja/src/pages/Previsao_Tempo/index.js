@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 const Previsao_Tempo = ({route}) =>{
@@ -36,4 +36,34 @@ const Previsao_Tempo = ({route}) =>{
       color: '#fff'
     }
   });
-  export default Previsao_Tempo
+  export default Previsao_Tempo */
+
+  import * as React from 'react';
+import { View, Text,Button ,TextInput, SafeAreaView, TouchableOpacity } from 'react-native';
+
+export default function Previsao_Tempo ({navigation, route}) {
+  const [postText, setPostText] = React.useState('');
+
+  return (
+    <>
+      <TextInput
+        multiline
+        placeholder="What's on your mind?"
+        style={{ height: 200, padding: 10, backgroundColor: 'white' }}
+        value={postText}
+        onChangeText={setPostText}
+      />
+      <Button
+        title="Done"
+        onPress={() => {
+          // Pass and merge params back to home screen
+          navigation.navigate({
+            name: 'Fazenda',
+            params: { post: postText },
+            merge: true,
+          });
+        }}
+      />
+    </>
+  );
+}

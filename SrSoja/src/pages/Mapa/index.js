@@ -7,12 +7,13 @@ import styles from './styles'
 import { CheckButton, CancelButton } from '../../components/Button'
 
 //(<Mapa longitude= 0 latitude= 0/>)
-export default function Mapa({navigation}) {
+export default function Mapa({navigation, route}) {
 const [ alfinete, setAlfinete] = useState({longitude: -45, latitude: -23})
 const [ origin, setOrigin] = useState(null)
 
 const [locationServiceEnabled, setLocationServiceEnabled] = useState(false)
 const [coord,setCoord]=useState('Buscando localização')
+const [getCoord,setGetCoord]=useState({})
 
 
 useEffect(()=>{
@@ -53,27 +54,76 @@ const GetCurrentLocation = async () => {
     let response = await Location.reverseGeocodeAsync({
       latitude, longitude
     })
+    setOrigin({
+      latitude: coords.latitude,
+      longitude: coords.longitude,
+      latitudeDelta: 0.00922,
+      longitudeDelta: 0.00421
+  })
 
     for (let item of response){
-      let coordinate =` ${item.postalCode}, ${item.street}, ${item.district}, ${item.region}`
+      let coordinate = {
+       postalCode: item.postalCode,
+       street:  item.street,
+       district:   item.district,
+       region:    item.region
+      }
     
       setCoord(coordinate)
-      if(coordinate.length > 0){
-        setTimeout(() => {
-          navigation.navigate('Previsao_Tempo', {item: coordinate})
-        },1000)
-      }
     }
   }
 
 }
 
 return(
-  <Text style={{alignItems: 'center',justifyContent: 'center'}}>{coord}</Text>
-)
+  <>
+  <MapView
+        style={styles.container}
+        initialRegion={origin}
+        showsUserLocation={true}
+        zoomEnabled={true}
+        loadingEnabled={true}
+        mapType="hybrid"
+        onPress={e => {
+/*           console.log(JSON.stringify(e.nativeEvent.coordinate))
+ */ 
+        setAlfinete(e.nativeEvent.coordinate)
+        setGetCoord(e.nativeEvent.coordinate)
+          //navigation.navigate('Fazenda', {item: coordinate})
+
+        }}>
+ 
+    <Marker coordinate={alfinete}  />
+  </MapView>
 
 
-}
+  <View style={styles.footer}>
+    <View style={styles.footerRow}>
+      <View style={styles.footerColumn}>
+        <CancelButton size={48} 
+        onPress={() => {
+          navigation.goBack()
+        }}
+        />
+      </View>
+
+      <View style={styles.footerColumn}>
+        <CheckButton size={48}
+        onPress={()=>{
+              navigation.navigate({
+                name: 'Fazenda',
+                params: {coordenadas: getCoord},
+                merge:true
+              })
+          }
+        }
+        />
+      </View>
+    </View>
+  </View>
+</>
+)}
+
 
 
 /* 

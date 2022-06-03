@@ -39,7 +39,7 @@ const Tela_Inicial = () => {
                 <Text style={styles.bodyTitle}>Utilidades</Text>
 
                 <View style={styles.bodyRow}>
-                    <TouchableOpacity style={styles.bodyButton} onPress={() => navigation.navigate('Mapa')}>
+                    <TouchableOpacity style={styles.bodyButton} onPress={() => navigation.navigate('Cadastro_Fazenda_Talhao')}>
                         <CadastrosIcon size="40" fill='#343434' />
                         <Text style={styles.bodyText}>Cadastros</Text>
                     </TouchableOpacity>
