@@ -1,18 +1,27 @@
-import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+
+
+ import React from 'react';
+import { Text, View, TouchableOpacity } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 import {useState, useEffect} from 'react'
 import * as Location from 'expo-location'
 import { EvilIcons } from '@expo/vector-icons' 
+import styles from './styles'
 
 import InfoCard from '../../components/InfoCard'
 import MainCard from "../../components/MainCard"
 
-useEffect(() => {
+/* useEffect(() => {
   let time = getCurrentTime();
   setTime(time);
-}, []);
+}, []); */
 
+export default function Teste (){
+  return(
+    <Text style={{alignItems:'center',justifyContent:'center'}}>Teste</Text>
+  )
+}
+/* 
 const getCurrentTime = () => {
   let today = new Date();
   let hours = (today.getHours() < 10 ? '0' : '') + today.getHours();
@@ -66,79 +75,7 @@ export default function App() {
   const [wind, setWind] = useState('7')
   const [humidity, setHumidity] = useState('68')
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#F2F2F2',
-      alignItems: 'center',
-    },
-    refreshButton: {
-      position: 'absolute',
-      alignSelf: 'flex-start', 
-      margin: 30,
-    },  
-    themeButtonCircle:{
-      alignSelf:   'flex-start',
-      margin: 5,
-      width: 20,
-      height: 20,
-      borderRadius: 50,
-      backgroundColor:'#F2F2F2', 
-    },   
-    temperatureView: {
-      alignItems: 'center',
-      flexDirection: 'row',
-      marginTop: 10,
-    },
-    temperatureText: {
-      color: 'black',
-      fontSize: 50,
-    },
-    cardsView:{
-      color:  'white',
-      margin: 10,
-      alignItems: 'center',
-      flexDirection: 'row',
-    },
-    localizationText:{
-      color:   'black',
-    },  
-    info: {
-      alignItems: 'center',
-      borderRadius: 20,
-      width: 350,
-      height: 230,
-      backgroundColor:'#8F8F8F',
-      
-    },
-    infoText: {
-      color: 'white',
-      margin: 15,
-      fontSize: 20,
-      fontWeight: 'bold',
-    },
-    addtionalInfo:{
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-    },
-    themeButton: {
-      margin: 10,
-      marginLeft: 300,
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 50,
-      height: 50,
-      borderRadius: 25,
-    },
-    themeButtonSquare: {
-      backgroundColor:  "#f2f2f2",
-      justifyContent: 'center',
-      borderRadius: 20,
-      marginRight: 20,
-      width: 50,
-      height: 25,
-    },  
-  });
+//aqui estava o cons styles, removi ele e coloquei no styles.js
 
   async function getLocation(){
     let { status } = await Location.requestForegroundPermissionsAsync()
@@ -205,7 +142,8 @@ export default function App() {
         </View>
         
       </View>
-  );
-}
+  ); 
+}*/
 
 
+ 

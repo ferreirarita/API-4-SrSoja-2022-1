@@ -18,6 +18,7 @@
     "@react-navigation/stack": "^6.2.1",
     "axios": "^0.27.2",
     "expo": "^45.0.4",
+    "expo-cli": "^5.4.8",
     "expo-location": "~14.2.2",
     "expo-permissions": "~13.2.0",
     "expo-splash-screen": "~0.15.1",
