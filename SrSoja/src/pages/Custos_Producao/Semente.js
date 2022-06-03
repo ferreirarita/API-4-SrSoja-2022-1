@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet, Dimensions, ScrollView } from 'react-native';
-import {
-    LineChart
-} from "react-native-chart-kit";
+import { LineChart } from "react-native-chart-kit";
 import stylesVar from "../../styles/stylesVar";
 import RNPickerDialog from 'rn-modal-picker';
 
@@ -31,13 +29,13 @@ class Semente extends React.Component {
 
         const getData = async () => {
             let estados = await getEstados();
-            let response = await fetch('http://192.168.1.76:5000');
+            let response = await fetch('http://192.168.1.74:5000');
             let parsed = await response.json();
             let nacional = parsed[0].data.map(elemento => {
-                return elemento +  (Math.random() * (20 - 10) + 10);
+                return elemento + (Math.random() * (20 - 10) + 10);
             });
-            
-            
+
+
             const labels = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", 'ago', 'set'];
 
             let data = {
@@ -57,8 +55,9 @@ class Semente extends React.Component {
             };
 
             let custos = nacional.map((elemento, index) => {
+
                 return {
-                    data: `${index}/2021`,
+                    data: `${index + 1}/2021`,
                     estadual: parsed[0].data[index],
                     nacional: nacional[index].toFixed(2)
                 }
@@ -71,8 +70,8 @@ class Semente extends React.Component {
                     dados: parsed
                 });
             }, 1000);
-        }  
-        getData();     
+        }
+        getData();
     }
 
 
@@ -92,7 +91,7 @@ class Semente extends React.Component {
             let estadual = this.state.dados.find(elemento => elemento.id == estado.id).data;
 
             let nacional = estadual.map(elemento => {
-                return elemento +  (Math.random() * (20 - 10) + 10);
+                return elemento + (Math.random() * (20 - 10) + 10);
             });
             chartData.datasets[0].data = nacional;
             chartData.datasets[1].data = estadual;
@@ -115,53 +114,53 @@ class Semente extends React.Component {
         return (
             <>
                 <View style={styles.body}>
-                    <View style={{flexDirection: 'row'}}>
-                    {this.state?.estados
-                        ?
-                        <RNPickerDialog
-                            data={this.state.estados}
-                            pickerTitle={''}
-                            labelText={'Estado'}
-                            showSearchBar={true}
-                            showPickerTitle={true}
-                            listTextStyle={styles.listTextStyle}
-                            pickerStyle={styles.pickerStyle}
-                            selectedText={this.state.selectedText}
-                            placeHolderText={this.state?.stateSelected ?? 'Selecione'}
-                            searchBarPlaceHolder={'Search...'}
-                            searchBarPlaceHolderColor={'#9d9d9d'}
-                            selectedTextStyle={styles.selectedTextStyle}
-                            placeHolderTextColor={'gray'}
-                            dropDownIconStyle={styles.dropDownIconStyle}
-                            searchBarStyle={styles.searchBarStyle}
-                            selectedValue={(index, item) => getMunicipios(item)}
-                        /> :
-                        <></>
-                    }
-                    {
-                        this.state?.municipios
+                    <View style={{ flexDirection: 'row' }}>
+                        {this.state?.estados
                             ?
                             <RNPickerDialog
-                                data={this.state.municipios}
+                                data={this.state.estados}
                                 pickerTitle={''}
-                                labelText={'Municipios'}
+                                labelText={'Estado'}
                                 showSearchBar={true}
                                 showPickerTitle={true}
                                 listTextStyle={styles.listTextStyle}
                                 pickerStyle={styles.pickerStyle}
                                 selectedText={this.state.selectedText}
-                                placeHolderText={this.state?.municipioSelected ?? 'Selecione'}
+                                placeHolderText={this.state?.stateSelected ?? 'Selecione'}
                                 searchBarPlaceHolder={'Search...'}
-                                searchBarPlaceHolderColor={'#000'}
+                                searchBarPlaceHolderColor={'#9d9d9d'}
                                 selectedTextStyle={styles.selectedTextStyle}
                                 placeHolderTextColor={'gray'}
                                 dropDownIconStyle={styles.dropDownIconStyle}
                                 searchBarStyle={styles.searchBarStyle}
-                                selectedValue={(index, item) => { this.setState({ municipioSelected: item.name }) }}
-                            />
-                            :
+                                selectedValue={(index, item) => getMunicipios(item)}
+                            /> :
                             <></>
-                    }
+                        }
+                        {
+                            this.state?.municipios
+                                ?
+                                <RNPickerDialog
+                                    data={this.state.municipios}
+                                    pickerTitle={''}
+                                    labelText={'Municipios'}
+                                    showSearchBar={true}
+                                    showPickerTitle={true}
+                                    listTextStyle={styles.listTextStyle}
+                                    pickerStyle={styles.pickerStyle}
+                                    selectedText={this.state.selectedText}
+                                    placeHolderText={this.state?.municipioSelected ?? 'Selecione'}
+                                    searchBarPlaceHolder={'Search...'}
+                                    searchBarPlaceHolderColor={'#000'}
+                                    selectedTextStyle={styles.selectedTextStyle}
+                                    placeHolderTextColor={'gray'}
+                                    dropDownIconStyle={styles.dropDownIconStyle}
+                                    searchBarStyle={styles.searchBarStyle}
+                                    selectedValue={(index, item) => { this.setState({ municipioSelected: item.name }) }}
+                                />
+                                :
+                                <></>
+                        }
                     </View>
 
                     {this.state.chartData ?
