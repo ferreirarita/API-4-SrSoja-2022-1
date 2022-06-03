@@ -73,10 +73,12 @@ function Drawer_Navigation () {
         <PrevisaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
-      <Drawer.Screen name='Teste do Banco' component={Teste_Banco} options={{title: 'Teste do Banco', drawerIcon: () => <PainelIcon size={24} fill='#f00' />}} />
       <Drawer.Screen name='Historico_Compra_venda' component={TabHistorico_Compra_Venda} options={{title: 'Históricos', drawerIcon: () => (
-        <ClockHistory size={24} fill='#f00' />
+        <ClockHistory size={24} fill='#343434' />
       )}} />
+      
+      <Drawer.Screen name='Teste do Banco' component={Teste_Banco} options={{title: 'Teste do Banco', drawerIcon: () => <PainelIcon size={24} fill='#f00' />}} />
+      
     </Drawer.Navigator>
   );
 }

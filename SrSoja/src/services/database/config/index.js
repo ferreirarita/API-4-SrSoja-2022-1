@@ -31,6 +31,7 @@ export default async function openDatabase() {
             tx.executeSql(models.talhao)
             tx.executeSql(models.area_talhao)
             tx.executeSql(models.hist_gasto)
+            tx.executeSql(models.hist_venda)
             /**/
             
         })
