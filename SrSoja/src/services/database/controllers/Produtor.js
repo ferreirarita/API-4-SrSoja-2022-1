@@ -22,10 +22,10 @@ async function addProdutor(database, args, setResult) {
                     (_, resultSet) => {
                         setResult(`Novo Produtor '${prd_nome}'`)
                     },
-                    error => console.error(`Erro ao adicionar: ${error}`)
+                    (_,error) => console.error(`Erro ao adicionar: ${error}`)
                 )
             },
-            error => console.log(`Erro: ${error}`)
+            (_, error) => console.log(error)
         );
     } else {
         database.transaction(
@@ -40,10 +40,10 @@ async function addProdutor(database, args, setResult) {
                     (_, resultSet) => {
                         setResult(`Produtor atualizado '${prd_nome}'`)
                     },
-                    error => console.log(`Erro ao atualizar: ${error}`)
+                    (_,error) => console.error(`Erro ao atualizar: ${error}`)
                 )
             },
-            error => console.log(`Erro: ${error}`)
+            error => console.error(`Erro: ${error}`)
         )
     }
 }
@@ -67,10 +67,10 @@ async function getProdutor(database, args, setResult) {
                     (_,{ rows: { _array } }) => {
                         setResult(JSON.stringify(_array[0]))
                     },
-                    error => console.log(`Erro ao obter: ${error}`)
+                    (_,error) => console.error(`Erro ao obter: ${error}`)
                 )
             },
-            error => console.log(error)
+            error => console.error(`Erro: ${error}`)
         )
 
     } else {
@@ -82,10 +82,10 @@ async function getProdutor(database, args, setResult) {
                     (_,{ rows: { _array } }) => {
                         setResult(_array)
                     },
-                    error => console.log(`Erro ao obter: ${error}`)
+                    (_,error) => console.error(`Erro ao obter: ${error}`)
                 )
             },
-            error => console.log(error)
+            error => console.log(`Erro: ${error}`)
         )
     }
 }
@@ -106,7 +106,7 @@ async function delProdutor(database, args, setResult) {
                 (_,resultSet) => {
                     setResult(`Produtor deletado`)
                 },
-                error => console.log(`Erro ao deletar: ${error}`)
+                (_,error) => console.error(`Erro ao deletar: ${error}`)
             )
         }
     )

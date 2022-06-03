@@ -1,5 +1,5 @@
-import React from 'react';
-import { StatusBar } from 'react-native'
+import React, {useState} from 'react';
+import { SafeAreaView, StatusBar } from 'react-native'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -9,13 +9,13 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import CustomDrawer from './Drawer_Navigation/styles';
 import stylesVar from '../styles/stylesVar';
 //Screens
-import App_Open                 from '../pages/App_Open';
-import Cadastro_Usuario         from '../pages/Cadastro_Usuario';
-import Mapa                     from '../pages/Mapa';
-import Login                    from '../pages/Login';
-import Home                     from '../pages/Home';
-import Cotacao_Soja             from '../pages/Cotacao_Soja';
-import Previsao_Tempo           from '../pages/Previsao_Tempo';
+import App_Open         from '../pages/App_Open';
+import Cadastro_Usuario from '../pages/Cadastro_Usuario';
+import Login            from '../pages/Login';
+import Home             from '../pages/Home';
+import Cotacao_Soja     from '../pages/Cotacao_Soja';
+import Previsao_Tempo   from '../pages/Previsao_Tempo';
+import Mapa             from '../pages/Mapa';
 
 /** Testes */
 import Teste_Banco from '../pages/Teste_Banco'
@@ -60,7 +60,7 @@ function Drawer_Navigation () {
         <RelatoriosIcon size={24} fill='#343434' /> 
         ) 
       }} />
-      <Drawer.Screen name="Cotacao_Soja" component={Cotacao_Soja} options={{title:'Cotação da Soja', drawerIcon: ({color}) => ( 
+      <Drawer.Screen name="Cotacao_Soja" component={Cotacao_Soja} options={{title:'Cotação', drawerIcon: ({color}) => ( 
         <CotacaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
@@ -72,7 +72,6 @@ function Drawer_Navigation () {
         <PrevisaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
-      <Drawer.Screen name='Mapa' component={Mapa} options={{headerShown: false}} />
       <Drawer.Screen name='Teste do Banco' component={Teste_Banco} options={{title: 'Teste do Banco', drawerIcon: () => <PainelIcon size={24} fill='#f00' />}} />
     </Drawer.Navigator>
   );
@@ -82,10 +81,12 @@ function Drawer_Navigation () {
 const TabCadastro = createMaterialTopTabNavigator();
 
 function TabCadastro_Fazenda_Talhao() {
+  const[name,setName]=useState('Teste')
+
   return(
       <TabCadastro.Navigator>
-        <TabCadastro.Screen name="Fazenda" component={Fazenda} />
-        <TabCadastro.Screen name="Talhão" component={Talhao} />
+        <TabCadastro.Screen name="Fazenda" component={Fazenda} talhao_name='teste'/>
+        <TabCadastro.Screen talhao_name={name} name="Talhão" component={Talhao} />
         <TabCadastro.Screen name="Listagem" component={Listagem} />
       </TabCadastro.Navigator>
   )
@@ -129,23 +130,25 @@ const Stack = createNativeStackNavigator();
 
 const Routes = () => {
   return (
-    <NavigationContainer>
-        <StatusBar barStyle="light-content" backgroundColor="#F7BB26"/>
-        <Stack.Navigator initialRouteName="App_Open" screenOptions={{
-          headerShown: false, headerStyle:{...stylesVar.toolbar}, headerTitleAlign: 'center', headerTitleStyle:{fontWeight: 'bold'}
-          }}>
-        <Stack.Screen name="App_Open"                 component={App_Open} />
-        <Stack.Screen name="Login"                    component={Drawer_Navigation} options={{}}/>
-        <Stack.Screen name="Cadastro_Usuario"         component={Drawer_Navigation} options={{title:'Cadastrar-se'}}/>
-        <Stack.Screen name="HomeDrawer"               component={Drawer_Navigation} options={{title:'Painel Inicial'}}/>
-        <Stack.Screen name="Cadastro_Fazenda_Talhao"  component={Drawer_Navigation} options={{title:'Cadastros'}}/>
-        <Stack.Screen name="Cotacao_Soja"             component={Drawer_Navigation} options={{title:'Cotações da Soja'}}/>
-        <Stack.Screen name="Custos_Producao"          component={Drawer_Navigation} options={{title:'Custos de Produção'}}/>
-        <Stack.Screen name="Relatorios_Produtividade" component={Drawer_Navigation} options={{title:'Relatórios'}}/>
-        <Stack.Screen name="Previsao_Tempo"           component={Drawer_Navigation} options={{title:'Previsão do Tempo'}}/>
-        <Stack.Screen name="Historico_Compra_venda"   component={TabHistorico_Compra_Venda} options={{title:'Históricos'}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+      <NavigationContainer>
+          <StatusBar barStyle="light-content" backgroundColor="#F7BB26"/>
+          <Stack.Navigator initialRouteName="App_Open" screenOptions={{
+            headerShown: false, headerStyle:{...stylesVar.toolbar}, headerTitleAlign: 'center', headerTitleStyle:{fontWeight: 'bold'}
+            }}>
+          <Stack.Screen name="App_Open"                 component={App_Open} />
+          <Stack.Screen name="Login"                    component={Drawer_Navigation} options={{}}/>
+          <Stack.Screen name="Cadastro_Usuario"         component={Drawer_Navigation} options={{title:'Cadastrar-se'}}/>
+          
+          <Stack.Screen name="Mapa"                     component={Mapa} options={{title:'Marcar Talhão', headerShown:true}}/>
+          <Stack.Screen name="HomeDrawer"               component={Drawer_Navigation} options={{title:'Painel Inicial'}}/>
+          <Stack.Screen name="Cadastro_Fazenda_Talhao"  component={Drawer_Navigation} options={{title:'Cadastros'}}/>
+          <Stack.Screen name="Cotacao_Soja"             component={Drawer_Navigation} options={{title:'Cotações da Soja'}}/>
+          <Stack.Screen name="Custos_Producao"          component={Drawer_Navigation} options={{title:'Custos de Produção'}}/>
+          <Stack.Screen name="Relatorios_Produtividade" component={Drawer_Navigation} options={{title:'Relatórios'}}/>
+          <Stack.Screen name="Previsao_Tempo"           component={Drawer_Navigation} options={{title:'Previsão do Tempo'}}/>
+          <Stack.Screen name="Historico_Compra_venda"   component={TabHistorico_Compra_Venda} options={{title:'Históricos'}}/>
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
 }
 export default Routes

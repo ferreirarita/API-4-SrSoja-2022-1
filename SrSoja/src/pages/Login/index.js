@@ -21,7 +21,6 @@ export default function Login(props){
       });
     }
   }, []);
-
   const enviar = function(){
     if( mail === "" )
       Alert.alert("Forneça o seu e-mail");
@@ -52,7 +51,6 @@ export default function Login(props){
       });
     }
   };
-
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scroll}>
@@ -61,7 +59,6 @@ export default function Login(props){
             <Image source={require('../../assets/Logotype/SrSoja_Body.png')} />
             <Image source={require('../../assets/Logotype/SrSoja_Name.png')} />
           </View>
-
           <View style={styles.body}>
             <Text style={styles.bodyTitle}>E-mail</Text>
             <TextInput
@@ -82,7 +79,6 @@ export default function Login(props){
               secureTextEntry={true}
             />
           </View>
-
           <View style={styles.bodyButton}>
             <TouchableOpacity style={styles.bodyButton1} onPress={()=>props.navigation.navigate("Register")}>
               <Text style={styles.bodyText}>Registrar-se</Text>
