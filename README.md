@@ -87,7 +87,7 @@ Foram acordadas entre as partes envolvidas as seguintes datas para a entrega das
 
    <h5 >
   
-  SPRINT 3 </a> - 16/05 a 05/06/2022  </h5>
+  SPRINT 3 </a> - 16/05 a 05/06/2022 ✔ </h5>
 
    <h5 >
  
