@@ -6,6 +6,7 @@ import CheckIcon from '../../assets/Icons/check-circle'
 import CancelIcon from '../../assets/Icons/x-circle'
 import AddIcon from '../../assets/Icons/plus-circle'
 import NextIcon from '../../assets/Icons/arrow-right-circle'
+import InfoIcon from '../../assets/Icons/info-circle'
 
 function CheckButton(props) {
   return (
@@ -83,4 +84,23 @@ function NextButton(props) {
   )
 }
 
-export { CheckButton, CancelButton, AddButton, NextButton }
+function InfoButton(props) {
+  return(
+    <TouchableOpacity
+    onPress={props.onPress}
+    style={props.buttonStyle}>
+    <View style={{alignItems: 'center'}}>
+      <InfoIcon 
+        size={props.size} 
+      />
+    </View>
+    { props.legend !== '' &&
+    <Text style={style.textTiny}>
+      {props.legend}
+    </Text>
+    }
+  </TouchableOpacity>
+  )
+}
+
+export { CheckButton, CancelButton, AddButton, NextButton, InfoButton }

@@ -18,19 +18,6 @@ export default function Login() {
 
   const [ loading, setLoading ] = useState(false)
 
-  /*
-  <View style={styles.logoView}>
-        <Image 
-          source={require('../../assets/Logotype/SrSoja_Body.png')} 
-          style={styles.logotype}
-        />
-        <Image 
-          source={require('../../assets/Logotype/SrSoja_Name.png')} 
-          style={styles.logoText}
-        />
-      </View>
-  */
-
   useEffect(() => {
     if(user?.error)
       Alert.alert(user.error)

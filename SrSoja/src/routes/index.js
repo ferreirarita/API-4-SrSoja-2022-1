@@ -166,7 +166,7 @@ const Routes = () => {
           <Stack.Screen name="Login"                    component={Login} options={{}}/>
           <Stack.Screen name="Cadastro_Usuario"         component={Drawer_Navigation} options={{title:'Cadastrar-se'}}/>
           
-          <Stack.Screen name="Mapa"                     component={Mapa} options={{title:'Marcar Talhão', headerShown:true}}/>
+          <Stack.Screen name="Mapa"                     component={Mapa} options={{title:'Marcar no Mapa', headerShown:true}}/>
           <Stack.Screen name="HomeDrawer"               component={Drawer_Navigation} options={{title:'Painel Inicial'}}/>
           <Stack.Screen name="Cadastro_Fazenda_Talhao"  component={Drawer_Navigation} options={{title:'Cadastros'}}/>
           <Stack.Screen name="Cotacao_Soja"             component={Drawer_Navigation} options={{title:'Cotações da Soja'}}/>

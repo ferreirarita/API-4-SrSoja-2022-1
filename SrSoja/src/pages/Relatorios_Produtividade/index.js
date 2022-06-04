@@ -5,7 +5,7 @@ import { Picker } from '@react-native-picker/picker'
 import { stylesArea, stylesPrevisao, stylesCalculo } from './styles'
 import {ThisContext} from '../../context'
 //button
-import { CheckButton, CancelButton, AddButton, NextButton } from '../../components/Button'
+import { CheckButton, CancelButton, AddButton, NextButton, InfoButton } from '../../components/Button'
 
 
 const Area = () => {
@@ -197,21 +197,43 @@ const Previsao = () => {
               </View>
             </View>
           </View>
+
           <View style={stylesPrevisao.footerRowButtons}>
-            <View style={stylesPrevisao.footerRowButtons}>
+            
+            <View style={stylesPrevisao.footerButtonInfo}>
+                <InfoButton size={48}
+                  onPress={() => {
+                    navigation.navigate({
+                      name: 'Area'
+                    })
+                  }}
+                />
+            </View>
+            <View style={stylesPrevisao.footerRowCenterButtons}>
 
               <View style={stylesPrevisao.footerButtonCancel}>
                 <CancelButton size={48}/>
               </View>
               <View style={stylesPrevisao.footerButtonCheck}>
-                <CheckButton size={48}/>
+                <CheckButton size={48} 
+                  onPress={() => {
+                  
+                  }}
+                  
+                  />
+
               </View>
            </View>
 
             <View style={stylesPrevisao.footerButtonNext}>
-              <NextButton size={48}/>
+              <NextButton size={48} 
+                onPress={() => {
+                  navigation.navigate({
+                    name: 'Calculo'
+                  })
+                }}/>
             </View>
-        </View>
+          </View>
 
         </SafeAreaView>
   );
@@ -273,23 +295,40 @@ const Calculo = () => {
           </View>
         </View>
       </View>
-      <View style={stylesCalculo.footerButtons}>
-          <View style={stylesCalculo.footerRowButtons}>
-            <View style={stylesCalculo.footerRowButtons}>
+      <View style={stylesPrevisao.footerRowButtons}>
+            
+            <View style={stylesPrevisao.footerButtonInfo}>
+                <InfoButton size={48}
+                  onPress={() => {
+                    navigation.navigate({
+                      name: 'Area'
+                    })
+                  }}
+                />
+            </View>
+            <View style={stylesPrevisao.footerRowCenterButtons}>
 
-              <View style={stylesCalculo.footerButtonCancel}>
+              <View style={stylesPrevisao.footerButtonCancel}>
                 <CancelButton size={48}/>
               </View>
-              <View style={stylesCalculo.footerButtonCheck}>
-                <CheckButton size={48}/>
+              <View style={stylesPrevisao.footerButtonCheck}>
+                <CheckButton size={48} 
+                  onPress={() => {
+                  
+                  }}
+                  
+                  />
+
               </View>
            </View>
 
-            <View style={stylesCalculo.footerButtonNext}>
-              <AddButton size={48}/>
+            <View style={stylesPrevisao.footerButtonNext}>
+              <AddButton size={48} 
+                onPress={() => {
+
+                }}/>
             </View>
           </View>
-        </View>
 
   </SafeAreaView>
   );

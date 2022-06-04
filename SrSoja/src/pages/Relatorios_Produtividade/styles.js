@@ -161,30 +161,35 @@ const stylesPrevisao = StyleSheet.create({
     ...stylesVar.inputText,
     fontSize: 14,
   },
-  footerButtons:{
-    margin:5,
-    justifyContent:'center'
-  },
-  footerButtonCancel:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonCheck:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonNext:{
-   marginRight:30,
-   flexDirection: "row",
-   justifyContent: "center",
-  },
   footerRowButtons: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  footerRowCenterButtons: {
+    marginHorizontal:30,
    flexDirection: "row",
    alignItems: "center",
    justifyContent: "space-between",
  },
+  footerButtonCancel:{
+    marginHorizontal:10,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonCheck:{
+    marginHorizontal:10,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonNext:{
+   flexDirection: "row",
+   justifyContent: "center",
+  },
+  footerButtonInfo:{
+    flexDirection: "row",
+    justifyContent: "center",
+ }
 });
 
 const stylesCalculo = StyleSheet.create({
@@ -258,28 +263,36 @@ const stylesCalculo = StyleSheet.create({
     ...stylesVar.inputText,
     fontSize: 14,
   },
-  footerButtons:{
-    justifyContent:'center'
-  },
-  footerButtonCancel:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonCheck:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonNext:{
-   marginRight:30,
-   flexDirection: "row",
-   justifyContent: "center",
-  },
-  footerRowButtons: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+
+
+footerRowButtons: {
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+},
+footerRowCenterButtons: {
+  marginHorizontal:30,
+ flexDirection: "row",
+ alignItems: "center",
+ justifyContent: "space-between",
+},
+footerButtonCancel:{
+  marginHorizontal:10,
+  flexDirection: "row",
+  justifyContent: "center",
+},
+footerButtonCheck:{
+  marginHorizontal:10,
+  flexDirection: "row",
+  justifyContent: "center",
+},
+footerButtonInfo:{
+  flexDirection: "row",
+  justifyContent: "center",
+},
+footerButtonAdd:{
+ flexDirection: "row",
+ justifyContent: "center",
 }
 });
 

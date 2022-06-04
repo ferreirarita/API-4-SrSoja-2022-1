@@ -1,17 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-  Alert,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { styles, stylesFazenda, stylesTalhao, stylesListagem } from "./styles";
-import MapView, { Marker } from "react-native-maps";
-import * as Location from "expo-location";
+import {View,Text,TextInput,SafeAreaView,TouchableOpacity,ScrollView,Alert,Flatlist} from "react-native";
+import {  stylesFazenda, stylesTalhao, stylesListagem } from "./styles";
 import { Picker } from "@react-native-picker/picker";
 import { ThisContext } from "../../context";
 import { addFazenda } from "../../services/database/controllers/Fazenda";
@@ -23,143 +12,10 @@ import TrashIcon from "../../assets/Icons/trash3-fill";
 import EditIcon from "../../assets/Icons/pencil-square";
 import SearchIcon from "../../assets/Icons/search";
 //buttons
-import {
-  CheckButton,
-  CancelButton,
-  AddButton,
-  NextButton,
-} from "../../components/Button";
-/* 
-//(<Mapa longitude= 0 latitude= 0/>)
-export default function Mapa({ navigation }) {
-  const [alfinete, setAlfinete] = useState({ longitude: -45, latitude: -23 });
-  const [origin, setOrigin] = useState(null);
+import {CheckButton,CancelButton,AddButton,NextButton} from "../../components/Button";
 
-  const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
-  const [coord, setCoord] = useState("Buscando localização");
 
-  useEffect(() => {
-    CheckIfLocationEnabled();
-    GetCurrentLocation();
-  }, []);
-
-  const CheckIfLocationEnabled = async () => {
-    let enabled = await Location.hasServicesEnabledAsync();
-
-    if (!enabled) {
-      Alert.alert(
-        "A Localização está desativada",
-        "Por favor, ative a para continuar",
-        [{ text: "Ok" }],
-        { cancelable: false }
-      );
-    } else {
-      setLocationServiceEnabled(enabled);
-    }
-  };
-
-  const GetCurrentLocation = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync();
-
-    if (status !== "granted") {
-      Alert.alert(
-        "Permissão negada",
-        "Por favor, permita que a localização seja utilizada para continuar",
-        [{ text: "Ok" }],
-        { cancelable: false }
-      );
-    }
-    let { coords } = await Location.getCurrentPositionAsync({
-      enableHighAccuracy: true,
-    });
-
-    if (coords) {
-      const { latitude, longitude } = coords;
-      let response = await Location.reverseGeocodeAsync({
-        latitude,
-        longitude,
-      });
-      setOrigin({
-        latitude: coords.latitude,
-        longitude: coords.longitude,
-        latitudeDelta: 0.00922,
-        longitudeDelta: 0.00421,
-      });
-
-      for (let item of response) {
-        let coordinate = {
-          postalCode: item.postalCode,
-          street: item.street,
-          district: item.district,
-          region: item.region,
-        };
-
-        setCoord(coordinate);
-        if (coordinate.length > 0) {
-          setTimeout(() => {
-            navigation.navigate("Cadastro_Fazenda_Talhao", {
-              item: coordinate,
-            });
-          }, 1000);
-        }
-      }
-    }
-  };
-
-  return (
-    <>
-      <MapView
-        style={styles.container}
-        initialRegion={origin}
-        showsUserLocation={true}
-        zoomEnabled={true}
-        loadingEnabled={true}
-        mapType="hybrid"
-        onPress={(e) => {
-          //console.log(JSON.stringify(e.nativeEvent.coordinate))
-          
-          setAlfinete(e.nativeEvent.coordinate);
-          let coordGet = e.nativeEvent.coordinate;
-          setCoord(coord);
-          navigation.navigate("Fazenda", { item: coordinate });
-          console.log("o tal do alfinete?", coordGet);
-          //           props.route.params.teste(e.nativeEvent.coordinate)
-           
-        }}
-      >
-        <Marker coordinate={alfinete} />
-      </MapView>
-
-      <Text style={{ alignItems: "center", justifyContent: "center" }}>
-        {coord}
-      </Text>
-
-      <View style={styles.footer}>
-        <View style={styles.footerRow}>
-          <View style={styles.footerColumn}>
-            <CancelButton
-              size={48}
-              onPress={() => {
-                navigation.goBack();
-              }}
-            />
-          </View>
-
-          <View style={styles.footerColumn}>
-            <CheckButton
-              size={48}
-              onPress={() => {
-                navigation.navigate("Fazenda");
-              }}
-            />
-          </View>
-        </View>
-      </View>
-    </>
-  );
-} */
-
-const Fazenda = ({navigation, route }) => {
+const Fazenda = ({navigation, route}) => {
 
   const { database, dataResult, setResult } = useContext(ThisContext);
   const [fazenda, setFazenda] = useState("");
@@ -170,34 +26,18 @@ const Fazenda = ({navigation, route }) => {
   const [municipio, setMunicipio] = useState("");
   const [logradouro, setLogradouro] = useState("");
   const [bairro, setBairro] = useState("");
-
-  /* const teste = route.params?.coord[0]
-  const [coord,setCoord] = useState ({})
-console.log('teste',teste)
-useEffect(() => {
-  if(teste!==undefined) 
-  setCoord(teste)
-},[teste])
-console.log('coord',coord)
- */
-
-  /*useEffect(()=>{
-  if (coordenada===undefined){
-    coordenada= {}
-    console.log('teste if',coordenada)
-
-  }
-  else{
-    setCoord(coordenada)
-    console.log('teste else',coord)
-  }
-
- },[coordenada])  */
-  /*  const { coord } = route.params
-   */
-  /* const [lat,setLat]=useState()
- console.log('é a rota',setLat(route.params?.coord.latitude) ) */
-
+  const [coord,setCoord ] = useState({})
+  
+  let coordResult = route.params?.coordenadas
+  useEffect(() => {
+    if(coordResult === undefined){
+      //console.log('ainda não recebeu a coordenada',coordResult)
+    }else{
+      //console.log('recebeu a coordenada',coordResult)
+      setCoord(coordResult)
+    }
+    },[coordResult]
+)
 
   async function searchCEP(cep) {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
@@ -260,7 +100,10 @@ console.log('coord',coord)
               <TouchableOpacity
                 style={stylesFazenda.bodyButton}
                 onPress={() => {
-                  navigation.navigate('Mapa')
+                  navigation.navigate({
+                    name: 'Mapa',
+                    params: {nome: fazenda}
+                  })
                 }}>
                 <MapIcon size={28} fill="#343434" />
                 <Text style={stylesFazenda.bodyTitleSearch}>
@@ -269,19 +112,8 @@ console.log('coord',coord)
               </TouchableOpacity>
             </View>
           </View>
-          {/*             {setCoord( route.params?.coord[0] ?? {})}
-           */}
-          {/*                   {route.params?.coord.map((lat,index)=> <Text value={lat} key={index}>{[lat.latitude, lat.longitude]}</Text>)
-                  }                
-                   */}
-          {/*                   {console.log('teste apenas coord do params',route.params?.coord)}
-           */}
-
-          {/*       {console.log('teste latitude', route.params?.coord.map((lat,index)=> [lat.latitude]))}
-                  {console.log('teste longitude', route.params?.coord.map((lat,index)=> [lat.longitude]))}
-  */}
-          <Text>latitude:{route.params?.coordenadas.latitude}</Text>
-          <Text>longitude:{route.params?.coordenadas.longitude}</Text>
+          <Text>latitude:{coord.latitude}</Text>
+          <Text>longitude:{coord.longitude}</Text>
           <View style={stylesFazenda.bodyColumn}>
             <Text style={stylesFazenda.bodyTitle}>Estado</Text>
             <Text style={stylesFazenda.bodyInputBoxEstado}>{uf}</Text>
@@ -308,12 +140,13 @@ console.log('coord',coord)
               <CancelButton
                 size={48}
                 onPress={() => {
-                  setFazenda("");
-                  setCep("");
-                  setUf("");
-                  setMunicipio("");
-                  setLogradouro("");
-                  setBairro("");
+                  setFazenda("")
+                  setCep("")
+                  setUf("")
+                  setMunicipio("")
+                  setLogradouro("")
+                  setBairro("")
+                  setCoord("")
                 }}
               />
             </View>
@@ -356,12 +189,8 @@ console.log('coord',coord)
   );
 };
 
-const Talhao = ({ talhao_name, navigation }) => {
+const Talhao = ({talhao_name, navigation, route}) => {
 
-  const [saudeTalhao] = useState(["Doente", "Saudável"]);
-  const [saudeSelecionada, setSaudeSelecionada] = useState([]);
-
-  const [coord, setCoord] = useState();
   const { database, dataResult, setResult } = useContext(ThisContext);
 
   const [apelido, setApelido] = useState(talhao_name);
@@ -369,6 +198,29 @@ const Talhao = ({ talhao_name, navigation }) => {
   //Picker
   const [saude, setSaude] = useState(["Saudável", "Doente"]);
   const [selectedSaude, setSelectedSaude] = useState([]);
+
+  const [coord,setCoord ] = useState({})
+  
+  let coordResult = route.params?.coordenadas
+  useEffect(() => {
+    if(coordResult === undefined){
+      //console.log('ainda não recebeu a coordenada',coordResult)
+    }else{
+      //console.log('recebeu a coordenada',coordResult)
+      setCoord(coordResult)
+    }
+    },[coordResult]
+)
+
+
+const [exibirMapa,setExibirMapa]=useState(false)
+
+
+
+
+
+
+
 
   return (
     <SafeAreaView style={stylesTalhao.container}>
@@ -408,18 +260,24 @@ const Talhao = ({ talhao_name, navigation }) => {
           </View>
           <View style={stylesTalhao.bodyRow}>
             <Text style={stylesTalhao.bodyTitle}>Selecionar área</Text>
-            <TouchableOpacity
-              style={stylesTalhao.bodyRowMap}
+            
+            <TouchableOpacity style={stylesTalhao.bodyRowMap}
               onPress={() => {
-                navigation.setOptions();
-                navigation.navigate("Mapa", { coord });
-              }}
-            >
+                setExibirMapa(true)
+                navigation.navigate({
+                  name: 'Mapa',
+                  params: {
+                    nome: apelido,
+                    miniMap: exibirMapa
+                  }
+                })
+              }}>
               <View style={stylesTalhao.bodyMap}>
                 <MapIcon size={50} fill="#343434" />
                 <Text style={stylesTalhao.bodyTextMap}>Abrir Mapa</Text>
               </View>
             </TouchableOpacity>
+            
             <View style={stylesTalhao.bodyLine} />
           </View>
         </View>
@@ -432,9 +290,10 @@ const Talhao = ({ talhao_name, navigation }) => {
               <CancelButton
                 size={48}
                 onPress={() => {
-                  setCoord("");
-                  setApelido("");
-                  setSaude("");
+                  setApelido("")
+                  setCoord("")
+                  setExibirMapa(false)
+                 // setSaude("") a resolver
                 }}
               />
             </View>
@@ -456,7 +315,7 @@ const Talhao = ({ talhao_name, navigation }) => {
                       setResult
                     );
                   } catch (e) {
-                    console.log(e);
+                    console.log('update feito',e);
                   }
                 }}
               />
@@ -478,7 +337,7 @@ const Talhao = ({ talhao_name, navigation }) => {
   );
 };
 
-const Listagem = ({navigation}) => {
+const Listagem = ({navigation, route}) => {
   return (
     <SafeAreaView style={stylesListagem.container}>
       <ScrollView>
@@ -510,9 +369,7 @@ const Listagem = ({navigation}) => {
               <CancelButton
                 size={48}
                 onPress={() => {
-                  setCoord("");
-                  setApelido("");
-                  setSaude("");
+
                 }}
               />
             </View>
