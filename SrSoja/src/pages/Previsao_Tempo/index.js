@@ -12,7 +12,7 @@ import MainCard from "../../components/MainCard"
  /*useEffect(() => {
   let time = getCurrentTime();
   setTime(time);
-}, []);*/ 
+}, []); */
 
 /*
 export default function Teste (){
@@ -113,7 +113,7 @@ export default function App() {
       <View style={styles.container}>
       
         <TouchableOpacity style={styles.refreshButton} onPress={() => setCurrentWeather()}>
-          <EvilIcons name="refresh" color={'white'} size={24}/>
+          <EvilIcons name="refresh" color={'black'} size={24}/>
         </TouchableOpacity>
 
         <Feather style={{marginTop: 50}} name="sun" size={40} color="orange" />
@@ -123,7 +123,8 @@ export default function App() {
           <Text style={[styles.temperatureText, {fontSize: 14}]}>°C</Text>
         </View>
         
-        <Text style={styles.localizationText}>{locationName}</Text>
+        <Text style={styles.localizationText}>{locationName}</Text> 
+
 
         <View style={styles.cardsView}>
           <MainCard title={"Manhã"} icon={'morning'} temperature={"27°"} backgroundColor={'#CC6E30'} ></MainCard>
