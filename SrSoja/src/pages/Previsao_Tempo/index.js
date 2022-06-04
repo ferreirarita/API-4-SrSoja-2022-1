@@ -127,9 +127,9 @@ export default function App() {
 
 
         <View style={styles.cardsView}>
-          <MainCard title={"Manhã"} icon={'morning'} temperature={"27°"} backgroundColor={'#CC6E30'} ></MainCard>
-          <MainCard title={"Tarde"} icon={'afternoon'} temperature={"31°"} backgroundColor={'#FCC63F'} ></MainCard>
-          <MainCard title={"Noite"} icon={'night'} temperature={"21°"} backgroundColor={'#38B7B8'} ></MainCard>
+          <MainCard title={"Manhã"} icon={'morning'} temperature={"20°"} backgroundColor={'#CC6E30'} ></MainCard>
+          <MainCard title={"Tarde"} icon={'afternoon'} temperature={"26°"} backgroundColor={'#FCC63F'} ></MainCard>
+          <MainCard title={"Noite"} icon={'night'} temperature={"19°"} backgroundColor={'#38B7B8'} ></MainCard>
         </View>
     
         <View style={styles.info}>
