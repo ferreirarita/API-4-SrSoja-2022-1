@@ -1,147 +1,139 @@
-import React,{ useState, useEffect }  from 'react';
-import { Text, View, TouchableOpacity } from 'react-native'
-import { Feather } from '@expo/vector-icons'
-import * as Location from 'expo-location'
-import { EvilIcons } from '@expo/vector-icons' 
-import styles from './styles'
-
-import InfoCard from '../../components/InfoCard'
-import MainCard from "../../components/MainCard"
+import { View,Text,Image,Alert} from 'react-native';
+import styles from './styles';
+import { parse } from 'fast-xml-parser';
+import React, { useEffect, useState } from 'react';
+import * as Location from "expo-location";
 
 
-
-async function getCurrentWeather(locationCoords){
-
-  const axios = require('axios')
-
-  const lat = locationCoords.latitude
+const Previsao_Tempo = () => {
   
-  const log = locationCoords.longitude
-
-  var results = []
-
-  await axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${log}&appid=40a5f7559101e8312445dfae9a9b0db1`)
-      .then(function (response){
-
-          const data = response.data     
-          const locationName = (data.sys.country + ', ' + ' ' + data.name)
-          const temperatureMin = data.main.temp_min
-          const temperatureMax = data.main.temp_max
-          const wind = data.wind.speed
-          const humidity = data.main.humidity
-          const currentTemperature = data.main.temp
-          
-          results = [currentTemperature, temperatureMin, temperatureMax, locationName, wind, humidity]          
-      })
-      .catch(function (error) {
-          console.log(error)
-      })
-
-  return results
-}
-
-export default function App() {
-
-  const [time, setTime] = useState(null);
-
-  const getCurrentTime = () => {
-    let today = new Date();
-    let hours = (today.getHours() < 10 ? '0' : '') + today.getHours();
-    let minutes = (today.getMinutes() < 10 ? '0' : '') + today.getMinutes();
-
-    return hours + ':' + minutes;
-  }
-
-  const axios = require('axios')
-  
-  const [currentTemperature, setCurrentTemperature] = useState('30')
-
-  const [locationCoords, setLocationCoords] = useState(null);
-
-  const [locationName, setLocationName] = useState('Brasil, São Paulo')
-  
-  const [temperatureMin, setTemperatureMin] = useState('21')
-  const [temperatureMax, setTemperatureMax] = useState('32')
-  const [wind, setWind] = useState('7')
-  const [humidity, setHumidity] = useState('68')
-
-
-//aqui estava o cons styles, removi ele e coloquei no styles.js
-
-  async function getLocation(){
-    let { status } = await Location.requestForegroundPermissionsAsync()
-      if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied')
-      }else{
-        let location = await Location.getCurrentPositionAsync({})
-        await setLocationCoords(location.coords)
-      }
-  }
-
-  async function setCurrentWeather(){
-    await getLocation()
-    const data = await getCurrentWeather(locationCoords)
-
-
-    setCurrentTemperature(convertKelvinToC(data[0]))
-    setTemperatureMin(convertKelvinToC(data[1]))
-    setTemperatureMax(convertKelvinToC(data[2]))
-    setLocationName(data[3])
-    setWind(data[4])
-    setHumidity(data[5])
-    
-  }
-
-  function convertKelvinToC(kelvin){
-    return parseInt(kelvin - 273)
-  }
+  const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
+  const [coord, setCoord] = useState("Buscando localização");
 
   useEffect(() => {
-    setCurrentWeather()
-  }, [])
-  
-  useEffect(() => {
-    let time = getCurrentTime();
-    setTime(time);
+    CheckIfLocationEnabled();
+    GetCurrentLocation();
   }, []);
-
-  return (
-      <View style={styles.container}>
-      
-        <TouchableOpacity style={styles.refreshButton} onPress={() => setCurrentWeather()}>
-          <EvilIcons name="refresh" color={'black'} size={24}/>
-        </TouchableOpacity>
-
-        <Feather style={{marginTop: 30}} name="sun" size={40} color="orange" />
-
-        <View style={styles.temperatureView}>
-          <Text style={styles.temperatureText}>{currentTemperature}</Text>
-          <Text style={[styles.temperatureText, {fontSize: 14}]}>°C</Text>
-        </View>
+  
+  const CheckIfLocationEnabled = async () => {
+    let enabled = await Location.hasServicesEnabledAsync();
+  
+    if (!enabled) {
+      Alert.alert(
+        "A Localização está desativada",
+        "Por favor, ative a para continuar",
+        [{ text: "Ok" }],
+        { cancelable: false }
+      );
+    } else {
+      setLocationServiceEnabled(enabled);
+    }
+  };
+  
+  const GetCurrentLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+  
+    if (status !== "granted") {
+      Alert.alert(
+        "Permissão negada",
+        "Por favor, permita que a localização seja utilizada para continuar",
+        [{ text: "Ok" }],
+        { cancelable: false }
+      );
+    }
+    let { coords } = await Location.getCurrentPositionAsync({
+      enableHighAccuracy: true,
+    });
+  
+    if (coords) {
+      const { latitude, longitude } = coords;
+      let response = await Location.reverseGeocodeAsync({
+        latitude,
+        longitude,
+      });
+      setCoord({
+        lat:coords.latitude,
+        log:coords.longitude,
+      })
+    }
+  } 
+  
+  const {XMLParser} = require('fast-xml-parser');
+  const parser = new XMLParser();
+  const [clima,setclima] = useState({});
+  const lat = coord.lat; 
+  const log = coord.log;
+  console.log("");
         
-        <Text style={styles.localizationText}>{locationName},{time}</Text> 
+  useEffect(() => {
+    fetch (`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
+        .then((response) => response.text())
+        .then((textResponse) => {
+            let obj = parser.parse(textResponse);
+            let cidade = obj.cidade.nome;
+            let estado = obj.cidade.uf;
+            let previsao = [...obj.cidade.previsao];
+            setclima({ nome: cidade,estado: estado,previsao: previsao});
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}, []);
+    return (
+        <View style={styles.container}>
+            <View style={styles.body}>
+                <Text style={styles.bodyTitle}>{clima.nome},{clima.estado}</Text>
+                <Text style={styles.bodyTitle}> </Text>    
+                <Text style={styles.bodyTitle}>{clima.previsao[0].dia}</Text>       
+                <View style={styles.bodyRow}>
+                    <View style={styles.bodyButton}>
+                        <Text style={styles.bodyText}>ºC</Text>
+                    </View>
+                </View>
 
+                <Text style={styles.bodyTitle}>{clima.previsao[1].dia} </Text>
 
-        <View style={styles.cardsView}>
-          <MainCard title={"Segunda"} icon={'segunda'} temperature={"20°"} backgroundColor={'#CC6E30'} ></MainCard>
-          <MainCard title={"Terça"} icon={'terça'} temperature={"26°"} backgroundColor={'#FCC63F'} ></MainCard>
-          <MainCard title={"Quarta"} icon={'quarta'} temperature={"19°"} backgroundColor={'#38B7B8'} ></MainCard>
-          <MainCard title={"Quinta"} icon={'quinta'} temperature={"22°"} backgroundColor={'#556D23'} ></MainCard>
-          <MainCard title={"Sexta"} icon={'sexta'} temperature={"25°"} backgroundColor={'#49A130'} ></MainCard>
+                <View style={styles.bodyRow}>
+                    <View style={styles.bodyButton}>
+                        <Text style={styles.bodyText}>ºC</Text>
+                    </View>
+                </View>
+
+                <Text style={styles.bodyTitle}>{clima.previsao[2].dia} </Text>
+
+                <View style={styles.bodyRow}>
+                    <View style={styles.bodyButton}>
+                        <Text style={styles.bodyText}>ºC</Text>
+                    </View>
+                </View>
+
+                <Text style={styles.bodyTitle}>{clima.previsao[3].dia} </Text>
+
+                <View style={styles.bodyRow}>
+                    <View style={styles.bodyButton}>
+                        <Text style={styles.bodyText}>ºC</Text>
+                    </View>
+                </View>
+
+                <Text style={styles.bodyTitle}>{clima.previsao[4].dia} </Text>
+
+                <View style={styles.bodyRow}>
+                    <View style={styles.bodyButton}>
+                        <Text style={styles.bodyText}>ºC</Text>
+                    </View>
+                </View>
+
+                <Text style={styles.bodyTitle}>{clima.previsao[5].dia} </Text>
+
+                <View style={styles.bodyRow}>
+                    <View style={styles.bodyButton}>
+                        <Text style={styles.bodyText}>Minima:{clima.previsao[5].minima}</Text>
+                        <Text style={styles.bodyText}>Maxima:{clima.previsao[5].maxima}</Text>
+                    </View>
+                </View>
+            </View>
         </View>
-    
-        <View style={styles.info}>
-          <Text style={styles.infoText}>Informações adcionais:</Text>
-          <View style={styles.addtionalInfo}>
-            <InfoCard title={'Vento'} variable={wind} ></InfoCard>
-            <InfoCard title={'Umidade'} variable={humidity} ></InfoCard>
-            <InfoCard title={'Temp. Min'} variable={temperatureMin} ></InfoCard>
-            <InfoCard title={'Temp. Max'} variable={temperatureMax} ></InfoCard>
-          </View>
-        </View>
-        
-      </View>
-  ); 
+    )
 }
 
-
+export default Previsao_Tempo;
