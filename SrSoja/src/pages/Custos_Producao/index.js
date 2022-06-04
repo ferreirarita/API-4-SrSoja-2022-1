@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet,View, Text, SafeAreaView, TouchableOpacity, Image ,Alert} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import style from './styles';
 import * as Location from 'expo-location';
 
 
@@ -107,15 +106,14 @@ const Fertilizantes = () => {
 const Agrotoxicos = () => {
     const navigation = useNavigation();
     return (
-        <SafeAreaView style={{flex:1}}>
-            <View style={{flex:1, justifyContent:'center', alignItems: 'center'}}>
-                <Text>Tela de Agrotóxicos</Text>
-                <TouchableOpacity style={{marginTop:20}} onPress={() => navigation.navigate('Cadastros')}>
-                    <Text>Visualizar</Text>
-                </TouchableOpacity>
-            </View>
+        <SafeAreaView style={{ flex: 1 }}>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <TouchableOpacity style={{ marginTop: 20 }} onPress={() => navigation.navigate('Cadastros')}>
+                        <Text>HOME</Text>
+                    </TouchableOpacity>
+                </View>
         </SafeAreaView>
     );
 }
 
-export {Sementes, Fertilizantes, Agrotoxicos}
+export { Sementes, Fertilizantes, Agrotoxicos }

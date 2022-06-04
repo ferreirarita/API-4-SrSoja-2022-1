@@ -1,7 +1,7 @@
 export default {
     produtor: `
     CREATE TABLE IF NOT EXISTS produtor (
-        prd_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        prd_id TEXT PRIMARY KEY,
         prd_nome TEXT NOT NULL,
         prd_email TEXT NOT NULL,
         prd_senha TEXT NOT NULL
@@ -64,11 +64,12 @@ export default {
     );`,
     hist_gasto: `
     CREATE TABLE IF NOT EXISTS hist_gasto (
-        hg_data TIMESTAMP PRIMARY KEY DEFAULT CURRENT_TIMESTAMP,
-        prd_id INTEGER,
-        hg_nome TEXT DEFAULT "Gasto de " || STRFTIME('%d-%m-%Y', (CURRENT_TIMESTAMP/1000)),
+        hg_data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        prd_id TEXT,
+        hg_nome TEXT DEFAULT CURRENT_TIMESTAMP,
         hg_valor NUMERIC DEFAULT 0.00,
         hg_descr TEXT DEFAULT "...",
+        PRIMARY KEY (hg_data, prd_id),
         FOREIGN KEY (prd_id) REFERENCES produtor (prd_id)
     );`,
     item: `
@@ -95,10 +96,11 @@ export default {
     hist_venda: `
     CREATE TABLE IF NOT EXISTS hist_venda (
         hv_data TIMESTAMP PRIMARY KEY DEFAULT CURRENT_TIMESTAMP,
-        prd_id INTEGER,
-        hv_descr TEXT DEFAULT "Venda de " || STRFTIME('%d-%m-%Y', (CURRENT_TIMESTAMP/1000)),
-        hv_quant INTEGER DEFAULT 0,
+        prd_id TEXT,
+        hv_nome TEXT DEFAULT CURRENT_TIMESTAMP,
         hv_valor NUMERIC DEFAULT 0.00,
+        hv_quant INTEGER DEFAULT 0,
+        hv_descr TEXT DEFAULT "...",
         FOREIGN KEY (prd_id) REFERENCES produtor (prd_id)
     );
 `}

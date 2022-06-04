@@ -7,7 +7,6 @@ import LoadingScreen from '../../components/LoadingScreen'
 import { useNavigation } from '@react-navigation/native'
 
 import getContext from '../../hooks'
-import style from '../../components/Button/styles'
 
 export default function Login() {
   const navigation = useNavigation()
@@ -184,44 +183,65 @@ export default function Login(props){
         }
       });
     }
-  };
+  }, [user])
+
+
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scroll}>
-        <View>
-          <View style={styles.header}>
-            <Image source={require('../../assets/Logotype/SrSoja_Body.png')} />
-            <Image source={require('../../assets/Logotype/SrSoja_Name.png')} />
-          </View>
-          <View style={styles.body}>
-            <Text style={styles.bodyTitle}>E-mail</Text>
-            <TextInput
-              style={styles.bodyInput}
-              onChangeText={setMail}
-              value={mail}
-              autoCapitalize="none"
-              autoComplete="email"
-              autoCorrect={false}
-              keyboardType="email-address"
-              placeholder="exemplo@hotmail.com"
-            />
-            <Text style={styles.bodyTitle}>Senha</Text>
-            <TextInput
-              style={styles.bodyInput}
-              onChangeText={setSenha}
-              value={senha}
-              secureTextEntry={true}
-            />
-          </View>
-          <View style={styles.bodyButton}>
-            <TouchableOpacity style={styles.bodyButton1} onPress={()=>props.navigation.navigate("Register")}>
-              <Text style={styles.bodyText}>Registrar-se</Text>
-            </TouchableOpacity>
-              <TouchableOpacity style={styles.bodyButton2} onPress={enviar}>
-                <Text style={styles.bodyText}>Login</Text>
-                <FlechaIcon size="25" fill='#F7BB26'/>
-              </TouchableOpacity>
-          </View>
+    !loading ?
+    <ScrollView style={style.container}>
+      <View style={style.scroll}>
+
+      <Text>Login</Text>
+
+      <View style={style.body}>
+
+          <Text style={style.bodyTitle}>E-mail</Text>
+
+          <TextInput
+            style={style.bodyInput}
+            onChangeText={setMail}
+            value={mail}
+            autoCapitalize="none"
+            autoComplete="email"
+            autoCorrect={false}
+            keyboardType="email-address"
+            placeholder="exemplo@hotmail.com"
+          />
+
+          <Text style={style.bodyTitle}>Senha</Text>
+          <TextInput
+            style={style.bodyInput}
+            onChangeText={setSenha}
+            value={senha}
+            secureTextEntry={true}
+          />
+
+        </View>
+
+        <View style={style.bodyButton}>
+
+          <TouchableOpacity 
+            style={style.bodyButton1} 
+            onPress={()=>{
+              setUser({})
+              navigation.navigate('Logup')
+            }}
+          >
+            <Text style={style.bodyText}>Cadastrar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={style.bodyButton2} 
+            onPress={() => {
+              setLoading(true)
+              logIn(mail, senha)
+              .finally(() => setLoading(false))
+            }}
+          >
+            <Text style={style.bodyText}>Login</Text>
+            <ArrowRight size="25" fill='#F7BB26'/>
+          </TouchableOpacity>
+
         </View>
       </ScrollView>
     </SafeAreaView>

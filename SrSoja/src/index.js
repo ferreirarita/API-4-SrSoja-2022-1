@@ -8,21 +8,14 @@ import {Context} from './context';
 
 
 export default function App () {
-  const [database,setDatabase] = useState(null)
-  const [dataResult,setResult] = useState(null)
 
   useEffect(()=>{
-    openDatabase().then(response => setDatabase(response))
+    //openDatabase()//.then(response => setDatabase(response))
   },[])
 
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#F7BB26"/>
-      {/*
-      <Context.Provider value={{database, dataResult, setResult}}>
-        <Pages />
-      </Context.Provider>
-      */}
       <Context>
         <Routes />
       </Context>

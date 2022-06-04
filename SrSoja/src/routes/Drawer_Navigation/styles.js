@@ -1,14 +1,15 @@
 import React, {useContext} from 'react'
 import { View, Text, Image, SafeAreaView, TouchableOpacity } from 'react-native'
 import { DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer'
-import { useNavigation } from '@react-navigation/native'
 import {ThisContext} from '../../context'
 //Icons
 import LogoutIcon   from '../../assets/Icons/box-arrow-right'
 import Settings     from '../../assets/Icons/gear'
 
+import getContext from '../../hooks'
+import { useNavigation } from '@react-navigation/native'
+
 const CustomDrawer = (props) => {
-    const navigation = useNavigation();
     const {logOut}=useContext(ThisContext)
     return(
         <SafeAreaView style={{flex:1,backgroundColor: '#F7BB26'}}>
