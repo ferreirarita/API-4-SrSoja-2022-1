@@ -18,7 +18,7 @@ const InfoCard = (props) => {
 const styles = StyleSheet.create({   
     card:{
         alignItems: 'center',
-        margin: 10,
+        margin: 5,
         minWidth: 150,
       },
     text:{
