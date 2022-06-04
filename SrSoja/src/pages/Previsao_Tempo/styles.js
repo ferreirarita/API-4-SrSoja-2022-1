@@ -48,12 +48,13 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       flexWrap: 'wrap',
     },
-
+/*
     container:{
         flex: 1,
         backgroundColor: '#5EC7BA',
         alingnItems: 'center'
     },
+    */
     
     label:{
         textAlign:'center'
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#',
+        backgroundColor: '#364585',
         borderWidth: 0.5,
         borderColor: '#000', 
         height: 40,
