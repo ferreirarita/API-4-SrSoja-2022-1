@@ -63,11 +63,11 @@ export default function App() {
 
   const axios = require('axios')
   
-  const [currentTemperature, setCurrentTemperature] = useState('31')
+  const [currentTemperature, setCurrentTemperature] = useState('30')
 
   const [locationCoords, setLocationCoords] = useState(null);
 
-  const [locationName, setLocationName] = useState('Brasil, Fortaleza')
+  const [locationName, setLocationName] = useState('Brasil, São Paulo')
   
   const [temperatureMin, setTemperatureMin] = useState('21')
   const [temperatureMax, setTemperatureMax] = useState('32')
@@ -116,7 +116,7 @@ export default function App() {
           <EvilIcons name="refresh" color={'black'} size={24}/>
         </TouchableOpacity>
 
-        <Feather style={{marginTop: 50}} name="sun" size={40} color="orange" />
+        <Feather style={{marginTop: 30}} name="sun" size={40} color="orange" />
 
         <View style={styles.temperatureView}>
           <Text style={styles.temperatureText}>{currentTemperature}</Text>
@@ -127,9 +127,11 @@ export default function App() {
 
 
         <View style={styles.cardsView}>
-          <MainCard title={"Manhã"} icon={'morning'} temperature={"20°"} backgroundColor={'#CC6E30'} ></MainCard>
-          <MainCard title={"Tarde"} icon={'afternoon'} temperature={"26°"} backgroundColor={'#FCC63F'} ></MainCard>
-          <MainCard title={"Noite"} icon={'night'} temperature={"19°"} backgroundColor={'#38B7B8'} ></MainCard>
+          <MainCard title={"Segunda"} icon={'segunda'} temperature={"20°"} backgroundColor={'#CC6E30'} ></MainCard>
+          <MainCard title={"Terça"} icon={'terça'} temperature={"26°"} backgroundColor={'#FCC63F'} ></MainCard>
+          <MainCard title={"Quarta"} icon={'quarta'} temperature={"19°"} backgroundColor={'#38B7B8'} ></MainCard>
+          <MainCard title={"Quinta"} icon={'quinta'} temperature={"22°"} backgroundColor={'#556D23'} ></MainCard>
+          <MainCard title={"Sexta"} icon={'sexta'} temperature={"25°"} backgroundColor={'#49A130'} ></MainCard>
         </View>
     
         <View style={styles.info}>

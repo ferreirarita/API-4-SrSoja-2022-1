@@ -5,21 +5,31 @@ import { Feather, Fontisto } from '@expo/vector-icons'
 const MainCard = (props) => {
 
     const Icon = () => {
-        if(props.icon === 'morning'){
+        if(props.icon === 'segunda'){
             return(
-                <Feather style={styles.cardIcon} name="sun" size={40} color="white" />
+                <Feather style={styles.cardIcon} name="sun" size={15} color="white" />
             )   
         }
-        if(props.icon === 'afternoon'){
+        if(props.icon === 'terça'){
             return(
-                <Fontisto style={styles.cardIcon} name="day-cloudy" size={40} color="white" />
+                <Fontisto style={styles.cardIcon} name="day-cloudy" size={15} color="white" />
             )   
         }
-        if(props.icon === 'night'){
+        if(props.icon === 'quarta'){
             return(
-                <Feather style={styles.cardIcon} name="cloud-rain" size={40} color="white" />
+                <Feather style={styles.cardIcon} name="sun" size={15} color="white" />
+            )    
+        }    
+        if(props.icon === 'quinta'){
+            return(
+                <Fontisto style={styles.cardIcon} name="day-cloudy" size={15} color="white" />
+            )  
+        }
+        if(props.icon === 'sexta'){
+            return(
+               <Feather style={styles.cardIcon} name="cloud-rain" size={15} color="white" />
             )   
-        }         
+        }     
     }
 
     return(
@@ -36,24 +46,24 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 20,
-      margin: 10,
-      width: 110,
-      height: 210,
+      margin: 1,
+      width: 70,
+      height: 120,
       
     },
     cardHourText:{
       color: 'white',
-      margin: 15,
-      fontSize: 20,
+      margin: 11,
+      fontSize: 11,
     },
     cardTemparatureText:{
       color: 'white',
       margin: 15,
-      fontSize: 20,
+      fontSize: 15,
     },
     cardIcon: {
       color: 'white',
-      margin: 15
+      margin: 1
     },  
   });
 
