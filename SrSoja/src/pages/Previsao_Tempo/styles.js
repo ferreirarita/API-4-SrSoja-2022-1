@@ -7,25 +7,25 @@ const styles = StyleSheet.create({
     ...stylesVar.background,
   },
 
-  header:{
+  header: {
     flex: 0.1,
     flexDirection: 'row',
     alignItems: 'center',
     ...stylesVar.boxPrimary
   },
 
-  headerColumn:{
-    flex:1,
+  headerColumn: {
+    flex: 1,
   },
 
-  headerRow:{
-    flex:1,
+  headerRow: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
 
-  headerButton:{
-    flex:1,
+  headerButton: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
@@ -39,13 +39,13 @@ const styles = StyleSheet.create({
   },
 
   headerWeather: {
-    flex:1,
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
     ...stylesVar.weather
   },
-  
+
   headerWeatherText: {
     color: '#E9E9E9',
     fontWeight: "bold",
@@ -76,12 +76,12 @@ const styles = StyleSheet.create({
     margin: 4,
   },
   bodyText: {
-    marginTop:5,
+    marginTop: 5,
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center"
   },
-  bodyRowDesabled:{
+  bodyRowDesabled: {
     flex: 1,
     flexDirection: 'row',
   },
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     margin: 4,
   },
   bodyTextDesabled: {
-    marginTop:5,
+    marginTop: 5,
     fontSize: 18,
     fontWeight: "bold",
     textAlign: "center",
