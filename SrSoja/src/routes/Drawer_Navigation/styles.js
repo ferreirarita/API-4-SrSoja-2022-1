@@ -4,12 +4,12 @@ import { DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer
 import {ThisContext} from '../../context'
 //Icons
 import LogoutIcon   from '../../assets/Icons/box-arrow-right'
-import Settings     from '../../assets/Icons/gear'
 
 import getContext from '../../hooks'
 import { useNavigation } from '@react-navigation/native'
 
 const CustomDrawer = (props) => {
+    const navigation = useNavigation()
     const {logOut}=useContext(ThisContext)
     return(
         <SafeAreaView style={{flex:1,backgroundColor: '#F7BB26'}}>
@@ -24,12 +24,6 @@ const CustomDrawer = (props) => {
             </DrawerContentScrollView>
             
             <View style ={{padding: 10, paddingLeft: 18, borderTopWidth:1, borderTopColor:'#CCCCC'}}>
-                <TouchableOpacity onPress={()=>{}} style={{paddingVertical:15}}>
-                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                        <Settings size={24} fill='#343434' />
-                        <Text style={{fontSize:16, fontWeight: 'bold', marginLeft:8}}>Configurações</Text>
-                    </View>
-                </TouchableOpacity>
                 
                 <TouchableOpacity  onPress={()=> logOut().then(()=> navigation.navigate('Login'))} style={{paddingVertical:15}}>
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>

@@ -11,6 +11,7 @@ import Previsao_Tempo   from './Previsao_Tempo'
 import * as Cadastro_Fazenda_Talhao from './Cadastro_Fazenda_Talhao'
 import * as Relatorios_Produtividade from './Relatorios_Produtividade'
 import * as Custos_Producao from './Custos_Producao'
+import * as Historico_Compra_Venda from './Historico_Compra_Venda'
 /** Testes */
 import Teste_Banco from './Teste_Banco'
 /** */
@@ -26,5 +27,6 @@ export {
     Teste_Banco,
     Cadastro_Fazenda_Talhao,
     Relatorios_Produtividade,
-    Custos_Producao
+    Custos_Producao,
+    Historico_Compra_Venda
  }

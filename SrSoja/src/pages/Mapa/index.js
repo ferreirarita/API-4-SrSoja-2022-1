@@ -7,17 +7,14 @@ import { CheckButton, CancelButton } from "../../components/Button";
 
 //(<Mapa longitude= 0 latitude= 0/>)
 export default function Mapa({ navigation, route }) {
-  const [alfinete, setAlfinete] = useState({
-    longitude: -45.789132714271545,
-    latitude: -23.178779938755945,
-  });
+  const [alfinete, setAlfinete] = useState({longitude: -45, latitude: -23});
   const [origin, setOrigin] = useState(null);
 
   const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
   const [coord, setCoord] = useState("Buscando localização");
   const [getCoord, setGetCoord] = useState({});
-  const [nome, setNome] = useState("");
-  const [miniMap, setMiniMap] = useState(false);
+  const [name, setName] = useState("");
+  const [namePage,setNamePage] = useState("");
 
   useEffect(() => {
     CheckIfLocationEnabled();
@@ -79,27 +76,29 @@ export default function Mapa({ navigation, route }) {
       }
     }
   };
-  let nomeRecebido = route.params?.nome;
+  let nomeRecebido = route.params?.name;
 
   useEffect(() => {
     if (nomeRecebido === undefined || nomeRecebido === "") {
       console.log("Você ainda não definiu o nome da fazenda", nomeRecebido);
-      setNome("Sua Área");
+      setName("Sua Área");
     } else {
-      console.log("recebeu a coordenada", nomeRecebido);
-      setNome(nomeRecebido);
+      console.log("recebeu o nome", nomeRecebido);
+      setName(nomeRecebido);
     }
   }, [nomeRecebido]);
 
-  let isMiniMap = route.params?.miniMap;
-  useEffect(() => {
-    if (isMiniMap === undefined || isMiniMap === "") {
-      setMiniMap(false);
-    } else {
-      setMiniMap(true);
-    }
-  }, [isMiniMap]);
-
+  let page = route.params?.idPage
+  useEffect(()=>{
+    if(page === undefined || page === ''){
+        console.log('é a página',page)
+        setNamePage(page)
+      }else{
+        console.log('nome da página para navegação',page)
+        setNamePage(page)
+      }
+      },[page]
+    )
 
   return (
     <>
@@ -117,35 +116,36 @@ export default function Mapa({ navigation, route }) {
         >
         <Marker 
           coordinate={alfinete}
-          title={nome}
          />
       </MapView>
 
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>{nome}</Text>
+        <Text style={styles.headerTitle}>{name}</Text>
       </View>
 
       <View style={styles.footer}>
         <View style={styles.footerRow}>
-          <View style={styles.footerColumn}>
-            <CancelButton
-              size={48}
-              onPress={() => {
-                navigation.goBack();
-              }}
-            />
-          </View>
-
-          <View style={styles.footerColumn}>
-            <CheckButton
-              size={48}
-              onPress={() => {
-                navigation.goBack({
-                  params: { coordenadas: getCoord },
-                  merge: true,
-                });
-              }}
-            />
+          <View style={styles.footerRowCenterButtons}>
+            <View style={styles.footerButtonCancel}>
+              <CancelButton
+                size={48}
+                onPress={() => {
+                  navigation.goBack();
+                }}
+              />
+            </View>
+            <View style={styles.footerButtonCheck}>
+              <CheckButton
+                size={48}
+                onPress={() => {
+                  navigation.navigate({
+                    name: namePage,
+                    params: { coordenadas: getCoord },
+                    merge: true,
+                  });
+                }}
+              />
+            </View>
           </View>
         </View>
       </View>

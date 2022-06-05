@@ -149,37 +149,33 @@ const stylesTalhao = StyleSheet.create({
   bodyLine:{
     borderBottomWidth:1,
   },
-
   footer:{
     flex:1,
     position:'absolute',
     alignSelf: "center",
     bottom:0,
-    right:15,
   },
   footerRow: {
     flexDirection: "row",
     alignSelf: "center",
     position:'relative',
   },
-  footerButtonCenter: {
-    alignSelf: "center",
+
+  footerRowCenterButtons: {
    flexDirection: "row",
- },
- footerButtonRight: {
-  alignSelf: "center",
-},
+   alignItems: "center",
+   justifyContent: "space-between",
+  },
   footerButtonCancel:{
+    marginHorizontal:22,
     flexDirection: "row",
+    justifyContent: "center",
   },
   footerButtonCheck:{
-    marginLeft:40,
+    marginHorizontal:22,
     flexDirection: "row",
+    justifyContent: "center",
   },
-  footerButtonNext:{
-    paddingLeft:50
-  },
-
   
 })
 
@@ -263,4 +259,67 @@ const stylesListagem = StyleSheet.create({
 
 })
 
-export { styles, stylesFazenda, stylesTalhao, stylesListagem  }
+export { styles, stylesFazenda, stylesTalhao, stylesListagem }
+/* 
+ const Listagem = ({navigation, route}) => {
+const [talhao,setTalhao]=useState({})
+  let talhaoApelido = talhao.apelido
+  let talhaoSaude = talhao.saude
+  let talhaoInfo = route.params
+  useEffect(() => {
+    if(talhaoInfo === undefined || talhaoInfo=== ''){
+    }else{
+      setTalhao(talhaoInfo)
+    }
+    },[talhaoInfo]
+)
+
+const dados = [
+  {key: 'talhaoApelido'}
+]
+console.log(talhao)
+  return (
+      <Flatlist
+      keyExtractor={(item)=> item.key}
+      data={dados}
+      renderItem={({item})=> <Text>{item.key}</Text>}
+      />
+
+  );
+}; 
+ <View style={stylesListagem.container}>
+      <Text style={{fontSize:16, color:'black'}}></Text>
+
+      <ScrollView>
+       
+      </ScrollView>
+
+      <View style={stylesListagem.footer}>
+        <View style={stylesListagem.footerRow}>
+          <View style={stylesListagem.footerButtonCenter}>
+            <View style={stylesListagem.footerButtonCancel}>
+              <CancelButton
+                size={48}
+                onPress={() => {
+
+                }}
+              />
+            </View>
+            <View style={stylesListagem.footerButtonCheck}>
+              <CheckButton size={48} />
+            </View>
+          </View>
+          <View style={stylesListagem.footerButtonRight}>
+            <View style={stylesListagem.footerButtonAdd}>
+              <AddButton
+                size={48}
+                onPress={() => {
+                  navigation.navigate("Talhão");
+                }}
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>    
+*/

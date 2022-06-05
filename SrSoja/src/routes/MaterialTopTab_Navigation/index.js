@@ -1,17 +1,23 @@
-import React, {useState} from 'react'
+import React from 'react'
+import CustomTopTab from './styles'
 import stylesVar from '../../styles/stylesVar'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 //bring the screens
-import { Cadastro_Fazenda_Talhao } from '../pages'
+import { 
+  Cadastro_Fazenda_Talhao,
+  Relatorios_Produtividade,
+  Custos_Producao,
+  Historico_Compra_Venda 
+} from '../../pages'
 //destructuring page to use functions inside the page to bring each screen
 const { Fazenda, Talhao, Listagem } = Cadastro_Fazenda_Talhao
 const { Area, Previsao, Calculo } = Relatorios_Produtividade
 const { Sementes, Fertilizantes, Agrotoxicos} = Custos_Producao
+const { Compra, Venda } = Historico_Compra_Venda
 
 const TabCadastro = createMaterialTopTabNavigator();
 
 function TabCadastro_Fazenda_Talhao() {
-  const[name,setName]=useState('Teste') 
   return(
       <TabCadastro.Navigator
       screenOptions={{
@@ -21,8 +27,8 @@ function TabCadastro_Fazenda_Talhao() {
         },
       }}
       >
-        <TabCadastro.Screen name="Fazenda" component={Fazenda} talhao_name='teste'/>
-        <TabCadastro.Screen talhao_name={name} name="Talhão" component={Talhao} />
+        <TabCadastro.Screen name="Fazenda" component={Fazenda} />
+        <TabCadastro.Screen name="Talhão" component={Talhao} />
         <TabCadastro.Screen name="Listagem" component={Listagem} />
       </TabCadastro.Navigator>
   )
@@ -66,7 +72,7 @@ function TabCustos_Producao() {
   )
 }
 
-/*   const TabHistorico = createMaterialTopTabNavigator();
+   const TabHistorico = createMaterialTopTabNavigator();
 
   function TabHistorico_Compra_Venda() {
       return (
@@ -82,6 +88,11 @@ function TabCustos_Producao() {
           <TabHistorico.Screen name="Venda" component={Venda} />
         </TabHistorico.Navigator>
       );
-    } */
+    } 
 
-export { TabCadastro_Fazenda_Talhao, TabRelatorios_Produtividade, TabCustos_Producao }
+export { 
+  TabCadastro_Fazenda_Talhao,
+  TabRelatorios_Produtividade,
+  TabCustos_Producao,
+  TabHistorico_Compra_Venda 
+}

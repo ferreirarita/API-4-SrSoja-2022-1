@@ -10,7 +10,7 @@ import CustomDrawer from './Drawer_Navigation/styles';
 import stylesVar from '../styles/stylesVar';
 //Screens
 import App_Open         from '../pages/App_Open';
-import Logup            from '../pages/Logup';
+import LogUp            from '../pages/Logup';
 import Login            from '../pages/Login';
 import Home             from '../pages/Home';
 import Cotacao_Soja     from '../pages/Cotacao_Soja';
@@ -73,7 +73,7 @@ function Drawer_Navigation () {
         <PrevisaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
-      <Drawer.Screen name='Historico_Compra_venda' component={TabHistorico_Compra_Venda} options={{title: 'Históricos', drawerIcon: () => (
+      <Drawer.Screen name='Historico_Compra_Venda' component={TabHistorico_Compra_Venda} options={{title: 'Históricos', drawerIcon: () => (
         <ClockHistory size={24} fill='#343434' />
       )}} />
       
@@ -87,7 +87,6 @@ function Drawer_Navigation () {
 const TabCadastro = createMaterialTopTabNavigator();
 
 function TabCadastro_Fazenda_Talhao() {
-  const[name,setName]=useState('Teste')
 
   return(
       <TabCadastro.Navigator
@@ -99,7 +98,7 @@ function TabCadastro_Fazenda_Talhao() {
       }}
       >
         <TabCadastro.Screen name="Fazenda" component={Fazenda} talhao_name='teste'/>
-        <TabCadastro.Screen talhao_name={name} name="Talhão" component={Talhao} />
+        <TabCadastro.Screen  name="Talhão" component={Talhao} />
         <TabCadastro.Screen name="Listagem" component={Listagem} />
       </TabCadastro.Navigator>
   )
@@ -169,17 +168,17 @@ const Routes = () => {
             headerShown: false, headerStyle:{...stylesVar.toolbar}, headerTitleAlign: 'center'
             }}>
           <Stack.Screen name="App_Open"                 component={App_Open} />
-          <Stack.Screen name="Login"                    component={Login} options={{}}/>
-          <Stack.Screen name="Cadastro_Usuario"         component={Drawer_Navigation} options={{title:'Cadastrar-se'}}/>
+          <Stack.Screen name="Login"                    component={Login} />
+          <Stack.Screen name="LogUp"                    component={LogUp} />
           
-          <Stack.Screen name="Mapa"                     component={Mapa} options={{title:'Marcar no Mapa', headerShown:true}}/>
+          <Stack.Screen name="Mapa"                     component={Mapa}  options={{title:'Marcar no Mapa', headerShown:true}}/>
           <Stack.Screen name="HomeDrawer"               component={Drawer_Navigation} options={{title:'Painel Inicial'}}/>
           <Stack.Screen name="Cadastro_Fazenda_Talhao"  component={Drawer_Navigation} options={{title:'Cadastros'}}/>
           <Stack.Screen name="Cotacao_Soja"             component={Drawer_Navigation} options={{title:'Cotações da Soja'}}/>
           <Stack.Screen name="Custos_Producao"          component={Drawer_Navigation} options={{title:'Custos de Produção'}}/>
           <Stack.Screen name="Relatorios_Produtividade" component={Drawer_Navigation} options={{title:'Relatórios'}}/>
           <Stack.Screen name="Previsao_Tempo"           component={Drawer_Navigation} options={{title:'Previsão do Tempo'}}/>
-          <Stack.Screen name="Historico_Compra_venda"   component={TabHistorico_Compra_Venda} options={{title:'Históricos'}}/>
+          <Stack.Screen name="Historico_Compra_Venda"   component={Drawer_Navigation} options={{title:'Históricos'}}/>
         </Stack.Navigator>
       </NavigationContainer>
     );

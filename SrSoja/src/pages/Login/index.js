@@ -64,7 +64,8 @@ export default function Login() {
         <View style={styles.bodyButtons}>
           <TouchableOpacity 
             style={styles.bodyButtonRegister} 
-            onPress={()=>console.log('Cadastro')/*props.navigation.navigate("Register")*/}
+            onPress={()=> navigation.navigate('LogUp')}
+
           >
             <Text style={styles.bodyTextButton}>Registrar-se</Text>
           </TouchableOpacity>

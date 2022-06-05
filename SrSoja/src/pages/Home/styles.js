@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
 
   header:{
-    flex: 0.1,
+    flex: 0.5,
     flexDirection: 'row',
     alignItems: 'center',
     ...stylesVar.boxPrimary,
@@ -100,6 +100,37 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     color: "#E0E0E0"
+  },
+  bodyTable: {
+    flex: 0.1,
+    margin: 5,
+    marginTop: 10,
+  },
+  bodyTableHeader: {
+    justifyContent: "space-between",
+    flex: 0.1,
+    flexDirection: "row",
+  },
+  bodyTableTitle: {
+    ...stylesVar.titleSecondary,
+  },
+  bodyTableRow: {
+    flex: 1,
+    flexDirection: "row",
+    padding:10,
+    alignItems:'center',
+    borderWidth: 1,
+  },
+  bodyTableColumn: {
+    flex: 1,
+  },
+  bodyTableColumnGraphic: {
+    flex: 0.2,
+  },
+  bodyTableRowText: {
+    flex:1,
+    textAlign: "center",
+    ...stylesVar.inputText,
   },
 });
 export default styles;

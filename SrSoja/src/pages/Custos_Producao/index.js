@@ -1,117 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet,View, Text, SafeAreaView, TouchableOpacity, Image ,Alert} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import * as Location from 'expo-location';
+import React from 'react';
+import { View, Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import styles from './styles';
+import SelectIcon from "../../assets/Icons/chevron-down"
+import Semente from './Semente';
+import Fertilizante from './Fertilizante';
+import Agrotoxico from './Agrotoxico';
 
 
-const Sementes = ({ navigation }) => {
-    const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
-    const [displayCurrentAddress, setDisplayCurrentAddress] = useState(
-      'Wait, we are fetching you location...'
-    );
-  
-    useEffect(() => {
-        CheckIfLocationEnabled();
-        GetCurrentLocation();
-      }, []);
- 
-      const CheckIfLocationEnabled = async () => {
-        let enabled = await Location.hasServicesEnabledAsync();
-    
-        if (!enabled) {
-          Alert.alert(
-            'Location Service not enabled',
-            'Please enable your location services to continue',
-            [{ text: 'OK' }],
-            { cancelable: false }
-          );
-        } else {
-          setLocationServiceEnabled(enabled);
-        }
-      };
 
-const GetCurrentLocation = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync();
-  
-    if (status !== 'granted') {
-      Alert.alert(
-        'Permission not granted',
-        'Allow the app to use location service.',
-        [{ text: 'OK' }],
-        { cancelable: false }
-      );
-    }
-  
-    let { coords } = await Location.getCurrentPositionAsync();
-  
-    if (coords) {
-      const { latitude, longitude } = coords;
-      let response = await Location.reverseGeocodeAsync({
-        latitude,
-        longitude
-      });
-  
-      for (let item of response) {
-        let address = ` ${item.street},${item.name}, ${item.postalCode}, ${item.city}, ${item.region}, ${item.district}`;
-  
-        setDisplayCurrentAddress(address);
-        if (address.length > 0) {
-            setTimeout(() => {
-              navigation.navigate('Previsao_Tempo', { item: address });
-            }, 2000);
-          }
-      }
-    }
-  };  
+
+const Sementes = () => {
+    const navigation = useNavigation();
     return (
-      <View style={styles.container}>
-        <View style={styles.contentContainer}>
-          <Text style={styles.title}>What's your address?</Text>
-        </View>
-        <Text style={styles.text}>{displayCurrentAddress}</Text>
-      </View>
+        <SafeAreaView style={{ flex: 1 }}>
+            <ScrollView>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <Semente />
+                    <TouchableOpacity style={{ marginTop: 20 }} onPress={() => navigation.navigate('Home')}>
+                        <Text>HOME</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     );
-  };
-    
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#070707',
-      alignItems: 'center',
-      justifyContent: 'center'
-    }
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 const Fertilizantes = () => {
+    const navigation = useNavigation();
     return (
-      <View>
-          <Text>Teste</Text>
-      </View>
+        <SafeAreaView style={{ flex: 1 }}>
+            <ScrollView>
+                <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <Fertilizante />
+                    <TouchableOpacity style={{ marginTop: 20 }} onPress={() => navigation.navigate('Home')}>
+                        <Text>HOME</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
+        </SafeAreaView>
     );
-  };
-  
+}
 const Agrotoxicos = () => {
     const navigation = useNavigation();
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <ScrollView>
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                    <Agrotoxico />
                     <TouchableOpacity style={{ marginTop: 20 }} onPress={() => navigation.navigate('Cadastros')}>
                         <Text>HOME</Text>
                     </TouchableOpacity>
                 </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }

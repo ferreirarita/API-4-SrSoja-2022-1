@@ -264,7 +264,6 @@ const stylesCalculo = StyleSheet.create({
     fontSize: 14,
   },
 
-
 footerRowButtons: {
   flexDirection: "row",
   alignItems: "center",

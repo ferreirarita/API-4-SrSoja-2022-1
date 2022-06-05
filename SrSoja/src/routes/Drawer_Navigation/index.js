@@ -6,7 +6,12 @@ import stylesVar from '../../styles/stylesVar';
 import Home           from '../../pages/Home';
 import Cotacao_Soja   from '../../pages/Cotacao_Soja';
 import Previsao_Tempo from '../../pages/Previsao_Tempo';
-import { TabCadastro_Fazenda_Talhao, TabRelatorios_Produtividade, TabCustos_Producao } from '../MaterialTopTab_Navigation' 
+import { 
+  TabCadastro_Fazenda_Talhao,
+  TabRelatorios_Produtividade,
+  TabCustos_Producao,
+  TabHistorico_Compra_Venda
+ } from '../MaterialTopTab_Navigation' 
 
 /** Testes */
 import Teste_Banco    from '../../pages/Teste_Banco'
@@ -18,6 +23,7 @@ import CadastrosIcon  from '../../assets/Icons/map-fill'
 import RelatoriosIcon from '../../assets/Icons/clipboard-data-fill'
 import CotacaoIcon    from '../../assets/Icons/currency-exchange'
 import CustosIcon     from '../../assets/Icons/cart4'
+import HistoricoIcon  from '../../assets/Icons/clock-history'
 import PrevisaoIcon   from '../../assets/Icons/cloud-lightning-rain-fill'
 
 
@@ -84,6 +90,14 @@ const Drawer_Navigation = () => {
         title:'Previsão do Tempo', 
         drawerIcon: ({color}) => ( 
         <PrevisaoIcon size={24} fill='#343434' /> 
+        ) 
+      }} 
+      />
+      <Drawer.Screen name="Historico_Compra_Venda" component={TabHistorico_Compra_Venda} 
+      options={{
+        title:'Historicos', 
+        drawerIcon: ({color}) => ( 
+        <HistoricoIcon size={24} fill='#343434' /> 
         ) 
       }} 
       />

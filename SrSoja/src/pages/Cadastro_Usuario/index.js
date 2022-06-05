@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
-import styles from './styles';
 
 export default function Cadastro_Usuario () {
         return (
