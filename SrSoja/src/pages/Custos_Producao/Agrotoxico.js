@@ -162,7 +162,10 @@ class Agrotoxico extends React.Component {
                             <></>
                     }
                     </View>
-
+                    <View style={{ flexDirection: 'row', alignSelf: 'center' }}>
+                            <Text style={styles.cestadual}>Estadual</Text>
+                            <Text style={styles.cnacional}>   Nacional</Text>
+                    </View>
                     {this.state.chartData ?
                         <LineChart
                             data={this.state?.chartData}
@@ -190,10 +193,10 @@ class Agrotoxico extends React.Component {
                                     <Text styles={{ ...styles.textCenter }}>{custo.data}</Text>
                                 </View>
                                 <View style={{ ...styles.headTitle }}>
-                                    <Text styles={{ ...styles.textCenter }}>{custo.estadual}</Text>
+                                    <Text styles={{ ...styles.textCenter }}>R$ {custo.estadual}</Text>
                                 </View>
                                 <View style={{ ...styles.headTitle }}>
-                                    <Text styles={{ ...styles.textCenter }}>{custo.nacional}</Text>
+                                    <Text styles={{ ...styles.textCenter }}>R$ {custo.nacional}</Text>
                                 </View>
                             </View>
                         )
@@ -307,5 +310,11 @@ const styles = StyleSheet.create({
         fontSize: 10,
         color: 'black'
     },
+    cnacional: {
+        color: 'red',
+    },
+    cestadual: {
+        color: 'blue',
+    }
 });
 export default Agrotoxico;
