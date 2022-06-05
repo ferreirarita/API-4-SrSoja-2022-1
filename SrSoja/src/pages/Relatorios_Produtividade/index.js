@@ -3,13 +3,17 @@ import { View, Text, TextInput, SafeAreaView, TouchableOpacity, ScrollView} from
 import {useNavigation} from '@react-navigation/native';
 import { Picker } from '@react-native-picker/picker'
 import { stylesArea, stylesPrevisao, stylesCalculo } from './styles'
+import getContext from '../../hooks'
 import {ThisContext} from '../../context'
+import MapView, { Marker } from "react-native-maps";
+import * as Location from "expo-location";
+import MiniMap from '../../components/MiniMap'
 //button
 import { CheckButton, CancelButton, AddButton, NextButton, InfoButton } from '../../components/Button'
 
 
 const Area = () => {
-  const { database, dataResult, setResult } = useContext(ThisContext)
+  const { database, dataResult, setResult, tlh_id, fzd_id } = getContext();
   const navigation = useNavigation();
 
   const [fazenda, setFazenda]= useState(['Fazenda 1', 'Fazenda 2', 'Fazenda 3', 'Fazenda 4'])
@@ -18,7 +22,47 @@ const Area = () => {
 
   const [talhao, setTalhao]= useState(['Talhão 1', 'Talhão 2', 'Talhão 3', 'Talhão 4'])
   const [selectedTalhao,setSelectedTalhao]= useState([])
+
+
+    const [alfinete, setAlfinete] = useState({latitude: -23, longitude: -45});
+    const [origin, setOrigin] = useState(null);
   
+  useEffect(() => {
+    GetCurrentLocation();
+  }, []);
+
+
+  const GetCurrentLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+
+    if (status !== "granted") {
+      Alert.alert(
+        "Permissão negada",
+        "Por favor, permita que a localização seja utilizada para continuar",
+        [{ text: "Ok" }],
+      );
+    }
+    let { coords } = await Location.getCurrentPositionAsync({
+      enableHighAccuracy: true,
+    });
+
+    if (coords) {
+      const { latitude, longitude } = coords;
+      
+      setOrigin({
+        latitude: coords.latitude,
+        longitude: coords.longitude,
+        latitudeDelta: 0.00922,
+        longitudeDelta: 0.00421,
+      });
+      setAlfinete({ latitude: coords.latitude,
+        longitude: coords.longitude,})
+    }}
+  
+  useEffect(()=>{
+
+
+  },[talhao])
 
   return (
       <SafeAreaView style={stylesArea.container}>
@@ -70,10 +114,10 @@ const Area = () => {
             </View>
             
             <View style={stylesArea.bodyMapRow}>
-              <View style={stylesArea.bodyMap}/>  
+                <MiniMap />
             </View>
             
-            <Text style={stylesArea.bodyResultsTitle}>Resultado</Text> 
+            <Text style={stylesArea.bodyResultsTitle}>Resultado de Produtividade</Text> 
             <View style={stylesArea.bodyResults}>
 
               <Text style={stylesArea.bodyTitle}>Previsão</Text> 
