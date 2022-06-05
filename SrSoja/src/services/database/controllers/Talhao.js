@@ -8,7 +8,7 @@
  *      fzd_id: integer,
  *      tlh_apelido: string, 
  *      tlh_media_producao: numeric, 
- *      tlh_saude: integer,
+ *      tlh_saude: string,
  *      latitude: string,
  *      longitude: string
  * }} args 
@@ -214,7 +214,7 @@ async function addAreaTalhao(database, args) {
  *      tsd_descr: string
  * }} args 
  * @param {useState} setResult 
- */
+ *//* 
 async function addSaude(database, args, setResult) {
     let { tsd_id, tsd_nome, tsd_descr } = args
     if (typeof tsd_id === 'undefined' || tsd_id == 0) {
@@ -249,7 +249,7 @@ async function addSaude(database, args, setResult) {
             error => console.error(`Erro: ${error}`)
         )
     }
-}
+} */
 
 /**
  * Retorna todas as saúdes de talhão (tsd_id == 0) ou
@@ -257,7 +257,7 @@ async function addSaude(database, args, setResult) {
  * @param {WebSQLDatabase} database 
  * @param {{tsd_id: integer}} args 
  * @param {useState} setResult 
- */
+ *//* 
 async function getSaude(database, args, setResult) {
     let { tsd_id } = args
     if(typeof tsd_id !== 'undefined' && tsd_id != 0) {
@@ -291,14 +291,14 @@ async function getSaude(database, args, setResult) {
             error => console.error(`Erro: ${error}`)
         )
     }
-}
+} */
 
 /**
  * Deleta a saúde de talhão informada.
  * @param {WebSQLDatabase} database 
  * @param {{tsd_id: integer}} args 
  * @param {useState} setResult 
- */
+ *//* 
 async function delSaude(database, args, setResult) {
     let { tsd_id } = args
     database.transaction(
@@ -313,16 +313,16 @@ async function delSaude(database, args, setResult) {
             )
         }
     )
-}
+} */
 
 export {
     addTalhao,
     addAreaTalhao,
-    addSaude,
+    // addSaude,
 
     getTalhao,
-    getSaude,
+    // getSaude,
 
     delTalhao,
-    delSaude
+    // delSaude
 }

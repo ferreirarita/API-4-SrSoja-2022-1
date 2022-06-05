@@ -10,18 +10,28 @@ export default function Mapa({ navigation, route }) {
   const [alfinete, setAlfinete] = useState({longitude: -45, latitude: -23});
   const [origin, setOrigin] = useState(null);
 
-  const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
-  const [coord, setCoord] = useState("Buscando localização");
-  const [getCoord, setGetCoord] = useState({});
+  // const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
+
+  const [ coordHeaders, setCoordHeaders ] = useState({});
+  const [coord, setCoord] = useState({});
+
   const [name, setName] = useState("");
   const [namePage,setNamePage] = useState("");
 
   useEffect(() => {
-    CheckIfLocationEnabled();
+    // CheckIfLocationEnabled();
     GetCurrentLocation();
   }, []);
+/* 
+  useEffect(()=>{
+    const setHeader = async () => {
+      
+    }
+    if(coord !== {})
+      setHeader()
+  },[coord]) */
 
-  const CheckIfLocationEnabled = async () => {
+  /* const CheckIfLocationEnabled = async () => {
     let enabled = await Location.hasServicesEnabledAsync();
 
     if (!enabled) {
@@ -34,7 +44,9 @@ export default function Mapa({ navigation, route }) {
     } else {
       setLocationServiceEnabled(enabled);
     }
-  };
+  }; */
+
+  // console.log(coordHeaders)
 
   const GetCurrentLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -44,7 +56,7 @@ export default function Mapa({ navigation, route }) {
         "Permissão negada",
         "Por favor, permita que a localização seja utilizada para continuar",
         [{ text: "Ok" }],
-        { cancelable: false }
+        // { cancelable: false }
       );
     }
     let { coords } = await Location.getCurrentPositionAsync({
@@ -53,10 +65,8 @@ export default function Mapa({ navigation, route }) {
 
     if (coords) {
       const { latitude, longitude } = coords;
-      let response = await Location.reverseGeocodeAsync({
-        latitude,
-        longitude,
-      });
+      
+      // console.log('response do mapa:',response)
       setOrigin({
         latitude: coords.latitude,
         longitude: coords.longitude,
@@ -64,26 +74,47 @@ export default function Mapa({ navigation, route }) {
         longitudeDelta: 0.00421,
       });
 
-      for (let item of response) {
-        let coordinate = {
-          postalCode: item.postalCode,
-          street: item.street,
-          district: item.district,
-          region: item.region,
-        };
-
-        setCoord(coordinate);
-      }
+      /* let response = await Location.reverseGeocodeAsync({
+        latitude: coord.latitude ?? latitude,
+        longitude: coord.longitude ?? longitude,
+      });
+  
+      setCoordHeaders({
+        region: response[0].region,
+        subregion: response[0].subregion,
+        street: response[0].street,
+        district: response[0].district
+      }) */
     }
   };
+
+  useEffect( async ()=>{
+    if(coord !== {}){
+      let response = await Location.reverseGeocodeAsync({
+        latitude: coord.latitude ?? alfinete.latitude,
+        longitude: coord.longitude ?? alfinete.longitude,
+      });
+
+      setCoordHeaders({
+        region: response[0].region,
+        subregion: response[0].subregion,
+        street: response[0].street,
+        district: response[0].district
+      }) 
+    }
+  },[coord])
+
+  // console.log(coordHeaders)
+
+
   let nomeRecebido = route.params?.name;
 
   useEffect(() => {
     if (nomeRecebido === undefined || nomeRecebido === "") {
-      console.log("Você ainda não definiu o nome da fazenda", nomeRecebido);
+      // console.log("Você ainda não definiu o nome da fazenda", nomeRecebido);
       setName("Sua Área");
     } else {
-      console.log("recebeu o nome", nomeRecebido);
+      // console.log("recebeu o nome", nomeRecebido);
       setName(nomeRecebido);
     }
   }, [nomeRecebido]);
@@ -91,10 +122,10 @@ export default function Mapa({ navigation, route }) {
   let page = route.params?.idPage
   useEffect(()=>{
     if(page === undefined || page === ''){
-        console.log('é a página',page)
+        // console.log('é a página',page)
         setNamePage(page)
       }else{
-        console.log('nome da página para navegação',page)
+        // console.log('nome da página para navegação',page)
         setNamePage(page)
       }
       },[page]
@@ -111,7 +142,7 @@ export default function Mapa({ navigation, route }) {
         mapType="hybrid"
         onPress={(e) => {
           setAlfinete(e.nativeEvent.coordinate);
-          setGetCoord(e.nativeEvent.coordinate);
+          setCoord(e.nativeEvent.coordinate);
         }}
         >
         <Marker 
@@ -140,7 +171,9 @@ export default function Mapa({ navigation, route }) {
                 onPress={() => {
                   navigation.navigate({
                     name: namePage,
-                    params: { coordenadas: getCoord },
+                    params: { 
+                      coordenadas: namePage === 'Fazenda' ? coordHeaders : coord
+                    },
                     merge: true,
                   });
                 }}

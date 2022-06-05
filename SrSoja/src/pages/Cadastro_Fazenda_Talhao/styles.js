@@ -24,13 +24,14 @@ const styles = StyleSheet.create({
 const stylesFazenda = StyleSheet.create({
   container: {
     flex: 1,
-    ...stylesVar.background,
+    ...stylesVar.background
   },
   body: {
     flex: 0.7,
     margin: 10,
     marginTop: 30,
     ...stylesVar.boxPrimary,
+    marginBottom: '25%'
   },
   bodyRow: {
     flex:0.3,
@@ -115,6 +116,7 @@ const stylesTalhao = StyleSheet.create({
     margin: 10,
     marginTop: 30,
     ...stylesVar.boxPrimary,
+    marginBottom: '25%'
   },
   bodyRow: {
     flex:0.3,

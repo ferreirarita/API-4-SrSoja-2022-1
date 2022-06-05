@@ -14,16 +14,17 @@
  * @param {useState} setResult 
  */
 async function addFazenda(database, args, setResult) {
-    let { fzd_id, prd_id, fzd_nome, fzd_cep, fzd_estado, fzd_municipio } = args;
+    let { fzd_id, prd_id, fzd_nome, fzd_cep } = args;
     if (typeof fzd_id === 'undefined' || fzd_id == 0) {
         database.transaction(
             tx => {
                 tx.executeSql(
-                    `INSERT INTO fazenda (prd_id, fzd_nome, fzd_cep, fzd_estado, fzd_municipio) 
-                    VALUES (?,?,?,?,?)`,
-                    [prd_id, fzd_nome, fzd_cep, fzd_estado, fzd_municipio],
+                    `INSERT INTO fazenda (prd_id, fzd_nome, fzd_cep) 
+                    VALUES (?,?,?)`,
+                    [prd_id, fzd_nome, fzd_cep],
                     (_, resultSet) => {
-                        setResult(`Nova Fazenda '${fzd_nome}'`)
+                        // setResult(`Nova Fazenda: '${fzd_nome}'`)
+                        getFazenda(database,{fzd_id},setResult)
                     },
                     (_, error) => console.error(error)
                 )
@@ -38,12 +39,11 @@ async function addFazenda(database, args, setResult) {
                     prd_id = ?,
                     fzd_nome = ?,
                     fzd_cep = ?,
-                    fzd_estado = ?,
-                    fzd_municipio = ?,
                     WHERE fzd_id = ?`,
-                    [prd_id, fzd_nome, fzd_cep, fzd_estado, fzd_municipio, fzd_id],
+                    [prd_id, fzd_nome, fzd_cep, fzd_id],
                     (_, resultSet) => {
-                        setResult(`Fazenda atualizada`)
+                        // setResult(`Fazenda atualizada`)
+                        getFazenda(database,{fzd_id},setResult)
                     },
                     (_,error) => console.error(`Erro ao atualizar: ${error}`)
                 )
@@ -70,7 +70,7 @@ async function getFazenda(database, args, setResult) {
                     WHERE prd_id = ?`,
                     [prd_id],
                     (_,{ rows: { _array } }) => {
-                        setResult(JSON.stringify(_array))
+                        setResult(_array)
                     },
                     (_,error) => console.error(`Erro ao obter: ${error}`)
                 )
@@ -86,7 +86,7 @@ async function getFazenda(database, args, setResult) {
                     WHERE fzd_id = ?`,
                     [fzd_id],
                     (_,{ rows: { _array } }) => {
-                        setResult(JSON.stringify(_array[0]))
+                        setResult(_array[0])
                     },
                     (_,error) => console.error(`Erro ao obter: ${error}`)
                 )

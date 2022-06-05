@@ -17,9 +17,6 @@ import Cotacao_Soja     from '../pages/Cotacao_Soja';
 import Previsao_Tempo   from '../pages/Previsao_Tempo';
 import Mapa             from '../pages/Mapa';
 
-/** Testes */
-import Teste_Banco from '../pages/Teste_Banco'
-/** */
 
 import { Fazenda, Talhao, Listagem } from '../pages/Cadastro_Fazenda_Talhao'
 import { Area, Previsao, Calculo } from '../pages/Relatorios_Produtividade'
@@ -65,20 +62,17 @@ function Drawer_Navigation () {
         <CotacaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
-      <Drawer.Screen name="Custos_Producao" component={TabCustos_Producao} options={{title:'Custos de Produção', drawerIcon: ({color}) => ( 
+      <Drawer.Screen name="Custos_Producao" component={TabCustos_Producao} options={{title:'Produção', drawerIcon: ({color}) => ( 
         <CustosIcon size={24} fill='#343434' /> 
         ) 
       }} />
-      <Drawer.Screen name="Previsao_Tempo" component={Previsao_Tempo} options={{title:'Previsão do Tempo', drawerIcon: ({color}) => ( 
+      <Drawer.Screen name="Previsao_Tempo" component={Previsao_Tempo} options={{title:'Tempo', drawerIcon: ({color}) => ( 
         <PrevisaoIcon size={24} fill='#343434' /> 
         ) 
       }} />
       <Drawer.Screen name='Historico_Compra_Venda' component={TabHistorico_Compra_Venda} options={{title: 'Históricos', drawerIcon: () => (
         <ClockHistory size={24} fill='#343434' />
       )}} />
-      
-      <Drawer.Screen name='Teste do Banco' component={Teste_Banco} options={{title: 'Teste do Banco', drawerIcon: () => <PainelIcon size={24} fill='#f00' />}} />
-      
     </Drawer.Navigator>
   );
 }

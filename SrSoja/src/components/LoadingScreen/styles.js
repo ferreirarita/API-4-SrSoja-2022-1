@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: stylesVar.backgroundYellow.backgroundColor
+        ...stylesVar.backgroundYellow
     }
 })
 export default styles

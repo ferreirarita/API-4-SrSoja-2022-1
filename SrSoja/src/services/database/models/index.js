@@ -12,17 +12,9 @@ export default {
         prd_id INTEGER NOT NULL,
         fzd_nome TEXT,
         fzd_cep TEXT NOT NULL,
-        fzd_estado TEXT NOT NULL,
-        fzd_municipio TEXT NOT NULL,
         FOREIGN KEY (prd_id) REFERENCES produtor (prd_id)
         ON UPDATE CASCADE
         ON DELETE CASCADE
-    );`,
-    talhao_saude: `
-    CREATE TABLE IF NOT EXISTS talhao_saude (
-        tsd_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        tsd_nome TEXT NOT NULL,
-        tsd_descr TEXT DEFAULT "..."
     );`,
     talhao: `
     CREATE TABLE IF NOT EXISTS talhao (
@@ -30,13 +22,10 @@ export default {
         tlh_apelido TEXT,
         tlh_media_producao NUMERIC DEFAULT 0.00,
         fzd_id INTEGER NOT NULL,
-        tlh_saude INTEGER,
+        tlh_saude TEXT NOT NULL,
         FOREIGN KEY (fzd_id) REFERENCES fazenda (fzd_id)
         ON UPDATE CASCADE
-        ON DELETE CASCADE,
-        FOREIGN KEY (tlh_saude) REFERENCES talhao_saude (tsd_id)
-        ON UPDATE CASCADE
-        ON DELETE SET NULL
+        ON DELETE CASCADE
     );`,
     area_talhao: `
     CREATE TABLE IF NOT EXISTS area_talhao (
