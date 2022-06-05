@@ -1,8 +1,9 @@
-import { View,Text,Image,Alert} from 'react-native';
+import { View,Text,Image,Aler} from 'react-native';
 import styles from './styles';
 import { parse } from 'fast-xml-parser';
 import React, { useEffect, useState } from 'react';
 import * as Location from "expo-location";
+
 
 
 const Previsao_Tempo = () => {
@@ -61,9 +62,9 @@ const Previsao_Tempo = () => {
   const {XMLParser} = require('fast-xml-parser');
   const parser = new XMLParser();
   const [clima,setclima] = useState({});
-  const lat = coord.lat; 
-  const log = coord.log;
-  console.log("");
+  const lat = -23.16; 
+  const log = -45.83;
+  console.log(" ");
         
   useEffect(() => {
     fetch (`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
@@ -78,7 +79,9 @@ const Previsao_Tempo = () => {
         .catch((error) => {
             console.log(error);
         });
+
 }, []);
+
     return (
         <View style={styles.container}>
             <View style={styles.body}>
@@ -87,7 +90,10 @@ const Previsao_Tempo = () => {
                 <Text style={styles.bodyTitle}>{clima.previsao[0].dia}</Text>       
                 <View style={styles.bodyRow}>
                     <View style={styles.bodyButton}>
-                        <Text style={styles.bodyText}>ºC</Text>
+                        <Text style={styles.bodyText}>IUV:{clima.previsao[0].iuv}
+                                                      Máxima: {clima.previsao[0].maxima}
+                                                      Minima:{clima.previsao[0].minima}</Text>
+                        <Text style={styles.bodyText}>Tempo:{clima.previsao[0].tempo}</Text>
                     </View>
                 </View>
 
@@ -95,15 +101,21 @@ const Previsao_Tempo = () => {
 
                 <View style={styles.bodyRow}>
                     <View style={styles.bodyButton}>
-                        <Text style={styles.bodyText}>ºC</Text>
+                        <Text style={styles.bodyText}>IUV:{clima.previsao[1].iuv}
+                                                      Máxima: {clima.previsao[1].maxima}
+                                                      Minima:{clima.previsao[1].minima}</Text>
+                        <Text style={styles.bodyText}>Tempo:{clima.previsao[1].tempo}</Text>
                     </View>
                 </View>
 
-                <Text style={styles.bodyTitle}>{clima.previsao[2].dia} </Text>
+                <Text style={styles.bodyTitle}>{clima.previsao[2].dia } </Text>
 
                 <View style={styles.bodyRow}>
                     <View style={styles.bodyButton}>
-                        <Text style={styles.bodyText}>ºC</Text>
+                        <Text style={styles.bodyText}>IUV:{clima.previsao[2].iuv }
+                                                      Máxima: {clima.previsao[2].maxima}
+                                                      Minima:{clima.previsao[2].minima}</Text>
+                        <Text style={styles.bodyText}>Tempo:{clima.previsao[2].tempo}</Text>
                     </View>
                 </View>
 
@@ -111,7 +123,10 @@ const Previsao_Tempo = () => {
 
                 <View style={styles.bodyRow}>
                     <View style={styles.bodyButton}>
-                        <Text style={styles.bodyText}>ºC</Text>
+                        <Text style={styles.bodyText}>IUV:{clima.previsao[3].iuv}
+                                                      Máxima:{clima.previsao[3].maxima}
+                                                      Minima:{clima.previsao[3].minima}</Text>
+                        <Text style={styles.bodyText}>Tempo:{clima.previsao[3].tempo}</Text>
                     </View>
                 </View>
 
@@ -119,7 +134,10 @@ const Previsao_Tempo = () => {
 
                 <View style={styles.bodyRow}>
                     <View style={styles.bodyButton}>
-                        <Text style={styles.bodyText}>ºC</Text>
+                        <Text style={styles.bodyText}>IUV:{clima.previsao[4].iuv }
+                                                      Máxima:{clima.previsao[4].maxima}
+                                                      Minima:{clima.previsao[4].minima}</Text>
+                        <Text style={styles.bodyText}>Tempo:{clima.previsao[4].tempo}</Text>
                     </View>
                 </View>
 
@@ -127,8 +145,10 @@ const Previsao_Tempo = () => {
 
                 <View style={styles.bodyRow}>
                     <View style={styles.bodyButton}>
-                        <Text style={styles.bodyText}>Minima:{clima.previsao[5].minima}</Text>
-                        <Text style={styles.bodyText}>Maxima:{clima.previsao[5].maxima}</Text>
+                        <Text style={styles.bodyText}>IUV:{clima.previsao[5].iuv }
+                                                      Máxima:{clima.previsao[5].maxima}
+                                                      Minima:{clima.previsao[5].minima}</Text>
+                        <Text style={styles.bodyText}>Tempo:{clima.previsao[5].tempo}</Text>
                     </View>
                 </View>
             </View>
