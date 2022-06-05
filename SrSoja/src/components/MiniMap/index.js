@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Text } from 'react-native'
 import getContext from '../../hooks'
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import styles from "./styles";
 
-export default function MiniMap(){
+export default function MiniMap({navigation,coordMiniMap}){
  
   const [alfinete, setAlfinete] = useState({latitude: -23, longitude: -45});
   const [origin, setOrigin] = useState(null);
@@ -36,13 +37,13 @@ const GetCurrentLocation = async () => {
       longitudeDelta: 0.00421,
     });
     setAlfinete({ 
-      latitude: coords.latitude,
-      longitude: coords.longitude
+      latitude: coordMiniMap.latitude,
+      longitude: coordMiniMap.longitude
     })
   }
 }
-
   return(
+    <>
     <MapView style={styles.container}
       initialRegion={origin}
       zoomEnabled={true}
@@ -54,5 +55,7 @@ const GetCurrentLocation = async () => {
       coordinate={alfinete}
       />
   </MapView>
+  <Text>{coordMiniMap.longitude}</Text>
+  </>
   )
 }
