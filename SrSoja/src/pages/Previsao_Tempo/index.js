@@ -201,7 +201,7 @@ const Previsao_Tempo = () => {
                   <View style={styles.bodyButton}>
                     <Text style={styles.bodyText}> IUV: {clima.previsao[0].iuv}
                        Máxima: {clima.previsao[0].maxima} °C 
-                       Minima: {clima.previsao[0].minima} °C 
+                       Mínima: {clima.previsao[0].minima} °C 
                     </Text>
                     <Text style={styles.bodyText}> Tempo: {clima.previsao[0].tempo}</Text>
                   </View>
@@ -212,7 +212,7 @@ const Previsao_Tempo = () => {
                   <View style={styles.bodyButton}>
                     <Text style={styles.bodyText}> IUV: {clima.previsao[1].iuv}
                        Máxima: {clima.previsao[1].maxima} °C 
-                       Minima: {clima.previsao[1].minima} °C 
+                       Mínima: {clima.previsao[1].minima} °C 
                     </Text>
                     <Text style={styles.bodyText}> Tempo: {clima.previsao[1].tempo}</Text>
                   </View>
@@ -225,7 +225,7 @@ const Previsao_Tempo = () => {
                   <View style={styles.bodyButton}>
                     <Text style={styles.bodyText}> IUV: {clima.previsao[2].iuv}
                        Máxima: {clima.previsao[2].maxima} °C 
-                       Minima: {clima.previsao[2].minima} °C 
+                       Mínima: {clima.previsao[2].minima} °C 
                     </Text>
                     <Text style={styles.bodyText}> Tempo: {clima.previsao[2].tempo}</Text>
                   </View>
@@ -236,7 +236,7 @@ const Previsao_Tempo = () => {
                   <View style={styles.bodyButton}>
                     <Text style={styles.bodyText}> IUV: {clima.previsao[3].iuv}
                        Máxima: {clima.previsao[3].maxima} °C 
-                       Minima: {clima.previsao[3].minima} °C 
+                       Mínima: {clima.previsao[3].minima} °C 
                     </Text>
                     <Text style={styles.bodyText}> Tempo: {clima.previsao[3].tempo}</Text>
                   </View>
@@ -248,7 +248,7 @@ const Previsao_Tempo = () => {
                   <View style={styles.bodyButton}>
                     <Text style={styles.bodyText}> IUV: {clima.previsao[4].iuv}
                        Máxima: {clima.previsao[4].maxima} °C 
-                       Minima: {clima.previsao[4].minima} °C 
+                       Mínima: {clima.previsao[4].minima} °C 
                     </Text>
                     <Text style={styles.bodyText}> Tempo: {clima.previsao[4].tempo}</Text>
                   </View>
@@ -260,7 +260,7 @@ const Previsao_Tempo = () => {
                   <View style={styles.bodyButton}>
                     <Text style={styles.bodyText}> IUV: {clima.previsao[5].iuv}
                        Máxima: {clima.previsao[5].maxima} °C 
-                       Minima: {clima.previsao[5].minima} °C 
+                       Mínima: {clima.previsao[5].minima} °C 
                     </Text>
                     <Text style={styles.bodyText}> Tempo: {clima.previsao[5].tempo}</Text>
                   </View>
