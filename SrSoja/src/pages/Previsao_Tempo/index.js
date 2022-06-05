@@ -68,6 +68,9 @@ const Previsao_Tempo = () => {
 
 
   useEffect(() => {
+
+    // AQUI TENTO UM AWAIT
+    
     const prevclima = async () => {
       await fetch(`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
       .then((response) => response.text())
@@ -77,6 +80,9 @@ const Previsao_Tempo = () => {
           let estado = obj.cidade.uf;
           let previsao = [...obj.cidade.previsao];
           setclima({ nome: cidade, estado: estado, previsao: previsao });
+          
+          // AQUI TRANSFORMA AS ABREVIAÇÕES DO TEMPO
+
           for (x = 0; x = !5; x = x + 1) {
             if (clima.previsao[x].tempo == "ec")
               clima.previsao[x].tempo = "Encoberto com Chuvas Isoladas";
@@ -159,6 +165,9 @@ const Previsao_Tempo = () => {
             if (clima.previsao[x].tempo == "ppm")
               clima.previsao[x].tempo = "Poss. de Panc. de Chuva pela Manhã";
           }
+
+          // AQUI ERA PARA DESABILITA O LOADING
+
           setLoading(false)
         })
         .catch((error) => {
@@ -169,7 +178,8 @@ const Previsao_Tempo = () => {
     prevclima();
   }, []);
 
-
+  //O RETURN TA RODANDO ANTES DE DE useEffect
+  // OU seja TA DANDO erro em todos {clima.previsao[0].dia} etc..
 
   return (
     <ScrollView>
