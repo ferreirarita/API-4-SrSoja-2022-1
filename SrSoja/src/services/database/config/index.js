@@ -121,18 +121,30 @@ export default async function openDatabase() {
         database.transaction(tx => {
             
             //tx.executeSql('drop table produtor;',[],(_,x)=>console.log(x),(_,e)=>console.log('drop erro',e))
-            /* tx.executeSql('drop table area_talhao;',[],
-                (_,x)=>console.log(x),
-                (_,e)=>console.log('drop erro',e)
-            )
-            tx.executeSql('drop table talhao;',[],
-                (_,x)=>console.log(x),
-                (_,e)=>console.log('drop erro',e)
-            )
-            tx.executeSql('drop table fazenda;',[],
-                (_,x)=>console.log(x),
-                (_,e)=>console.log('drop erro',e)
-            ) */
+/*         tx.executeSql('drop table histgasto;',[],
+            (_,x)=>console.log(x),
+            (_,e)=>console.log('drop erro',e)
+        )
+        tx.executeSql('drop table histvenda;',[],
+            (_,x)=>console.log(x),
+            (_,e)=>console.log('drop erro',e)
+        )
+        tx.executeSql('drop table areatalhao;',[],
+            (_,x)=>console.log(x),
+            (_,e)=>console.log('drop erro',e)
+        )
+        tx.executeSql('drop table talhao;',[],
+            (_,x)=>console.log(x),
+            (_,e)=>console.log('drop erro',e)
+        )
+        tx.executeSql('drop table fazenda;',[],
+            (_,x)=>console.log(x),
+            (_,e)=>console.log('drop erro',e)
+        )
+        tx.executeSql('drop table produtor;',[],
+            (_,x)=>console.log(x),
+            (_,e)=>console.log('drop erro',e)
+        ) */
             tx.executeSql(models.produtor)
             tx.executeSql(models.fazenda)
             // tx.executeSql(models.talhao_saude)
