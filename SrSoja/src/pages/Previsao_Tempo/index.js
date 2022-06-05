@@ -1,4 +1,4 @@
-import { ActivityIndicator, View, Text, Image, Alert, ScrollView } from 'react-native';
+import { ActivityIndicator, View, Text, Image, Alert, ScrollView,TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { parse } from 'fast-xml-parser';
 import React, { useEffect, useState } from 'react';
@@ -8,29 +8,14 @@ import * as Location from "expo-location";
 
 const Previsao_Tempo = () => {
 
-  const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
-  const [coord, setCoord] = useState("Buscando localização");
+  const [coord, setCoord] = useState({});
+  const [coordHeaders, setCoordHeaders] = useState({});
   const [loading, setLoading] = useState(true);
+  const [location,setLocation]=useState({});
 
   useEffect(() => {
-    CheckIfLocationEnabled();
     GetCurrentLocation();
   }, []);
-
-  const CheckIfLocationEnabled = async () => {
-    let enabled = await Location.hasServicesEnabledAsync();
-
-    if (!enabled) {
-      Alert.alert(
-        "A Localização está desativada",
-        "Por favor, ative a para continuar",
-        [{ text: "Ok" }],
-        { cancelable: false }
-      );
-    } else {
-      setLocationServiceEnabled(enabled);
-    }
-  };
 
   const GetCurrentLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
@@ -53,6 +38,9 @@ const Previsao_Tempo = () => {
         latitude,
         longitude,
       });
+      let municipio = response[0].subregion
+      setLocation({municipio})
+
       setCoord({
         lat: coords.latitude,
         log: coords.longitude,
@@ -60,19 +48,21 @@ const Previsao_Tempo = () => {
     }
   }
 
+
   const { XMLParser } = require('fast-xml-parser');
   const parser = new XMLParser();
   const [clima, setclima] = useState({});
   const lat = coord.lat;
   const log = coord.log;
 
-
+/*
   useEffect(() => {
 
     // AQUI TENTO UM AWAIT
     
-    const prevclima = async () => {
-      await fetch(`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
+     const prevclima = async () => {
+      await
+       fetch(`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
       .then((response) => response.text())
       .then((textResponse) => {
           let obj = parser.parse(textResponse);
@@ -80,6 +70,74 @@ const Previsao_Tempo = () => {
           let estado = obj.cidade.uf;
           let previsao = [...obj.cidade.previsao];
           setclima({ nome: cidade, estado: estado, previsao: previsao });
+
+          setLoading(false)
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+    }
+  }, []); */
+
+  const Loading = () => (
+    <View style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}>
+      <ActivityIndicator size="large" color="#343434" />
+    </View>
+  );
+
+
+
+  const[semanal,setSemanal]=useState([])
+  const[semanalDias,setSemanalDias]=useState({})
+
+  async function previsaoClima(clima){
+    await fetch(`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
+    .then((res)=> res.text())
+    .then(res=>{
+      let xml = parser.parse(res)
+      let semana = xml.cidade.previsao
+      setSemanal({semana})
+      let um    =  semanal[0]
+      let dois  =  semanal[1]
+      let tres  =  semanal[2]
+      let quatro=  semanal[3]
+      let cinco =  semanal[4]
+      let seis  =  semanal[5]
+      let sete  =  semanal[6]
+
+      var lista = semana.map(e=>{
+        return semana
+        
+      })
+      setSemanalDias(lista)
+      console.log('semanalDiassssssssssssssssssssssssssssss',semanal)
+    }).catch(err =>{console.log('erro', err)})
+  }
+
+  
+  return (
+    <ScrollView>
+          <View style={styles.container}>
+            <ScrollView>
+              <View style={styles.body}>
+                <TouchableOpacity
+                onPress={() => previsaoClima()
+                }>
+                  <Text style={styles.bodyTitle}>teste</Text>
+
+                </TouchableOpacity>
+
+
+                <Text style={styles.bodyTitle}></Text>
+                </View>
+            </ScrollView>
+          </View >
+    </ScrollView >
+  )
+}
+
+export default Previsao_Tempo;
           
           // AQUI TRANSFORMA AS ABREVIAÇÕES DO TEMPO
 /* 
@@ -168,33 +226,19 @@ const Previsao_Tempo = () => {
 
           // AQUI ERA PARA DESABILITA O LOADING
 
-          setLoading(false)
-        })
-        .catch((error) => {
-          console.log(error);
-        });
 
-    }
-    prevclima();
-  }, []);
+
 
   //O RETURN TA RODANDO ANTES DE DE useEffect
   // OU seja TA DANDO erro em todos {clima.previsao[0].dia} etc..
+/*   {loading ? (
+    <View>
+      <ActivityIndicator size="large" color={'red'} />
+    </View>
+  ) : ( */
 
-  return (
-    <ScrollView>
-      {loading ? (
-        <View>
-          <ActivityIndicator size="large" color={'red'} />
-        </View>
-      ) : (
-        <>
-          <View style={styles.container}>
-            <ScrollView>
-              <View style={styles.body}>
-                <Text style={styles.bodyTitle}>{clima.nome},{clima.estado}</Text>
-
-                <Text style={styles.bodyTitle}> </Text>
+/*
+              <Text style={styles.bodyTitle}> </Text>
 
                 <Text style={styles.bodyTitle}>{clima.previsao[0].dia} </Text>
                 <View style={styles.bodyRow}>
@@ -261,18 +305,6 @@ const Previsao_Tempo = () => {
                     <Text style={styles.bodyText}> IUV: {clima.previsao[5].iuv}
                        Máxima: {clima.previsao[5].maxima} °C 
                        Mínima: {clima.previsao[5].minima} °C 
-                    </Text>
                     <Text style={styles.bodyText}> Tempo: {clima.previsao[5].tempo}</Text>
-                  </View>
-                </View>
-              </View >
-            </ScrollView>
-          </View >
-        </>
-      )
-      }
-    </ScrollView >
-  )
-}
-
-export default Previsao_Tempo;
+                  </View> 
+*/
