@@ -69,10 +69,10 @@ const Previsao_Tempo = () => {
 
   useEffect(() => {
     const prevclima = async () => {
-      const results = await fetch(`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
-      const response = results.text()
-        .then(() => {
-          let obj = parser.parse(response);
+      await fetch(`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
+      .then((response) => response.text())
+      .then((textResponse) => {
+          let obj = parser.parse(textResponse);
           let cidade = obj.cidade.nome;
           let estado = obj.cidade.uf;
           let previsao = [...obj.cidade.previsao];
