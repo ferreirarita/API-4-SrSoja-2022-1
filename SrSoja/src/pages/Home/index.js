@@ -16,7 +16,7 @@ import GraphicIcon   from '../../assets/Icons/trophy-fill'
 
 
 
-const Tela_Inicial = () => {
+const Tela_Inicial = (props) => {
 
 const [coord, setCoord] = useState({});
 const [coordHeaders, setCoordHeaders] = useState({});
@@ -89,7 +89,7 @@ async function previsaoClima(){
 
             <View style={styles.header}>
                 <View style={styles.headerColumn}>
-                    <TouchableOpacity style={styles.headerButton} onPress={(clima) => navigation.navigate('Previsao_Tempo')}>
+                    <TouchableOpacity style={styles.headerButton} onPress={() => navigation.navigate({name:'Previsao_Tempo',params:{clima:clima}})}>
                         <View style={styles.headerButton}>
                             <PrevisaoIcon size="29" fill='#343434' />
                             <Text style={styles.headerText}>Previsão do Tempo</Text>

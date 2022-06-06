@@ -9,54 +9,28 @@ import { EvilIcons } from '@expo/vector-icons'
 
 
 
-const Previsao_Tempo = () => {
+const Previsao_Tempo = (props) => {
 
+console.log('test',props.route.params?.clima)
 
-/*
-  useEffect(() => {
-
-     AQUI TENTO UM AWAIT
-    
-     const prevclima = async () => {
-      await
-       fetch(`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
-      .then((response) => response.text())
-      .then((textResponse) => {
-          let obj = parser.parse(textResponse);
-          let cidade = obj.cidade.nome;
-          let estado = obj.cidade.uf;
-          let previsao = [...obj.cidade.previsao];
-          setclima({ nome: cidade, estado: estado, previsao: previsao });
-
-          setLoading(false)
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-
-    }
-  }, []); */
+let clima = props.route.params?.clima
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.refreshButton} onPress={() => previsaoClima()}>
-        <EvilIcons name="refresh" color={'black'} size={24} />
-      </TouchableOpacity>
       <View style={styles.body}>
-        <Text style={styles.bodyTitle}> </Text>
-
-        <Text style={styles.bodyTitle}>{} </Text>
+      <Text style={styles.bodyTitle}>{clima.nome},{clima.estado}</Text>
+      <Text style={styles.bodyTitle}> </Text>    
         <View style={styles.bodyRow}>
           <View style={styles.bodyButton}>
-            <Text style={styles.bodyText}> IUV: {}
-              Máxima: {} °C
-              Mínima: {} °C
+            <Text style={styles.bodyText}> IUV: {clima.previsao[0].dia}
+              Máxima: {clima.previsao[0].dia} °C
+              Mínima: {clima.previsao[0].dia} °C
             </Text>
-            <Text style={styles.bodyText}> Tempo: {}</Text>
+            <Text style={styles.bodyText}> Tempo: {clima.previsao[0].dia}</Text>
           </View>
         </View>
 
-       {/*  <Text style={styles.bodyTitle}>{clima.previsao[1].dia} </Text>
+       <Text style={styles.bodyTitle}>{clima.previsao[1].dia} </Text>
         <View style={styles.bodyRow}>
           <View style={styles.bodyButton}>
             <Text style={styles.bodyText}> IUV: {clima.previsao[1].iuv}
@@ -113,7 +87,7 @@ const Previsao_Tempo = () => {
             </Text>
             <Text style={styles.bodyText}> Tempo: {clima.previsao[5].tempo}</Text>
           </View>
-        </View> */}
+        </View>
       </View >
     </View>
   )
@@ -123,7 +97,7 @@ export default Previsao_Tempo;
           
     
     
-    {/* AQUI TRANSFORMA AS ABREVIAÇÕES DO TEMPO
+    /* AQUI TRANSFORMA AS ABREVIAÇÕES DO TEMPO
 
           for (x = 0; x = !5; x = x + 1) {
             if (clima.previsao[x].tempo == "ec")
@@ -291,5 +265,4 @@ export default Previsao_Tempo;
                        Máxima: {clima.previsao[5].maxima} °C 
                        Mínima: {clima.previsao[5].minima} °C 
                     <Text style={styles.bodyText}> Tempo: {clima.previsao[5].tempo}</Text>
-                  </View> 
-   */}
+                  </View>*/
