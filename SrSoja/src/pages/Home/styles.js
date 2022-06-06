@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
 
   header:{
-    flex: 0.5,
+    flex:1,
     flexDirection: 'row',
     alignItems: 'center',
     ...stylesVar.boxPrimary,
@@ -16,15 +16,19 @@ const styles = StyleSheet.create({
 
   headerColumn:{
     flex:1,
+
   },
 
   headerRow:{
     flex:1,
     flexDirection: 'row',
     alignItems: 'center',
+    
   },
 
   headerButton:{
+    padding:5,
+
     flex:1,
     flexDirection: 'row',
     alignItems: 'center',

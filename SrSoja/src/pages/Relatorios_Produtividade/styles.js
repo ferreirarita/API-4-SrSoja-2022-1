@@ -40,13 +40,8 @@ const stylesArea = StyleSheet.create({
     alignItems: "center",
   },
   bodyMap: {
-    flex: 0.5,
-    alignItems: "center",
-    justifyContent: "center",
-    width: "90%",
-    height: 175,
-    borderWidth: 1,
-    ...stylesVar.boxSecondary,
+    width: '93%',
+    height: 250,
   },
   bodyResultsTitle: {
     marginTop: 15,

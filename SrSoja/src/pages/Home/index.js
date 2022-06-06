@@ -17,6 +17,8 @@ const Tela_Inicial = () => {
     const navigation = useNavigation();
     return (
         <>
+                <ScrollView>
+
             <View style={styles.header}>
                 <View style={styles.headerColumn}>
                     <View style={styles.headerWeather}>
@@ -34,7 +36,6 @@ const Tela_Inicial = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-        <ScrollView>
         <View style={styles.container}>
             <View style={styles.body}>
                 <Text style={styles.bodyTitle}>Utilidades</Text>
