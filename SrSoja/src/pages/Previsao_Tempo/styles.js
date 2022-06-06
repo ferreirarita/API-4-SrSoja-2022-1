@@ -6,6 +6,10 @@ const styles = StyleSheet.create({
     flex: 1,
     ...stylesVar.background,
   },
+  refreshButton: {
+    alignSelf: 'flex-start', 
+    margin: 30,
+  },  
   body: {
     flex: 1,
     marginTop: 30,

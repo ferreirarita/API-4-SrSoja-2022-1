@@ -1,64 +1,21 @@
-import { ActivityIndicator, View, Text, Image, Alert, ScrollView,TouchableOpacity } from 'react-native';
+import {View, Text, Image, Alert, ScrollView,TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { parse } from 'fast-xml-parser';
 import React, { useEffect, useState } from 'react';
 import * as Location from "expo-location";
+import { StyleSheet } from "react-native";
+import { EvilIcons } from '@expo/vector-icons' 
+
 
 
 
 const Previsao_Tempo = () => {
 
-  const [coord, setCoord] = useState({});
-  const [coordHeaders, setCoordHeaders] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [location,setLocation]=useState({});
-
-  useEffect(() => {
-    GetCurrentLocation();
-  }, []);
-
-  const GetCurrentLocation = async () => {
-    let { status } = await Location.requestForegroundPermissionsAsync();
-
-    if (status !== "granted") {
-      Alert.alert(
-        "Permissão negada",
-        "Por favor, permita que a localização seja utilizada para continuar",
-        [{ text: "Ok" }],
-        { cancelable: false }
-      );
-    }
-    let { coords } = await Location.getCurrentPositionAsync({
-      enableHighAccuracy: true,
-    });
-
-    if (coords) {
-      const { latitude, longitude } = coords;
-      let response = await Location.reverseGeocodeAsync({
-        latitude,
-        longitude,
-      });
-      let municipio = response[0].subregion
-      setLocation({municipio})
-
-      setCoord({
-        lat: coords.latitude,
-        log: coords.longitude,
-      })
-    }
-  }
-
-
-  const { XMLParser } = require('fast-xml-parser');
-  const parser = new XMLParser();
-  const [clima, setclima] = useState({});
-  const lat = coord.lat;
-  const log = coord.log;
 
 /*
   useEffect(() => {
 
-    // AQUI TENTO UM AWAIT
+     AQUI TENTO UM AWAIT
     
      const prevclima = async () => {
       await
@@ -80,67 +37,94 @@ const Previsao_Tempo = () => {
     }
   }, []); */
 
-  const Loading = () => (
-    <View style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}>
-      <ActivityIndicator size="large" color="#343434" />
-    </View>
-  );
-
-
-
-  const[semanal,setSemanal]=useState([])
-  const[semanalDias,setSemanalDias]=useState({})
-
-  async function previsaoClima(clima){
-    await fetch(`http://servicos.cptec.inpe.br/XML/cidade/7dias/${lat}/${log}/previsaoLatLon.xml`)
-    .then((res)=> res.text())
-    .then(res=>{
-      let xml = parser.parse(res)
-      let semana = xml.cidade.previsao
-      setSemanal({semana})
-      let um    =  semanal[0]
-      let dois  =  semanal[1]
-      let tres  =  semanal[2]
-      let quatro=  semanal[3]
-      let cinco =  semanal[4]
-      let seis  =  semanal[5]
-      let sete  =  semanal[6]
-
-      var lista = semana.map(e=>{
-        return semana
-        
-      })
-      setSemanalDias(lista)
-      console.log('semanalDiassssssssssssssssssssssssssssss',semanal)
-    }).catch(err =>{console.log('erro', err)})
-  }
-
-  
   return (
-    <ScrollView>
-          <View style={styles.container}>
-            <ScrollView>
-              <View style={styles.body}>
-                <TouchableOpacity
-                onPress={() => previsaoClima()
-                }>
-                  <Text style={styles.bodyTitle}>teste</Text>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.refreshButton} onPress={() => previsaoClima()}>
+        <EvilIcons name="refresh" color={'black'} size={24} />
+      </TouchableOpacity>
+      <View style={styles.body}>
+        <Text style={styles.bodyTitle}> </Text>
 
-                </TouchableOpacity>
+        <Text style={styles.bodyTitle}>{} </Text>
+        <View style={styles.bodyRow}>
+          <View style={styles.bodyButton}>
+            <Text style={styles.bodyText}> IUV: {}
+              Máxima: {} °C
+              Mínima: {} °C
+            </Text>
+            <Text style={styles.bodyText}> Tempo: {}</Text>
+          </View>
+        </View>
+
+       {/*  <Text style={styles.bodyTitle}>{clima.previsao[1].dia} </Text>
+        <View style={styles.bodyRow}>
+          <View style={styles.bodyButton}>
+            <Text style={styles.bodyText}> IUV: {clima.previsao[1].iuv}
+              Máxima: {clima.previsao[1].maxima} °C
+              Mínima: {clima.previsao[1].minima} °C
+            </Text>
+            <Text style={styles.bodyText}> Tempo: {clima.previsao[1].tempo}</Text>
+          </View>
+        </View>
 
 
-                <Text style={styles.bodyTitle}></Text>
-                </View>
-            </ScrollView>
-          </View >
-    </ScrollView >
+
+        <Text style={styles.bodyTitle}>{clima.previsao[2].dia} </Text>
+        <View style={styles.bodyRow}>
+          <View style={styles.bodyButton}>
+            <Text style={styles.bodyText}> IUV: {clima.previsao[2].iuv}
+              Máxima: {clima.previsao[2].maxima} °C
+              Mínima: {clima.previsao[2].minima} °C
+            </Text>
+            <Text style={styles.bodyText}> Tempo: {clima.previsao[2].tempo}</Text>
+          </View>
+        </View>
+
+        <Text style={styles.bodyTitle}>{clima.previsao[3].dia} </Text>
+        <View style={styles.bodyRow}>
+          <View style={styles.bodyButton}>
+            <Text style={styles.bodyText}> IUV: {clima.previsao[3].iuv}
+              Máxima: {clima.previsao[3].maxima} °C
+              Mínima: {clima.previsao[3].minima} °C
+            </Text>
+            <Text style={styles.bodyText}> Tempo: {clima.previsao[3].tempo}</Text>
+          </View>
+        </View>
+
+
+        <Text style={styles.bodyTitle}>{clima.previsao[4].dia} </Text>
+        <View style={styles.bodyRow}>
+          <View style={styles.bodyButton}>
+            <Text style={styles.bodyText}> IUV: {clima.previsao[4].iuv}
+              Máxima: {clima.previsao[4].maxima} °C
+              Mínima: {clima.previsao[4].minima} °C
+            </Text>
+            <Text style={styles.bodyText}> Tempo: {clima.previsao[4].tempo}</Text>
+          </View>
+        </View>
+
+
+        <Text style={styles.bodyTitle}>{clima.previsao[5].dia} </Text>
+        <View style={styles.bodyRow}>
+          <View style={styles.bodyButton}>
+            <Text style={styles.bodyText}> IUV: {clima.previsao[5].iuv}
+              Máxima: {clima.previsao[5].maxima} °C
+              Mínima: {clima.previsao[5].minima} °C
+            </Text>
+            <Text style={styles.bodyText}> Tempo: {clima.previsao[5].tempo}</Text>
+          </View>
+        </View> */}
+      </View >
+    </View>
   )
 }
 
 export default Previsao_Tempo;
           
-          // AQUI TRANSFORMA AS ABREVIAÇÕES DO TEMPO
-/* 
+    
+    
+    {/* AQUI TRANSFORMA AS ABREVIAÇÕES DO TEMPO
+
           for (x = 0; x = !5; x = x + 1) {
             if (clima.previsao[x].tempo == "ec")
               clima.previsao[x].tempo = "Encoberto com Chuvas Isoladas";
@@ -222,22 +206,23 @@ export default Previsao_Tempo;
               clima.previsao[x].tempo = "Poss. de Panc. de Chuva a Tarde";
             if (clima.previsao[x].tempo == "ppm")
               clima.previsao[x].tempo = "Poss. de Panc. de Chuva pela Manhã";
-          } */
+          } 
 
-          // AQUI ERA PARA DESABILITA O LOADING
-
-
+           AQUI ERA PARA DESABILITA O LOADING
 
 
-  //O RETURN TA RODANDO ANTES DE DE useEffect
-  // OU seja TA DANDO erro em todos {clima.previsao[0].dia} etc..
-/*   {loading ? (
+
+
+  O RETURN TA RODANDO ANTES DE DE useEffect
+   OU seja TA DANDO erro em todos {clima.previsao[0].dia} etc..
+
+  {loading ? (
     <View>
       <ActivityIndicator size="large" color={'red'} />
     </View>
-  ) : ( */
+  ) : ( 
 
-/*
+
               <Text style={styles.bodyTitle}> </Text>
 
                 <Text style={styles.bodyTitle}>{clima.previsao[0].dia} </Text>
@@ -307,4 +292,4 @@ export default Previsao_Tempo;
                        Mínima: {clima.previsao[5].minima} °C 
                     <Text style={styles.bodyText}> Tempo: {clima.previsao[5].tempo}</Text>
                   </View> 
-*/
+   */}
