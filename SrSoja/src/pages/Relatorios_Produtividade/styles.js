@@ -20,7 +20,7 @@ const stylesArea = StyleSheet.create({
     borderBottomWidth: 1,
   },
   bodyColumn: {
-    flex: 0.4,
+    flex: 0.5,
   },
   bodyRowSelect: {
     flex: 1,
@@ -29,6 +29,7 @@ const stylesArea = StyleSheet.create({
     alignItems: "center",
   },
   bodyTitle: {
+    flex:1,
     ...stylesVar.titleSecondary,
   },
   bodyTitleSelect: {
@@ -39,13 +40,8 @@ const stylesArea = StyleSheet.create({
     alignItems: "center",
   },
   bodyMap: {
-    flex: 0.5,
-    alignItems: "center",
-    justifyContent: "center",
-    width: "90%",
-    height: 175,
-    borderWidth: 1,
-    ...stylesVar.boxSecondary,
+    width: '93%',
+    height: 250,
   },
   bodyResultsTitle: {
     marginTop: 15,
@@ -160,30 +156,35 @@ const stylesPrevisao = StyleSheet.create({
     ...stylesVar.inputText,
     fontSize: 14,
   },
-  footerButtons:{
-    margin:5,
-    justifyContent:'center'
-  },
-  footerButtonCancel:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonCheck:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonNext:{
-   marginRight:30,
-   flexDirection: "row",
-   justifyContent: "center",
-  },
   footerRowButtons: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+  },
+  footerRowCenterButtons: {
+    marginHorizontal:30,
    flexDirection: "row",
    alignItems: "center",
    justifyContent: "space-between",
  },
+  footerButtonCancel:{
+    marginHorizontal:10,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonCheck:{
+    marginHorizontal:10,
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  footerButtonNext:{
+   flexDirection: "row",
+   justifyContent: "center",
+  },
+  footerButtonInfo:{
+    flexDirection: "row",
+    justifyContent: "center",
+ }
 });
 
 const stylesCalculo = StyleSheet.create({
@@ -240,10 +241,13 @@ const stylesCalculo = StyleSheet.create({
     alignItems: "center",
     alignItems: "flex-end",
     justifyContent: "space-around",
+    margin: 10,
+    marginTop:3,
+    borderBottomWidth: 1,
   },
   footerColumn: {
     alignItems: "center",
-    margin:5
+    marginTop: 10,
   },
   footerTextPrimary: {
     ...stylesVar.titleSecondary,
@@ -254,29 +258,35 @@ const stylesCalculo = StyleSheet.create({
     ...stylesVar.inputText,
     fontSize: 14,
   },
-  footerButtons:{
-    margin:5,
-    justifyContent:'center'
-  },
-  footerButtonCancel:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonCheck:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonNext:{
-   marginRight:30,
-   flexDirection: "row",
-   justifyContent: "center",
-  },
-  footerRowButtons: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+
+footerRowButtons: {
+  flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "space-evenly",
+},
+footerRowCenterButtons: {
+  marginHorizontal:30,
+ flexDirection: "row",
+ alignItems: "center",
+ justifyContent: "space-between",
+},
+footerButtonCancel:{
+  marginHorizontal:10,
+  flexDirection: "row",
+  justifyContent: "center",
+},
+footerButtonCheck:{
+  marginHorizontal:10,
+  flexDirection: "row",
+  justifyContent: "center",
+},
+footerButtonInfo:{
+  flexDirection: "row",
+  justifyContent: "center",
+},
+footerButtonAdd:{
+ flexDirection: "row",
+ justifyContent: "center",
 }
 });
 

@@ -1,43 +1,123 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { View, Text, TextInput, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import { Picker } from '@react-native-picker/picker'
 import { stylesArea, stylesPrevisao, stylesCalculo } from './styles'
-import Context from '../../components/Context'
-//icon
-import SelectIcon from "../../assets/Icons/chevron-down"
+import getContext from '../../hooks'
+import {ThisContext} from '../../context'
+import MapView, { Marker } from "react-native-maps";
+import * as Location from "expo-location";
+import MiniMap from '../../components/MiniMap'
 //button
-import { CheckButton, CancelButton, AddButton, NextButton } from '../../components/Button'
+import { CheckButton, CancelButton, AddButton, NextButton, InfoButton } from '../../components/Button'
 
 
 const Area = () => {
-  const { database, dataResult, setResult } = useContext(Context)
+  const { database, dataResult, setResult, tlh_id, fzd_id } = getContext();
   const navigation = useNavigation();
+
+  const [fazenda, setFazenda]= useState(['Fazenda 1', 'Fazenda 2', 'Fazenda 3', 'Fazenda 4'])
+  const [selectedFazenda,setSelectedFazenda]= useState([])
+
+
+  const [talhao, setTalhao]= useState(['Talhão 1', 'Talhão 2', 'Talhão 3', 'Talhão 4'])
+  const [selectedTalhao,setSelectedTalhao]= useState([])
+
+
+    const [alfinete, setAlfinete] = useState({latitude: -23, longitude: -45});
+    const [origin, setOrigin] = useState(null);
+  
+  useEffect(() => {
+    GetCurrentLocation();
+  }, []);
+
+
+  const GetCurrentLocation = async () => {
+    let { status } = await Location.requestForegroundPermissionsAsync();
+
+    if (status !== "granted") {
+      Alert.alert(
+        "Permissão negada",
+        "Por favor, permita que a localização seja utilizada para continuar",
+        [{ text: "Ok" }],
+      );
+    }
+    let { coords } = await Location.getCurrentPositionAsync({
+      enableHighAccuracy: true,
+    });
+
+    if (coords) {
+      const { latitude, longitude } = coords;
+      
+      setOrigin({
+        latitude: coords.latitude,
+        longitude: coords.longitude,
+        latitudeDelta: 0.00922,
+        longitudeDelta: 0.00421,
+      });
+      setAlfinete({ latitude: coords.latitude,
+        longitude: coords.longitude,})
+    }}
+  
+  useEffect(()=>{
+
+
+  },[talhao])
+
   return (
       <SafeAreaView style={stylesArea.container}>
         <ScrollView>
           <View style={stylesArea.body}>
             <View style={stylesArea.bodyRow}>
               <View style={stylesArea.bodyColumn}>
-                <Text style={stylesArea.bodyTitle}>Estado</Text>
+                <Text style={stylesArea.bodyTitle}>Fazenda</Text>
                 <TouchableOpacity style={stylesArea.bodyRowSelect}>
-                <Text style={stylesArea.bodyTitleSelect}>Selecione</Text>
-                <SelectIcon size={20} fill="#343434" />
+
+                <Picker
+                style={{flex:1, flexWrap:'nowrap'}}
+                  selectedValue={selectedFazenda}
+                  onValueChange={(itemValue,index)=>
+                    setSelectedFazenda(itemValue,index)
+                }>
+                {
+                  fazenda.map((fzd,index) => {
+                    return(
+                    <Picker style={{flex:1}} label={fzd} value={fzd} key={index} />
+                    )
+                  }) 
+                }
+                </Picker>
+
                 </TouchableOpacity>
               </View>
               <View style={stylesArea.bodyColumn}>
-                <Text style={stylesArea.bodyTitle}>Município</Text>
+                <Text style={stylesArea.bodyTitle}>Talhão</Text>
                 <TouchableOpacity style={stylesArea.bodyRowSelect}>
-                  <Text style={stylesArea.bodyTitleSelect}>Selecione</Text>
-                  <SelectIcon size={20} fill="#343434" />
+                
+                <Picker
+                style={{flex:1, flexWrap:'nowrap'}}
+                  selectedValue={selectedTalhao}
+                  onValueChange={(itemValue,index)=>
+                    setSelectedTalhao(itemValue,index)
+                }>
+                {
+                  talhao.map((tl,index) => {
+                    return(
+                    <Picker style={{flex:1}} label={tl} value={tl} key={index} />
+                    )
+                  }) 
+                }
+                </Picker>
+
                 </TouchableOpacity>
               </View>
             </View>
             
             <View style={stylesArea.bodyMapRow}>
-              <View style={stylesArea.bodyMap}/>  
+                <MiniMap />
             </View>
             
-            <Text style={stylesArea.bodyResultsTitle}>Resultado</Text> 
+            <Text style={stylesArea.bodyResultsTitle}>Resultado de Produtividade</Text> 
             <View style={stylesArea.bodyResults}>
 
               <Text style={stylesArea.bodyTitle}>Previsão</Text> 
@@ -86,7 +166,7 @@ const Area = () => {
 
 const Previsao = () => {
   const navigation = useNavigation();
-  const { database, dataResult, setResult } = useContext(Context)
+  const { database, dataResult, setResult } = useContext(ThisContext)
 
   const [quantidadeLinha, setQuantidadeLinha] = useState('')
   const [distanciaLinha, setDistanciaLinha] = useState('')
@@ -161,21 +241,43 @@ const Previsao = () => {
               </View>
             </View>
           </View>
+
           <View style={stylesPrevisao.footerRowButtons}>
-            <View style={stylesPrevisao.footerRowButtons}>
+            
+            <View style={stylesPrevisao.footerButtonInfo}>
+                <InfoButton size={48}
+                  onPress={() => {
+                    navigation.navigate({
+                      name: 'Area'
+                    })
+                  }}
+                />
+            </View>
+            <View style={stylesPrevisao.footerRowCenterButtons}>
 
               <View style={stylesPrevisao.footerButtonCancel}>
                 <CancelButton size={48}/>
               </View>
               <View style={stylesPrevisao.footerButtonCheck}>
-                <CheckButton size={48}/>
+                <CheckButton size={48} 
+                  onPress={() => {
+                  
+                  }}
+                  
+                  />
+
               </View>
            </View>
 
             <View style={stylesPrevisao.footerButtonNext}>
-              <NextButton size={48}/>
+              <NextButton size={48} 
+                onPress={() => {
+                  navigation.navigate({
+                    name: 'Calculo'
+                  })
+                }}/>
             </View>
-        </View>
+          </View>
 
         </SafeAreaView>
   );
@@ -184,7 +286,7 @@ const Previsao = () => {
 
 const Calculo = () => {
   const navigation = useNavigation();
-  const { database, dataResult, setResult } = useContext(Context)
+  const { database, dataResult, setResult } = useContext(ThisContext)
 
   const [coleta, setColeta] = useState('')
 
@@ -237,23 +339,40 @@ const Calculo = () => {
           </View>
         </View>
       </View>
-      <View style={stylesCalculo.footerButtons}>
-          <View style={stylesCalculo.footerRowButtons}>
-            <View style={stylesCalculo.footerRowButtons}>
+      <View style={stylesPrevisao.footerRowButtons}>
+            
+            <View style={stylesPrevisao.footerButtonInfo}>
+                <InfoButton size={48}
+                  onPress={() => {
+                    navigation.navigate({
+                      name: 'Area'
+                    })
+                  }}
+                />
+            </View>
+            <View style={stylesPrevisao.footerRowCenterButtons}>
 
-              <View style={stylesCalculo.footerButtonCancel}>
+              <View style={stylesPrevisao.footerButtonCancel}>
                 <CancelButton size={48}/>
               </View>
-              <View style={stylesCalculo.footerButtonCheck}>
-                <CheckButton size={48}/>
+              <View style={stylesPrevisao.footerButtonCheck}>
+                <CheckButton size={48} 
+                  onPress={() => {
+                  
+                  }}
+                  
+                  />
+
               </View>
            </View>
 
-            <View style={stylesCalculo.footerButtonNext}>
-              <NextButton size={48}/>
+            <View style={stylesPrevisao.footerButtonNext}>
+              <AddButton size={48} 
+                onPress={() => {
+
+                }}/>
             </View>
           </View>
-        </View>
 
   </SafeAreaView>
   );

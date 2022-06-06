@@ -1,42 +1,25 @@
 import 'react-native-gesture-handler';
-import React, {useEffect, useState, createContext} from "react";
+import React, {useEffect, useState} from "react";
 import { StatusBar } from 'react-native';
-import Pages from './pages';
+import Routes from './routes';
+import { LogBox } from 'react-native';
 
 import openDatabase from './services/database/config';
-import Context from './components/Context';
+import {Context} from './context';
 
 
 export default function App () {
-  const [database,setDatabase] = useState(null)
-  const [dataResult,setResult] = useState(null)
-
+  LogBox.ignoreLogs(["FloatingLabel"])
   useEffect(()=>{
-    openDatabase().then(response => setDatabase(response))
+    //openDatabase()//.then(response => setDatabase(response))
   },[])
-
-  /*
-  useEffect( ()=>{
-    console.log("passou aqui")
-    create(database,{ 
-      prd_nome: 'Sherman',
-      prd_email: 'sherman@email.com',
-      prd_senha: 'qwerty' },
-      setFeed
-    )
-    .then(r => console.log("resp:", feed));
-    
-  },[database]);
-  */
-
-
 
   return (
     <>
       <StatusBar barStyle="light-content" backgroundColor="#F7BB26"/>
-      <Context.Provider value={{database, dataResult, setResult}}>
-        <Pages />
-      </Context.Provider>
+      <Context>
+        <Routes />
+      </Context>
     </>
   )
 };

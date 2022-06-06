@@ -12,7 +12,7 @@ import CotacaoIcon      from '../../assets/Icons/currency-exchange'
 import CustosIcon       from '../../assets/Icons/cart4'
 import PrevisaoIcon     from '../../assets/Icons/cloud-lightning-rain-fill'
 import HistoricoIcon    from '../../assets/Icons/clock-history'
-import ComparacaoIcon   from '../../assets/Icons/trophy-fill'
+import GraphicIcon   from '../../assets/Icons/trophy-fill'
 
 
 
@@ -85,7 +85,8 @@ async function previsaoClima(){
     const navigation = useNavigation();
     return (
         <>
-        <View style={styles.container}>
+                <ScrollView>
+
             <View style={styles.header}>
                 <View style={styles.headerColumn}>
                     <TouchableOpacity style={styles.headerButton} onPress={(clima) => navigation.navigate('Previsao_Tempo')}>
@@ -96,7 +97,7 @@ async function previsaoClima(){
                     </TouchableOpacity>
                 </View>
             </View>
-
+        <View style={styles.container}>
             <View style={styles.body}>
                 <Text style={styles.bodyTitle}>Utilidades</Text>
 
@@ -124,19 +125,112 @@ async function previsaoClima(){
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.bodyRowDesabled}>
-                    <View style={styles.bodyButtonDesabled}>
-                        <HistoricoIcon size="40" fill='#E0E0E0'/>
-                        <Text style={styles.bodyTextDesabled}>Histórico de Compra e Venda</Text>
-                    </View>
-
-                    <View style={styles.bodyButtonDesabled}>
-                        <ComparacaoIcon size="40" fill='#E0E0E0'/>
-                        <Text style={styles.bodyTextDesabled}>Comparação da Região</Text>
-                    </View>
+                <View style={styles.bodyRow}>
+                    <TouchableOpacity style={styles.bodyButton} onPress={() => navigation.navigate('Historico_Compra_Venda')}>
+                        <HistoricoIcon size="40" fill='#343434'/>
+                        <Text style={styles.bodyText}>Histórico de Compra e Venda</Text>
+                    </TouchableOpacity>
                 </View>
-            </View>
-       </View>
+
+                <View style={styles.bodyRow}>
+                    <TouchableOpacity style={styles.bodyButton} >
+                        <Text style={styles.bodyText}>Comparativo de Produtividade</Text>
+                    </TouchableOpacity>
+
+                </View>
+
+
+                
+
+
+                        {/*        <View style={styles.bodyTable}>
+                            <View style={styles.bodyTableHeader}>
+                                <Text style={styles.bodyTableTitle}>Preço por 60Kg</Text>
+                                <Text style={styles.bodyTableTitle}>Local</Text>
+                                <Text style={styles.bodyTableTitle}>Data</Text>
+                                <Text style={styles.bodyTableTitle}>Gráfico</Text>
+                            </View>
+                            <View style={styles.bodyTableRow}>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>132,50 $</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>Araxá</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>15/02/2022</Text>
+                                </View>
+                                <View style={styles.bodyTableColumnGraphic}>
+                                    <GraphicIcon size={22} fill="#343434" />
+                                </View>
+                            </View>
+                            <View style={styles.bodyTableRow}>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>132,50 $</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>Araxá</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>15/02/2022</Text>
+                                </View>
+                                <View style={styles.bodyTableColumnGraphic}>
+                                    <GraphicIcon size={22} fill="#343434" />
+                                </View>
+                            </View>
+                            <View style={styles.bodyTableRow}>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>132,50 $</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>Araxá</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>15/02/2022</Text>
+                                </View>
+                                <View style={styles.bodyTableColumnGraphic}>
+                                    <GraphicIcon size={22} fill="#343434" />
+                                </View>
+                            </View>
+                            <View style={styles.bodyTableRow}>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>132,50 $</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>Araxá</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>15/02/2022</Text>
+                                </View>
+                                <View style={styles.bodyTableColumnGraphic}>
+                                    <GraphicIcon size={22} fill="#343434" />
+                                </View>
+                            </View>
+                            <View style={styles.bodyTableRow}>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>132,50 $</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>Araxá</Text>
+                                </View>
+                                <View style={styles.bodyTableColumn}>
+                                    <Text style={styles.bodyTableRowText}>15/02/2022</Text>
+                                </View>
+                                <View style={styles.bodyTableColumnGraphic}>
+                                    <GraphicIcon size={22} fill="#343434" />
+                                </View>
+                            </View>
+                            
+                        </View>
+                    
+      
+                </View> */}
+
+        </View>
+
+
+        </View>
+       </ScrollView>
        </>
     );
 }

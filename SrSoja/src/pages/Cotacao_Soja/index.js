@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, ScrollView} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker'
 import styles from './styles';
+import { Picker } from '@react-native-picker/picker'
 //icon
-import SelectIcon from "../../assets/Icons/chevron-down"
 import GraphicIcon from "../../assets/Icons/bar-chart-line-fill"
 
 export default function Cotacao_Soja () { 
     const [state, setState] = useState({ date: new Date(), mode: 'date', show: false })
     const [text, setText] = useState('Selecione')
+
+    const [estado, setEstado]= useState(['SP', 'MG', 'RJ'])
+    const [selectedEstado,setSelectedEstado]= useState([])
+  
+  
+    const [municipio, setMunicipio]= useState(['São José dos Campos', 'Pedralva', 'Volta Redonda'])
+    const [selectedMunicipio,setSelectedMunicipio]= useState([])
+    
     
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || state.date
@@ -45,15 +53,44 @@ export default function Cotacao_Soja () {
                             <View style={styles.bodyColumn}>
                                 <Text style={styles.bodyTitle}>Estado</Text>
                                 <TouchableOpacity style={styles.bodyRowSelect}>
-                                <Text style={styles.bodyTitleSelect}>Selecione</Text>
-                                <SelectIcon size={20} fill="#343434" />
+
+                                <Picker
+                                    style={{flex:1, flexWrap:'nowrap'}}
+                                    selectedValue={selectedEstado}
+                                    onValueChange={(itemValue,index)=>
+                                        setSelectedEstado(itemValue,index)
+                                    }>
+                                    {
+                                    estado.map((est,index) => {
+                                        return(
+                                        <Picker style={{flex:1}} label={est} value={est} key={index} />
+                                        )
+                                    }) 
+                                    }
+                                </Picker>
+
+
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.bodyColumn}>
                                 <Text style={styles.bodyTitle}>Município</Text>
                                 <TouchableOpacity style={styles.bodyRowSelect}>
-                                    <Text style={styles.bodyTitleSelect}>Selecione</Text>
-                                    <SelectIcon size={20} fill="#343434" />
+
+                                <Picker
+                                    style={{flex:1, flexWrap:'nowrap', padding:10}}
+                                    selectedValue={selectedMunicipio}
+                                    onValueChange={(itemValue,index)=>
+                                        setSelectedMunicipio(itemValue,index)
+                                    }>
+                                    {
+                                    municipio.map((mun,index) => {
+                                        return(
+                                        <Picker style={{flex:1}} label={mun} value={mun} key={index} />
+                                        )
+                                    }) 
+                                    }
+                                </Picker>
+
                                 </TouchableOpacity>
                             </View>            
                         </View>

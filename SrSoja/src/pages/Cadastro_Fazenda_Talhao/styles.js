@@ -1,16 +1,37 @@
 import { StyleSheet } from "react-native"
 import stylesVar from "../../styles/stylesVar"
 
-const stylesFazenda = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     ...stylesVar.background,
+  },
+  footer: {
+    bottom: 30,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  footerRow: {
+    position: "absolute",
+    flexDirection: "row",
+    padding: 30,
+  },
+  footerColumn: {
+    margin: 25,
+  },
+});
+
+const stylesFazenda = StyleSheet.create({
+  container: {
+    flex: 1,
+    ...stylesVar.background
   },
   body: {
     flex: 0.7,
     margin: 10,
     marginTop: 30,
     ...stylesVar.boxPrimary,
+    marginBottom: '25%'
   },
   bodyRow: {
     flex:0.3,
@@ -39,9 +60,14 @@ const stylesFazenda = StyleSheet.create({
     ...stylesVar.inputText,
     ...stylesVar.inputBox
   },
-  bodyButtonCEP: {
+  bodyTitleSearch: {
+    ...stylesVar.titleSecondary,
+    textAlign: 'center',
+  },
+  bodyButton: {
     flex:1,
-    padding:10,
+    padding:0,
+    paddingTop:7,
     alignItems:'center',
     borderRadius:4,
     borderWidth:1,
@@ -49,29 +75,34 @@ const stylesFazenda = StyleSheet.create({
     ...stylesVar.backgroundYellow
   },
   footer:{
-    margin:5,
-    justifyContent:'center'
-  },
-  footerButtonCancel:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonCheck:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonNext:{
-   marginRight:30,
-   flexDirection: "row",
-   justifyContent: "center",
+    flex:1,
+    position:'absolute',
+    alignSelf: "center",
+    bottom:0,
+    right:15,
   },
   footerRow: {
+    flexDirection: "row",
+    alignSelf: "center",
+    position:'relative',
+  },
+  footerButtonCenter: {
+    alignSelf: "center",
    flexDirection: "row",
-   alignItems: "center",
-   justifyContent: "space-between",
  },
+ footerButtonRight: {
+  alignSelf: "center",
+},
+  footerButtonCancel:{
+    flexDirection: "row",
+  },
+  footerButtonCheck:{
+    marginLeft:40,
+    flexDirection: "row",
+  },
+  footerButtonNext:{
+    paddingLeft:50
+  },
 
 });
 
@@ -85,6 +116,7 @@ const stylesTalhao = StyleSheet.create({
     margin: 10,
     marginTop: 30,
     ...stylesVar.boxPrimary,
+    marginBottom: '25%'
   },
   bodyRow: {
     flex:0.3,
@@ -119,32 +151,33 @@ const stylesTalhao = StyleSheet.create({
   bodyLine:{
     borderBottomWidth:1,
   },
-
   footer:{
-    margin:5,
-    justifyContent:'center'
+    flex:1,
+    position:'absolute',
+    alignSelf: "center",
+    bottom:0,
+  },
+  footerRow: {
+    flexDirection: "row",
+    alignSelf: "center",
+    position:'relative',
+  },
+
+  footerRowCenterButtons: {
+   flexDirection: "row",
+   alignItems: "center",
+   justifyContent: "space-between",
   },
   footerButtonCancel:{
-    marginLeft:30,
+    marginHorizontal:22,
     flexDirection: "row",
     justifyContent: "center",
   },
   footerButtonCheck:{
-    marginLeft:30,
+    marginHorizontal:22,
     flexDirection: "row",
     justifyContent: "center",
   },
-  footerButtonNext:{
-    marginRight:30,
-    flexDirection: "row",
-    justifyContent: "center",
-   },
-  footerRow: {
-    flexDirection: "row",
-   alignItems: "center",
-   justifyContent: "space-between",
- },
-
   
 })
 
@@ -154,16 +187,24 @@ const stylesListagem = StyleSheet.create({
     ...stylesVar.background,
   },
   body: {
-    flex: 0.7,
+    flex: 1,
     margin: 10,
     marginTop: 5,
-    ...stylesVar.boxPrimary,
-    borderWidth:1,
-    padding:5
+    
+    // borderWidth:1,
+    padding:5,
+    marginBottom: '25%'
   },
   bodyTitle: {
     ...stylesVar.titleSecondary,
+    fontSize: 21,
   },
+
+  bodySubTitle: {
+    ...stylesVar.inputText,
+    fontSize: 13,
+  },
+
   bodyList:{
     flex:1,
     margin: 15,
@@ -174,21 +215,34 @@ const stylesListagem = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  bodyButtons: {
-    flex:1,
-    flexDirection: 'row',
-    alignItems: 'center',
+
+  bodyButton: {
+    ...stylesVar.boxSecondary,
+    borderRadius: 5
   },
+
+  buttonTitle: {
+    padding:5,
+    borderWidth:0.5
+  },
+
+  buttonItem: {
+    marginBottom: 20,
+    alignItems: 'center'
+  },
+
   bodySubRow: {
     flex:1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'flex-end'
+    justifyContent:'flex-end',
   },
   bodyRowBox:{
     flex:1,
     ...stylesVar.inputText,
-    ...stylesVar.inputBox
+    ...stylesVar.inputBox,
+    ...stylesVar.boxPrimary,
+    marginBottom: 10
   },
   bodyIcon:{
     flexDirection: 'row',
@@ -196,32 +250,104 @@ const stylesListagem = StyleSheet.create({
     justifyContent: 'flex-end',
     marginRight:10
   },
-
   footer:{
-    margin:5,
-    justifyContent:'center'
+    flex:1,
+    position:'absolute',
+    alignSelf: "center",
+    bottom:0,
+    right:15,
   },
-  footerButtonCancel:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonCheck:{
-    marginLeft:30,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-  footerButtonAdd:{
-    marginRight:30,
-    flexDirection: "row",
-    justifyContent: "center",
-   },
   footerRow: {
     flexDirection: "row",
-   alignItems: "center",
-   justifyContent: "space-between",
+    alignSelf: "center",
+    position:'relative',
+  },
+  footerButtonCenter: {
+    alignSelf: "center",
+   flexDirection: "row",
  },
+ footerButtonRight: {
+  alignSelf: "center",
+},
+  footerButtonCancel:{
+    flexDirection: "row",
+  },
+  footerButtonCheck:{
+    marginLeft:40,
+    flexDirection: "row",
+  },
+  footerButtonAdd:{
+    paddingLeft:50
+  },
+
+  amarelo: {
+    ...stylesVar.backgroundYellow
+  }
+
 
 })
 
-export { stylesFazenda, stylesTalhao, stylesListagem  }
+export { styles, stylesFazenda, stylesTalhao, stylesListagem }
+/* 
+ const Listagem = ({navigation, route}) => {
+const [talhao,setTalhao]=useState({})
+  let talhaoApelido = talhao.apelido
+  let talhaoSaude = talhao.saude
+  let talhaoInfo = route.params
+  useEffect(() => {
+    if(talhaoInfo === undefined || talhaoInfo=== ''){
+    }else{
+      setTalhao(talhaoInfo)
+    }
+    },[talhaoInfo]
+)
+
+const dados = [
+  {key: 'talhaoApelido'}
+]
+console.log(talhao)
+  return (
+      <Flatlist
+      keyExtractor={(item)=> item.key}
+      data={dados}
+      renderItem={({item})=> <Text>{item.key}</Text>}
+      />
+
+  );
+}; 
+ <View style={stylesListagem.container}>
+      <Text style={{fontSize:16, color:'black'}}></Text>
+
+      <ScrollView>
+       
+      </ScrollView>
+
+      <View style={stylesListagem.footer}>
+        <View style={stylesListagem.footerRow}>
+          <View style={stylesListagem.footerButtonCenter}>
+            <View style={stylesListagem.footerButtonCancel}>
+              <CancelButton
+                size={48}
+                onPress={() => {
+
+                }}
+              />
+            </View>
+            <View style={stylesListagem.footerButtonCheck}>
+              <CheckButton size={48} />
+            </View>
+          </View>
+          <View style={stylesListagem.footerButtonRight}>
+            <View style={stylesListagem.footerButtonAdd}>
+              <AddButton
+                size={48}
+                onPress={() => {
+                  navigation.navigate("Talhão");
+                }}
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>    
+*/

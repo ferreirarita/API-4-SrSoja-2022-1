@@ -41,6 +41,10 @@ const stylesVar = {
     color: "#F7BB26",
   },
 
+  iconInfo: {
+    color: "#F7BB26",
+  },
+
   iconTable: {
     color: "#343434",
   },
