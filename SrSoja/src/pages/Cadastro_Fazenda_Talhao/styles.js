@@ -187,16 +187,24 @@ const stylesListagem = StyleSheet.create({
     ...stylesVar.background,
   },
   body: {
-    flex: 0.7,
+    flex: 1,
     margin: 10,
     marginTop: 5,
-    ...stylesVar.boxPrimary,
-    borderWidth:1,
-    padding:5
+    
+    // borderWidth:1,
+    padding:5,
+    marginBottom: '25%'
   },
   bodyTitle: {
     ...stylesVar.titleSecondary,
+    fontSize: 21,
   },
+
+  bodySubTitle: {
+    ...stylesVar.inputText,
+    fontSize: 13,
+  },
+
   bodyList:{
     flex:1,
     margin: 15,
@@ -207,21 +215,34 @@ const stylesListagem = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  bodyButtons: {
-    flex:1,
-    flexDirection: 'row',
-    alignItems: 'center',
+
+  bodyButton: {
+    ...stylesVar.boxSecondary,
+    borderRadius: 5
   },
+
+  buttonTitle: {
+    padding:5,
+    borderWidth:0.5
+  },
+
+  buttonItem: {
+    marginBottom: 20,
+    alignItems: 'center'
+  },
+
   bodySubRow: {
     flex:1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent:'flex-end'
+    justifyContent:'flex-end',
   },
   bodyRowBox:{
     flex:1,
     ...stylesVar.inputText,
-    ...stylesVar.inputBox
+    ...stylesVar.inputBox,
+    ...stylesVar.boxPrimary,
+    marginBottom: 10
   },
   bodyIcon:{
     flexDirection: 'row',
@@ -258,6 +279,11 @@ const stylesListagem = StyleSheet.create({
   footerButtonAdd:{
     paddingLeft:50
   },
+
+  amarelo: {
+    ...stylesVar.backgroundYellow
+  }
+
 
 })
 
