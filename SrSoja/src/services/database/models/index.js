@@ -21,19 +21,12 @@ export default {
         tlh_id INTEGER PRIMARY KEY AUTOINCREMENT,
         tlh_apelido TEXT,
         tlh_media_producao NUMERIC DEFAULT 0.00,
+        tlh_tamanho TEXT,
         fzd_id INTEGER NOT NULL,
         tlh_saude TEXT NOT NULL,
-        FOREIGN KEY (fzd_id) REFERENCES fazenda (fzd_id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE
-    );`,
-    area_talhao: `
-    CREATE TABLE IF NOT EXISTS area_talhao (
-        area_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        tlh_id INTEGER NOT NULL,
         latitude TEXT,
         longitude TEXT,
-        FOREIGN KEY (tlh_id) REFERENCES talhao (tlh_id)
+        FOREIGN KEY (fzd_id) REFERENCES fazenda (fzd_id)
         ON UPDATE CASCADE
         ON DELETE CASCADE
     );`,

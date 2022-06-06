@@ -10,8 +10,6 @@ export default function Mapa({ navigation, route }) {
   const [alfinete, setAlfinete] = useState({longitude: -45, latitude: -23});
   const [origin, setOrigin] = useState(null);
 
-  // const [locationServiceEnabled, setLocationServiceEnabled] = useState(false);
-
   const [ coordHeaders, setCoordHeaders ] = useState({});
   const [coord, setCoord] = useState({});
 
@@ -22,29 +20,6 @@ export default function Mapa({ navigation, route }) {
     // CheckIfLocationEnabled();
     GetCurrentLocation();
   }, []);
-/* 
-  useEffect(()=>{
-    const setHeader = async () => {
-      
-    }
-    if(coord !== {})
-      setHeader()
-  },[coord]) */
-
-  /* const CheckIfLocationEnabled = async () => {
-    let enabled = await Location.hasServicesEnabledAsync();
-
-    if (!enabled) {
-      Alert.alert(
-        "A Localização está desativada",
-        "Por favor, ative a para continuar",
-        [{ text: "Ok" }],
-        { cancelable: false }
-      );
-    } else {
-      setLocationServiceEnabled(enabled);
-    }
-  }; */
 
   // console.log(coordHeaders)
 
@@ -74,33 +49,25 @@ export default function Mapa({ navigation, route }) {
         longitudeDelta: 0.00421,
       });
 
-      /* let response = await Location.reverseGeocodeAsync({
-        latitude: coord.latitude ?? latitude,
-        longitude: coord.longitude ?? longitude,
-      });
-  
-      setCoordHeaders({
-        region: response[0].region,
-        subregion: response[0].subregion,
-        street: response[0].street,
-        district: response[0].district
-      }) */
     }
   };
 
   useEffect( async ()=>{
-    if(coord !== {}){
+    
+    if(coord !== {} && (coord.latitude || coord.longitude)){
       let response = await Location.reverseGeocodeAsync({
-        latitude: coord.latitude ?? alfinete.latitude,
-        longitude: coord.longitude ?? alfinete.longitude,
+        latitude: coord.latitude,
+        longitude: coord.longitude,
       });
 
-      setCoordHeaders({
-        region: response[0].region,
-        subregion: response[0].subregion,
-        street: response[0].street,
-        district: response[0].district
-      }) 
+      if(response[0])
+        setCoordHeaders({
+          cep: response[0].postalCode,
+          region: response[0].region,
+          subregion: response[0].subregion,
+          street: response[0].street,
+          district: response[0].district
+        }) 
     }
   },[coord])
 

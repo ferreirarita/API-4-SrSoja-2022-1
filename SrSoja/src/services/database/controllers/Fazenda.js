@@ -24,7 +24,8 @@ async function addFazenda(database, args, setResult) {
                     [prd_id, fzd_nome, fzd_cep],
                     (_, resultSet) => {
                         // setResult(`Nova Fazenda: '${fzd_nome}'`)
-                        getFazenda(database,{fzd_id},setResult)
+                        // getFazenda(database,{fzd_id},setResult)
+                        console.log(resultSet)
                     },
                     (_, error) => console.error(error)
                 )
