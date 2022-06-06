@@ -71,14 +71,6 @@ const Tela_Inicial = () => {
                     </TouchableOpacity>
                 </View>
 
-                <View style={styles.bodyRow}>
-                    <TouchableOpacity style={styles.bodyButton} >
-                        <Text style={styles.bodyText}>Comparativo de Produtividade</Text>
-                    </TouchableOpacity>
-
-                </View>
-
-
                 
 
 

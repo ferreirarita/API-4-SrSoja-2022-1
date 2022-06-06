@@ -6,7 +6,6 @@ import * as Location from "expo-location";
 import styles from "./styles";
 
 export default function MiniMap({navigation,coordMiniMap}){
- 
   const [alfinete, setAlfinete] = useState({latitude: -23, longitude: -45});
   const [origin, setOrigin] = useState(null);
 
@@ -37,11 +36,12 @@ const GetCurrentLocation = async () => {
       longitudeDelta: 0.00421,
     });
     setAlfinete({ 
-      latitude: coordMiniMap.latitude,
-      longitude: coordMiniMap.longitude
+      latitude: coordMiniMap?.latitude,
+      longitude: coordMiniMap?.longitude
     })
   }
 }
+console.log(coordMiniMap)
   return(
     <>
     <MapView style={styles.container}
@@ -55,7 +55,6 @@ const GetCurrentLocation = async () => {
       coordinate={alfinete}
       />
   </MapView>
-  <Text>{coordMiniMap.longitude}</Text>
   </>
   )
 }

@@ -156,13 +156,6 @@ console.log('teste',props)
               coordMiniMap={data} 
             />
           </View>
-          <TouchableOpacity 
-            onPress={() => coordMiniMap()
-          }>
-            <Text style={stylesArea.bodyResultsTitle}>
-              Resultado de Produtividade
-            </Text>
-          </TouchableOpacity>
           <Text style={stylesArea.bodyResultsTitle}>
             Resultado de Produtividade
           </Text>

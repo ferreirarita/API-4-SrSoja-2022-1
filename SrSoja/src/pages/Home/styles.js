@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
   },
   bodyButton: {
     flex: 1,
+    padding:15,
     backgroundColor: "#D0D0D0",
     alignItems: "center",
     justifyContent: "center",
