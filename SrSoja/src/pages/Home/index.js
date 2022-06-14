@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Alert,Text, View, TouchableOpacity} from 'react-native'
+import { Alert,Text, View, TouchableOpacity, ScrollView} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 import styles from './styles'
 import { parse } from 'fast-xml-parser'

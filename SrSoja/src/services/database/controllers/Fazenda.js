@@ -24,8 +24,8 @@ async function addFazenda(database, args, setResult) {
                     [prd_id, fzd_nome, fzd_cep],
                     (_, resultSet) => {
                         // setResult(`Nova Fazenda: '${fzd_nome}'`)
-                        // getFazenda(database,{fzd_id},setResult)
-                        console.log(resultSet)
+                        getFazenda(database,{fzd_id: resultSet.insertId},setResult)
+                        // console.log('estou no banco',resultSet)
                     },
                     (_, error) => console.error(error)
                 )
@@ -122,8 +122,70 @@ async function delFazenda(database, args, setResult) {
     )
 }
 
+async function listAll(database, args, setResult) {
+    let { prd_id } = args
+    database.transaction(
+        tx => {
+            
+            tx.executeSql(
+                `SELECT 
+                    f.fzd_id, f.prd_id, f.fzd_nome, f.fzd_cep,
+                    t.tlh_id, t.tlh_apelido, 
+                    t.tlh_media_producao, t.tlh_tamanho, t.tlh_saude, 
+                    t.latitude, t.longitude
+                FROM fazenda as f
+                LEFT JOIN talhao as t
+                ON f.fzd_id = t.fzd_id
+                WHERE f.prd_id = ?`,
+                [prd_id],
+                (_,{ rows: { _array } }) => {
+                    let list = []
+                    _array.map((item,index) => {
+                        let aux = list.find(e => e.fzd_id == item.fzd_id)
+                        if(aux) {
+                            list.find(e => {
+                                if(e.fzd_id == item.fzd_id){
+                                    e.talhoes = e.talhoes.concat({
+                                        tlh_id: item.tlh_id,
+                                        tlh_apelido: item.tlh_apelido,
+                                        tlh_media_producao: item.tlh_media_producao,
+                                        tlh_tamanho: item.tlh_tamanho,
+                                        tlh_saude: item.tlh_saude,
+                                        latitude: item.latitude,
+                                        longitude: item.longitude
+                                    })
+                                }
+                            })
+                        }
+                        else {
+                            list.unshift({
+                                fzd_id: item.fzd_id,
+                                fzd_nome: item.fzd_nome,
+                                fzd_cep: item.fzd_cep,
+                                talhoes: item.tlh_id ? [{
+                                    tlh_id: item.tlh_id,
+                                    tlh_apelido: item.tlh_apelido,
+                                    tlh_media_producao: item.tlh_media_producao,
+                                    tlh_tamanho: item.tlh_tamanho,
+                                    tlh_saude: item.tlh_saude,
+                                    latitude: item.latitude,
+                                    longitude: item.longitude
+                                }]
+                                : []
+                            })
+                        }
+                    })
+                    setResult(list)
+                },
+                (_,error) => console.error(`Erro: ${error}`)
+            )
+        }
+    )
+}
+
 export {
     addFazenda,
     getFazenda,
-    delFazenda
+    delFazenda,
+    listAll
 }

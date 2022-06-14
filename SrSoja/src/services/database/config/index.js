@@ -50,7 +50,7 @@ export default async function openDatabase() {
             tx.executeSql(models.produtor)
             tx.executeSql(models.fazenda)
             // tx.executeSql(models.talhao_saude)
-            tx.executeSql(models.talhao)
+            // tx.executeSql(models.talhao)
             tx.executeSql(models.hist_gasto)
             tx.executeSql(models.hist_venda)
             /**/

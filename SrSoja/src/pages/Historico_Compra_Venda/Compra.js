@@ -14,6 +14,7 @@ export default function Compra() {
     const [ selectedItem, setSelectedItem ] = useState()
 
     const update = () => {
+        if(user)
         getGasto(
             database,
             {
@@ -40,7 +41,7 @@ export default function Compra() {
         setLoading(true)
         update()
     },[])
-    
+
     const RenderOne = () => {
         const index = selectedItem?.index ?? -1
         const item = selectedItem?.item ?? {

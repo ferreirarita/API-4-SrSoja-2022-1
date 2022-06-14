@@ -18,74 +18,74 @@ let clima = props.route.params?.clima
   return (
     <View style={styles.container}>
       <View style={styles.body}>
-      <Text style={styles.bodyTitle}>{clima.nome},{clima.estado}</Text>
+      <Text style={styles.bodyTitle}>{clima?.nome},{clima?.estado}</Text>
       <Text style={styles.bodyTitle}> </Text>    
         <View style={styles.bodyRow}>
           <View style={styles.bodyButton}>
-            <Text style={styles.bodyText}> IUV: {clima.previsao[0].dia}
-              Máxima: {clima.previsao[0].dia} °C
-              Mínima: {clima.previsao[0].dia} °C
+            <Text style={styles.bodyText}> IUV: {clima?.previsao[0].dia}
+              Máxima: {clima?.previsao[0].dia} °C
+              Mínima: {clima?.previsao[0].dia} °C
             </Text>
-            <Text style={styles.bodyText}> Tempo: {clima.previsao[0].dia}</Text>
+            <Text style={styles.bodyText}> Tempo: {clima?.previsao[0].dia}</Text>
           </View>
         </View>
 
-       <Text style={styles.bodyTitle}>{clima.previsao[1].dia} </Text>
+       <Text style={styles.bodyTitle}>{clima?.previsao[1].dia} </Text>
         <View style={styles.bodyRow}>
           <View style={styles.bodyButton}>
-            <Text style={styles.bodyText}> IUV: {clima.previsao[1].iuv}
-              Máxima: {clima.previsao[1].maxima} °C
-              Mínima: {clima.previsao[1].minima} °C
+            <Text style={styles.bodyText}> IUV: {clima?.previsao[1].iuv}
+              Máxima: {clima?.previsao[1].maxima} °C
+              Mínima: {clima?.previsao[1].minima} °C
             </Text>
-            <Text style={styles.bodyText}> Tempo: {clima.previsao[1].tempo}</Text>
-          </View>
-        </View>
-
-
-
-        <Text style={styles.bodyTitle}>{clima.previsao[2].dia} </Text>
-        <View style={styles.bodyRow}>
-          <View style={styles.bodyButton}>
-            <Text style={styles.bodyText}> IUV: {clima.previsao[2].iuv}
-              Máxima: {clima.previsao[2].maxima} °C
-              Mínima: {clima.previsao[2].minima} °C
-            </Text>
-            <Text style={styles.bodyText}> Tempo: {clima.previsao[2].tempo}</Text>
-          </View>
-        </View>
-
-        <Text style={styles.bodyTitle}>{clima.previsao[3].dia} </Text>
-        <View style={styles.bodyRow}>
-          <View style={styles.bodyButton}>
-            <Text style={styles.bodyText}> IUV: {clima.previsao[3].iuv}
-              Máxima: {clima.previsao[3].maxima} °C
-              Mínima: {clima.previsao[3].minima} °C
-            </Text>
-            <Text style={styles.bodyText}> Tempo: {clima.previsao[3].tempo}</Text>
+            <Text style={styles.bodyText}> Tempo: {clima?.previsao[1].tempo}</Text>
           </View>
         </View>
 
 
-        <Text style={styles.bodyTitle}>{clima.previsao[4].dia} </Text>
+
+        <Text style={styles.bodyTitle}>{clima?.previsao[2].dia} </Text>
         <View style={styles.bodyRow}>
           <View style={styles.bodyButton}>
-            <Text style={styles.bodyText}> IUV: {clima.previsao[4].iuv}
-              Máxima: {clima.previsao[4].maxima} °C
-              Mínima: {clima.previsao[4].minima} °C
+            <Text style={styles.bodyText}> IUV: {clima?.previsao[2].iuv}
+              Máxima: {clima?.previsao[2].maxima} °C
+              Mínima: {clima?.previsao[2].minima} °C
             </Text>
-            <Text style={styles.bodyText}> Tempo: {clima.previsao[4].tempo}</Text>
+            <Text style={styles.bodyText}> Tempo: {clima?.previsao[2].tempo}</Text>
+          </View>
+        </View>
+
+        <Text style={styles.bodyTitle}>{clima?.previsao[3].dia} </Text>
+        <View style={styles.bodyRow}>
+          <View style={styles.bodyButton}>
+            <Text style={styles.bodyText}> IUV: {clima?.previsao[3].iuv}
+              Máxima: {clima?.previsao[3].maxima} °C
+              Mínima: {clima?.previsao[3].minima} °C
+            </Text>
+            <Text style={styles.bodyText}> Tempo: {clima?.previsao[3].tempo}</Text>
           </View>
         </View>
 
 
-        <Text style={styles.bodyTitle}>{clima.previsao[5].dia} </Text>
+        <Text style={styles.bodyTitle}>{clima?.previsao[4].dia} </Text>
         <View style={styles.bodyRow}>
           <View style={styles.bodyButton}>
-            <Text style={styles.bodyText}> IUV: {clima.previsao[5].iuv}
-              Máxima: {clima.previsao[5].maxima} °C
-              Mínima: {clima.previsao[5].minima} °C
+            <Text style={styles.bodyText}> IUV: {clima?.previsao[4].iuv}
+              Máxima: {clima?.previsao[4].maxima} °C
+              Mínima: {clima?.previsao[4].minima} °C
             </Text>
-            <Text style={styles.bodyText}> Tempo: {clima.previsao[5].tempo}</Text>
+            <Text style={styles.bodyText}> Tempo: {clima?.previsao[4].tempo}</Text>
+          </View>
+        </View>
+
+
+        <Text style={styles.bodyTitle}>{clima?.previsao[5].dia} </Text>
+        <View style={styles.bodyRow}>
+          <View style={styles.bodyButton}>
+            <Text style={styles.bodyText}> IUV: {clima?.previsao[5].iuv}
+              Máxima: {clima?.previsao[5].maxima} °C
+              Mínima: {clima?.previsao[5].minima} °C
+            </Text>
+            <Text style={styles.bodyText}> Tempo: {clima?.previsao[5].tempo}</Text>
           </View>
         </View>
       </View >

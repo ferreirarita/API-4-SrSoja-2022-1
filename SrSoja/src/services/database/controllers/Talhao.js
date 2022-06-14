@@ -29,8 +29,7 @@ async function addTalhao(database, args, setResult) {
                     VALUES (?,?,?,?,?)`,
                     [fzd_id, tlh_apelido, tlh_media_producao, tlh_tamanho, tlh_saude],
                     (_, resultSet) => {
-                        setResult(resultSet)
-                        console.log(resultSet)
+                        // setResult(resultSet)
                     },
                     (_,error) => console.error(`Erro ao adicionar: ${error}`)
                 )
